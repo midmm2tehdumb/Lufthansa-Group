@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WestJet Airlines - Booking</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; }
+  h2 { text-align: center; margin-bottom: 20px; }
+  .booking-form { max-width: 500px; margin: auto; display: flex; flex-direction: column; gap: 15px; }
+  select, button { padding: 10px; font-size: 1rem; }
+  #results { margin-top: 20px; text-align: center; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<h2>Book Your Flight</h2>
+
+<div class="booking-form">
+  <label for="departure">Departure Airport:</label>
+  <select id="departure">
+    <option value="">-- Select Departure --</option>
+  </select>
+
+  <label for="arrival">Arrival Airport:</label>
+  <select id="arrival">
+    <option value="">-- Select Arrival --</option>
+  </select>
+
+  <button onclick="calculateFlight()">Check Flight</button>
+</div>
+
+<div id="results"></div>
+
+<script>
+// Your existing airport coordinates
+const airportCoords = {
+
+};
+
+// Populate dropdowns
+const departureSelect = document.getElementById('departure');
+const arrivalSelect = document.getElementById('arrival');
+
+Object.keys(airportCoords).forEach(code => {
+  const option1 = document.createElement('option');
+  option1.value = code;
+  option1.textContent = code;
+  departureSelect.appendChild(option1);
+
+  const option2 = document.createElement('option');
+  option2.value = code;
+  option2.textContent = code;
+  arrivalSelect.appendChild(option2);
+});
+
+// Haversine formula to calculate distance
+function getDistance(coord1, coord2) {
+  const R = 6371; // km
+  const dLat = (coord2[0]-coord1[0]) * Math.PI/180;
+  const dLon = (coord2[1]-coord1[1]) * Math.PI/180;
+  const a = Math.sin(dLat/2)**2 + Math.cos(coord1[0]*Math.PI/180) * Math.cos(coord2[0]*Math.PI/180) * Math.sin(dLon/2)**2;
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  return R * c;
+}
+
+// Suggest plane based on distance
+function suggestPlane(distance) {
+  if(distance < 1000) return "737 / A320";
+  if(distance < 6000) return "787 / 767";
+  return "777 / 787-10 / A350";
+}
+
+// Calculate flight
+function calculateFlight() {
+  const dep = departureSelect.value;
+  const arr = arrivalSelect.value;
+  if(!dep || !arr) {
+    alert("Please select both airports!");
+    return;
+  }
+  if(dep === arr) {
+    alert("Departure and arrival cannot be the same!");
+    return;
+  }
+
+  const distance = getDistance(airportCoords[dep], airportCoords[arr]);
+  const plane = suggestPlane(distance);
+
+  document.getElementById('results').innerHTML = `
+    Distance: ${distance.toFixed(1)} km<br>
+    Suggested Plane: ${plane}
+  `;
+}
+</script>
+
+</body>
+</html>
