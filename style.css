@@ -1,4 +1,4 @@
-/* Reset & base */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -6,20 +6,19 @@
 }
 
 body, html {
-  font-family: 'Poppins', sans-serif;
   height: 100%;
-  overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
 }
 
-/* Hero Banner */
+/* Hero Section */
 .hero {
   position: relative;
   width: 100%;
   height: 100vh; /* full viewport height */
   background: url('https://i.redd.it/g5ypiho2uim21.jpg') center/cover no-repeat;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
 .hero .overlay {
@@ -30,34 +29,32 @@ body, html {
 
 .hero-content {
   position: relative;
-  text-align: center;
-  color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  text-align: center;
+  color: #fff;
+  gap: 20px;
 }
 
 /* Brand Name */
 .brand-name {
-  font-size: 6rem;
+  font-size: 8rem;
   font-weight: 700;
-  margin-bottom: 20px;
+  line-height: 1;
 }
 
 /* Motto */
 .motto {
   font-size: 2rem;
   font-weight: 500;
-  margin-bottom: 40px;
 }
 
 /* Stats */
 .stats {
   display: flex;
-  gap: 25px;
-  font-size: 1.3rem;
-  margin-bottom: 50px;
+  gap: 30px;
+  font-size: 1.5rem;
 }
 
 .stats span {
@@ -66,12 +63,12 @@ body, html {
   border-radius: 10px;
 }
 
-/* Discord CTA Button */
+/* CTA Button */
 .cta-button {
   background-color: #00a6cd;
   color: #fff;
   padding: 18px 40px;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   border-radius: 5px;
   text-decoration: none;
   transition: background-color 0.3s;
