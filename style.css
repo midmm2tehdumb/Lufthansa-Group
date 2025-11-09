@@ -4,6 +4,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body, html {
   font-family: 'Poppins', sans-serif;
   scroll-behavior: smooth;
@@ -83,39 +84,10 @@ nav ul li a:hover {
 .cta-button:hover { background-color: #0085a0; }
 
 /* About */
-.about { padding: 60px 20px; text-align: center; background-color: #f5f5f5; }
+.about {
+  padding: 60px 20px;
+  text-align: center;
+  background-color: #f5f5f5;
+}
 .about h2 { font-size: 2.5rem; margin-bottom: 20px; }
 .about p { font-size: 1.2rem; max-width: 800px; margin: 0 auto; }
-
-/* Fleet */
-.fleet { padding: 60px 20px; text-align: center; background-color: #fff; }
-.fleet h2 { font-size: 2.5rem; margin-bottom: 40px; }
-.fleet-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.aircraft-card {
-  background-color: #003a5d;
-  color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  transition: transform 0.3s;
-}
-.aircraft-card:hover { transform: translateY(-5px); }
-.aircraft-card h3 { font-size: 1.2rem; margin-bottom: 10px; }
-.aircraft-card p { font-size: 1rem; }
-
-/* Destinations */
-.destinations { padding: 60px 20px; text-align: center; }
-.destinations h2 { font-size: 2.5rem; margin-bottom: 20px; }
-
-/* Booking */
-.booking { padding: 60px 20px; text-align: center; }
-.booking h2 { font-size: 2.5rem; margin-bottom: 20px; }
-.booking input { padding: 12px; width: 250px; font-size: 1rem; border-radius: 5px; border: 1px solid #ccc; margin-right: 10px; }
-.booking button { padding: 12px 20px; font-size: 1rem; border-radius: 5px; border: none; background-color: #00a6cd; color: #fff; cursor: pointer; }
-.booking button:hover { background-color: #0085a0; }
-#route-results { margin-top: 20px; font-size: 1.1rem; }
