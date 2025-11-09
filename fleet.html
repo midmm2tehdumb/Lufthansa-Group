@@ -1,186 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WestJet Airlines - Fleet</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    /* Fleet Section */
-    .fleet {
-      padding: 60px 20px;
-      text-align: center;
-    }
-    .fleet h2 {
-      font-size: 2.5rem;
-      margin-bottom: 30px;
-    }
-    .aircraft-icons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      margin-bottom: 40px;
-    }
-    .aircraft-icons button {
-      border: none;
-      background: none;
-      cursor: pointer;
-      width: 100px;
-      height: 100px;
-      border-radius: 10px;
-      overflow: hidden;
-      transition: transform 0.2s;
-    }
-    .aircraft-icons button:hover {
-      transform: scale(1.1);
-    }
-    .aircraft-icons img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .aircraft-detail {
-      display: none;
-      max-width: 800px;
-      margin: 0 auto;
-      background: #f5f5f5;
-      padding: 20px;
-      border-radius: 10px;
-      text-align: left;
-    }
-    .aircraft-detail h3 {
-      font-size: 2rem;
-      margin-bottom: 10px;
-    }
-    .aircraft-detail p {
-      font-size: 1.1rem;
-      margin: 5px 0;
-    }
-    .aircraft-detail img {
-      width: 100%;
-      border-radius: 10px;
-      margin-top: 15px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WestJet Airlines - Fleet</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Fleet Section */
+.fleet {
+  padding: 60px 20px;
+  text-align: center;
+}
+.fleet h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+/* Aircraft Cards */
+.fleet-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+.aircraft-card {
+  background: #fff;
+  width: 180px;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
+}
+.aircraft-card:hover { transform: scale(1.05); }
+.aircraft-card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+.aircraft-card h3 {
+  font-size: 1rem;
+  margin: 10px;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background: rgba(0,0,0,0.85);
+  padding: 50px 20px;
+  box-sizing: border-box;
+}
+.modal-content {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: left;
+}
+.modal-content img {
+  width: 100%;
+  border-radius: 10px;
+}
+.modal-content h3 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+.modal-content p {
+  font-size: 1.1rem;
+  margin: 5px 0;
+}
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+}
+</style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav>
-    <div class="logo">WestJet Airlines</div>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="fleet.html">Fleet</a></li>
-      <li><a href="destinations.html">Destinations</a></li>
-      <li><a href="booking.html">Booking</a></li>
-    </ul>
-  </nav>
+<!-- Navigation -->
+<nav>
+  <div class="logo">WestJet Airlines</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="fleet.html">Fleet</a></li>
+    <li><a href="destinations.html">Destinations</a></li>
+    <li><a href="booking.html">Booking</a></li>
+  </ul>
+</nav>
 
-  <!-- Fleet Section -->
-  <section class="fleet">
-    <h2>Our Fleet</h2>
-
-    <!-- Plane Icons -->
-    <div class="aircraft-icons">
-      <button onclick="showAircraft('dash8')"><img src="https://i.imgur.com/Yz1M7fD.png" alt="Dash 8"></button>
-      <button onclick="showAircraft('b737700')"><img src="https://i.imgur.com/t7r0nOj.png" alt="737-700NG"></button>
-      <button onclick="showAircraft('b737800')"><img src="https://i.imgur.com/F3VfQlv.png" alt="737-800"></button>
-      <button onclick="showAircraft('b737max')"><img src="https://i.imgur.com/XfQnGKC.png" alt="737-MAX"></button>
-      <button onclick="showAircraft('b7879')"><img src="https://i.imgur.com/fRZ2i5B.png" alt="787-9"></button>
-      <button onclick="showAircraft('b78710')"><img src="https://i.imgur.com/qgTPcL7.png" alt="787-10"></button>
-      <button onclick="showAircraft('b777300')"><img src="https://i.imgur.com/1sK3EOI.png" alt="777-300ER"></button>
-      <button onclick="showAircraft('b737bcf')"><img src="https://i.imgur.com/0LcxmX7.png" alt="737-800BCF"></button>
+<!-- Fleet Section -->
+<section class="fleet">
+  <h2>Our Fleet</h2>
+  <div class="fleet-cards">
+    <!-- Aircraft cards -->
+    <div class="aircraft-card" onclick="openModal('dash8')">
+      <img src="https://i.imgur.com/Yz1M7fD.png" alt="Dash 8">
+      <h3>Dash 8-400</h3>
     </div>
+    <div class="aircraft-card" onclick="openModal('b737700')">
+      <img src="https://i.imgur.com/t7r0nOj.png" alt="737-700NG">
+      <h3>737-700NG</h3>
+    </div>
+    <div class="aircraft-card" onclick="openModal('b737800')">
+      <img src="https://i.imgur.com/F3VfQlv.png" alt="737-800">
+      <h3>737-800</h3>
+    </div>
+    <div class="aircraft-card" onclick="openModal('b737max')">
+      <img src="https://i.imgur.com/XfQnGKC.png" alt="737-MAX">
+      <h3>737-MAX</h3>
+    </div>
+    <div class="aircraft-card" onclick="openModal('b7879')">
+      <img src="https://i.imgur.com/fRZ2i5B.png" alt="787-9">
+      <h3>787-9</h3>
+    </div>
+    <div class="aircraft-card" onclick="openModal('b78710')">
+      <img src="https://i.imgur.com/qgTPcL7.png" alt="787-10">
+      <h3>787-10</h3>
+    </div>
+    <div class="aircraft-card" onclick="openModal('b777300')">
+      <img src="https://i.imgur.com/1sK3EOI.png" alt="777-300ER">
+      <h3>777-300ER</h3>
+    </div>
+    <div class="aircraft-card" onclick="openModal('b737bcf')">
+      <img src="https://i.imgur.com/0LcxmX7.png" alt="737-800BCF">
+      <h3>737-800BCF</h3>
+    </div>
+  </div>
+</section>
 
-    <!-- Aircraft Detail -->
-    <div id="aircraftDetail" class="aircraft-detail"></div>
-  </section>
+<!-- Modal -->
+<div id="fleetModal" class="modal">
+  <span class="close-btn" onclick="closeModal()">&times;</span>
+  <div class="modal-content" id="modalContent"></div>
+</div>
 
-  <script>
-    const aircraftData = {
-      dash8: {
-        name: "WestJet Encore - De Havilland Canada Dash 8-400",
-        topSpeed: "667 km/h",
-        range: "2,500 km",
-        specs: "Used exclusively for regional flights",
-        note: "Efficient for short-haul operations",
-        img: "https://i.imgur.com/Yz1M7fD.png"
-      },
-      b737700: {
-        name: "WestJet - Boeing 737-700NG",
-        topSpeed: "876 km/h",
-        range: "5,510 km",
-        specs: "Older generation of 737",
-        note: "Still in service on domestic routes",
-        img: "https://i.imgur.com/t7r0nOj.png"
-      },
-      b737800: {
-        name: "WestJet - Boeing 737-800",
-        topSpeed: "876 km/h",
-        range: "5,665 km",
-        specs: "Most common 737 in our fleet",
-        note: "Versatile for domestic and short international flights",
-        img: "https://i.imgur.com/F3VfQlv.png"
-      },
-      b737max: {
-        name: "WestJet - Boeing 737-MAX",
-        topSpeed: "907 km/h",
-        range: "6,300 km",
-        specs: "Newest generation 737",
-        note: "Efficient for high-demand routes",
-        img: "https://i.imgur.com/XfQnGKC.png"
-      },
-      b7879: {
-        name: "WestJet - Boeing 787-9",
-        topSpeed: "913 km/h",
-        range: "14,140 km",
-        specs: "Largest aircraft in the fleet",
-        note: "Used for long-haul international flights",
-        img: "https://i.imgur.com/fRZ2i5B.png"
-      },
-      b78710: {
-        name: "WestJet - Boeing 787-10",
-        topSpeed: "913 km/h",
-        range: "11,910 km",
-        specs: "Newest addition to fleet",
-        note: "High capacity for long-haul routes",
-        img: "https://i.imgur.com/qgTPcL7.png"
-      },
-      b777300: {
-        name: "WestJet - Boeing 777-300ER",
-        topSpeed: "905 km/h",
-        range: "13,650 km",
-        specs: "Premium long-haul aircraft",
-        note: "Ideal for international high-demand routes",
-        img: "https://i.imgur.com/1sK3EOI.png"
-      },
-      b737bcf: {
-        name: "WestJet Cargo - Boeing 737-800BCF",
-        topSpeed: "876 km/h",
-        range: "5,665 km",
-        specs: "Cargo freighter aircraft",
-        note: "Used for transporting freight",
-        img: "https://i.imgur.com/0LcxmX7.png"
-      }
-    };
+<script>
+const aircraftData = {
+  dash8: {
+    name: "WestJet Encore - Dash 8-400",
+    topSpeed: "667 km/h",
+    range: "2,500 km",
+    specs: "Used exclusively for regional flights",
+    note: "Efficient for short-haul operations",
+    img: "https://i.imgur.com/Yz1M7fD.png"
+  },
+  b737700: {
+    name: "WestJet - Boeing 737-700NG",
+    topSpeed: "876 km/h",
+    range: "5,510 km",
+    specs: "Older generation of 737",
+    note: "Still in service on domestic routes",
+    img: "https://i.imgur.com/t7r0nOj.png"
+  },
+  b737800: {
+    name: "WestJet - Boeing 737-800",
+    topSpeed: "876 km/h",
+    range: "5,665 km",
+    specs: "Most common 737 in our fleet",
+    note: "Versatile for domestic and short international flights",
+    img: "https://i.imgur.com/F3VfQlv.png"
+  },
+  b737max: {
+    name: "WestJet - Boeing 737-MAX",
+    topSpeed: "907 km/h",
+    range: "6,300 km",
+    specs: "Newest generation 737",
+    note: "Efficient for high-demand routes",
+    img: "https://i.imgur.com/XfQnGKC.png"
+  },
+  b7879: {
+    name: "WestJet - Boeing 787-9",
+    topSpeed: "913 km/h",
+    range: "14,140 km",
+    specs: "Largest aircraft in the fleet",
+    note: "Used for long-haul international flights",
+    img: "https://i.imgur.com/fRZ2i5B.png"
+  },
+  b78710: {
+    name: "WestJet - Boeing 787-10",
+    topSpeed: "913 km/h",
+    range: "11,910 km",
+    specs: "Newest addition to fleet",
+    note: "High capacity for long-haul routes",
+    img: "https://i.imgur.com/qgTPcL7.png"
+  },
+  b777300: {
+    name: "WestJet - Boeing 777-300ER",
+    topSpeed: "905 km/h",
+    range: "13,650 km",
+    specs: "Premium long-haul aircraft",
+    note: "Ideal for international high-demand routes",
+    img: "https://i.imgur.com/1sK3EOI.png"
+  },
+  b737bcf: {
+    name: "WestJet Cargo - Boeing 737-800BCF",
+    topSpeed: "876 km/h",
+    range: "5,665 km",
+    specs: "Cargo freighter aircraft",
+    note: "Used for transporting freight",
+    img: "https://i.imgur.com/0LcxmX7.png"
+  }
+};
 
-    function showAircraft(key) {
-      const detail = aircraftData[key];
-      const container = document.getElementById("aircraftDetail");
-      container.innerHTML = `
-        <h3>${detail.name}</h3>
-        <p><strong>Top Speed:</strong> ${detail.topSpeed}</p>
-        <p><strong>Range:</strong> ${detail.range}</p>
-        <p><strong>Other Specs:</strong> ${detail.specs}</p>
-        <p><strong>Note:</strong> ${detail.note}</p>
-        <img src="${detail.img}" alt="${detail.name}">
-      `;
-      container.style.display = "block";
-      container.scrollIntoView({behavior: "smooth"});
-    }
-  </script>
+function openModal(key) {
+  const data = aircraftData[key];
+  const modalContent = document.getElementById('modalContent');
+  modalContent.innerHTML = `
+    <h3>${data.name}</h3>
+    <img src="${data.img}" alt="${data.name}">
+    <p><strong>Top Speed:</strong> ${data.topSpeed}</p>
+    <p><strong>Range:</strong> ${data.range}</p>
+    <p><strong>Other Specs:</strong> ${data.specs}</p>
+    <p><strong>Note:</strong> ${data.note}</p>
+  `;
+  document.getElementById('fleetModal').style.display = 'block';
+}
+
+function closeModal() {
+  document.getElementById('fleetModal').style.display = 'none';
+}
+</script>
 
 </body>
 </html>
