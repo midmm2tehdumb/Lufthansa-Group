@@ -300,6 +300,7 @@ function suggestPlane(distance) {
   if(distance < 11000) return "787-10 / 777-300ER / 787-9";
   if(distance < 13000) return "777-300ER / 787-9";
   if (distance < 14000) return "787-9";
+  if (distance < 50000) return "Too far. Choose another route.";
 }
 
 // Estimate flight time in hours based on plane
