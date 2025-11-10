@@ -16,19 +16,16 @@
 </head>
 <body>
 
-<!-- Navbar -->
-<nav>
-  <div class="logo">WestJet Airlines</div>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="fleet.html">Fleet</a></li>
-    <li><a href="destinations.html">Destinations</a></li>
-    <li><a href="booking.html">Booking</a></li>
-    <li><a href="info.html">Information</a></li>
-    <li><a href="rp.html">RP</a></li>
-  </ul>
-</nav>
-  
+<!-- Navbar template -->
+<template id="navbar-template">
+  <nav style="background-color:#1A3F70; padding:10px; color:white; text-align:center;">
+    <a href="#" style="color:white; margin:0 15px; text-decoration:none;">Home</a>
+    <a href="#" style="color:white; margin:0 15px; text-decoration:none;">Book a Flight</a>
+    <a href="#" style="color:white; margin:0 15px; text-decoration:none;">Destinations</a>
+    <a href="#" style="color:white; margin:0 15px; text-decoration:none;">Contact</a>
+  </nav>
+</template>
+
 <h2>Book Your Flight</h2>
 
 <div class="booking-form">
@@ -46,6 +43,14 @@
 </div>
 
 <div id="results"></div>
+
+  <!-- Disclaimer template -->
+<template id="disclaimer-template">
+  <div style="max-width:500px; margin:20px auto; padding:15px; background:#f0f0f0; border-radius:8px; font-size:0.9rem; text-align:center;">
+    <strong>Disclaimer:</strong> Flight times are estimated and for informational purposes only. Actual times may vary due to weather, air traffic, and operational considerations.
+  </div>
+</template>
+
 
 <script>
   // Example airport coordinates (fill in your own)
@@ -352,7 +357,21 @@
       <p>Landing (UTC): <strong>${formatUTC(arrivalLocal)}</strong></p>
     `;
   }
+
+  <script>
+  // … all your existing JS (airportCoords, dropdown population, calculateFlight, etc.)
+
+  // Insert navbar
+  const navbarTemplate = document.getElementById('navbar-template');
+  const navbarContainer = document.getElementById('navbar-container');
+  navbarContainer.appendChild(navbarTemplate.content.cloneNode(true));
+
+  // Insert disclaimer
+  const disclaimerTemplate = document.getElementById('disclaimer-template');
+  const disclaimerContainer = document.getElementById('disclaimer-container');
+  disclaimerContainer.appendChild(disclaimerTemplate.content.cloneNode(true));
 </script>
+
 
 </body>
 </html>
