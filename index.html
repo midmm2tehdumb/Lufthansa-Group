@@ -35,21 +35,41 @@
   </div>
 </section>
 
-<!-- About Section -->
-<section class="about">
-  <h2>About WestJet Airlines</h2>
-  <p>
-    WestJet Airlines is a virtual GeoFS Canadian airline (Not affiliated with the real-life WestJet Airlines Ltd.) founded in 2025, offering domestic and international flights with a modern fleet including Boeing 737s, 787 Dreamliners, and more. Our mission is to provide safe, comfortable, and reliable air travel while connecting passengers to hundreds of destinations around the globe.
-  </p>
-</section>
 <!-- Advertisement Section -->
 <section class="advertisement" style="margin:50px 0; text-align:center;">
-  <h2>Watch WestJet Long-haul Edit</h2>
-  <video width="80%" controls style="max-width:800px; margin-top:20px;">
+  <h2>Watch WestJet Advertisement</h2>
+  <video id="adVideo" width="80%" controls style="max-width:800px; margin-top:20px;">
     <source src="https://media.discordapp.net/attachments/1404322265822396418/1436969833441788027/WestJet.mp4?ex=691189f1&is=69103871&hm=55dfc487a7007de5e1d80855b6c6d10b0a0cf1da70003f3ea25735beae9478bd" type="video/mp4">
     Your browser does not support the video tag.
   </video>
 </section>
+
+<!-- Disclaimer / Terms Block -->
+<section class="disclaimer" style="background-color:#00a6cd; color:white; padding:30px; text-align:center; margin-top:50px;">
+  <p>
+    <strong>Disclaimer:</strong> WestJet Airlines is a virtual GeoFS airline and does not represent the real-life WestJet Airlines Ltd. 
+    This website and content are intended for entertainment and educational purposes within the virtual flight simulator community.
+  </p>
+</section>
+
+<script>
+// Auto-play video when scrolled into view
+const video = document.getElementById('adVideo');
+
+function checkVideoInView() {
+  const rect = video.getBoundingClientRect();
+  if(rect.top >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)){
+    video.play().catch(() => {}); // play if in view, ignore errors if autoplay blocked
+  } else {
+    video.pause();
+  }
+}
+
+window.addEventListener('scroll', checkVideoInView);
+window.addEventListener('resize', checkVideoInView);
+window.addEventListener('load', checkVideoInView);
+</script>
+
 
 </body>
 </html>
