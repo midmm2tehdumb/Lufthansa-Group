@@ -12,6 +12,42 @@
   button { background-color: #1A3F70; color: white; border: none; cursor: pointer; transition: 0.3s; }
   button:hover { background-color: #005a9c; }
   #results { margin-top: 20px; text-align: center; font-weight: bold; }
+  /* Navbar styling */
+nav {
+  background-color: #1A3F70;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+nav .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+nav .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+nav .nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+nav .nav-links li a:hover {
+  color: #ffd700; /* optional hover color */
+}
+
 </style>
 </head>
 <body>
