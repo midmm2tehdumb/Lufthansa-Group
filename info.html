@@ -6,6 +6,113 @@
   <title>WestJet Airlines - Information</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Subsidiary Cards */
+    .subsidiary-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 40px 0;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .subsidiary-card {
+      background-color: #1A3F70;
+      color: white;
+      padding: 25px;
+      text-align: center;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .subsidiary-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 200;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      background-color: rgba(0,0,0,0.85);
+      padding: 50px 20px;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 50px auto;
+      padding: 30px;
+      max-width: 800px;
+      border-radius: 15px;
+      text-align: left;
+      color: #333;
+      position: relative;
+    }
+
+    .modal-content h3 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .modal-content p {
+      font-size: 1.1rem;
+      margin: 8px 0;
+    }
+
+    .close-btn {
+      color: #fff;
+      font-size: 2.5rem;
+      position: fixed;
+      top: 20px;
+      right: 40px;
+      cursor: pointer;
+      z-index: 300;
+      transition: color 0.3s;
+    }
+
+    .close-btn:hover {
+      color: #ffd100;
+    }
+
+    /* Table in modal */
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    .info-table th {
+      background-color: #1A3F70;
+      color: white;
+      padding: 12px 15px;
+      text-align: left;
+    }
+
+    .info-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #ddd;
+      color: #333;
+    }
+
+    .info-table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    .info-table tr:hover {
+      background-color: #eef5ff;
+    }
+  </style>
 </head>
 <body>
 
@@ -22,88 +129,91 @@
   </ul>
 </nav>
 
-<!-- Info Section -->
+<!-- About Section -->
 <section class="about">
+  <h2>About WestJet Virtual</h2>
+  <p>
+    WestJet Airlines (GeoFS) is a community-based virtual airline inspired by the real-world WestJet. 
+    We operate domestic, international, and long-haul routes across North America, Europe, and Asia 
+    with a modern fleet of Boeing aircraft.
+  </p>
 
-  <div class="info-box">
-    <h2>About WestJet Virtual</h2>
-    <p>
-      <strong>WestJet Airlines (GeoFS)</strong> is a community-based virtual airline inspired by the real-world WestJet. 
-      We operate domestic, international, and long-haul routes across North America, Europe, and Asia 
-      with a modern fleet of Boeing aircraft.
-    </p>
+  <h2>Our Mission</h2>
+  <p>
+    To bring realism, professionalism, and community engagement to the GeoFS flight simulator while still allowing freedom.  
+    We aim to replicate real airline operations while keeping things fun and accessible for everyone.
+  </p>
+
+  <h2>Hubs</h2>
+  <ul style="list-style:none; padding:0;">
+    <li>✈ Calgary International Airport (YYC)</li>
+    <li>✈ Toronto Pearson International Airport (YYZ)</li>
+    <li>✈ Vancouver International Airport (YVR)</li>
+    <li>✈ Dublin Airport (DUB)</li>
+    <li>✈ Incheon International Airport (ICN)</li>
+  </ul>
+</section>
+
+<!-- Subsidiaries Section -->
+<section class="about">
+  <h2>WestJet Group & Subsidiaries</h2>
+  <p>WestJet Group has three direct subsidiaries. Click on each to learn more:</p>
+
+  <div class="subsidiary-cards">
+    <div class="subsidiary-card" onclick="openModal('airlinesModal')">WestJet Airlines Ltd.</div>
+    <div class="subsidiary-card" onclick="openModal('encoreModal')">WestJet Encore</div>
+    <div class="subsidiary-card" onclick="openModal('cargoModal')">WestJet Cargo</div>
+    <div class="subsidiary-card" onclick="openModal('flightsModal')">Flight Number Meanings</div>
   </div>
+</section>
 
-  <div class="info-box">
-    <h2>Our Mission</h2>
+<!-- Modals -->
+
+<!-- Airlines Modal -->
+<div id="airlinesModal" class="modal">
+  <div class="modal-content">
+    <h3>WestJet Airlines Ltd.</h3>
     <p>
-      To bring realism, professionalism, and community engagement to the GeoFS flight simulator while still allowing freedom.  
-      We aim to replicate real airline operations while keeping things fun and accessible for everyone.
+      WestJet Airlines is the main group of WestJet, doing most of the charter flights and all international flights. 
+      This is why WestJet is considered an international airline.
     </p>
+    <span class="close-btn" onclick="closeModal('airlinesModal')">&times;</span>
   </div>
+</div>
 
-  <div class="info-box">
-    <h2>Hubs</h2>
-    <ul class="hub-list">
-      <li>✈ Calgary International Airport (YYC)</li>
-      <li>✈ Toronto Pearson International Airport (YYZ)</li>
-      <li>✈ Vancouver International Airport (YVR)</li>
-      <li>✈ Dublin Airport (DUB)</li>
-      <li>✈ Incheon International Airport (ICN)</li>
-    </ul>
-  </div>
-
-  <div class="info-box">
-    <h2>WestJet Group & Subsidiaries</h2>
+<!-- Encore Modal -->
+<div id="encoreModal" class="modal">
+  <div class="modal-content">
+    <h3>WestJet Encore</h3>
     <p>
-      WestJet Group has three direct subsidiaries:
+      WestJet Encore is the regional branch of WestJet. They fly smaller aircraft to bring people to larger airports so 
+      that they can traverse further, even if they live in a more rural area.
     </p>
-    <ul>
-      <li><strong>WestJet Airlines Ltd.</strong></li>
-      <li><strong>WestJet Encore</strong></li>
-      <li><strong>WestJet Cargo</strong></li>
-    </ul>
-    <p>
-      These three groups were decided as useful to ensure the organization of WestJet. Their purpose is to make sure that 
-      operations remain structured and specialized for each branch of service.
-    </p>
+    <span class="close-btn" onclick="closeModal('encoreModal')">&times;</span>
   </div>
+</div>
 
-  <div class="info-box">
-    <h2>WestJet Airlines</h2>
+<!-- Cargo Modal -->
+<div id="cargoModal" class="modal">
+  <div class="modal-content">
+    <h3>WestJet Cargo</h3>
     <p>
-      WestJet Airlines is the main group of WestJet, handling most charter and international flights. 
-      It represents the core of WestJet’s operations and is why WestJet is recognized as an international airline. 
-      With a modern fleet of 737s, 787s, and 777s, WestJet Airlines connects Canada to the rest of the world.
+      WestJet Cargo is the freighter part of WestJet. They have 4 B787-800BCFs to transport goods across the world quickly and reliably.
     </p>
+    <span class="close-btn" onclick="closeModal('cargoModal')">&times;</span>
   </div>
+</div>
 
-  <div class="info-box">
-    <h2>WestJet Encore</h2>
-    <p>
-      WestJet Encore is the regional branch of WestJet. It operates smaller aircraft such as the Dash 8 Q400 to connect 
-      smaller communities with major hubs. This allows passengers from rural or remote areas to easily connect to larger 
-      destinations served by WestJet Airlines.
-    </p>
-  </div>
-
-  <div class="info-box">
-    <h2>WestJet Cargo</h2>
-    <p>
-      WestJet Cargo is the freight division of WestJet, responsible for transporting goods worldwide. 
-      The fleet consists of <strong>four Boeing 737-800BCF</strong> aircraft designed for fast and efficient logistics. 
-      Whether it's urgent shipments or regular cargo operations, WestJet Cargo ensures rapid and reliable service.
-    </p>
-  </div>
-
-  <div class="info-box">
-    <h2>WestJet Flight Number Meanings</h2>
+<!-- Flight Number Meanings Modal -->
+<div id="flightsModal" class="modal">
+  <div class="modal-content">
+    <h3>WestJet Flight Number Meanings</h3>
     <div class="table-container">
       <table class="info-table">
         <thead>
           <tr>
             <th>Flight Numbers</th>
-            <th>Destination / Region</th>
+            <th>Destination/Region</th>
             <th>Flight Examples</th>
             <th>Other Notes</th>
           </tr>
@@ -113,13 +223,13 @@
             <td>WS1 - WS199</td>
             <td>Domestic WestJet Flights</td>
             <td>WS127 YYC → YVR</td>
-            <td>For domestic 737 flights.</td>
+            <td>For WestJet domestic flights with the 737.</td>
           </tr>
           <tr>
             <td>WS200 - WS399</td>
             <td>American Transborder Flights</td>
             <td>WS271 YVR → SEA</td>
-            <td>For transborder (USA) flights.</td>
+            <td>For transborder (USA) flights in the 737.</td>
           </tr>
           <tr>
             <td>WS400 - WS699</td>
@@ -143,22 +253,42 @@
             <td>WS1000+</td>
             <td>Codeshare / Cargo Flights</td>
             <td>WS1024 ICN → DEL</td>
-            <td>Codeshare or cargo operations.</td>
+            <td>For codeshare or cargo operations.</td>
           </tr>
         </tbody>
       </table>
     </div>
+    <span class="close-btn" onclick="closeModal('flightsModal')">&times;</span>
   </div>
-
-</section>
+</div>
 
 <!-- Disclaimer -->
-<section class="disclaimer" style="background-color:#1A3F70; color:white; padding:30px; text-align:center; margin-top:50px;">
+<section class="disclaimer">
   <p>
     <strong>Disclaimer:</strong> WestJet Airlines is a virtual GeoFS airline and does not represent the real-life WestJet Airlines Ltd. 
     This website and content are intended for entertainment and educational purposes within the virtual flight simulator community.
   </p>
 </section>
+
+<script>
+  function openModal(id) {
+    document.getElementById(id).style.display = 'block';
+  }
+
+  function closeModal(id) {
+    document.getElementById(id).style.display = 'none';
+  }
+
+  // Close modal if clicking outside content
+  window.onclick = function(event) {
+    const modals = document.querySelectorAll('.modal');
+    modals.forEach(modal => {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    });
+  }
+</script>
 
 </body>
 </html>
