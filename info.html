@@ -12,17 +12,15 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
-      margin: 40px 0;
+      margin: 40px auto;
       max-width: 1000px;
-      margin-left: auto;
-      margin-right: auto;
+      text-align: center;
     }
 
     .subsidiary-card {
       background-color: #1A3F70;
       color: white;
       padding: 25px;
-      text-align: center;
       border-radius: 10px;
       font-weight: 600;
       font-size: 1.2rem;
@@ -35,7 +33,7 @@
       box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
 
-    /* Modal */
+    /* Modals */
     .modal {
       display: none;
       position: fixed;
@@ -85,11 +83,24 @@
       color: #ffd100;
     }
 
-    /* Table in modal */
+    /* Flight Number Table Section */
+    .flight-numbers-section {
+      max-width: 1000px;
+      margin: 50px auto;
+      padding: 30px;
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    .flight-numbers-section h2 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
     .info-table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 20px;
     }
 
     .info-table th {
@@ -157,19 +168,16 @@
 <!-- Subsidiaries Section -->
 <section class="about">
   <h2>WestJet Group & Subsidiaries</h2>
-  <p>WestJet Group has three direct subsidiaries. Click on each to learn more:</p>
+  <p>Click on each subsidiary to learn more:</p>
 
   <div class="subsidiary-cards">
     <div class="subsidiary-card" onclick="openModal('airlinesModal')">WestJet Airlines Ltd.</div>
     <div class="subsidiary-card" onclick="openModal('encoreModal')">WestJet Encore</div>
     <div class="subsidiary-card" onclick="openModal('cargoModal')">WestJet Cargo</div>
-    <div class="subsidiary-card" onclick="openModal('flightsModal')">Flight Number Meanings</div>
   </div>
 </section>
 
-<!-- Modals -->
-
-<!-- Airlines Modal -->
+<!-- Subsidiary Modals -->
 <div id="airlinesModal" class="modal">
   <div class="modal-content">
     <h3>WestJet Airlines Ltd.</h3>
@@ -181,7 +189,6 @@
   </div>
 </div>
 
-<!-- Encore Modal -->
 <div id="encoreModal" class="modal">
   <div class="modal-content">
     <h3>WestJet Encore</h3>
@@ -193,7 +200,6 @@
   </div>
 </div>
 
-<!-- Cargo Modal -->
 <div id="cargoModal" class="modal">
   <div class="modal-content">
     <h3>WestJet Cargo</h3>
@@ -204,63 +210,60 @@
   </div>
 </div>
 
-<!-- Flight Number Meanings Modal -->
-<div id="flightsModal" class="modal">
-  <div class="modal-content">
-    <h3>WestJet Flight Number Meanings</h3>
-    <div class="table-container">
-      <table class="info-table">
-        <thead>
-          <tr>
-            <th>Flight Numbers</th>
-            <th>Destination/Region</th>
-            <th>Flight Examples</th>
-            <th>Other Notes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>WS1 - WS199</td>
-            <td>Domestic WestJet Flights</td>
-            <td>WS127 YYC → YVR</td>
-            <td>For WestJet domestic flights with the 737.</td>
-          </tr>
-          <tr>
-            <td>WS200 - WS399</td>
-            <td>American Transborder Flights</td>
-            <td>WS271 YVR → SEA</td>
-            <td>For transborder (USA) flights in the 737.</td>
-          </tr>
-          <tr>
-            <td>WS400 - WS699</td>
-            <td>Long-Haul Flights</td>
-            <td>WS421 YYZ → DUB</td>
-            <td>For long-haul flights (6–12 hrs).</td>
-          </tr>
-          <tr>
-            <td>WS700 - WS799</td>
-            <td>Ultra-Long-Haul Flights</td>
-            <td>WS725 YVR → SIN</td>
-            <td>For ultra-long-haul flights (12+ hrs).</td>
-          </tr>
-          <tr>
-            <td>WS800 - WS999</td>
-            <td>Encore Flights</td>
-            <td>WS843 YVR → YYJ</td>
-            <td>Short, regional WestJet Encore flights.</td>
-          </tr>
-          <tr>
-            <td>WS1000+</td>
-            <td>Codeshare / Cargo Flights</td>
-            <td>WS1024 ICN → DEL</td>
-            <td>For codeshare or cargo operations.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <span class="close-btn" onclick="closeModal('flightsModal')">&times;</span>
+<!-- Flight Number Meanings Section (Wide) -->
+<section class="flight-numbers-section">
+  <h2>WestJet Flight Number Meanings</h2>
+  <div class="table-container">
+    <table class="info-table">
+      <thead>
+        <tr>
+          <th>Flight Numbers</th>
+          <th>Destination/Region</th>
+          <th>Flight Examples</th>
+          <th>Other Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>WS1 - WS199</td>
+          <td>Domestic WestJet Flights</td>
+          <td>WS127 YYC → YVR</td>
+          <td>For WestJet domestic flights with the 737.</td>
+        </tr>
+        <tr>
+          <td>WS200 - WS399</td>
+          <td>American Transborder Flights</td>
+          <td>WS271 YVR → SEA</td>
+          <td>For transborder (USA) flights in the 737.</td>
+        </tr>
+        <tr>
+          <td>WS400 - WS699</td>
+          <td>Long-Haul Flights</td>
+          <td>WS421 YYZ → DUB</td>
+          <td>For long-haul flights (6–12 hrs).</td>
+        </tr>
+        <tr>
+          <td>WS700 - WS799</td>
+          <td>Ultra-Long-Haul Flights</td>
+          <td>WS725 YVR → SIN</td>
+          <td>For ultra-long-haul flights (12+ hrs).</td>
+        </tr>
+        <tr>
+          <td>WS800 - WS999</td>
+          <td>Encore Flights</td>
+          <td>WS843 YVR → YYJ</td>
+          <td>Short, regional WestJet Encore flights.</td>
+        </tr>
+        <tr>
+          <td>WS1000+</td>
+          <td>Codeshare / Cargo Flights</td>
+          <td>WS1024 ICN → DEL</td>
+          <td>For codeshare or cargo operations.</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-</div>
+</section>
 
 <!-- Disclaimer -->
 <section class="disclaimer">
@@ -274,18 +277,14 @@
   function openModal(id) {
     document.getElementById(id).style.display = 'block';
   }
-
   function closeModal(id) {
     document.getElementById(id).style.display = 'none';
   }
 
-  // Close modal if clicking outside content
   window.onclick = function(event) {
     const modals = document.querySelectorAll('.modal');
     modals.forEach(modal => {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
+      if (event.target == modal) modal.style.display = "none";
     });
   }
 </script>
