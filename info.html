@@ -1,77 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WestJet Airlines - Information</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+  <div class="logo">WestJet Airlines</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="fleet.html">Fleet</a></li>
+    <li><a href="destinations.html">Destinations</a></li>
+    <li><a href="booking.html">Booking</a></li>
+    <li><a href="info.html">Information</a></li>
+    <li><a href="rp.html">RP</a></li>
+  </ul>
+</nav>
+
 <!-- Info Section -->
 <section class="about">
-  <h2>About WestJet Virtual</h2>
-  <p>
-    WestJet Airlines (GeoFS) is a community-based virtual airline inspired by the real-world WestJet. 
-    We operate domestic, international, and long-haul routes across North America, Europe, and Asia 
-    with a modern fleet of Boeing aircraft.  
-  </p>
 
-  <h2>Our Mission</h2>
-  <p>
-    To bring realism, professionalism, and community engagement to the GeoFS flight simulator while still allowing freedom.  
-    We aim to replicate real airline operations while keeping things fun and accessible for everyone.
-  </p>
-
-  <h2>Hubs</h2>
-  <ul style="list-style:none; padding:0;">
-    <li>✈ Calgary International Airport (YYC)</li>
-    <li>✈ Toronto Pearson International Airport (YYZ)</li>
-    <li>✈ Vancouver International Airport (YVR)</li>
-    <li>✈ Dublin Airport (DUB)</li>
-    <li>✈ Incheon International Airport (ICN)</li>
-  </ul>
-
-  <!-- Flight Number Table -->
-  <h2>WestJet Flight Number Meanings</h2>
-  <div class="table-container">
-    <table class="info-table">
-      <thead>
-        <tr>
-          <th>Flight Numbers</th>
-          <th>Destination/Region</th>
-          <th>Flight Examples</th>
-          <th>Other Notes</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>WS1 - WS199</td>
-          <td>Domestic WestJet Flights</td>
-          <td>WS127 YYC → YVR</td>
-          <td>For WestJet domestic flights with the 737.</td>
-        </tr>
-        <tr>
-          <td>WS200 - WS399</td>
-          <td>American Transborder Flights</td>
-          <td>WS271 YVR → SEA</td>
-          <td>For transborder (USA) flights in the 737.</td>
-        </tr>
-        <tr>
-          <td>WS400 - WS699</td>
-          <td>Long-Haul Flights</td>
-          <td>WS421 YYZ → DUB</td>
-          <td>For long-haul flights (6–12 hrs).</td>
-        </tr>
-        <tr>
-          <td>WS700 - WS799</td>
-          <td>Ultra-Long-Haul Flights</td>
-          <td>WS725 YVR → SIN</td>
-          <td>For ultra-long-haul flights (12+ hrs).</td>
-        </tr>
-        <tr>
-          <td>WS800 - WS999</td>
-          <td>Encore Flights</td>
-          <td>WS843 YVR → YYJ</td>
-          <td>Short, regional WestJet Encore flights.</td>
-        </tr>
-        <tr>
-          <td>WS1000+</td>
-          <td>Codeshare / Cargo Flights</td>
-          <td>WS1024 ICN → DEL</td>
-          <td>For codeshare or cargo operations.</td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="info-box">
+    <h2>About WestJet Virtual</h2>
+    <p>
+      <strong>WestJet Airlines (GeoFS)</strong> is a community-based virtual airline inspired by the real-world WestJet. 
+      We operate domestic, international, and long-haul routes across North America, Europe, and Asia 
+      with a modern fleet of Boeing aircraft.
+    </p>
   </div>
+
+  <div class="info-box">
+    <h2>Our Mission</h2>
+    <p>
+      To bring realism, professionalism, and community engagement to the GeoFS flight simulator while still allowing freedom.  
+      We aim to replicate real airline operations while keeping things fun and accessible for everyone.
+    </p>
+  </div>
+
+  <div class="info-box">
+    <h2>Hubs</h2>
+    <ul class="hub-list">
+      <li>✈ Calgary International Airport (YYC)</li>
+      <li>✈ Toronto Pearson International Airport (YYZ)</li>
+      <li>✈ Vancouver International Airport (YVR)</li>
+      <li>✈ Dublin Airport (DUB)</li>
+      <li>✈ Incheon International Airport (ICN)</li>
+    </ul>
+  </div>
+
+  <div class="info-box">
+    <h2>WestJet Flight Number Meanings</h2>
+    <div class="table-container">
+      <table class="info-table">
+        <thead>
+          <tr>
+            <th>Flight Numbers</th>
+            <th>Destination / Region</th>
+            <th>Flight Examples</th>
+            <th>Other Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>WS1 - WS199</td>
+            <td>Domestic WestJet Flights</td>
+            <td>WS127 YYC → YVR</td>
+            <td>For domestic 737 flights.</td>
+          </tr>
+          <tr>
+            <td>WS200 - WS399</td>
+            <td>American Transborder Flights</td>
+            <td>WS271 YVR → SEA</td>
+            <td>For transborder (USA) flights.</td>
+          </tr>
+          <tr>
+            <td>WS400 - WS699</td>
+            <td>Long-Haul Flights</td>
+            <td>WS421 YYZ → DUB</td>
+            <td>For long-haul flights (6–12 hrs).</td>
+          </tr>
+          <tr>
+            <td>WS700 - WS799</td>
+            <td>Ultra-Long-Haul Flights</td>
+            <td>WS725 YVR → SIN</td>
+            <td>For ultra-long-haul flights (12+ hrs).</td>
+          </tr>
+          <tr>
+            <td>WS800 - WS999</td>
+            <td>Encore Flights</td>
+            <td>WS843 YVR → YYJ</td>
+            <td>Short, regional WestJet Encore flights.</td>
+          </tr>
+          <tr>
+            <td>WS1000+</td>
+            <td>Codeshare / Cargo Flights</td>
+            <td>WS1024 ICN → DEL</td>
+            <td>Codeshare or cargo operations.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 </section>
+
+<!-- Disclaimer -->
+<section class="disclaimer" style="background-color:#1A3F70; color:white; padding:30px; text-align:center; margin-top:50px;">
+  <p>
+    <strong>Disclaimer:</strong> WestJet Airlines is a virtual GeoFS airline and does not represent the real-life WestJet Airlines Ltd. 
+    This website and content are intended for entertainment and educational purposes within the virtual flight simulator community.
+  </p>
+</section>
+
+</body>
+</html>
