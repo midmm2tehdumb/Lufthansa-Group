@@ -633,7 +633,7 @@ window.onclick = function(event) {
   </p>
 </section>
 
-
+<script>
   function openModal(id) {
     document.getElementById(id).style.display = 'block';
   }
@@ -641,8 +641,6 @@ window.onclick = function(event) {
     document.getElementById(id).style.display = 'none';
   }
 
-
-<script>
 document.addEventListener('DOMContentLoaded', () => {
   const constitutionModal = document.getElementById('constitutionModal');
   const openConstitutionBtn = document.getElementById('openConstitution');
@@ -662,7 +660,6 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // Article button functionality
-  const articles = { /* your articles content here */ };
 
   articleButtons.forEach(btn => {
     Object.assign(btn.style, {
