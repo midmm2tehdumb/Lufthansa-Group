@@ -397,22 +397,24 @@
   }
 </style>
 
-<!-- Seat Selection JS -->
-<script>
-  const buttons = document.querySelectorAll('.seat-buttons button');
-  const infos = document.querySelectorAll('.seat-info');
+// Seat Selection JS
+const buttons = document.querySelectorAll('.seat-buttons button');
+const infos = document.querySelectorAll('.seat-info');
 
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const target = btn.getAttribute('data-seat');
-      infos.forEach(info => {
-        if(info.id === target){
-          info.style.display = (info.style.display === 'block') ? 'none' : 'block';
-        } else {
-          info.style.display = 'none';
-        }
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = btn.getAttribute('data-seat');
+    infos.forEach(info => {
+      if(info.id === target){
+        info.style.display = (info.style.display === 'block') ? 'none' : 'block';
+      } else {
+        info.style.display = 'none';
+      }
+    });
+  });
+});
 
-<!-- PDF Modal -->
+// PDF Modal JS
 document.getElementById("openPDF").onclick = function() {
   document.getElementById("pdfFrame").src = "WM.pdf"; // Your PDF file
   document.getElementById("pdfModal").style.display = "block";
@@ -427,6 +429,7 @@ window.onclick = function(event) {
     document.getElementById("pdfModal").style.display = "none";
   }
 };
+
 
 </script>
 
