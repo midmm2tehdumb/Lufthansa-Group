@@ -187,19 +187,32 @@
   </ul>
 </nav>
 
-<!-- PDF Button -->
-<button id="openPDF" class="wm-button">Open Western Menu</button>
+<!-- Menu Buttons -->
+<div class="center-button">
+  <button id="openWestern" class="wm-button">Western Menu</button>
+  <button id="openAsian" class="wm-button">Asian Menu</button>
+</div>
+
+<!-- Western Menu Modal -->
+<div id="westernModal" class="modal">
+  <span class="close" id="closeWestern">&times;</span>
+  <img id="westernImage" src="menu1.png" alt="Western Menu" style="width:100%; max-height:80vh; object-fit:contain;">
+</div>
+
+<!-- Asian Menu Modal -->
+<div id="asianModal" class="modal">
+  <span class="close" id="closeAsian">&times;</span>
+  <img id="asianImage" src="menu2.png" alt="Asian Menu" style="width:100%; max-height:80vh; object-fit:contain;">
+</div>
+
 
 <!-- Modal -->
 <div id="pdfModal" class="modal">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h2>Western Menu</h2>
-      <span class="close">&times;</span>
-    </div>
-    <embed id="pdfFrame" src="" type="application/pdf" width="100%" height="500px">
-  </div>
+  <span class="close" id="closePDF">&times;</span>
+  <img id="pdfImage" src="menu1.png" alt="Western Menu" style="width:100%; max-height:80vh; object-fit:contain;">
 </div>
+
+
 
 
 <!-- RP Section -->
@@ -384,26 +397,28 @@
     });
   });
 
-  // PDF Modal
-  const openPDF = document.getElementById("openPDF");
-  const pdfModal = document.getElementById("pdfModal");
-  const pdfFrame = document.getElementById("pdfFrame");
-  const closeModal = document.querySelector(".close");
+// Western Menu
+const openWestern = document.getElementById("openWestern");
+const westernModal = document.getElementById("westernModal");
+const closeWestern = document.getElementById("closeWestern");
 
-  openPDF.addEventListener("click", () => {
-    pdfFrame.src = "WM.pdf";
-    pdfModal.style.display = "block";
-  });
+openWestern.onclick = () => { westernModal.style.display = "block"; }
+closeWestern.onclick = () => { westernModal.style.display = "none"; }
 
-  closeModal.addEventListener("click", () => {
-    pdfModal.style.display = "none";
-  });
+// Asian Menu
+const openAsian = document.getElementById("openAsian");
+const asianModal = document.getElementById("asianModal");
+const closeAsian = document.getElementById("closeAsian");
 
-  window.addEventListener("click", (event) => {
-    if(event.target === pdfModal){
-      pdfModal.style.display = "none";
-    }
-  });
+openAsian.onclick = () => { asianModal.style.display = "block"; }
+closeAsian.onclick = () => { asianModal.style.display = "none"; }
+
+// Close if clicking outside modal
+window.onclick = (event) => {
+  if (event.target === westernModal) westernModal.style.display = "none";
+  if (event.target === asianModal) asianModal.style.display = "none";
+};
+
 </script>
 
 </body>
