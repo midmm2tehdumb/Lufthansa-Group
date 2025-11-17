@@ -108,6 +108,20 @@
   </ul>
 </nav>
 
+  <!-- Button -->
+<button id="openPDF" class="wm-button">Open Western Menu</button>
+
+<!-- Modal -->
+<div id="pdfModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Western Menu</h2>
+      <span class="close">&times;</span>
+    </div>
+    <iframe id="pdfFrame" src="" width="100%" height="500px"></iframe>
+  </div>
+</div>
+
 <!-- RP Section -->
 <section class="rp-section">
   <h2>Catering Services</h2>
@@ -397,9 +411,22 @@
         } else {
           info.style.display = 'none';
         }
-      });
-    });
-  });
+
+document.getElementById("openPDF").onclick = function() {
+  document.getElementById("pdfFrame").src = "WM.pdf"; // Your PDF file
+  document.getElementById("pdfModal").style.display = "block";
+};
+
+document.querySelector(".close").onclick = function() {
+  document.getElementById("pdfModal").style.display = "none";
+};
+
+window.onclick = function(event) {
+  if (event.target == document.getElementById("pdfModal")) {
+    document.getElementById("pdfModal").style.display = "none";
+  }
+};
+
 </script>
 
 <!-- Disclaimer -->
