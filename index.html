@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WestJet Airlines</title>
+  <title>Lufthansa Airlines</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -11,45 +11,44 @@
 
 <!-- Navbar -->
 <nav>
-  <div class="logo">WestJet Airlines</div>
+  <div class="logo">Lufthansa Airlines</div>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="fleet.html">Fleet</a></li>
     <li><a href="destinations.html">Destinations</a></li>
     <li><a href="booking.html">Booking</a></li>
     <li><a href="info.html">Information</a></li>
-    <li><a href="rp.html">RP</a></li>
   </ul>
 </nav>
 
 <!-- Hero Section -->
-<section class="hero">
-  <div class="overlay"></div>
-  <div class="hero-content">
-    <h1 class="brand-name">WestJet</h1>
-    <p class="motto">Where your story takes off</p>
-    <div class="stats">
-      <span>5+ hubs</span>
-      <span>250+ destinations</span>
-      <span>100s of aircraft</span>
+<section class="hero" style="background-image: url('LHA350.jpg'); background-size: cover; background-position: center; position: relative; height: 70vh;">
+  <div class="overlay" style="position:absolute; top:0; left:0; width:100%; height:100%; background-color: rgba(0,0,0,0.4);"></div>
+  <div class="hero-content" style="position:relative; z-index:2; display:flex; flex-direction:column; justify-content:center; align-items:center; height:100%; color:white; text-align:center;">
+    <h1 class="brand-name">Lufthansa</h1>
+    <p class="motto">Say yes to the world.</p>
+    <div class="stats" style="display:flex; gap:20px; margin:20px 0;">
+      <span>100+ hubs</span>
+      <span>200+ destinations</span>
+      <span>500+ aircraft</span>
     </div>
-    <a href="https://discord.gg/kXRPrWTKTF" class="cta-button" target="_blank">Join our Discord</a>
+    <a href="https://discord.gg/kXRPrWTKTF" class="cta-button" target="_blank" style="padding:12px 25px; background-color:#0D1F2D; color:white; text-decoration:none; border-radius:5px;">Join our Discord</a>
   </div>
 </section>
 
 <!-- Advertisement Section -->
 <section class="advertisement" style="margin:50px 0; text-align:center;">
-  <h2>Watch WestJet Long-haul Edit</h2>
+  <h2>Watch Lufthansa Long-haul Edit</h2>
   <video id="adVideo" width="80%" controls style="max-width:800px; margin-top:20px;">
-    <source src="WestJet.mp4" type="video/mp4">
+    <source src="lufthansa.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
 </section>
 
 <!-- Disclaimer / Terms Block -->
-<section class="disclaimer" style="background-color:#1A3F70; color:white; padding:30px; text-align:center; margin-top:50px;">
+<section class="disclaimer" style="background-color:#0D1F2D; color:white; padding:30px; text-align:center; margin-top:50px;">
   <p>
-    <strong>Disclaimer:</strong> WestJet Airlines is a virtual GeoFS airline and does not represent the real-life WestJet Airlines Ltd. 
+    <strong>Disclaimer:</strong> Lufthansa Airlines is a virtual GeoFS airline and does not represent the real-life Lufthansa Group. 
     This website and content are intended for entertainment and educational purposes within the virtual flight simulator community.
   </p>
 </section>
@@ -71,7 +70,6 @@ window.addEventListener('scroll', checkVideoInView);
 window.addEventListener('resize', checkVideoInView);
 window.addEventListener('load', checkVideoInView);
 </script>
-
 
 </body>
 </html>
