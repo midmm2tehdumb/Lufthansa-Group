@@ -58,7 +58,7 @@
       background-color: #f9f9f9;
     }
 
-    /* PDF Modal */
+    /* Modal */
     .modal {
       display: none;
       position: fixed;
@@ -79,10 +79,6 @@
       max-width: 800px;
       position: relative;
     }
-    .modal-header h2 {
-      margin: 0;
-      color: #1A3F70;
-    }
     .close {
       position: absolute;
       top: 10px;
@@ -92,7 +88,7 @@
       color: #1A3F70;
     }
 
-    /* Disclaimer at bottom */
+    /* Disclaimer */
     .disclaimer {
       background-color: #1A3F70;
       color: white;
@@ -176,7 +172,7 @@
 
 <!-- Navbar -->
 <nav>
-  <div class="logo">WestJet Airlines</div>
+  <div class="logo">Lufthansa Airlines</div>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="fleet.html">Fleet</a></li>
@@ -196,24 +192,19 @@
 <!-- Business Menu Modal -->
 <div id="businessModal" class="modal">
   <span class="close" id="closeBusiness">&times;</span>
-  <img id="businessImage" src="BM.png" alt="Business Class Menu" style="width:100%; max-height:80vh; object-fit:contain;">
+  <img src="BM.png" alt="Business Class Menu" style="width:100%; max-height:80vh; object-fit:contain;">
 </div>
 
 <!-- First Menu Modal -->
 <div id="firstModal" class="modal">
   <span class="close" id="closeFirst">&times;</span>
-  <img id="firstImage" src="FM.png" alt="First Class Menu" style="width:100%; max-height:80vh; object-fit:contain;">
+  <img src="FM.png" alt="First Class Menu" style="width:100%; max-height:80vh; object-fit:contain;">
 </div>
-
-
-
-
-
-
 
 <!-- RP Section -->
 <section class="rp-section">
   <h2>Catering Services</h2>
+
   <!-- Economy Class -->
   <div class="rp-card">
     <h3>Economy Class Catering (Domestic)</h3>
@@ -236,7 +227,7 @@
           <td>Available</td>
         </tr>
         <tr>
-          <td>Sweet/Savory Snack</td>
+          <td>Snack</td>
           <td>None</td>
           <td>None</td>
           <td>Available</td>
@@ -311,27 +302,27 @@
     </div>
   </div>
 
-<!-- Business Class -->
-<div class="rp-card">
-  <h3>Business Class</h3>
-  <div class="rp-card-content">
-    <p>Experience Lufthansa’s refined service with gourmet menu selections inspired by international cuisine, paired with fine wines and premium beverages.</p>
-    <p>Short- and medium-haul flights: bottle of water, soft drinks, selection of international wines, light snacks, and warm meals.</p>
-    <p>Long-haul flights: multi-course meals crafted by top chefs, extensive wine and champagne selection, and international dessert offerings.</p>
-    <p>Relax in spacious seats with ample legroom, fully reclining for restful sleep, plus Lufthansa amenity kits including pillows, blankets, and premium toiletries.</p>
+  <!-- Business Class -->
+  <div class="rp-card">
+    <h3>Business Class</h3>
+    <div class="rp-card-content">
+      <p>Experience Lufthansa’s refined service with gourmet menu selections inspired by international cuisine, paired with fine wines and premium beverages.</p>
+      <p>Short- and medium-haul flights: bottle of water, soft drinks, selection of international wines, light snacks, and warm meals.</p>
+      <p>Long-haul flights: multi-course meals crafted by top chefs, extensive wine and champagne selection, and international dessert offerings.</p>
+      <p>Relax in spacious seats with ample legroom, fully reclining for restful sleep, plus Lufthansa amenity kits including pillows, blankets, and premium toiletries.</p>
+    </div>
   </div>
-</div>
 
-<!-- First Class -->
-<div class="rp-card">
-  <h3>First Class</h3>
-  <div class="rp-card-content">
-    <p>Indulge in Lufthansa Allegris First Class, where luxury meets personalized service at every step of your journey.</p>
-    <p>Gourmet à la carte dining with seasonal menus and exclusive wine pairings, available anytime on demand.</p>
-    <p>Access to Lufthansa First Class lounges, private check-in, and dedicated boarding for a seamless experience.</p>
-    <p>Recline fully in spacious suites or lie-flat seats, with plush bedding, premium amenity kits, noise-cancelling headphones, and personalized service from your dedicated cabin crew.</p>
+  <!-- First Class -->
+  <div class="rp-card">
+    <h3>First Class</h3>
+    <div class="rp-card-content">
+      <p>Indulge in Lufthansa Allegris First Class, where luxury meets personalized service at every step of your journey.</p>
+      <p>Gourmet à la carte dining with seasonal menus and exclusive wine pairings, available anytime on demand.</p>
+      <p>Access to Lufthansa First Class lounges, private check-in, and dedicated boarding for a seamless experience.</p>
+      <p>Recline fully in spacious suites or lie-flat seats, with plush bedding, premium amenity kits, noise-cancelling headphones, and personalized service from your dedicated cabin crew.</p>
+    </div>
   </div>
-</div>
 
 </section>
 
@@ -360,7 +351,7 @@
       <img src="https://www.lufthansa.com/content/dam/lh/images/local_images/discover-lufthansa/allegris/business-class/Allegris_BC_Carousel_01.jpg.transform/lh-dcep-transform-width-1440/img.jpg" alt="Business Class Seat">
       <p>Private, spacious pod-like seat with premium amenities, fine dining, and enhanced privacy.</p>
     </div>
-     <div class="seat-info" id="first">
+    <div class="seat-info" id="first">
       <h3>First Class Seat</h3>
       <img src="https://www.lufthansa.com/content/dam/lh/images/local_images/discover-lufthansa/allegris/first-class/Allegris_FC_Carousel_01.jpg.transform/lh-dcep-transform-width-1440/img.jpg" alt="First Class Seat">
       <p>A suite with full privacy, transformable bed, heatable seats, wardrobe, fine dining, and space for up to two.</p>
@@ -376,7 +367,6 @@
   </p>
 </section>
 
-<!-- All JS at bottom -->
 <script>
   // RP Cards toggle
   const rpCards = document.querySelectorAll('.rp-card');
@@ -399,28 +389,25 @@
     });
   });
 
-// Business Menu
-const openBusiness = document.getElementById("openBusiness");
-const BusinessModal = document.getElementById("businessModal");
-const closeBusiness = document.getElementById("closeBusiness");
+  // Business Menu Modal
+  const openBusiness = document.getElementById("openBusiness");
+  const businessModal = document.getElementById("businessModal");
+  const closeBusiness = document.getElementById("closeBusiness");
+  openBusiness.onclick = () => { businessModal.style.display = "block"; }
+  closeBusiness.onclick = () => { businessModal.style.display = "none"; }
 
-openBusiness.onclick = () => { businessModal.style.display = "block"; }
-closeBusiness.onclick = () => { businessModal.style.display = "none"; }
+  // First Menu Modal
+  const openFirst = document.getElementById("openFirst");
+  const firstModal = document.getElementById("firstModal");
+  const closeFirst = document.getElementById("closeFirst");
+  openFirst.onclick = () => { firstModal.style.display = "block"; }
+  closeFirst.onclick = () => { firstModal.style.display = "none"; }
 
-// First Menu
-const openFirst = document.getElementById("openFirst");
-const firstModal = document.getElementById("asianModal");
-const closeFirst = document.getElementById("closeAsian");
-
-openFirst.onclick = () => { firstModal.style.display = "block"; }
-closeFirst.onclick = () => { firstModal.style.display = "none"; }
-
-// Close if clicking outside modal
-window.onclick = (event) => {
-  if (event.target === businessModal) businessModal.style.display = "none";
-  if (event.target === firstModal) firstModal.style.display = "none";
-};
-
+  // Close modals if clicking outside
+  window.onclick = (event) => {
+    if (event.target === businessModal) businessModal.style.display = "none";
+    if (event.target === firstModal) firstModal.style.display = "none";
+  };
 </script>
 
 </body>
