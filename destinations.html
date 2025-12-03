@@ -1,58 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lufthansa Airlines - Destinations</title>
-<link rel="stylesheet" href="style.css">
+<title>Lufthansa Destinations</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
 <style>
-  #map { height: 90vh; width: 100%; margin-top: 20px; border-radius: 15px; }
-  .leaflet-popup-content button {
-    margin-top: 5px;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  .leaflet-popup-content button:hover { background-color: #0085a0; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+#map {
+  height: 90vh;
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 12px;
+}
+
+/* Legend */
+#legend {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: white;
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  font-size: 14px;
+}
+#legend div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.legend-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
 </style>
 </head>
+
 <body>
 
-<!-- Navbar -->
-<nav>
-  <div class="logo">Lufthansa Airlines</div>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="fleet.html">Fleet</a></li>
-    <li><a href="destinations.html">Destinations</a></li>
-    <li><a href="booking.html">Booking</a></li>
-    <li><a href="info.html">Information</a></li>
-    <li><a href="rp.html">RP</a></li>
-  </ul>
-</nav>
-
-<h2 style="text-align:center; margin-top:20px;">Our Destinations</h2>
+<h2 style="text-align:center;">Lufthansa Group Destinations</h2>
 <div id="map"></div>
 
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<!-- LEGEND -->
+<div id="legend">
+  <div><span class="legend-dot" style="background: yellow;"></span>Lufthansa Hub</div>
+  <div><span class="legend-dot" style="background: orange;"></span>Subsidiary Hub</div>
+  <div><span class="legend-dot" style="background: blue;"></span>Destination</div>
+  <div><span class="legend-dot" style="background: red;"></span>Codeshare Destination</div>
+</div>
+
 <script>
-// --------------------
-// Initialize map
-// --------------------
-const map = L.map('map').setView([20, 0], 2);
+// ------------------------ MAP INIT ------------------------
+const map = L.map("map").setView([20, 0], 2);
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; OpenStreetMap contributors'
-}).addTo(map);
-
-// --------------------
-// Example dataset placeholders
-// --------------------
-
-// Add all airports you want to show on the map
+// ------------------------ MASTER DATASET ------------------------
 const airportCoords = {
   "FRA": [50.0379, 8.5622],
   "MUC": [48.3538, 11.7861],
@@ -379,55 +388,32 @@ const airportCoords = {
 "ZTH": [37.7500, 20.8842],
 "ZRH": [47.4581, 8.5492],
 "PER": [-31.9385, 115.9672]
-
-
-
 };
 
-const hubs = ["FRA", "MUC"]; // Lufthansa main hubs
+// ------------------------ HUB LISTS ------------------------
+const hubs = ["FRA", "MUC"]; // Lufthansa hubs = yellow
+const subsidiaryHubs = ["ZRH", "VIE", "BRU", "GVA"]; // Swiss/Austrian/Brussels/etc hubs = orange
+const codeshare = []; // Codeshares = Red
 
-const groupHubs = ["ZRH", "VIE", "BRU", "GVA"]; // All other Lufthansa Group airline hubs
+// ------------------------ DOT LOGIC ------------------------
+function getColor(code) {
+  if (hubs.includes(code)) return "yellow";
+  if (subsidiaryHubs.includes(code)) return "orange";
+  if (codeshare.includes(code)) return "red";
+  return "blue"; // default destination
+}
 
+for (const code in airportCoords) {
+  const [lat, lon] = airportCoords[code];
 
-
-// --------------------
-// Draw markers
-// --------------------
-Object.keys(airportCoords).forEach(code => {
-  let radius = 5;
-  let color = '#00a6cd';
-  let fillColor = '#00a6cd';
-
-  if(hubs.includes(code)){
-    radius = 8;
-    color = '#FFD100';
-    fillColor = '#FFD100';
-  } else if(groupHubs.includes(code)){
-    radius = 7;
-    color = '#FF7F50';
-    fillColor = '#FF7F50';
-  }
-
-  const marker = L.circleMarker(airportCoords[code], {
-    radius: radius,
-    color: color,
-    fillColor: fillColor,
-    fillOpacity: 0.9,
-    weight: 2
-  }).addTo(map);
-
-  marker.bindPopup(`<b>${code}</b>`);
-});
-
-// --------------------
-
+  L.circleMarker([lat, lon], {
+    radius: 6,
+    color: getColor(code),
+    fillColor: getColor(code),
+    fillOpacity: 1
+  }).addTo(map).bindPopup(`<b>${code}</b>`);
+}
 </script>
 
 </body>
-<section class="disclaimer" style="background-color:#1A3F70; color:white; padding:30px; text-align:center; margin-top:50px;">
-  <p>
-    <strong>Disclaimer:</strong> Lufthansa Airlines is a virtual GeoFS airline and does not represent the real-life Lufthansa Group. 
-    This website and content are intended for entertainment and educational purposes within the virtual flight simulator community.
-  </p>
-</section>
 </html>
