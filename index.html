@@ -52,13 +52,12 @@
 </button>
 
 
-<!-- ===== POPUP MODAL ===== -->
+<!-- ===== POPUP MODAL (Tabbed Gallery) ===== -->
 <div id="galleryModal" class="modal">
-
     <div class="modal-content">
-
         <span class="close" id="closeGallery">&times;</span>
 
+        <!-- DM Note -->
         <p class="dm-note">
             DM <strong>midmm2</strong> on Discord to upload an image.
         </p>
@@ -69,26 +68,30 @@
             <button class="tab-btn" data-tab="wide">Widebody</button>
         </div>
 
-        <!-- Narrowbody Page -->
+        <!-- Narrowbody Tab -->
         <div id="narrow" class="tab-page active">
             <div class="scroll-gallery">
-                <img src="narrow1.webp">
-                <img src="narrow2.webp">
-                <img src="narrow3.webp">
+                <img src="narrow1.webp" alt="Narrowbody 1" class="gallery-img">
+                <img src="narrow2.webp" alt="Narrowbody 2" class="gallery-img">
+                <img src="narrow3.webp" alt="Narrowbody 3" class="gallery-img">
             </div>
         </div>
 
-        <!-- Widebody Page -->
+        <!-- Widebody Tab -->
         <div id="wide" class="tab-page">
             <div class="scroll-gallery">
-                <img src="wide1.webp">
-                <img src="wide2.webp">
-                <img src="wide3.webp">
+                <img src="wide1.webp" alt="Widebody 1" class="gallery-img">
+                <img src="wide2.webp" alt="Widebody 2" class="gallery-img">
+                <img src="wide3.webp" alt="Widebody 3" class="gallery-img">
             </div>
         </div>
-
     </div>
+</div>
 
+<!-- ===== FULLSCREEN IMAGE MODAL ===== -->
+<div id="imageModal" class="image-modal">
+    <span class="close">&times;</span>
+    <img id="fullImage" src="" alt="Full Image">
 </div>
 
 
@@ -119,6 +122,21 @@ function checkVideoInView() {
 window.addEventListener('scroll', checkVideoInView);
 window.addEventListener('resize', checkVideoInView);
 window.addEventListener('load', checkVideoInView);
+
+const modal = document.getElementById('imageModal');
+const fullImage = document.getElementById('fullImage');
+const closeBtn = modal.querySelector('.close');
+
+document.querySelectorAll('.gallery-img').forEach(img => {
+    img.onclick = () => {
+        fullImage.src = img.src; // use the same image or swap to full-res
+        modal.style.display = 'flex';
+    }
+});
+
+closeBtn.onclick = () => modal.style.display = 'none';
+modal.onclick = (e) => { if(e.target === modal) modal.style.display = 'none'; };
+
 
 <!-- ===== JS ===== -->
     const openBtn = document.getElementById("openGalleryBtn");
