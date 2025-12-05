@@ -652,3 +652,21 @@ nav ul.nav-links li a:hover {
     cursor: pointer;
 }
 
+.modal-header {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.modal-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #001a57; /* Lufthansa blue */
+    margin-bottom: 10px;
+}
+
+.dm-note, .zoom-note {
+    font-size: 14px;
+    color: #333;
+    margin: 2px 0;
+}
+
