@@ -627,3 +627,28 @@ nav ul.nav-links li a:hover {
     box-shadow: 0 3px 10px rgba(0,0,0,0.15);
     flex-shrink: 0;
 }
+
+.image-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.image-modal img {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.image-modal .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 36px;
+    color: white;
+    cursor: pointer;
+}
+
