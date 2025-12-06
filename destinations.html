@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
 <style>
+  /* Base Styles */
   body { font-family: Arial, sans-serif; margin:0; padding:0; }
   #map { height: 80vh; width: 100%; margin-top: 20px; border-radius: 15px; }
   .leaflet-popup-content button {
@@ -33,9 +34,65 @@
     box-shadow: 0 0 5px rgba(0,0,0,0.3);
   }
   .legend-dot { display:inline-block; width:12px; height:12px; border-radius:50%; margin-right:6px; }
-  
+
   /* Disclaimer */
   .disclaimer { background-color:#1A3F70; color:white; padding:30px; text-align:center; margin-top:20px; }
+
+  /* Codeshare Section Styles */
+  .about { text-align: center; padding: 20px; }
+  .codeshare-cards { display: flex; justify-content: center; gap: 20px; margin-top: 20px; }
+  .codeshare-card, .subsidiary-card {
+    padding: 15px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s, background-color 0.2s;
+  }
+  .codeshare-card:hover, .subsidiary-card:hover { transform: translateY(-3px); }
+
+  /* Specific card colors (can be defined in style.css or here) */
+  .codeshare-card { background-color: #b86b6b; color: white; }
+  .subsidiary-card { background-color: #d88c6a; color: white; }
+
+  /* Modal CSS - CRITICAL FIX */
+  .modal {
+    display: none; 
+    position: fixed; 
+    z-index: 10000; /* Must be high to cover the map and page */
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); 
+  }
+
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be adjusted */
+    max-width: 500px;
+    border-radius: 10px;
+    position: relative;
+    text-align: left;
+  }
+
+  .close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close-btn:hover,
+  .close-btn:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
 </style>
 </head>
 <body>
@@ -62,21 +119,19 @@
   <div><span class="legend-dot" style="background: #b86b6b;"></span>Codeshare Destination</div>
 </div>
 
-<!-- Codeshares Section -->
 <section class="about">
   <h2>Lufthansa Group Partners</h2>
   <p>Click on each airline to learn more:</p>
   <div class="codeshare-cards">
     <div class="codeshare-card" data-modal="singaporeModal">Singapore Airlines</div>
-    <div class="subsidiary-card" data-modal="cathayModal">Cathay Pacific</div>
-
+    <div class="codeshare-card" data-modal="cathayModal">Cathay Pacific</div>
+  </div>
 </section>
 
-<!-- Codeshare Modals -->
 <div id="singaporeModal" class="modal">
   <div class="modal-content">
     <span class="close-btn">&times;</span>
-    <h3>Singapore Airlines</h3></h3>
+    <h3>Singapore Airlines</h3>
     <p>SIN-CGK, SIN-SGN, SIN-HKT, SIN-DAD, SIN-SAI, SIN-KTI</p>
   </div>
 </div>
@@ -84,8 +139,8 @@
 <div id="cathayModal" class="modal">
   <div class="modal-content">
     <span class="close-btn">&times;</span>
-    <h3>Cathay Pacific</h3></h3>
-    <p>HKG-CKG,HKv-CAN, HKg-TPE, HKg-HGH</p>
+    <h3>Cathay Pacific</h3>
+    <p>HKG-CKG, HKG-CAN, HKG-TPE, HKG-HGH</p>
   </div>
 </div>
 
@@ -100,8 +155,6 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // -------------------- AIRPORT DATA --------------------
 const airportCoords = {
-  // Corrected and consolidated list, removing duplicates and ensuring correct syntax.
-  // All codeshare destinations now have valid coordinates.
   "FRA": [50.0379, 8.5622],
   "MUC": [48.3538, 11.7861],
   "ABV": [9.0060, 7.2636],
@@ -224,7 +277,6 @@ const airportCoords = {
   "MSP": [44.8848, -93.2223],
   "YUL": [45.4576, -73.7492],
   "BOM": [19.0896, 72.8656],
-  // MUC is duplicated above, using the first entry.
   "FMO": [52.1347, 7.6856],
   "JMK": [36.3969, 25.4294],
   "NBO": [-1.3192, 36.9275],
@@ -314,7 +366,7 @@ const airportCoords = {
   "HKT": [8.1132, 98.3169],
   "DAD": [16.0439, 108.199],
   "SAI": [13.369167, 104.223056],
-  "KTI": [11.36, 104.92] // <-- LAST ENTRY, NO COMMA
+  "KTI": [11.36, 104.92] 
 };
 
 // Define hub types
@@ -336,6 +388,51 @@ Object.keys(airportCoords).forEach(code => {
     fillOpacity: 1
   }).addTo(map).bindPopup(`<b>${code}</b>`);
 });
+
+
+// -------------------- MODAL JAVASCRIPT - CRITICAL FIX --------------------
+
+// Get all the cards that trigger modals
+const modalTriggers = document.querySelectorAll('[data-modal]');
+
+// Loop through each card and attach the click listener
+modalTriggers.forEach(card => {
+    card.addEventListener('click', () => {
+        // Get the ID of the modal from the data-modal attribute
+        const modalId = card.getAttribute('data-modal');
+        const modal = document.getElementById(modalId);
+        
+        // Display the modal
+        if (modal) {
+            modal.style.display = "block";
+        }
+    });
+});
+
+// Get all close buttons
+const closeButtons = document.querySelectorAll('.close-btn');
+
+// Loop through close buttons to close the modal when clicked
+closeButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Find the parent modal and hide it
+        const modal = btn.closest('.modal');
+        if (modal) {
+            modal.style.display = "none";
+        }
+    });
+});
+
+// Close the modal if the user clicks anywhere outside of it
+window.onclick = function(event) {
+    modalTriggers.forEach(card => {
+        const modalId = card.getAttribute('data-modal');
+        const modal = document.getElementById(modalId);
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+}
 </script>
 
 <section class="disclaimer">
