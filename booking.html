@@ -4,69 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lufthansa Airlines - Virtual Booking</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* Base Styling: Set a clean, consistent font */
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-
-        /* Navbar styles */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        nav .logo {
-            color: white;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        nav ul.nav-links {
-            list-style: none;
-            display: flex;
-            gap: 25px;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav ul.nav-links li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1rem; /* Consistent size for navigation links */
-            transition: color 0.3s;
-        }
-
-        nav ul.nav-links li a:hover {
-            color: #FFD700;
-        }
-
+        /* These styles were previously inline and should be merged into the external style.css */
+        
         /* Centering the main heading */
         h2 {
-            text-align: center; /* Center the "Book Your Flight" text */
+            text-align: center;
             margin-top: 30px;
             color: #1A3F70;
         }
 
-        @media (max-width: 700px) {
-            nav {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            nav ul.nav-links {
-                flex-direction: column;
-                gap: 10px;
-                margin-top: 10px;
-            }
-        }
-
-        /* Booking form */
+        /* Booking form container */
         .booking-form {
             display: flex;
             flex-direction: column;
@@ -76,6 +27,7 @@
             padding: 20px;
             border: 1px solid #ccc;
             border-radius: 8px;
+            background-color: white; /* Added background for clarity */
         }
 
         .booking-form label {
@@ -92,7 +44,7 @@
         .booking-form button {
             background-color: #FFD700;
             cursor: pointer;
-            font-weight: bold;
+            font-weight: 600; /* Adjusted to match Poppins weight */
             transition: background-color 0.3s;
         }
         
@@ -111,18 +63,6 @@
         
         #results p strong {
             color: #1A3F70;
-        }
-
-        /* Disclaimer styles */
-        .disclaimer {
-            background-color: #1A3F70;
-            color: white;
-            text-align: center;
-        }
-
-        .disclaimer p, .disclaimer strong {
-            font-size: 0.9rem; /* Slightly smaller size, but consistent within the section */
-            margin: 0;
         }
     </style>
 </head>
@@ -159,12 +99,18 @@
 
 <div id="results"></div>
 
+<section class="disclaimer">
+    <p>
+        <strong>Disclaimer:</strong> Lufthansa Airlines is a virtual GeoFS airline and does not represent the real-life Lufthansa Group. 
+        This website and content are intended for entertainment and educational purposes within the virtual flight simulator community.
+    </p>
+</section>
+
 <script>
     // --- START: PASTE YOUR AIRPORT DATA HERE ---
     // Placeholder dataset for airports
     const airportCoords = {
-    "FRA": [50.0379, 8.5622],
-  "MUC": [48.3538, 11.7861],
+      "MUC": [48.3538, 11.7861],
   "ABV": [9.0060, 7.2636],
   "AUH": [24.4321, 54.6516],
   "ALC": [38.2822, -0.5581],
@@ -366,7 +312,7 @@
   "ZRH": [47.4581, 8.5492],
   "PER": [-31.9385, 115.9672],
     };
-    // --- END: PASTE YOUR AIRPORT DATA HERE ---
+
 
     const departureSelect = document.getElementById('departure');
     const arrivalSelect = document.getElementById('arrival');
@@ -542,13 +488,6 @@
         `;
     }
 </script>
-
-<section class="disclaimer">
-    <p>
-        <strong>Disclaimer:</strong> Lufthansa Airlines is a virtual GeoFS airline and does not represent the real-life Lufthansa Group. 
-        This website and content are intended for entertainment and educational purposes within the virtual flight simulator community.
-    </p>
-</section>
 
 </body>
 </html>
