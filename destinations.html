@@ -117,6 +117,7 @@
   <div><span class="legend-dot" style="background: #d88c6a;"></span>Subsidiary Hub</div>
   <div><span class="legend-dot" style="background: #6b9ebd;"></span>Destination</div>
   <div><span class="legend-dot" style="background: #b86b6b;"></span>Codeshare Destination</div>
+  <div><span class="legend-dot" style="background: #795548;"></span>Out of Service</div>
 </div>
 
 <section class="about">
@@ -388,19 +389,45 @@ const hubs = ["FRA", "MUC"];
 const subsidiaryHubs = ["ZRH", "VIE", "BRU", "GVA"];
 const codeshare = ["CAN", "CKG", "TPE", "HGH", "CGK", "SGN", "HKT", "DAD", "SAI", "KTI", "AGR", "JAI", "VNS", "GOI", "COK"];
 
+// NEW: Define "Out of Service" airports (Israel, Syria, and one regional neighbor)
+const outOfService = ["TLV", "DAM", "BEY"]; 
+
 // -------------------- DRAW MARKERS --------------------
 Object.keys(airportCoords).forEach(code => {
-  let color = "#6b9ebd"; // default destination
-  if (hubs.includes(code)) color = "#d4b063"; // muted gold
-  else if (subsidiaryHubs.includes(code)) color = "#d88c6a"; // soft orange-brown
-  else if (codeshare.includes(code)) color = "#b86b6b"; // muted red
+  let color = "#6b9ebd"; // default destination color
+  let statusText = "Active Destination";
+  
+  const hubColor = "#d4b063";       // Lufthansa Hub (Muted Gold)
+  const subsidiaryColor = "#d88c6a"; // Subsidiary Hub (Soft Orange-Brown)
+  const codeshareColor = "#b86b6b";  // Codeshare Destination (Muted Red)
+  const outOfServiceColor = "#795548"; // Out of Service (Brown)
+
+  // 1. Check for Out of Service status first (highest priority)
+  if (outOfService.includes(code)) {
+      color = outOfServiceColor;
+      statusText = "Out of Service";
+  } 
+  // 2. Check for other statuses
+  else if (hubs.includes(code)) {
+    color = hubColor;
+    statusText = "Lufthansa Hub";
+  } 
+  else if (subsidiaryHubs.includes(code)) {
+    color = subsidiaryColor;
+    statusText = "Subsidiary Hub";
+  } 
+  else if (codeshare.includes(code)) {
+    color = codeshareColor;
+    statusText = "Codeshare Destination";
+  }
+
 
   L.circleMarker(airportCoords[code], {
     radius: 6,
     color: color,
     fillColor: color,
     fillOpacity: 1
-  }).addTo(map).bindPopup(`<b>${code}</b>`);
+  }).addTo(map).bindPopup(`<b>${code}</b><br>Status: ${statusText}`); 
 });
 
 
