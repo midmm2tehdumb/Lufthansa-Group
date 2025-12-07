@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lufthansa Airlines - Virtual Booking</title>
     <style>
+        /* Base Styling: Set a clean, consistent font */
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
         /* Navbar styles */
         nav {
             background-color: #1A3F70;
@@ -33,12 +41,19 @@
             color: white;
             text-decoration: none;
             font-weight: 500;
-            font-size: 1rem;
+            font-size: 1rem; /* Consistent size for navigation links */
             transition: color 0.3s;
         }
 
         nav ul.nav-links li a:hover {
             color: #FFD700;
+        }
+
+        /* Centering the main heading */
+        h2 {
+            text-align: center; /* Center the "Book Your Flight" text */
+            margin-top: 30px;
+            color: #1A3F70;
         }
 
         @media (max-width: 700px) {
@@ -100,12 +115,18 @@
             color: #1A3F70;
         }
 
+        /* Disclaimer styles */
         .disclaimer {
             background-color: #1A3F70;
             color: white;
             padding: 20px;
             text-align: center;
             margin-top: 50px;
+        }
+
+        .disclaimer p, .disclaimer strong {
+            font-size: 0.9rem; /* Slightly smaller size, but consistent within the section */
+            margin: 0;
         }
     </style>
 </head>
@@ -144,8 +165,9 @@
 
 <script>
     // --- START: PASTE YOUR AIRPORT DATA HERE ---
+    // Placeholder dataset for airports
     const airportCoords = {
-  "FRA": [50.0379, 8.5622],
+    "FRA": [50.0379, 8.5622],
   "MUC": [48.3538, 11.7861],
   "ABV": [9.0060, 7.2636],
   "AUH": [24.4321, 54.6516],
@@ -346,9 +368,9 @@
   "ZAG": [45.7420, 16.0680],
   "ZTH": [37.7500, 20.8842],
   "ZRH": [47.4581, 8.5492],
-  "PER": [-31.9385, 115.9672]
+  "PER": [-31.9385, 115.9672],
     };
-
+    // --- END: PASTE YOUR AIRPORT DATA HERE ---
 
     const departureSelect = document.getElementById('departure');
     const arrivalSelect = document.getElementById('arrival');
@@ -397,7 +419,7 @@
         if(distance < 8000) return "A330 / A340 / A350 / 787";
         if(distance < 10000) return "A330 / A350 / 747 / 777 / 787";
         if(distance < 14000) return "A350 / 747 / 777 / A380";
-        if(distance < 16500) return "A350-1000XWB (Extended Range Routes)";
+        if(distance < 16500) return "A350-1000XWB (ULR Routes)";
         return "Too far. Choose another route.";
     }
 
@@ -509,7 +531,7 @@
         const arrivalLocal = new Date(now.getTime() + flightHours * 3600000); // 3,600,000 milliseconds per hour
 
         document.getElementById('results').innerHTML = `
-            <h3>Flight Details</h3>
+            <h3>Flight Details (Phases Model)</h3>
             <p>Route Distance: <strong>${distance.toFixed(1)} km</strong></p>
             <p>Suggested Aircraft: <strong>${plane}</strong></p>
             <p>Estimated Flight Time: <strong>~${Math.floor(flightHours)}h ${Math.round((flightHours % 1) * 60)}m</strong></p>
@@ -519,6 +541,8 @@
             <p>Landing (Your Local Time): <strong>${formatTime(arrivalLocal)}</strong></p>
             <p>Takeoff (UTC): <strong>${formatUTC(departureLocal)}</strong></p>
             <p>Landing (UTC): <strong>${formatUTC(arrivalLocal)}</strong></p>
+            <hr>
+            <p style="font-size: 0.8rem;">* Calculation includes time for initial acceleration, climb below 10,000 ft (limited to 250 kts), cruise, and descent/landing.</p>
         `;
     }
 </script>
