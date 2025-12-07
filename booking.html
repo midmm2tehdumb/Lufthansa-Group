@@ -3,124 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lufthansa Airlines - Booking</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Lufthansa Airlines - Virtual Booking</title>
+    <style>
+        /* Navbar styles */
+        nav {
+            background-color: #1A3F70;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        nav .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav ul.nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul.nav-links li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        nav ul.nav-links li a:hover {
+            color: #FFD700;
+        }
+
+        @media (max-width: 700px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            nav ul.nav-links {
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 10px;
+            }
+        }
+
+        /* Booking form */
+        .booking-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 400px;
+            margin: 30px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .booking-form label {
+            font-weight: bold;
+        }
+
+        .booking-form select, .booking-form button {
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        
+        .booking-form button {
+            background-color: #FFD700;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .booking-form button:hover {
+            background-color: #ffc400;
+        }
+
+        #results {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 15px;
+            border: 1px solid #1A3F70;
+            border-radius: 4px;
+            background-color: #f4f7f9;
+        }
+        
+        #results p strong {
+            color: #1A3F70;
+        }
+
+        .disclaimer {
+            background-color: #1A3F70;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- Navbar -->
 <nav>
-  <div class="logo">Lufthansa Airlines</div>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="fleet.html">Fleet</a></li>
-    <li><a href="destinations.html">Destinations</a></li>
-    <li><a href="booking.html">Booking</a></li>
-    <li><a href="info.html">Information</a></li>
-    <li><a href="rp.html">RP</a></li>
-  </ul>
+    <div class="logo">Lufthansa Airlines</div>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="fleet.html">Fleet</a></li>
+        <li><a href="destinations.html">Destinations</a></li>
+        <li><a href="booking.html">Booking</a></li>
+        <li><a href="info.html">Information</a></li>
+        <li><a href="rp.html">RP</a></li>
+    </ul>
 </nav>
-
-<style>
-  /* Navbar styles */
-  nav {
-    background-color: #1A3F70;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 30px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  }
-
-  nav .logo {
-    color: white;
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-
-  nav ul.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 25px;
-    margin: 0;
-    padding: 0;
-  }
-
-  nav ul.nav-links li a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 1rem;
-    transition: color 0.3s;
-  }
-
-  nav ul.nav-links li a:hover {
-    color: #FFD700;
-  }
-
-  @media (max-width: 700px) {
-    nav {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    nav ul.nav-links {
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 10px;
-    }
-  }
-
-  /* Booking form */
-  .booking-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-width: 400px;
-    margin: 30px auto;
-  }
-
-  .booking-form label {
-    font-weight: bold;
-  }
-
-  .booking-form select, .booking-form button {
-    padding: 8px;
-    font-size: 1rem;
-  }
-
-  .disclaimer {
-    background-color: #1A3F70;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    margin-top: 50px;
-  }
-</style>
 
 <h2>Book Your Flight</h2>
 
 <div class="booking-form">
-  <label for="departure">Departure Airport:</label>
-  <select id="departure">
-    <option value="">-- Select Departure --</option>
-    <!-- Populate with your airports -->
-  </select>
+    <label for="departure">Departure Airport (3-Letter IATA):</label>
+    <select id="departure">
+        <option value="">-- Select Departure --</option>
+    </select>
 
-  <label for="arrival">Arrival Airport:</label>
-  <select id="arrival">
-    <option value="">-- Select Arrival --</option>
-    <!-- Populate with your airports -->
-  </select>
+    <label for="arrival">Arrival Airport (3-Letter IATA):</label>
+    <select id="arrival">
+        <option value="">-- Select Arrival --</option>
+    </select>
 
-  <button onclick="calculateFlight()">Check Flight</button>
+    <button onclick="calculateFlight()">Check Flight</button>
 </div>
 
 <div id="results"></div>
 
 <script>
-  // Placeholder dataset for airports
-  const airportCoords = {
+    // --- START: PASTE YOUR AIRPORT DATA HERE ---
+    const airportCoords = {
   "FRA": [50.0379, 8.5622],
   "MUC": [48.3538, 11.7861],
   "ABV": [9.0060, 7.2636],
@@ -243,7 +267,6 @@
   "MSP": [44.8848, -93.2223],
   "YUL": [45.4576, -73.7492],
   "BOM": [19.0896, 72.8656],
-  "MUC": [48.3538, 11.7861],
   "FMO": [52.1347, 7.6856],
   "JMK": [36.3969, 25.4294],
   "NBO": [-1.3192, 36.9275],
@@ -307,235 +330,204 @@
   "YYZ": [43.6777, -79.6248],
   "TOS": [69.6828, 18.9181],
   "TRD": [63.4571, 10.9241],
-  "DOH": [25.2736, 51.6082],
-"DXB": [25.2532, 55.3657],
-"EBL": [36.1911, 44.0094],
-"EDI": [55.9500, -3.3725],
-"ERF": [50.9786, 11.0283],
-"FAO": [37.0146, -7.9659],
-"FLR": [43.8106, 11.2055],
-"GDN": [54.3779, 18.4667],
-"GVA": [46.2381, 6.1080],
-"GLA": [55.8719, -4.4331],
-"GOT": [57.6685, 11.9168],
-"GRZ": [47.0077, 15.4395],
-"HAM": [53.6331, 9.9882],
-"HAJ": [52.4613, 9.6856],
-"HEL": [60.3172, 24.9633],
-"HER": [35.3387, 25.1804],
-"HDF": [54.5833, 13.4000],
-"HKG": [22.3080, 113.9185],
-"IAH": [29.9844, -95.3414],
-"HYD": [17.2403, 78.4294],
-"IVL": [68.6072, 27.4058],
-"IBZ": [38.8723, 1.3733],
-"IST": [41.2620, 28.7440],
-"ADB": [38.3219, 27.1567],
-"JED": [21.6796, 39.1569],
-"JNB": [-26.1337, 28.2420],
-"KLX": [36.8983, 22.4994],
-"FKB": [48.7794, 8.0806],
-"KTW": [50.4740, 19.0800],
-"EFL": [38.1167, 20.5000],
-"KTT": [68.9631, 24.9358],
-"KGS": [36.8900, 27.2883],
-"KRK": [50.0777, 19.7849],
-"KAO": [65.9803, 29.2320],
-"KWI": [29.2266, 47.9683],
-"LOS": [6.5774, 3.3212],
-"SUF": [38.8981, 16.2422],
-"LCA": [34.8759, 33.6247],
-"LEJ": [51.4239, 12.2369],
-"LIS": [38.7742, -9.1342],
-"LNZ": [48.2333, 14.1878],
-"LHR": [51.4700, -0.4543],
-"LAX": [33.9416, -118.4085],
-"LAD": [-8.8583, 13.2317],
-"LUX": [49.6236, 6.2111],
-"LYS": [45.7256, 5.0811],
-"MAD": [40.4719, -3.5626],
-"SSG": [3.7500, 8.7833],
-"AGP": [36.6749, -4.4990],
-"MLA": [35.8575, 14.4775],
-"MAN": [53.3653, -2.2721],
-"MRS": [43.4356, 5.2157],
-"MEX": [19.4361, -99.0719],
-"MIA": [25.7959, -80.2870],
-"LIN": [45.4456, 9.2769],
-"MXP": [45.6300, 8.7231],
-"MSP": [44.8848, -93.2223],
-"YUL": [45.4706, -73.7408],
-"BOM": [19.0896, 72.8656],
-"FMO": [52.1347, 7.6847],
-"JMK": [36.3961, 25.4617],
-"NBO": [-1.3192, 36.9270],
-"NTE": [47.1286, -1.6011],
-"NAP": [40.8860, 14.2908],
-"NCL": [55.0375, -1.6917],
-"JFK": [40.6413, -73.7781],
-"EWR": [40.6895, -74.1745],
-"NCE": [43.6610, 7.2150],
-"NUE": [49.4989, 11.0780],
-"OLB": [40.8986, 9.5172],
-"KIX": [34.4347, 135.2441],
-"OSL": [60.1939, 11.1004],
-"PMO": [38.1758, 13.0911],
-"PMI": [39.5696, 2.7380],
-"PTY": [8.9733, -79.5556],
-"PFO": [34.6956, 32.4294],
-"CDG": [49.0097, 2.5479],
-"PHL": [39.8729, -75.2437],
-"PHC": [4.8642, 7.0493],
-"OPO": [41.2481, -8.6819],
-"POZ": [52.4218, 16.8267],
-"PRG": [50.1008, 14.2631],
-"PUY": [44.8931, 13.9221],
-"RDU": [35.8776, -78.7875],
-"KEF": [63.9850, -22.6056],
-"RHO": [36.4056, 28.0861],
-"RIX": [56.9231, 24.0923],
-"RJK": [45.2161, 14.5683],
-"GIG": [-22.8095, -43.2506],
-"RUH": [24.9576, 46.6989],
-"FCO": [41.8003, 12.2389],
-"RVN": [66.5039, 25.7292],
-"SZG": [47.7931, 13.0047],
-"SFO": [37.6188, -122.3750],
-"SJO": [9.9939, -84.2047],
-"SJC": [37.3639, -121.9289],
-"JTR": [36.4062, 25.4567],
-"SCQ": [42.8961, -8.4150],
-"SJJ": [43.8247, 18.3319],
-"GRU": [-23.4356, -46.4731],
-"SEA": [47.4502, -122.3088],
-"ICN": [37.4602, 126.4407],
-"SVQ": [37.4172, -5.8939],
-"PVG": [31.1443, 121.8083],
-"SIN": [1.3502, 103.9940],
-"SOF": [42.6951, 23.4066],
-"SPU": [43.5383, 16.2981],
-"SVG": [58.8763, 5.6378],
-"STL": [38.7487, -90.3700],
-"ARN": [59.6519, 17.9186],
-"SXB": [48.5381, 7.6283],
-"STR": [48.6899, 9.2219],
-"TLL": [59.4133, 24.8323],
-"IKA": [35.4161, 51.1522],
-"TLV": [32.0114, 34.8866],
-"SKG": [40.5194, 22.9708],
-"TIA": [41.4142, 19.7201],
-"TIV": [42.4040, 18.7230],
-"HND": [35.5494, 139.7798],
-"YYZ": [43.6777, -79.6248],
-"TOS": [69.6828, 18.9186],
-"TRD": [63.4570, 10.9230],
-"TUN": [36.8510, 10.2273],
-"VLC": [39.4897, -0.4819],
-"YVR": [49.1936, -123.1836],
-"VAR": [43.2076, 27.8251],
-"VCE": [45.5052, 12.3519],
-"VIE": [48.1103, 16.5697],
-"VNO": [54.6740, 25.2854],
-"WAW": [52.1657, 20.9671],
-"IAD": [38.9444, -77.4558],
-"GWT": [54.9136, 8.3475],
-"WRO": [51.1020, 17.0304],
-"WBG": [49.8106, 9.9425],
-"ZAD": [44.1086, 15.3467],
-"ZAG": [45.7420, 16.0680],
-"ZTH": [37.7500, 20.8842],
-"ZRH": [47.4581, 8.5492],
-"PER": [-31.9385, 115.9672]
-  };
+  "TUN": [36.8510, 10.2273],
+  "VLC": [39.4897, -0.4819],
+  "YVR": [49.1936, -123.1836],
+  "VAR": [43.2076, 27.8251],
+  "VCE": [45.5052, 12.3519],
+  "VIE": [48.1103, 16.5697],
+  "VNO": [54.6740, 25.2854],
+  "WAW": [52.1657, 20.9671],
+  "IAD": [38.9444, -77.4558],
+  "GWT": [54.9136, 8.3475],
+  "WRO": [51.1020, 17.0304],
+  "WBG": [49.8106, 9.9425],
+  "ZAD": [44.1086, 15.3467],
+  "ZAG": [45.7420, 16.0680],
+  "ZTH": [37.7500, 20.8842],
+  "ZRH": [47.4581, 8.5492],
+  "PER": [-31.9385, 115.9672]
+    };
 
-  const departureSelect = document.getElementById('departure');
-  const arrivalSelect = document.getElementById('arrival');
 
-  Object.keys(airportCoords).forEach(code => {
-    const option1 = document.createElement('option');
-    option1.value = code;
-    option1.textContent = code;
-    departureSelect.appendChild(option1);
+    const departureSelect = document.getElementById('departure');
+    const arrivalSelect = document.getElementById('arrival');
 
-    const option2 = document.createElement('option');
-    option2.value = code;
-    option2.textContent = code;
-    arrivalSelect.appendChild(option2);
-  });
+    // Function to populate dropdowns
+    function populateAirports() {
+        // Clear existing options
+        departureSelect.innerHTML = '<option value="">-- Select Departure --</option>';
+        arrivalSelect.innerHTML = '<option value="">-- Select Arrival --</option>';
+        
+        Object.keys(airportCoords).sort().forEach(code => {
+            const option1 = document.createElement('option');
+            option1.value = code;
+            option1.textContent = code;
+            departureSelect.appendChild(option1);
 
-  // Haversine formula to calculate distance
-  function getDistance(coord1, coord2) {
-    const R = 6371; // km
-    const dLat = (coord2[0]-coord1[0]) * Math.PI/180;
-    const dLon = (coord2[1]-coord1[1]) * Math.PI/180;
-    const a = Math.sin(dLat/2)**2 + Math.cos(coord1[0]*Math.PI/180) * Math.cos(coord2[0]*Math.PI/180) * Math.sin(dLon/2)**2;
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-    return R * c;
-  }
-
-  // Suggest plane based on distance (Lufthansa fleet)
-  function suggestPlane(distance) {
-    if(distance < 1000) return "CRJ-700 / A320 / A321 / A319";
-    if(distance < 6000) return "A320 / A321 / A319";
-    if(distance < 8000) return "A340 / A330 / 777 / 787 / A350 / 747 / A380 ";
-    if(distance < 10000) return "A330 / 777 / 787-9 / A350 / 747 / A380";
-    if(distance < 14000) return "777 / 787-9 / A350 / 747 / A380";
-    if(distance < 16500) return "A350-1000XWB 240 seat configuration";
-    return "Too far. Choose another route.";
-  }
-
-  // Estimate flight time based on aircraft type
-  function estimateTime(distance, plane) {
-    let speed = 850; // default km/h
-    if(plane.includes("A350") || plane.includes("777") || plane.includes("787")) speed = 900;
-    return distance / speed;
-  }
-
-  function formatTime(date) {
-    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  }
-
-  function formatUTC(date) {
-    return date.toUTCString().match(/\d{2}:\d{2}/)[0] + " UTC";
-  }
-
-  function calculateFlight() {
-    const dep = departureSelect.value;
-    const arr = arrivalSelect.value;
-    if(!dep || !arr) {
-      alert("Please select both airports!");
-      return;
-    }
-    if(dep === arr) {
-      alert("Departure and arrival cannot be the same!");
-      return;
+            const option2 = document.createElement('option');
+            option2.value = code;
+            option2.textContent = code;
+            arrivalSelect.appendChild(option2);
+        });
     }
 
-    const distance = getDistance(airportCoords[dep], airportCoords[arr]);
-    const plane = suggestPlane(distance);
-    const flightHours = estimateTime(distance, plane);
+    // Call populateAirports only if data exists
+    if (Object.keys(airportCoords).length > 0) {
+        populateAirports();
+    } else {
+        console.error("Airport data is empty. Please paste the airportCoords object into the script block.");
+    }
 
-    const now = new Date();
-    const departureLocal = now;
-    const arrivalLocal = new Date(now.getTime() + flightHours*3600000);
 
-    document.getElementById('results').innerHTML = `
-      <p>Distance: ${distance.toFixed(1)} km</p>
-      <p>Suggested Plane: ${plane}</p>
-      <p>Estimated Flight Time: ~${Math.floor(flightHours)}h ${Math.round((flightHours%1)*60)}m</p>
-      <p>Takeoff (Your Local Time): <strong>${formatTime(departureLocal)}</strong></p>
-      <p>Landing (Your Local Time): <strong>${formatTime(arrivalLocal)}</strong></p>
-      <p>Takeoff (UTC): <strong>${formatUTC(departureLocal)}</strong></p>
-      <p>Landing (UTC): <strong>${formatUTC(arrivalLocal)}</strong></p>
-    `;
-  }
+    // Haversine formula to calculate distance
+    function getDistance(coord1, coord2) {
+        const R = 6371; // km
+        const dLat = (coord2[0] - coord1[0]) * Math.PI / 180;
+        const dLon = (coord2[1] - coord1[1]) * Math.PI / 180;
+        const a = Math.sin(dLat / 2) ** 2 + Math.cos(coord1[0] * Math.PI / 180) * Math.cos(coord2[0] * Math.PI / 180) * Math.sin(dLon / 2) ** 2;
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        return R * c;
+    }
+
+    // Suggest plane based on distance (Lufthansa fleet)
+    function suggestPlane(distance) {
+        if(distance < 1000) return "CRJ-700 / A319 / A320 / A321";
+        if(distance < 6000) return "A319 / A320 / A321 / A330";
+        if(distance < 8000) return "A330 / A340 / A350 / 787";
+        if(distance < 10000) return "A330 / A350 / 747 / 777 / 787";
+        if(distance < 14000) return "A350 / 747 / 777 / A380";
+        if(distance < 16500) return "A350-1000XWB (Extended Range Routes)";
+        return "Too far. Choose another route.";
+    }
+
+    // Estimate flight time based on detailed phases (Climb, Cruise, Descent)
+    function estimateTime(distance, plane) {
+        // --- Configuration Constants ---
+        const R_KTS_TO_KMH = 1.852; // 1 knot = 1.852 km/h
+        const R_FT_TO_KM = 0.0003048; // 1 ft = 0.0003048 km
+
+        // Phase 1: Climb (with 10,000 ft speed restriction)
+        const SPEED_BELOW_10K_KTS = 250;
+        const SPEED_BELOW_10K_KMH = SPEED_BELOW_10K_KTS * R_KTS_TO_KMH; // ~463 km/h
+        const ALTITUDE_10K_KM = 10000 * R_FT_TO_KM; // 3.048 km
+        const CLIMB_RATE_KMH = (1000 * R_FT_TO_KM) * 60; // 1000 ft/min to km/h (~18.288 km/h)
+
+        // Phase 2: Cruise
+        let cruiseSpeed = 850; // default km/h (short/medium haul)
+        let cruiseAltitude = 7; // default km (approx 23,000 ft)
+        
+        if (distance > 4000) { // Long-haul flights
+            cruiseSpeed = 900;
+            cruiseAltitude = 10; // approx 32,800 ft
+        }
+
+        // Phase 3: Descent
+        const DESCENT_RATE_KMH = (1500 * R_FT_TO_KM) * 60; // 1500 ft/min to km/h (~27.432 km/h)
+        const AVG_DESCENT_SPEED_KMH = 550; // Average speed during descent
+        const AVG_CLIMB_ABOVE_10K_KMH = 600; // Average speed during climb above 10K
+        const ADDED_TIME_FOR_LOW_SPEED = 0.3; // 18 minutes (0.3 hours) for taxi, takeoff, and final approach/landing (acceleration/deceleration phases)
+
+        // ----------------------------------------------------
+
+        // 1. CLIMB TIME
+        // Time to reach 10,000 ft
+        const timeTo10K = ALTITUDE_10K_KM / CLIMB_RATE_KMH;
+        // Distance covered during initial climb at restricted speed (250 kts)
+        const distTo10K = timeTo10K * SPEED_BELOW_10K_KMH;
+
+        // Remaining altitude to reach cruise (if cruise is above 10K)
+        const remainingClimbAlt = Math.max(0, cruiseAltitude - ALTITUDE_10K_KM);
+        
+        // Time and distance for climb above 10K
+        const timeAbove10K = remainingClimbAlt / CLIMB_RATE_KMH;
+        const distAbove10K = timeAbove10K * AVG_CLIMB_ABOVE_10K_KMH;
+
+        const totalClimbTime = timeTo10K + timeAbove10K;
+        const totalClimbDist = distTo10K + distAbove10K;
+
+        // 2. DESCENT TIME
+        const totalDescentTime = cruiseAltitude / DESCENT_RATE_KMH;
+        const totalDescentDist = totalDescentTime * AVG_DESCENT_SPEED_KMH;
+
+        // 3. CRUISE TIME
+        const cruiseDist = distance - totalClimbDist - totalDescentDist;
+        let cruiseTime = 0;
+
+        if (cruiseDist > 0) {
+            cruiseTime = cruiseDist / cruiseSpeed;
+        } else {
+            // Very short flight: If climb/descent distance exceeds total distance, use a simple average speed
+            const avgSpeed = (SPEED_BELOW_10K_KMH + cruiseSpeed) / 2;
+            return (distance / avgSpeed) + ADDED_TIME_FOR_LOW_SPEED;
+        }
+
+        // 4. TOTAL TIME
+        return totalClimbTime + cruiseTime + totalDescentTime + ADDED_TIME_FOR_LOW_SPEED;
+    }
+
+
+    function formatTime(date) {
+        return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    }
+
+    function formatUTC(date) {
+        // Custom function to ensure consistency across browsers
+        const hours = ('0' + date.getUTCHours()).slice(-2);
+        const minutes = ('0' + date.getUTCMinutes()).slice(-2);
+        return `${hours}:${minutes} UTC`;
+    }
+
+    function calculateFlight() {
+        const dep = departureSelect.value;
+        const arr = arrivalSelect.value;
+        if(!dep || !arr) {
+            alert("Please select both airports!");
+            return;
+        }
+        if(dep === arr) {
+            alert("Departure and arrival cannot be the same!");
+            return;
+        }
+        if (!airportCoords[dep] || !airportCoords[arr]) {
+             alert("Airport coordinates missing for one or both selections. Check your pasted data.");
+            return;
+        }
+
+        const distance = getDistance(airportCoords[dep], airportCoords[arr]);
+        const plane = suggestPlane(distance);
+        const flightHours = estimateTime(distance, plane);
+        
+        // Check for "Too far" return from suggestPlane
+        if (plane.includes("Too far")) {
+             document.getElementById('results').innerHTML = `<p><strong>Error:</strong> ${plane}</p>`;
+             return;
+        }
+
+        const now = new Date();
+        const departureLocal = now;
+        const arrivalLocal = new Date(now.getTime() + flightHours * 3600000); // 3,600,000 milliseconds per hour
+
+        document.getElementById('results').innerHTML = `
+            <h3>Flight Details</h3>
+            <p>Route Distance: <strong>${distance.toFixed(1)} km</strong></p>
+            <p>Suggested Aircraft: <strong>${plane}</strong></p>
+            <p>Estimated Flight Time: <strong>~${Math.floor(flightHours)}h ${Math.round((flightHours % 1) * 60)}m</strong></p>
+            <hr>
+            <h4>Estimated Departure/Arrival</h4>
+            <p>Takeoff (Your Local Time): <strong>${formatTime(departureLocal)}</strong></p>
+            <p>Landing (Your Local Time): <strong>${formatTime(arrivalLocal)}</strong></p>
+            <p>Takeoff (UTC): <strong>${formatUTC(departureLocal)}</strong></p>
+            <p>Landing (UTC): <strong>${formatUTC(arrivalLocal)}</strong></p>
+        `;
+    }
 </script>
 
 <section class="disclaimer">
-  <p>
-    <strong>Disclaimer:</strong> Lufthansa Airlines is a virtual GeoFS airline and does not represent the real-life Lufthansa Group. 
-    This website and content are intended for entertainment and educational purposes within the virtual flight simulator community.
-  </p>
+    <p>
+        <strong>Disclaimer:</strong> Lufthansa Airlines is a virtual GeoFS airline and does not represent the real-life Lufthansa Group. 
+        This website and content are intended for entertainment and educational purposes within the virtual flight simulator community.
+    </p>
 </section>
 
 </body>
