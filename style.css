@@ -670,66 +670,84 @@ nav ul.nav-links li a:hover {
     margin: 2px 0;
 }
 
-/* ===================== BOOKING PAGE STYLES ===================== */
+/* --- BOOKING PAGE: Centering Heading --- */
+/* Target the new class added to the h2 */
+.centered-heading {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    color: #1A3F70;
+    font-size: 2.5rem; /* Match fleet h2 size */
+}
 
-/* Main form container styling (Overriding previous block if necessary) */
+
+/* --- BOOKING PAGE: Form Layout and Styling --- */
+/* Main form container (Sets up the side-by-side layout on wider screens) */
 .booking-form {
-    /* Reset display to a flexible layout for better control */
-    display: grid;
-    /* Two columns: 1 for labels, 1 for inputs, or use a flexible approach */
-    grid-template-columns: 1fr; /* Default to single column on small screens */
-    gap: 15px; /* Space between rows */
-    max-width: 400px;
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-between;
+    
+    /* Common styling */
+    max-width: 800px; 
     margin: 30px auto;
     padding: 25px; 
     border: 1px solid #ccc;
     border-radius: 10px; 
     background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); 
+    gap: 15px 30px; 
 }
 
-/* Ensure labels and selects are full width inside the grid */
+/* Flex item (Label + Select/Input) sizing for large screens */
+.booking-form > * {
+    width: calc(50% - 15px); 
+    min-width: 300px; 
+    flex-grow: 1; 
+}
+
 .booking-form label {
+    display: block; 
     font-weight: 600; 
     color: #1A3F70;
-    margin-bottom: -5px; /* Pull the label closer to the input */
+    margin-bottom: 5px; 
 }
 
 .booking-form select, 
 .booking-form button {
-    /* Ensure sizing is consistent */
     width: 100%;
     padding: 12px; 
     font-size: 1rem;
-    border: 1px solid #1A3F70; /* Use Lufthansa Blue for inputs */
+    border: 1px solid #1A3F70; 
     border-radius: 6px; 
     box-sizing: border-box; 
-    appearance: none; /* Hide default arrow in some browsers */
     background-color: #fff;
     cursor: pointer;
 }
 
-/* Style for the button (Using Lufthansa Yellow) */
+/* Button styling (Ensure full width even on desktop) */
 .booking-form button {
-    grid-column: 1 / -1; /* Make the button span the entire width */
+    width: 100%; 
     background-color: #FFD700;
     color: #1A3F70; 
     font-weight: 700;
     margin-top: 10px;
     transition: background-color 0.3s, transform 0.1s;
+    order: 10; /* Ensures the button always appears last */
 }
 
 .booking-form button:hover {
     background-color: #ffc400;
 }
 
-/* Results Display Styling */
+
+/* --- BOOKING PAGE: Results Box Styling --- */
 #results {
-    max-width: 400px;
+    max-width: 800px; 
     margin: 20px auto;
-    padding: 20px;
+    padding: 25px;
     border: 2px solid #1A3F70;
-    border-radius: 8px;
+    border-radius: 10px;
     background-color: #e6f0f5; 
 }
         
@@ -744,32 +762,11 @@ nav ul.nav-links li a:hover {
     color: #000;
 }
 
-/* Responsive adjustment for larger screens (if you want two columns) 
-   Since the original image suggested side-by-side, we can add this: */
-@media screen and (min-width: 600px) {
-    .booking-form {
-        /* This creates a 2-column layout (Label/Select pair for each row) */
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        max-width: 800px; /* Wider container for two columns */
-        gap: 20px 30px; /* Increased horizontal gap */
-    }
 
-    /* Make the select groups split the available space */
-    .booking-form label,
-    .booking-form select {
-        width: 100%; /* Default to full width of its half-container */
-    }
-
-    /* Wrap each label/select pair in a container for side-by-side layout */
+/* --- RESPONSIVENESS for small screens (Ensures stacking on phones) --- */
+@media screen and (max-width: 700px) {
     .booking-form > * {
-        width: calc(50% - 15px); /* Forces them to be side-by-side on desktop */
-        min-width: 300px; /* Minimum size to ensure readability */
-    }
-
-    .booking-form button {
-        width: 100%; /* Button still spans full width */
-        margin-top: 0;
+        width: 100%; 
+        min-width: 100%; 
     }
 }
