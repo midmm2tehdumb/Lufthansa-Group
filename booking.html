@@ -4,139 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lufthansa Airlines - Virtual Booking</title>
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* General Body and Fonts */
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f2f5;
-            color: #333;
-        }
-
-        /* Navigation Bar */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #1A3F70; /* Lufthansa Dark Blue */
-            padding: 15px 5%;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .logo {
-            color: white;
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 25px;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #FFD700; /* Lufthansa Yellow */
-        }
-
-        /* Centering the main heading */
-        h2 {
-            text-align: center;
-            margin-top: 30px;
-            color: #1A3F70;
-        }
-
-        /* Booking form container */
-        .booking-form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px; 
-            max-width: 400px;
-            margin: 30px auto;
-            padding: 25px; 
-            border: 1px solid #ccc;
-            border-radius: 10px; 
-            background-color: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); 
-        }
-
-        .booking-form label {
-            font-weight: 600; 
-            color: #1A3F70;
-        }
-
-        .booking-form select, .booking-form button {
-            padding: 12px; 
-            font-size: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 6px; 
-            box-sizing: border-box; 
-        }
-        
-        .booking-form button {
-            background-color: #FFD700;
-            color: #1A3F70; 
-            cursor: pointer;
-            font-weight: 700;
-            margin-top: 10px;
-            transition: background-color 0.3s, transform 0.1s;
-        }
-        
-        .booking-form button:hover {
-            background-color: #ffc400;
-        }
-
-        .booking-form button:active {
-            transform: scale(0.99);
-        }
-
-        /* Results Display */
-        #results {
-            max-width: 400px;
-            margin: 20px auto;
-            padding: 20px;
-            border: 2px solid #1A3F70;
-            border-radius: 8px;
-            background-color: #e6f0f5; 
-        }
-        
-        #results h3, #results h4 {
-            color: #1A3F70;
-            margin-top: 0;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 5px;
-        }
-        
-        #results p strong {
-            color: #000;
-        }
-
-        /* Disclaimer Section */
-        .disclaimer {
-            max-width: 80%;
-            margin: 40px auto;
-            padding: 15px;
-            text-align: center;
-            font-size: 0.85rem;
-            color: #666;
-            border-top: 1px solid #ccc;
-        }
-        .disclaimer strong {
-            color: #444;
-        }
-    </style>
 </head>
 
 <body>
@@ -153,23 +22,25 @@
     </ul>
 </nav>
 
-<h2>Book Your Flight</h2>
+<main>
+    <h2>Book Your Flight</h2>
 
-<div class="booking-form">
-    <label for="departure">Departure Airport (3-Letter IATA):</label>
-    <select id="departure">
-        <option value="">-- Select Departure --</option>
-    </select>
+    <div class="booking-form">
+        <label for="departure">Departure Airport (3-Letter IATA):</label>
+        <select id="departure">
+            <option value="">-- Select Departure --</option>
+        </select>
 
-    <label for="arrival">Arrival Airport (3-Letter IATA):</label>
-    <select id="arrival">
-        <option value="">-- Select Arrival --</option>
-    </select>
+        <label for="arrival">Arrival Airport (3-Letter IATA):</label>
+        <select id="arrival">
+            <option value="">-- Select Arrival --</option>
+        </select>
 
-    <button onclick="calculateFlight()">Check Flight</button>
-</div>
+        <button onclick="calculateFlight()">Check Flight</button>
+    </div>
 
-<div id="results"></div>
+    <div id="results"></div>
+</main>
 
 <section class="disclaimer">
     <p>
@@ -179,7 +50,7 @@
 </section>
 
 <script>
-    // --- START: AIRPORT DATA ---
+    // --- START: AIRPORT DATA (Unchanged) ---
     const airportCoords = {
         "FRA": [50.0379, 8.5622],
         "MUC": [48.3538, 11.7861],
@@ -437,26 +308,24 @@
         return "Too far. Choose another route.";
     }
 
-    // Estimate flight time with aggressive factors for simulation/block time
+    // Estimate flight time with aggressive factors for simulation/block time (Unchanged Logic)
     function estimateTime(distance, depCoord, arrCoord, plane) {
         // --- Configuration Constants ---
         const R_KTS_TO_KMH = 1.852; 
         const R_FT_TO_KM = 0.0003048;
 
         // --- REALISM FACTORS (Increased for desired longer flight time) ---
-        // 1. ROUTING FACTOR: Accounts for non-Great Circle routing (Airways, ATC, etc.)
-        const ROUTING_FACTOR = 1.08; // Increased from 1.05: Adds 8% to the Great Circle Distance
+        const ROUTING_FACTOR = 1.08; 
         const adjustedDistance = distance * ROUTING_FACTOR; 
 
-        // 2. WIND FACTOR: Accounts for prevailing headwinds/tailwinds on long routes.
         const isWestbound = depCoord[1] > arrCoord[1]; 
         let WIND_FACTOR = 1.0; 
 
         if (adjustedDistance > 4000) { 
             if (isWestbound) {
-                WIND_FACTOR = 1.12; // Increased from 1.08: Adds 12% time for strong headwinds (Westbound/Block Time)
+                WIND_FACTOR = 1.12; 
             } else {
-                WIND_FACTOR = 0.95; // Subtracts 5% time for tailwind (Eastbound)
+                WIND_FACTOR = 0.95; 
             }
         }
         // ----------------------------------------------------
@@ -468,11 +337,11 @@
         const CLIMB_RATE_KMH = (1000 * R_FT_TO_KM) * 60; 
 
         // Phase 2: Cruise
-        let cruiseSpeed = 830; // default km/h (short/medium haul)
+        let cruiseSpeed = 830; 
         let cruiseAltitude = 7; 
         
         if (adjustedDistance > 4000) { 
-            cruiseSpeed = 880; // Decreased from 900 km/h: Slower cruise for block time padding
+            cruiseSpeed = 880; 
             cruiseAltitude = 10.5; 
         }
 
@@ -480,7 +349,7 @@
         const DESCENT_RATE_KMH = (1500 * R_FT_TO_KM) * 60; 
         const AVG_DESCENT_SPEED_KMH = 550; 
         const AVG_CLIMB_ABOVE_10K_KMH = 600; 
-        const ADDED_TIME_FOR_LOW_SPEED = 0.4167; // Increased: 25 minutes (0.4167 hours) for taxi, final approach, and holding buffer
+        const ADDED_TIME_FOR_LOW_SPEED = 0.4167; // 25 minutes buffer
 
         // ----------------------------------------------------
 
@@ -506,7 +375,6 @@
         if (cruiseDist > 0) {
             cruiseTime = cruiseDist / cruiseSpeed;
         } else {
-            // Very short flight: use a simple average speed on adjusted distance
             const avgSpeed = (SPEED_BELOW_10K_KMH + cruiseSpeed) / 2;
             let time = (adjustedDistance / avgSpeed) + ADDED_TIME_FOR_LOW_SPEED;
             return time * WIND_FACTOR;
@@ -515,7 +383,6 @@
         // 4. TOTAL TIME
         let finalTime = totalClimbTime + cruiseTime + totalDescentTime + ADDED_TIME_FOR_LOW_SPEED;
         
-        // Apply the wind/block factor to the final calculated time
         return finalTime * WIND_FACTOR;
     }
 
@@ -557,26 +424,24 @@
             return;
         }
 
-        // Pass coordinates for wind factor calculation
         const flightHours = estimateTime(distance, depCoord, arrCoord, plane);
         
         const now = new Date();
         const departureLocal = now;
-        const arrivalLocal = new Date(now.getTime() + flightHours * 3600000); // 3,600,000 milliseconds per hour
+        const arrivalLocal = new Date(now.getTime() + flightHours * 3600000); 
 
+        // Output results (Removed the specific fine-print disclaimer)
         document.getElementById('results').innerHTML = `
-            <h3>Flight Details (Block Time Model)</h3>
+            <h3>Flight Details</h3>
             <p>Route Distance (Great Circle): <strong>${distance.toFixed(1)} km</strong></p>
             <p>Suggested Aircraft: <strong>${plane}</strong></p>
             <p>Estimated Flight Time: <strong>~${Math.floor(flightHours)}h ${Math.round((flightHours % 1) * 60)}m</strong></p>
             <hr>
-            <h4>Estimated Departure/Arrival</h4>
+            <h4>Estimated Departure/Arrival (Simulated)</h4>
             <p>Takeoff (Your Local Time): <strong>${formatTime(departureLocal)}</strong></p>
             <p>Landing (Your Local Time): <strong>${formatTime(arrivalLocal)}</strong></p>
             <p>Takeoff (UTC): <strong>${formatUTC(departureLocal)}</strong></p>
             <p>Landing (UTC): <strong>${formatUTC(arrivalLocal)}</strong></p>
-            <hr>
-            <p style="font-size: 0.8rem;">* This calculation includes an aggressive buffer for routing, headwinds, and ground delays (Block Time) to ensure a realistic virtual flight duration.*</p>
         `;
     }
 </script>
