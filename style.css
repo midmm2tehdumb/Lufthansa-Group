@@ -670,3 +670,106 @@ nav ul.nav-links li a:hover {
     margin: 2px 0;
 }
 
+/* ===================== BOOKING PAGE STYLES ===================== */
+
+/* Main form container styling (Overriding previous block if necessary) */
+.booking-form {
+    /* Reset display to a flexible layout for better control */
+    display: grid;
+    /* Two columns: 1 for labels, 1 for inputs, or use a flexible approach */
+    grid-template-columns: 1fr; /* Default to single column on small screens */
+    gap: 15px; /* Space between rows */
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 25px; 
+    border: 1px solid #ccc;
+    border-radius: 10px; 
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); 
+}
+
+/* Ensure labels and selects are full width inside the grid */
+.booking-form label {
+    font-weight: 600; 
+    color: #1A3F70;
+    margin-bottom: -5px; /* Pull the label closer to the input */
+}
+
+.booking-form select, 
+.booking-form button {
+    /* Ensure sizing is consistent */
+    width: 100%;
+    padding: 12px; 
+    font-size: 1rem;
+    border: 1px solid #1A3F70; /* Use Lufthansa Blue for inputs */
+    border-radius: 6px; 
+    box-sizing: border-box; 
+    appearance: none; /* Hide default arrow in some browsers */
+    background-color: #fff;
+    cursor: pointer;
+}
+
+/* Style for the button (Using Lufthansa Yellow) */
+.booking-form button {
+    grid-column: 1 / -1; /* Make the button span the entire width */
+    background-color: #FFD700;
+    color: #1A3F70; 
+    font-weight: 700;
+    margin-top: 10px;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.booking-form button:hover {
+    background-color: #ffc400;
+}
+
+/* Results Display Styling */
+#results {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 2px solid #1A3F70;
+    border-radius: 8px;
+    background-color: #e6f0f5; 
+}
+        
+#results h3, #results h4 {
+    color: #1A3F70;
+    margin-top: 0;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+}
+        
+#results p strong {
+    color: #000;
+}
+
+/* Responsive adjustment for larger screens (if you want two columns) 
+   Since the original image suggested side-by-side, we can add this: */
+@media screen and (min-width: 600px) {
+    .booking-form {
+        /* This creates a 2-column layout (Label/Select pair for each row) */
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        max-width: 800px; /* Wider container for two columns */
+        gap: 20px 30px; /* Increased horizontal gap */
+    }
+
+    /* Make the select groups split the available space */
+    .booking-form label,
+    .booking-form select {
+        width: 100%; /* Default to full width of its half-container */
+    }
+
+    /* Wrap each label/select pair in a container for side-by-side layout */
+    .booking-form > * {
+        width: calc(50% - 15px); /* Forces them to be side-by-side on desktop */
+        min-width: 300px; /* Minimum size to ensure readability */
+    }
+
+    .booking-form button {
+        width: 100%; /* Button still spans full width */
+        margin-top: 0;
+    }
+}
