@@ -162,26 +162,50 @@
 
         // --- REALISM FACTORS (Tuned for 7h 30m - 7h 40m) ---
         
-        // 1. ROUTING FACTOR: Accounts for non-Great Circle routing (Airways, ATC, etc.)
-        const ROUTING_FACTOR = 1.10; // 10% increase
+// 1. ROUTING FACTOR: Accounts for non-Great Circle routing (Airways, ATC, etc.)
+        const ROUTING_FACTOR = 1.08; // Retaining 8% for airways/ATC
         const adjustedDistance = distance * ROUTING_FACTOR; 
 
         // 2. WIND FACTOR: Accounts for strong headwinds/tailwinds on long routes.
-        const isWestbound = depCoord[1] > arrCoord[1]; 
+        
+        // Determine the general direction based on longitude change
+        const lonDifference = depCoord[1] - arrCoord[1];
+        const latDifference = depCoord[0] - arrCoord[0];
+        const isWestbound = lonDifference > 0; // Departure longitude > Arrival longitude
+        const isEastbound = lonDifference < 0; 
+        
         let WIND_FACTOR = 1.0; 
-
+        
+        // Threshold for long-haul Wind Factor application (e.g., transatlantic/intercontinental)
         if (adjustedDistance > 4500) { 
-            if (isWestbound) {
-                // REDUCED to hit the 7h 30m - 40m target (This is the key change)
-                WIND_FACTOR = 1.10; 
-            } else {
-                WIND_FACTOR = 0.95; // Less tailwind benefit
+            // ----------------------------------------------------
+            // A. WESTBOUND (e.g., FRA to JFK) - Strong Headwind Penalty
+            // We use the 1.08 factor you set previously for ~15-20 min padding
+            if (isWestbound && Math.abs(lonDifference) > 10) { // Check for significant East-West travel
+                WIND_FACTOR = 1.08; 
+            } 
+            
+            // B. EASTBOUND (e.g., JFK to FRA) - Tailwind Benefit (Less padding needed)
+            // Use a factor less than 1.0 to reflect faster time, requiring less block time padding.
+            else if (isEastbound && Math.abs(lonDifference) > 10) {
+                WIND_FACTOR = 0.94; // 6% time reduction due to Jet Stream (requires less block time padding)
             }
-        }
+            
+            // C. NORTH/SOUTH (e.g., FRA to CPT, or LAX to YVR) - Neutral Wind
+            // Apply a minor penalty, mainly accounting for variable crosswinds, not the main jet stream.
+            else { 
+                WIND_FACTOR = 1.02; // Minor 2% penalty for general crosswinds/unpredictability
+            }
+            // ----------------------------------------------------
+        } 
+        
+        // 3. LOW SPEED/GROUND TIME: Accounts for taxi, approach, and holding.
+        const ADDED_TIME_FOR_LOW_SPEED = 0.3; // 18 minutes fixed buffer (unchanged)
+        //...
         
         // 3. LOW SPEED/GROUND TIME: Accounts for taxi, approach, and holding.
         // REDUCED to 24 minutes to hit the target block time
-        const ADDED_TIME_FOR_LOW_SPEED = 0.4; // 0.4 hours = 24 minutes fixed buffer
+        const ADDED_TIME_FOR_LOW_SPEED = 0.3; // 0.3 hours = 18 minutes fixed buffer
 
         // Phase 2: Cruise Speed (Conservative for simulation)
         let cruiseSpeed = 820; // default km/h (short/medium haul)
