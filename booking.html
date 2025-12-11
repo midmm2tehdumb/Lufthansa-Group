@@ -62,32 +62,32 @@
         .booking-form {
             display: flex;
             flex-direction: column;
-            gap: 15px; /* Increased gap for better spacing */
+            gap: 15px; 
             max-width: 400px;
             margin: 30px auto;
-            padding: 25px; /* Increased padding */
+            padding: 25px; 
             border: 1px solid #ccc;
-            border-radius: 10px; /* Softer edges */
+            border-radius: 10px; 
             background-color: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Subtle lift */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); 
         }
 
         .booking-form label {
-            font-weight: 600; /* Slightly heavier font for labels */
+            font-weight: 600; 
             color: #1A3F70;
         }
 
         .booking-form select, .booking-form button {
-            padding: 12px; /* Increased padding */
+            padding: 12px; 
             font-size: 1rem;
             border: 1px solid #ccc;
-            border-radius: 6px; /* Match form container */
-            box-sizing: border-box; /* Ensures padding doesn't widen elements */
+            border-radius: 6px; 
+            box-sizing: border-box; 
         }
         
         .booking-form button {
             background-color: #FFD700;
-            color: #1A3F70; /* Text color on button */
+            color: #1A3F70; 
             cursor: pointer;
             font-weight: 700;
             margin-top: 10px;
@@ -109,7 +109,7 @@
             padding: 20px;
             border: 2px solid #1A3F70;
             border-radius: 8px;
-            background-color: #e6f0f5; /* Light blue background */
+            background-color: #e6f0f5; 
         }
         
         #results h3, #results h4 {
@@ -437,26 +437,24 @@
         return "Too far. Choose another route.";
     }
 
-    // Estimate flight time based on detailed phases (Climb, Cruise, Descent)
+    // Estimate flight time with aggressive factors for simulation/block time
     function estimateTime(distance, depCoord, arrCoord, plane) {
         // --- Configuration Constants ---
         const R_KTS_TO_KMH = 1.852; 
         const R_FT_TO_KM = 0.0003048;
 
-        // --- REALISM FACTORS (Adjusted for better accuracy on long routes) ---
+        // --- REALISM FACTORS (Increased for desired longer flight time) ---
         // 1. ROUTING FACTOR: Accounts for non-Great Circle routing (Airways, ATC, etc.)
-        const ROUTING_FACTOR = 1.05; // Adds 5% to the Great Circle Distance
+        const ROUTING_FACTOR = 1.08; // Increased from 1.05: Adds 8% to the Great Circle Distance
         const adjustedDistance = distance * ROUTING_FACTOR; 
 
         // 2. WIND FACTOR: Accounts for prevailing headwinds/tailwinds on long routes.
-        // A simple proxy: check if the flight is generally East-to-West (Westbound flights often have headwinds).
-        // If departure longitude is > arrival longitude (flying West/Northwest across the Atlantic/Asia)
         const isWestbound = depCoord[1] > arrCoord[1]; 
         let WIND_FACTOR = 1.0; 
 
-        if (adjustedDistance > 4000) { // Only apply for long-haul routes
+        if (adjustedDistance > 4000) { 
             if (isWestbound) {
-                WIND_FACTOR = 1.08; // Adds 8% time (e.g., 40-50 min extra for 7-hour flight)
+                WIND_FACTOR = 1.12; // Increased from 1.08: Adds 12% time for strong headwinds (Westbound/Block Time)
             } else {
                 WIND_FACTOR = 0.95; // Subtracts 5% time for tailwind (Eastbound)
             }
@@ -467,22 +465,22 @@
         const SPEED_BELOW_10K_KTS = 250;
         const SPEED_BELOW_10K_KMH = SPEED_BELOW_10K_KTS * R_KTS_TO_KMH; 
         const ALTITUDE_10K_KM = 10000 * R_FT_TO_KM; 
-        const CLIMB_RATE_KMH = (1000 * R_FT_TO_KM) * 60; // 1000 ft/min 
+        const CLIMB_RATE_KMH = (1000 * R_FT_TO_KM) * 60; 
 
         // Phase 2: Cruise
-        let cruiseSpeed = 850; // default km/h (short/medium haul)
-        let cruiseAltitude = 7; // default km (approx 23,000 ft)
+        let cruiseSpeed = 830; // default km/h (short/medium haul)
+        let cruiseAltitude = 7; 
         
-        if (adjustedDistance > 4000) { // Long-haul flights
-            cruiseSpeed = 900;
-            cruiseAltitude = 10.5; // approx 34,500 ft (Slightly higher cruise altitude)
+        if (adjustedDistance > 4000) { 
+            cruiseSpeed = 880; // Decreased from 900 km/h: Slower cruise for block time padding
+            cruiseAltitude = 10.5; 
         }
 
         // Phase 3: Descent
-        const DESCENT_RATE_KMH = (1500 * R_FT_TO_KM) * 60; // 1500 ft/min
+        const DESCENT_RATE_KMH = (1500 * R_FT_TO_KM) * 60; 
         const AVG_DESCENT_SPEED_KMH = 550; 
         const AVG_CLIMB_ABOVE_10K_KMH = 600; 
-        const ADDED_TIME_FOR_LOW_SPEED = 0.3; // 18 minutes (0.3 hours) for taxi, takeoff, and final approach/landing
+        const ADDED_TIME_FOR_LOW_SPEED = 0.4167; // Increased: 25 minutes (0.4167 hours) for taxi, final approach, and holding buffer
 
         // ----------------------------------------------------
 
@@ -517,7 +515,7 @@
         // 4. TOTAL TIME
         let finalTime = totalClimbTime + cruiseTime + totalDescentTime + ADDED_TIME_FOR_LOW_SPEED;
         
-        // Apply the wind factor to the final calculated time
+        // Apply the wind/block factor to the final calculated time
         return finalTime * WIND_FACTOR;
     }
 
@@ -527,7 +525,6 @@
     }
 
     function formatUTC(date) {
-        // Custom function to ensure consistency
         const hours = ('0' + date.getUTCHours()).slice(-2);
         const minutes = ('0' + date.getUTCMinutes()).slice(-2);
         return `${hours}:${minutes} UTC`;
@@ -555,7 +552,6 @@
         const distance = getDistance(depCoord, arrCoord);
         const plane = suggestPlane(distance);
         
-        // Check for "Too far" return
         if (plane.includes("Too far")) {
             document.getElementById('results').innerHTML = `<p><strong>Error:</strong> ${plane}</p>`;
             return;
@@ -569,8 +565,8 @@
         const arrivalLocal = new Date(now.getTime() + flightHours * 3600000); // 3,600,000 milliseconds per hour
 
         document.getElementById('results').innerHTML = `
-            <h3>Flight Details (Adjusted Model)</h3>
-            <p>Route Distance: <strong>${distance.toFixed(1)} km</strong> (Great Circle)</p>
+            <h3>Flight Details (Block Time Model)</h3>
+            <p>Route Distance (Great Circle): <strong>${distance.toFixed(1)} km</strong></p>
             <p>Suggested Aircraft: <strong>${plane}</strong></p>
             <p>Estimated Flight Time: <strong>~${Math.floor(flightHours)}h ${Math.round((flightHours % 1) * 60)}m</strong></p>
             <hr>
@@ -580,7 +576,7 @@
             <p>Takeoff (UTC): <strong>${formatUTC(departureLocal)}</strong></p>
             <p>Landing (UTC): <strong>${formatUTC(arrivalLocal)}</strong></p>
             <hr>
-            <p style="font-size: 0.8rem;">* Calculation includes factors for **non-direct routing** and **prevailing winds** for better realism. Time may vary based on actual ATC and weather.*</p>
+            <p style="font-size: 0.8rem;">* This calculation includes an aggressive buffer for routing, headwinds, and ground delays (Block Time) to ensure a realistic virtual flight duration.*</p>
         `;
     }
 </script>
