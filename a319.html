@@ -23,8 +23,6 @@
 
 <main>
   <section class="aircraft-details">
-    <a href="fleet.html" class="back-link">← Back to Fleet</a>
-    
     <h2>Lufthansa - Airbus A319 (Short/Medium Haul)</h2>
     
     <div class="plane-header">
@@ -33,19 +31,39 @@
             <h3>Key Stats</h3>
             <p><strong>Top Speed:</strong> 871 km/h</p>
             <p><strong>Range:</strong> 6,900 km</p>
-            <p><strong>Role:</strong> Short to medium-haul aircraft, used on European and domestic routes.</p>
+            <p><strong>Role:</strong> Short to medium-haul aircraft, flexible for domestic and European routes.</p>
             <p><strong>Engine Type:</strong> Turbofan (CFM56 or IAE V2500)</p>
         </div>
     </div>
 
-    <h3>Cabin & Seating Configuration (European)</h3>
     <div class="seat-config">
-        <p>The A319, the smallest of the A320 family, utilizes Lufthansa's flexible European seating for efficient regional operations.</p>
-        <ul>
-            <li>**Total Seats:** ~138 - 144 passengers</li>
-            <li>**Business Class:** Variable pitch, typically 15-25 seats (Economy seats with middle seat blocked).</li>
-            <li>**Economy Class:** Remaining seats (3-3 configuration).</li>
-        </ul>
+        <h3>Seating Configuration (Flexible European)</h3>
+        
+        <div class="config-selector">
+            <p>Select Configuration:</p>
+            <button class="active" onclick="showConfig('a319', 'high_density')">Config 1: High Density</button>
+            <button onclick="showConfig('a319', 'low_density')">Config 2: Low Density</button>
+        </div>
+
+        <div class="config-content active" id="config-a319-high_density">
+            <p>Optimized for high-volume routes with limited Business Class demand. **Total Seats: 144**</p>
+            <ul>
+                <li><strong>Business Class</strong> - 12 Seats (3-3, middle seat blocked)</li>
+                <li><strong>Economy Class</strong> - 132 Seats (3-3 configuration)</li>
+                <li><strong>Pitch / Width (B)</strong> - Variable / 18"</li>
+                <li><strong>Pitch / Width (E)</strong> - 30" / 18"</li>
+            </ul>
+        </div>
+
+        <div class="config-content" id="config-a319-low_density">
+            <p>Used on longer European routes where a more substantial Business Class is required. **Total Seats: 138**</p>
+            <ul>
+                <li><strong>Business Class</strong> - 24 Seats (3-3, middle seat blocked)</li>
+                <li><strong>Economy Class</strong> - 114 Seats (3-3 configuration)</li>
+                <li><strong>Pitch / Width (B)</strong> - Variable / 18"</li>
+                <li><strong>Pitch / Width (E)</strong> - 30" / 18"</li>
+            </ul>
+        </div>
     </div>
   </section>
 </main>
@@ -57,5 +75,23 @@
   </p>
 </section>
 
+<script>
+    function showConfig(plane, configId) {
+        // Hide all configurations for this plane
+        document.querySelectorAll('.config-content').forEach(el => {
+            el.classList.remove('active');
+        });
+        // Remove active class from all buttons
+        document.querySelectorAll('.config-selector button').forEach(el => {
+            el.classList.remove('active');
+        });
+
+        // Show the selected configuration
+        document.getElementById(`config-${plane}-${configId}`).classList.add('active');
+        
+        // Set the clicked button as active
+        event.currentTarget.classList.add('active');
+    }
+</script>
 </body>
 </html>
