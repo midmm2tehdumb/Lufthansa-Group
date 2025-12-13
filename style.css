@@ -807,13 +807,13 @@ nav ul.nav-links li a:hover {
 
 .plane-info {
     flex-grow: 1;
-    min-width: 300px;
+    min-width: 320px; /* Increased slightly to ensure legibility */
     background-color: #ffffff;
     padding: 25px;
     border-left: 5px solid #000080; /* Blue accent bar */
     border-radius: 5px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-}
+    flex-shrink: 1; /* Allow the info box to shrink slightly if needed */
 
 .plane-info h3 {
     color: #FFCC00;
