@@ -674,6 +674,8 @@ const codeshare = ["CAN", "CKG", "TPE", "HGH", "CGK", "SGN", "HKT", "DAD", "SAI"
 
 const outOfService = ["TLV", "DAM", "BEY", "AMM", "EBL", "IKA", "KBP", "DME"]; 
 
+const spacex = ["MAR"]; 
+
 // -------------------- DRAW MARKERS --------------------
 Object.keys(airportCoords).forEach(code => {
   let color = "#6b9ebd"; // default destination color
@@ -682,6 +684,7 @@ Object.keys(airportCoords).forEach(code => {
   const subsidiaryColor = "#d88c6a"; 
   const codeshareColor = "#b86b6b"; 
   const outOfServiceColor = "#795548"; 
+  const spacexColor = "#ABD3DF"; 
 
   const data = airportData[code] || {icao: "N/A", city: code}; 
 
@@ -698,6 +701,9 @@ Object.keys(airportCoords).forEach(code => {
   } 
   else if (codeshare.includes(code)) {
     color = codeshareColor;
+  }
+    else if (spacex.includes(code)) {
+    color = spacexColor;
   }
 
 
