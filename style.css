@@ -770,3 +770,175 @@ nav ul.nav-links li a:hover {
         min-width: 100%; 
     }
 }
+
+/*
+ * === AIRCRAFT DETAIL PAGE STYLES (New Section) ===
+ * Styles for individual plane pages (e.g., crj700.html, a350900.html)
+*/
+
+.aircraft-details h2 {
+    color: #000080; /* Lufthansa Blue */
+    border-bottom: 3px solid #FFCC00; /* Lufthansa Yellow accent */
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    font-size: 2.2em;
+    font-weight: 700;
+}
+
+/* Header and Image Layout */
+.plane-header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 40px;
+    align-items: flex-start;
+}
+
+.plane-header img {
+    width: 100%;
+    max-width: 550px; /* Max size for image */
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    object-fit: cover;
+}
+
+.plane-info {
+    flex-grow: 1;
+    min-width: 300px;
+    background-color: #ffffff;
+    padding: 25px;
+    border-left: 5px solid #000080; /* Blue accent bar */
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.plane-info h3 {
+    color: #FFCC00;
+    font-size: 1.5em;
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 1px dashed #ddd;
+    padding-bottom: 10px;
+}
+
+.plane-info p {
+    margin: 8px 0;
+    font-size: 1.1em;
+}
+
+.plane-info strong {
+    color: #000080;
+    font-weight: 600;
+}
+
+/* Configuration Selector */
+.config-selector {
+    margin-bottom: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+.config-selector p {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #000080;
+    margin: 0;
+}
+
+.config-selector button {
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.config-selector button:hover {
+    background-color: #FFCC00;
+    border-color: #FFCC00;
+    color: #000080;
+}
+
+.config-selector button.active {
+    background-color: #000080;
+    color: white;
+    border-color: #000080;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Seat Configuration Details */
+.seat-config h3 {
+    color: #000080;
+    font-size: 1.8em;
+    margin: 30px 0 15px;
+}
+
+.config-content {
+    display: none; /* Hidden by default, shown by JS */
+    padding: 10px 0;
+}
+
+.config-content.active {
+    display: block;
+}
+
+.config-content p {
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.config-content ul {
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.config-content ul li {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    border-top: 4px solid #FFCC00; /* Yellow accent bar */
+    font-size: 1em;
+}
+
+.config-content ul li strong {
+    display: block;
+    font-size: 1.3em;
+    color: #000080;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+/* Responsive adjustment for small screens */
+@media (max-width: 768px) {
+    .plane-header {
+        flex-direction: column;
+    }
+    .plane-header img {
+        max-width: 100%;
+    }
+    .plane-info {
+        border-left: none;
+        border-top: 5px solid #000080;
+        padding: 20px;
+    }
+    .config-selector {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .config-selector button {
+        width: 100%;
+    }
+}
