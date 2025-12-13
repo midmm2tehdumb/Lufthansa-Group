@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lufthansa Fleet - A330-200</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav>
+  <div class="logo">Lufthansa Airlines</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="fleet.html">Fleet</a></li>
+    <li><a href="destinations.html">Destinations</a></li>
+    <li><a href="booking.html">Booking</a></li>
+    <li><a href="info.html">Information</a></li>
+    <li><a href="rp.html">RP</a></li>
+  </ul>
+</nav>
+
+<main>
+  <section class="aircraft-details">
+    <h2>Lufthansa - Airbus A330-200 (Long Haul Twinjet)</h2>
+    
+    <div class="plane-header">
+        <img src="a330200.webp" alt="Airbus A330-200">
+        <div class="plane-info">
+            <h3>Key Stats</h3>
+            <p><strong>Top Speed:</strong> 880 km/h</p>
+            <p><strong>Range:</strong> 10,500 km</p>
+            <p><strong>Role:</strong> Long-haul routes to the Americas, Africa, and the Middle East.</p>
+            <p><strong>Engine Type:</strong> Turbofan (Rolls-Royce Trent 700)</p>
+        </div>
+    </div>
+
+    <div class="seat-config">
+        <h3>Seating Configuration (Long Haul Comfort)</h3>
+        
+        <div class="config-selector">
+            <p>Select Configuration:</p>
+            <button class="active" onclick="showConfig('a330', 'standard')">Config 1: Standard (270 Seats)</button>
+            <button onclick="showConfig('a330', 'high_density')">Config 2: High Density (330 Seats)</button>
+        </div>
+
+        <div class="config-content active" id="config-a330-standard">
+            <p>Standard three-class, widebody setup focused on passenger comfort. **Total Seats: 270**</p>
+            <ul>
+                <li><strong>Business Class</strong> - 27 Seats (2-2-2 configuration)</li>
+                <li><strong>Premium Economy</strong> - 21 Seats (2-3-2 configuration)</li>
+                <li><strong>Economy Class</strong> - 222 Seats (2-4-2 configuration)</li>
+                <li><strong>Business Pitch</strong> - 60" (Lie-flat)</li>
+            </ul>
+        </div>
+
+        <div class="config-content" id="config-a330-high_density">
+            <p>Higher-capacity layout used for high-demand leisure routes. **Total Seats: 330**</p>
+            <ul>
+                <li><strong>Business Class</strong> - 12 Seats (2-2-2 configuration)</li>
+                <li><strong>Premium Economy</strong> - 18 Seats (2-3-2 configuration)</li>
+                <li><strong>Economy Class</strong> - 300 Seats (3-3-3 configuration)</li>
+                <li><strong>Economy Pitch</strong> - 31" / 17.5"</li>
+            </ul>
+        </div>
+    </div>
+  </section>
+</main>
+
+<section class="disclaimer">
+  <p>
+    <strong>Disclaimer:</strong> Lufthansa Airlines is a virtual GeoFS airline and does not represent the real-life Lufthansa Group. 
+    This website and content are intended for entertainment and educational purposes within the virtual flight simulator community.
+  </p>
+</section>
+
+<script>
+    function showConfig(plane, configId) {
+        document.querySelectorAll('.config-content').forEach(el => {
+            el.classList.remove('active');
+        });
+        document.querySelectorAll('.config-selector button').forEach(el => {
+            el.classList.remove('active');
+        });
+
+        document.getElementById(`config-${plane}-${configId}`).classList.add('active');
+        event.currentTarget.classList.add('active');
+    }
+</script>
+</body>
+</html>
