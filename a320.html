@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lufthansa Fleet - A320</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav>
+  <div class="logo">Lufthansa Airlines</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="fleet.html">Fleet</a></li>
+    <li><a href="destinations.html">Destinations</a></li>
+    <li><a href="booking.html">Booking</a></li>
+    <li><a href="info.html">Information</a></li>
+    <li><a href="rp.html">RP</a></li>
+  </ul>
+</nav>
+
+<main>
+  <section class="aircraft-details">
+    <h2>Lufthansa - Airbus A320 (Medium Haul Workhorse)</h2>
+    
+    <div class="plane-header">
+        <img src="a320.webp" alt="Airbus A320">
+        <div class="plane-info">
+            <h3>Key Stats</h3>
+            <p><strong>Top Speed:</strong> 871 km/h</p>
+            <p><strong>Range:</strong> 6,100 km</p>
+            <p><strong>Role:</strong> High-frequency, short-to-medium haul domestic and European routes.</p>
+            <p><strong>Engine Type:</strong> Turbofan (CFM56 or IAE V2500)</p>
+        </div>
+    </div>
+
+    <div class="seat-config">
+        <h3>Seating Configuration (Flexible European)</h3>
+        
+        <div class="config-selector">
+            <p>Select Configuration:</p>
+            <button class="active" onclick="showConfig('a320', 'standard')">Config 1: Standard (180 Seats)</button>
+            <button onclick="showConfig('a320', 'premium_mix')">Config 2: Premium Mix (168 Seats)</button>
+        </div>
+
+        <div class="config-content active" id="config-a320-standard">
+            <p>General configuration for high-traffic city routes, prioritizing capacity. **Total Seats: 180**</p>
+            <ul>
+                <li><strong>Business Class</strong> - 18 Seats (3-3, middle seat blocked)</li>
+                <li><strong>Economy Class</strong> - 162 Seats (3-3 configuration)</li>
+                <li><strong>Pitch / Width (B)</strong> - Variable / 18"</li>
+                <li><strong>Pitch / Width (E)</strong> - 30" / 18"</li>
+            </ul>
+        </div>
+
+        <div class="config-content" id="config-a320-premium_mix">
+            <p>Used for longer intra-European flights or feeder routes, providing slightly more economy comfort. **Total Seats: 168**</p>
+            <ul>
+                <li><strong>Business Class</strong> - 36 Seats (3-3, middle seat blocked)</li>
+                <li><strong>Economy Class</strong> - 132 Seats (3-3 configuration)</li>
+                <li><strong>Pitch / Width (B)</strong> - Variable / 18"</li>
+                <li><strong>Pitch / Width (E)</strong> - 31" / 18"</li>
+            </ul>
+        </div>
+    </div>
+  </section>
+</main>
+
+<section class="disclaimer">
+  <p>
+    <strong>Disclaimer:</strong> Lufthansa Airlines is a virtual GeoFS airline and does not represent the real-life Lufthansa Group. 
+    This website and content are intended for entertainment and educational purposes within the virtual flight simulator community.
+  </p>
+</section>
+
+<script>
+    // This script is the same for all narrowbodies
+    function showConfig(plane, configId) {
+        // Hide all configurations for this plane
+        document.querySelectorAll('.config-content').forEach(el => {
+            el.classList.remove('active');
+        });
+        // Remove active class from all buttons
+        document.querySelectorAll('.config-selector button').forEach(el => {
+            el.classList.remove('active');
+        });
+
+        // Show the selected configuration
+        document.getElementById(`config-${plane}-${configId}`).classList.add('active');
+        
+        // Set the clicked button as active
+        event.currentTarget.classList.add('active');
+    }
+</script>
+</body>
+</html>
