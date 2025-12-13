@@ -318,10 +318,13 @@
 
         // 4. Arrival Time (Destination Airport Local Time)
         // Adjust the final UTC arrival time by the arrival airport's UTC offset
-        const arrivalLocalHours = arrivalUTC.getUTCHours() + arrUTC;
         const arrivalLocalDestination = new Date(arrivalUTC);
         arrivalLocalDestination.setHours(arrivalLocalDestination.getHours() + arrUTC - arrivalLocalDestination.getTimezoneOffset() / 60);
 
+        // --- NEW: User's Local Time Calculation ---
+        const userLocalDeparture = new Date(); // Browser's local time is the "Takeoff" time
+        const userLocalArrival = new Date(userLocalDeparture.getTime() + (flightHours * 3600000));
+        
         // --- Output results --- 
         document.getElementById('results').innerHTML = `
             <h3>Flight Details</h3>
@@ -330,6 +333,8 @@
             <p>Estimated Flight Time: <strong>~${Math.floor(flightHours)}h ${Math.round((flightHours % 1) * 60)}m</strong></p>
             <hr>
             <h4>Estimated Departure/Arrival (Simulated)</h4>
+            <p>Takeoff (Your Local Time): <strong>${formatTime(userLocalDeparture)}</strong></p>
+            <p>Landing (Your Local Time): <strong>${formatTime(userLocalArrival)}</strong></p>
             <p>Takeoff (Departure Local Time, UTC ${depUTC > 0 ? '+' : ''}${depUTC}): <strong>${formatTime(departureLocal)}</strong></p>
             <p>Landing (Destination Local Time, UTC ${arrUTC > 0 ? '+' : ''}${arrUTC}): <strong>${formatTime(arrivalLocalDestination)}</strong></p>
             <p>Takeoff (UTC): <strong>${formatUTC(nowUTC)}</strong></p>
