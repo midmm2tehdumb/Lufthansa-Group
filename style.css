@@ -796,13 +796,14 @@ nav ul.nav-links li a:hover {
 
 .plane-header img {
     width: 100%;
-    max-width: 500px; /* Adjusted to allow more room for stats box */
+    max-width: 550px; /* Use the original max-width */
     height: auto;
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
     object-fit: cover;
-    flex-shrink: 1; /* Allow the image to shrink below 500px if space is tight */
     flex-grow: 0;
+    flex-shrink: 1; /* <-- This is the key: allows it to shrink/crop to fit */
+    min-width: 250px; /* Prevents the image from becoming impossibly small */
 }
 
 .plane-info {
