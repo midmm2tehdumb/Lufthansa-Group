@@ -942,3 +942,17 @@ nav ul.nav-links li a:hover {
         width: 100%;
     }
 }
+
+/* Fix: Ensures main content starts below the fixed navigation bar with padding */
+main {
+    padding-top: 40px; /* Add space below the navbar */
+    padding-bottom: 40px; /* Consistent bottom padding */
+}
+
+/* Also ensure your NAV block has a box-shadow for visual separation (if not already present): */
+nav {
+    /* ... existing nav styles ... */
+    position: sticky; /* Keeps it at the top */
+    top: 0;
+    z-index: 1000;
+}
