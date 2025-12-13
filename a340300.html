@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lufthansa Fleet - A340-300</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav>
+  <div class="logo">Lufthansa Airlines</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="fleet.html">Fleet</a></li>
+    <li><a href="destinations.html">Destinations</a></li>
+    <li><a href="booking.html">Booking</a></li>
+    <li><a href="info.html">Information</a></li>
+    <li><a href="rp.html">RP</a></li>
+  </ul>
+</nav>
+
+<main>
+  <section class="aircraft-details">
+    <h2>Lufthansa - Airbus A340-300 (Long Haul Quadjet)</h2>
+    
+    <div class="plane-header">
+        <img src="a340300.webp" alt="Airbus A340-300">
+        <div class="plane-info">
+            <h3>Key Stats</h3>
+            <p><strong>Top Speed:</strong> 890 km/h</p>
+            <p><strong>Range:</strong> 12,300 km</p>
+            <p><strong>Role:</strong> Ultra-long-haul, high-altitude, and overwater routes.</p>
+            <p><strong>Engine Type:</strong> Quad Turbofan (CFM56-5C)</p>
+        </div>
+    </div>
+
+    <div class="seat-config">
+        <h3>Seating Configuration (Dedicated Long Haul)</h3>
+        
+        <div class="config-selector">
+            <p>Select Configuration:</p>
+            <button class="active" onclick="showConfig('a340', 'four_class')">Config 1: Four-Class (279 Seats)</button>
+            <button onclick="showConfig('a340', 'two_class')">Config 2: Two-Class (267 Seats)</button>
+        </div>
+
+        <div class="config-content active" id="config-a340-four_class">
+            <p>The standard luxury configuration, featuring First Class and Premium Economy. **Total Seats: 279**</p>
+            <ul>
+                <li><strong>First Class</strong> - 8 Suites (1-2-1 configuration, Open Suite)</li>
+                <li><strong>Business Class</strong> - 30 Seats (2-2-2 configuration)</li>
+                <li><strong>Premium Economy</strong> - 28 Seats (2-3-2 configuration)</li>
+                <li><strong>Economy Class</strong> - 213 Seats (2-4-2 configuration)</li>
+            </ul>
+        </div>
+
+        <div class="config-content" id="config-a340-two_class">
+            <p>Used on select routes requiring high-premium capacity but not First Class. **Total Seats: 267**</p>
+            <ul>
+                <li><strong>Business Class</strong> - 42 Seats (2-2-2 configuration)</li>
+                <li><strong>Premium Economy</strong> - 28 Seats (2-3-2 configuration)</li>
+                <li><strong>Economy Class</strong> - 197 Seats (2-4-2 configuration)</li>
+                <li><strong>Business Pitch</strong> - 64" (Fully-flat)</li>
+            </ul>
+        </div>
+    </div>
+  </section>
+</main>
+
+<section class="disclaimer">
+  <p>
+    <strong>Disclaimer:</strong> Lufthansa Airlines is a virtual GeoFS airline and does not represent the real-life Lufthansa Group. 
+    This website and content are intended for entertainment and educational purposes within the virtual flight simulator community.
+  </p>
+</section>
+
+<script>
+    function showConfig(plane, configId) {
+        document.querySelectorAll('.config-content').forEach(el => {
+            el.classList.remove('active');
+        });
+        document.querySelectorAll('.config-selector button').forEach(el => {
+            el.classList.remove('active');
+        });
+
+        document.getElementById(`config-${plane}-${configId}`).classList.add('active');
+        event.currentTarget.classList.add('active');
+    }
+</script>
+</body>
+</html>
