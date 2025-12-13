@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lufthansa Fleet - A350-1000</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav>
+  <div class="logo">Lufthansa Airlines</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="fleet.html">Fleet</a></li>
+    <li><a href="destinations.html">Destinations</a></li>
+    <li><a href="booking.html">Booking</a></li>
+    <li><a href="info.html">Information</a></li>
+    <li><a href="rp.html">RP</a></li>
+  </ul>
+</nav>
+
+<main>
+  <section class="aircraft-details">
+    <h2>Lufthansa - Airbus A350-1000 (The Long-Range Giant)</h2>
+    
+    <div class="plane-header">
+        <img src="a3501000.webp" alt="Airbus A350-1000">
+        <div class="plane-info">
+            <h3>Key Stats</h3>
+            <p><strong>Top Speed:</strong> Mach 0.89</p>
+            <p><strong>Range:</strong> 16,100 km</p>
+            <p><strong>Role:</strong> Ultra-long-haul flagship, high-capacity routes.</p>
+            <p><strong>Engine Type:</strong> Turbofan (Rolls-Royce Trent XWB-97)</p>
+        </div>
+    </div>
+
+    <div class="seat-config">
+        <h3>Seating Configuration (High-Capacity Allegris)</h3>
+        
+        <div class="config-selector">
+            <p>Select Configuration:</p>
+            <button onclick="showConfig('a35k', 'ultra_premium')">Config 1: Ultra Premium (310 Seats)</button>
+            
+            <button onclick="showConfig('a35k', 'high_premium')">Config 2: High Premium (375 Seats)</button>
+            <button onclick="showConfig('a35k', 'high_capacity')">Config 3: High Capacity (400 Seats)</button>
+        </div>
+
+        <div class="config-content active" id="config-a35k-ultra_premium">
+            <p>A specialized, low-density configuration for ultra-long-haul, high-yield routes, maximizing premium service. **Total Seats: 310**</p>
+            <ul>
+                <li><strong>First Class</strong> - 8 Suites (1-1-1 configuration, Private Suite)</li>
+                <li><strong>Business Class</strong> - 40 Seats (1-2-1 configuration)</li>
+                <li><strong>Premium Economy</strong> - 28 Seats (2-4-2 configuration)</li>
+                <li><strong>Economy Class</strong> - 234 Seats (3-3-3 configuration)</li>
+            </ul>
+        </div>
+        
+        <div class="config-content" id="config-a35k-high_premium">
+            <p>Features a massive Business Class cabin for key business routes. **Total Seats: 375**</p>
+            <ul>
+                <li><strong>First Class</strong> - 8 Suites (1-1-1 configuration, Private Suite)</li>
+                <li><strong>Business Class</strong> - 60 Seats (1-2-1 configuration)</li>
+                <li><strong>Premium Economy</strong> - 28 Seats (2-4-2 configuration)</li>
+                <li><strong>Economy Class</strong> - 279 Seats (3-3-3 configuration)</li>
+            </ul>
+        </div>
+
+        <div class="config-content" id="config-a35k-high_capacity">
+            <p>Optimized for capacity on high-demand passenger routes. **Total Seats: 400**</p>
+            <ul>
+                <li><strong>Business Class</strong> - 40 Seats (1-2-1 configuration)</li>
+                <li><strong>Premium Economy</strong> - 35 Seats (2-4-2 configuration)</li>
+                <li><strong>Economy Class</strong> - 325 Seats (3-3-3 configuration)</li>
+                <li><strong>Business Pitch</strong> - 65" (Allegris Lie-flat)</li>
+            </ul>
+        </div>
+    </div>
+  </section>
+</main>
+
+<section class="disclaimer">
+  <p>
+    <strong>Disclaimer:</strong> Lufthansa Airlines is a virtual GeoFS airline and does not represent the real-life Lufthansa Group. 
+    This website and content are intended for entertainment and educational purposes within the virtual flight simulator community.
+  </p>
+</section>
+
+<script>
+    function showConfig(plane, configId) {
+        // Hide all configurations
+        document.querySelectorAll('.config-content').forEach(el => {
+            el.classList.remove('active');
+        });
+        // Remove active class from all buttons
+        document.querySelectorAll('.config-selector button').forEach(el => {
+            el.classList.remove('active');
+        });
+
+        // Show the selected configuration
+        document.getElementById(`config-${plane}-${configId}`).classList.add('active');
+        
+        // Set the clicked button as active
+        event.currentTarget.classList.add('active');
+    }
+</script>
+</body>
+</html>
