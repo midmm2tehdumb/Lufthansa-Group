@@ -26,7 +26,7 @@
     <h2>Lufthansa - Boeing 777-9 (The Future Flagship)</h2>
     
     <div class="plane-header">
-        <img src="7779.webp" alt="Boeing 777-9">
+        <img src="b7779.webp" alt="Boeing 777-9">
         <div class="plane-info">
             <h3>Key Stats</h3>
             <p><strong>Top Speed:</strong> 950 km/h</p>
@@ -36,16 +36,36 @@
         </div>
     </div>
 
-    <div class="capacity-details">
-        <h3>Passenger Capacity & Operation</h3>
-        <ul>
-            <li><strong>Maximum Capacity:</strong> 420 Seats (Allegris Standard Layout)</li>
-            <li><strong>Cabin Features:</strong> Widest cabin of any twin-aisle aircraft.</li>
-            <li><strong>Primary Use:</strong> Key long-haul routes, replacing older widebodies.</li>
-            <li><strong>Key Feature:</strong> Folding wingtips for efficient gate usage.</li>
-        </ul>
+    <div class="seat-config">
+        <h3>Seating Configuration (Allegris Generation)</h3>
+        
+        <div class="config-selector">
+            <p>Select Configuration:</p>
+            <button class="active" onclick="showConfig('b779', 'allegris_suite')">Config 1: Allegris Suite (390 Seats)</button>
+            <button onclick="showConfig('b779', 'allegris_standard')">Config 2: Allegris Standard (420 Seats)</button>
+        </div>
+
+        <div class="config-content active" id="config-b779-allegris_suite">
+            <p class="config-status-line">Premium heavy configuration featuring dedicated First Class Suites. **Total Seats: 390**</p>
+            <ul>
+                <li><strong>First Class</strong> - 4 Suites (1-1-1 configuration)</li>
+                <li><strong>Business Class</strong> - 56 Seats (1-2-1 configuration)</li>
+                <li><strong>Premium Economy</strong> - 28 Seats (2-4-2 configuration)</li>
+                <li><strong>Economy Class</strong> - 302 Seats (3-4-3 configuration)</li>
+            </ul>
+        </div>
+
+        <div class="config-content" id="config-b779-allegris_standard">
+            <p class="config-status-line">Optimized for capacity using the new generation Allegris seating throughout. **Total Seats: 420**</p>
+            <ul>
+                <li><strong>Business Class</strong> - 48 Seats (1-2-1 configuration)</li>
+                <li><strong>Premium Economy</strong> - 40 Seats (2-4-2 configuration)</li>
+                <li><strong>Economy Class</strong> - 332 Seats (3-4-3 configuration)</li>
+                <li><strong>Economy Pitch</strong> - 31" / 17.5"</li>
+            </ul>
+        </div>
     </div>
-    </section>
+  </section>
 </main>
 
 <section class="disclaimer">
@@ -55,5 +75,18 @@
   </p>
 </section>
 
+<script>
+    function showConfig(plane, configId) {
+        document.querySelectorAll('.config-content').forEach(el => {
+            el.classList.remove('active');
+        });
+        document.querySelectorAll('.config-selector button').forEach(el => {
+            el.classList.remove('active');
+        });
+
+        document.getElementById(`config-${plane}-${configId}`).classList.add('active');
+        event.currentTarget.classList.add('active');
+    }
+</script>
 </body>
 </html>
