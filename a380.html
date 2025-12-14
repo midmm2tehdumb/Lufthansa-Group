@@ -1,59 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lufthansa Fleet - A380-800</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lufthansa Fleet - A380-800</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <nav>
-  <div class="logo">Lufthansa Airlines</div>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="fleet.html">Fleet</a></li>
-    <li><a href="destinations.html">Destinations</a></li>
-    <li><a href="booking.html">Booking</a></li>
-    <li><a href="info.html">Information</a></li>
-    <li><a href="rp.html">RP</a></li>
-  </ul>
+    <div class="logo">Lufthansa Airlines</div>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="fleet.html">Fleet</a></li>
+        <li><a href="destinations.html">Destinations</a></li>
+        <li><a href="booking.html">Booking</a></li>
+        <li><a href="info.html">Information</a></li>
+        <li><a href="rp.html">RP</a></li>
+    </ul>
 </nav>
 
 <main>
-  <section class="aircraft-details">
-    <h2>Lufthansa - Airbus A380-800 (The Superjumbo)</h2>
-    
-    <div class="plane-header">
-        <img src="a380.webp" alt="Airbus A380-800">
-        <div class="plane-info">
-            <h3>Key Stats</h3>
-            <p><strong>Top Speed:</strong> 945 km/h</p>
-            <p><strong>Range:</strong> 15,200 km</p>
-            <p><strong>Role:</strong> Ultra-high-capacity, long-haul flagship.</p>
-            <p><strong>Engine Type:</strong> Quad Turbofan (Rolls-Royce Trent 900)</p>
+    <section class="aircraft-details">
+        <h2>Lufthansa - Airbus A380-800 (The Superjumbo)</h2>
+        
+        <div class="plane-header">
+            <img src="a380.webp" alt="Airbus A380-800">
+            <div class="plane-info">
+                <h3>Key Stats</h3>
+                <p><strong>Top Speed:</strong> 945 km/h</p>
+                <p><strong>Range:</strong> 15,200 km</p>
+                <p><strong>Role:</strong> Ultra-high-capacity, long-haul flagship.</p>
+                <p><strong>Engine Type:</strong> Quad Turbofan (Rolls-Royce Trent 900)</p>
+            </div>
         </div>
-    </div>
-    
-    <div class="capacity-details">
-        <h3>Passenger Capacity & Operation</h3>
-        <ul>
-            <li><strong>Maximum Capacity:</strong> 509 Seats (4-Class Layout)</li>
-            <li><strong>Decks:</strong> Two full-length passenger decks.</li>
-            <li><strong>Primary Use:</strong> High-density, long-haul routes (e.g., North America, Asia).</li>
-            <li><strong>Maximum Takeoff Weight:</strong> 560,000 kg</li>
-        </ul>
-    </div>
-    </section>
+        
+        <div class="seat-config">
+            <h3>Passenger Capacity & Seating (4-Class Layout)</h3>
+            
+            <div class="config-selector">
+                <p>Select Configuration:</p>
+                <button class="active" onclick="showConfig('a380', 'premium_heavy')">Config 1: Premium Heavy</button>
+                <button onclick="showConfig('a380', 'capacity_focused')">Config 2: Capacity Focused</button>
+            </div>
+
+            <div class="config-content active" id="config-a380-premium_heavy">
+                <p>Optimized for high-yield routes (e.g., NYC, LAX) with higher demand for premium classes. **Total Seats: 509**</p>
+                <ul>
+                    <li><strong>First Class</strong> - 8 Seats (1-2-1 configuration)</li>
+                    <li><strong>Business Class</strong> - 78 Seats (2-2-2 configuration)</li>
+                    <li><strong>Premium Economy</strong> - 52 Seats (2-3-2 configuration)</li>
+                    <li><strong>Economy Class</strong> - 371 Seats (3-4-3 configuration)</li>
+                </ul>
+            </div>
+
+            <div class="config-content" id="config-a380-capacity_focused">
+                <p>Used on high-volume routes (e.g., Asia) requiring more total passenger capacity. **Total Seats: 526**</p>
+                <ul>
+                    <li><strong>First Class</strong> - 4 Seats (1-2-1 configuration)</li>
+                    <li><strong>Business Class</strong> - 68 Seats (2-2-2 configuration)</li>
+                    <li><strong>Premium Economy</strong> - 58 Seats (2-3-2 configuration)</li>
+                    <li><strong>Economy Class</strong> - 396 Seats (3-4-3 configuration)</li>
+                </ul>
+            </div>
+        </div>
+        </section>
 </main>
 
 <section class="disclaimer">
-  <p>
-    <strong>Disclaimer:</strong> Lufthansa Airlines is a virtual GeoFS airline and does not represent the real-life Lufthansa Group. 
-    This website and content are intended for entertainment and educational purposes within the virtual flight simulator community.
-  </p>
+    <p>
+        <strong>Disclaimer:</strong> Lufthansa Airlines is a virtual GeoFS airline and does not represent the real-life Lufthansa Group. 
+        This website and content are intended for entertainment and educational purposes within the virtual flight simulator community.
+    </p>
 </section>
 
+<script>
+    function showConfig(plane, configId) {
+        // Hide all configurations for this plane
+        document.querySelectorAll('.config-content').forEach(el => {
+            el.classList.remove('active');
+        });
+        // Remove active class from all buttons
+        document.querySelectorAll('.config-selector button').forEach(el => {
+            el.classList.remove('active');
+        });
+
+        // Show the selected configuration
+        document.getElementById(`config-${plane}-${configId}`).classList.add('active');
+        
+        // Set the clicked button as active
+        event.currentTarget.classList.add('active');
+    }
+</script>
 </body>
 </html>
