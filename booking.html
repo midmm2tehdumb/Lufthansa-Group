@@ -6,6 +6,26 @@
     <title>Lufthansa Airlines - Virtual Booking</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Minimal required styles for clarity */
+        body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0; background-color: #f4f4f9; color: #333; }
+        nav { background-color: #000080; color: white; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5em; font-weight: 700; }
+        .nav-links { list-style: none; margin: 0; padding: 0; display: flex; }
+        .nav-links li a { color: white; text-decoration: none; padding: 10px 15px; display: block; }
+        .nav-links li a:hover { background-color: #0000b3; }
+        main { padding: 20px; max-width: 900px; margin: 0 auto; }
+        .centered-heading { text-align: center; color: #000080; }
+        .booking-form { background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        .booking-form label { display: block; margin-top: 10px; font-weight: 500; }
+        .booking-form select, .booking-form button { width: 100%; padding: 10px; margin-top: 5px; border-radius: 4px; border: 1px solid #ccc; box-sizing: border-box; }
+        .booking-form button { background-color: #ffcc00; color: #000080; font-weight: 600; cursor: pointer; transition: background-color 0.3s; margin-top: 20px; }
+        .booking-form button:hover { background-color: #e6b800; }
+        #results { background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-top: 20px; }
+        #results h3, #results h4 { color: #000080; margin-top: 0; }
+        #results p { margin: 5px 0; }
+        .disclaimer { margin-top: 30px; padding: 15px; background-color: #ffffdd; border: 1px solid #ffcc00; border-radius: 4px; font-size: 0.9em; }
+    </style>
 </head>
 
 <body>
@@ -112,12 +132,12 @@
 
     const departureSelect = document.getElementById('departure');
     const arrivalSelect = document.getElementById('arrival');
-    
+
     // Function to populate dropdowns (Unchanged)
     function populateAirports() {
         departureSelect.innerHTML = '<option value="">-- Select Departure --</option>';
         arrivalSelect.innerHTML = '<option value="">-- Select Arrival --</option>';
-        
+
         // Sorting is still based on the IATA code (key)
         Object.keys(airportCoords).sort().forEach(code => {
             const option1 = document.createElement('option');
@@ -158,7 +178,7 @@
         return "Too far. Choose another route.";
     }
 
-    // Estimate flight time with enhanced ground/low-altitude padding for short-haul realism (LOGIC CORRECT)
+    // Estimate flight time with enhanced ground/low-altitude padding for short-haul realism (Unchanged)
     function estimateTime(distance, depCoord, arrCoord, plane) {
         // --- Configuration Constants ---
         const R_KTS_TO_KMH = 1.852; 
@@ -166,24 +186,24 @@
 
         // --- REALISM FACTORS ---
         const ADDED_TIME_FOR_LOW_SPEED = 0.55;
-        
+
         // 1. ROUTING FACTOR: Accounts for non-Great Circle routing (Airways, ATC, etc.)
         const ROUTING_FACTOR_LONG_HAUL = 1.08; 
         const ROUTING_FACTOR_SHORT_HAUL = 1.15; 
-        
+
         let adjustedDistance;
 
         // Determine the general direction based on longitude change
         const lonDifference = depCoord[1] - arrCoord[1];
         const isWestbound = lonDifference > 0; 
         const isEastbound = lonDifference < 0; 
-        
+
         let WIND_FACTOR = 1.0; 
-        
+
         // Check if it's a long haul flight (greater than ~4500 km)
         if (distance > 4500) { 
             adjustedDistance = distance * ROUTING_FACTOR_LONG_HAUL;
-            
+
             // 2. WIND FACTOR (Long Haul)
             if (isWestbound && Math.abs(lonDifference) > 10) { 
                 WIND_FACTOR = 1.08; // Headwind penalty
@@ -192,7 +212,7 @@
             } else { 
                 WIND_FACTOR = 1.02; // North/South minor penalty
             }
-            
+
         } else {
             // --- SHORT HAUL LOGIC (Less than ~4500 km) ---
             adjustedDistance = distance * ROUTING_FACTOR_SHORT_HAUL;
@@ -201,7 +221,7 @@
         // Phase 2: Cruise Speed & Altitude
         let cruiseSpeed = 820; // default km/h (short/medium haul)
         let cruiseAltitude = 7; // default 7km (FL230)
-        
+
         if (adjustedDistance > 4500) { 
             cruiseSpeed = 870; 
             cruiseAltitude = 11; // 11km (FL360)
@@ -245,11 +265,11 @@
 
         // 4. TOTAL TIME
         let finalTime = totalClimbTime + cruiseTime + totalDescentTime + ADDED_TIME_FOR_LOW_SPEED;
-        
+
         return finalTime * WIND_FACTOR;
     }
 
-    // Helper to format hours/minutes from a Date object for display
+    // Helper to format hours/minutes from a Date object for display (Browser Local Time)
     function formatTime(date) {
         // Use your browser's local time formatting
         return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -262,11 +282,31 @@
         return `${hours}:${minutes} UTC`;
     }
 
+    // **********************************************
+    // ** CORRECTION APPLIED HERE **
+    // **********************************************
+
+    // NEW: Helper to adjust a UTC Date object to a specific offset and format it
+    // This is the fix to display correct local airport time.
+    function formatLocalTimeWithOffset(utcDate, offsetHours) {
+        const newDate = new Date(utcDate.getTime());
+        // Directly adjust the UTC hours by the required offset.
+        newDate.setUTCHours(newDate.getUTCHours() + offsetHours);
+
+        // Format the time using the 'UTC' timeZone option. 
+        // Since we modified the UTC value to reflect the local time, this displays the correct hours/minutes.
+        return newDate.toLocaleTimeString([], { 
+            hour: '2-digit', 
+            minute: '2-digit', 
+            timeZone: 'UTC' 
+        });
+    }
+
     // Core function to calculate and display flight details
     function calculateFlight() {
         const dep = departureSelect.value;
         const arr = arrivalSelect.value;
-        
+
         if(!dep || !arr) {
             alert("Please select both airports!");
             return;
@@ -275,7 +315,7 @@
             alert("Departure and arrival cannot be the same!");
             return;
         }
-        
+
         const depData = airportCoords[dep];
         const arrData = airportCoords[arr];
 
@@ -283,8 +323,8 @@
             alert("Airport coordinates/data missing for one or both selections.");
             return;
         }
-        
-        // Extract Coordinates and UTC Offsets from the new data structure
+
+        // Extract Coordinates and UTC Offsets
         const depCoord = [depData[0], depData[1]]; // [Lat, Lon]
         const arrCoord = [arrData[0], arrData[1]]; // [Lat, Lon]
         const depUTC = depData[2]; // Departure UTC Offset in Hours
@@ -293,38 +333,31 @@
 
         const distance = getDistance(depCoord, arrCoord);
         const plane = suggestPlane(distance);
-        
+
         if (plane.includes("Too far")) {
             document.getElementById('results').innerHTML = `<p><strong>Error:</strong> ${plane}</p>`;
             return;
         }
 
         const flightHours = estimateTime(distance, depCoord, arrCoord, plane);
-        
-        // --- TIME CALCULATIONS ---
-        
+
+        // --- TIME CALCULATIONS (REVISED) ---
+
         // 1. Current UTC Time (Start time for the simulation)
         const nowUTC = new Date(Date.now()); 
-        
-        // 2. Departure Time (Departure Airport Local Time)
-        // Adjust the UTC time by the departure airport's UTC offset
-        const departureLocalHours = nowUTC.getUTCHours() + depUTC;
-        const departureLocal = new Date(nowUTC);
-        departureLocal.setHours(departureLocal.getHours() + depUTC - departureLocal.getTimezoneOffset() / 60);
 
-        // 3. Arrival Time (UTC)
+        // 2. Arrival Time (UTC)
         const arrivalUTCMs = nowUTC.getTime() + (flightHours * 3600000);
         const arrivalUTC = new Date(arrivalUTCMs);
 
-        // 4. Arrival Time (Destination Airport Local Time)
-        // Adjust the final UTC arrival time by the arrival airport's UTC offset
-        const arrivalLocalDestination = new Date(arrivalUTC);
-        arrivalLocalDestination.setHours(arrivalLocalDestination.getHours() + arrUTC - arrivalLocalDestination.getTimezoneOffset() / 60);
+        // 3. Calculate and format Departure/Arrival times using the new helper
+        const departureLocalTime = formatLocalTimeWithOffset(nowUTC, depUTC);
+        const arrivalLocalDestinationTime = formatLocalTimeWithOffset(arrivalUTC, arrUTC);
 
-        // --- NEW: User's Local Time Calculation ---
+        // --- User's Local Time Calculation ---
         const userLocalDeparture = new Date(); // Browser's local time is the "Takeoff" time
         const userLocalArrival = new Date(userLocalDeparture.getTime() + (flightHours * 3600000));
-        
+
         // --- Output results --- 
         document.getElementById('results').innerHTML = `
             <h3>Flight Details</h3>
@@ -332,16 +365,4 @@
             <p>Suggested Aircraft: <strong>${plane}</strong></p>
             <p>Estimated Flight Time: <strong>~${Math.floor(flightHours)}h ${Math.round((flightHours % 1) * 60)}m</strong></p>
             <hr>
-            <h4>Estimated Departure/Arrival (Simulated)</h4>
-            <p>Takeoff (Your Local Time): <strong>${formatTime(userLocalDeparture)}</strong></p>
-            <p>Landing (Your Local Time): <strong>${formatTime(userLocalArrival)}</strong></p>
-            <p>Takeoff (Departure Local Time, UTC ${depUTC > 0 ? '+' : ''}${depUTC}): <strong>${formatTime(departureLocal)}</strong></p>
-            <p>Landing (Destination Local Time, UTC ${arrUTC > 0 ? '+' : ''}${arrUTC}): <strong>${formatTime(arrivalLocalDestination)}</strong></p>
-            <p>Takeoff (UTC): <strong>${formatUTC(nowUTC)}</strong></p>
-            <p>Landing (UTC): <strong>${formatUTC(arrivalUTC)}</strong></p>
-        `;
-    }
-</script>
-
-</body>
-</html>
+            <h4>Estimated Departure/Arrival (Simu
