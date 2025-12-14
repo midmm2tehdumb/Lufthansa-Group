@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE TML>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -266,21 +266,24 @@
     // ** TIME ZONE CORRECTION LOGIC ADDED HERE **
     // **********************************************
 
-    // NEW: Helper to adjust a UTC Date object to a specific offset and format it
-    // This correctly calculates and displays local time for the airport's offset.
+    // NEW HELPER FUNCTION: Correctly calculates local time based on UTC and the offset, 
+    // ensuring the browser's local timezone doesn't mess with the calculation.
     function formatLocalTimeWithOffset(utcDate, offsetHours) {
         const newDate = new Date(utcDate.getTime());
         // Directly adjust the UTC hours by the required offset.
+        // This is safe and isolates the UTC value.
         newDate.setUTCHours(newDate.getUTCHours() + offsetHours);
 
-        // Format the time using the 'UTC' timeZone option. 
-        // Since we modified the UTC value to reflect the local time, this displays the correct hours/minutes.
+        // Format the time by telling toLocaleTimeString to use UTC.
+        // Since we already manipulated the UTC hours to represent the local time, 
+        // this formats the hours/minutes correctly without the browser's offset.
         return newDate.toLocaleTimeString([], { 
             hour: '2-digit', 
             minute: '2-digit', 
             timeZone: 'UTC' 
         });
     }
+
 
     // Core function to calculate and display flight details
     function calculateFlight() {
@@ -321,7 +324,7 @@
 
         const flightHours = estimateTime(distance, depCoord, arrCoord, plane);
 
-        // --- TIME CALCULATIONS (REVISED) ---
+        // --- TIME CALCULATIONS ---
 
         // 1. Current UTC Time (Start time for the simulation)
         const nowUTC = new Date(Date.now()); 
@@ -330,11 +333,12 @@
         const arrivalUTCMs = nowUTC.getTime() + (flightHours * 3600000);
         const arrivalUTC = new Date(arrivalUTCMs);
 
-        // 3. Calculate and format Departure/Arrival times using the new helper (The fix for your issue)
+        // 3. Calculate and format Departure/Arrival local times using the new helper
+        // This replaces the complex and faulty manual date manipulation.
         const departureLocalTime = formatLocalTimeWithOffset(nowUTC, depUTC);
         const arrivalLocalDestinationTime = formatLocalTimeWithOffset(arrivalUTC, arrUTC);
 
-        // --- User's Local Time Calculation ---
+        // --- User's Local Time Calculation (Kept the original logic) ---
         const userLocalDeparture = new Date(); // Browser's local time is the "Takeoff" time
         const userLocalArrival = new Date(userLocalDeparture.getTime() + (flightHours * 3600000));
 
