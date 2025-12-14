@@ -6,26 +6,6 @@
     <title>Lufthansa Airlines - Virtual Booking</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* Minimal required styles for clarity */
-        body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0; background-color: #f4f4f9; color: #333; }
-        nav { background-color: #000080; color: white; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5em; font-weight: 700; }
-        .nav-links { list-style: none; margin: 0; padding: 0; display: flex; }
-        .nav-links li a { color: white; text-decoration: none; padding: 10px 15px; display: block; }
-        .nav-links li a:hover { background-color: #0000b3; }
-        main { padding: 20px; max-width: 900px; margin: 0 auto; }
-        .centered-heading { text-align: center; color: #000080; }
-        .booking-form { background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 20px; }
-        .booking-form label { display: block; margin-top: 10px; font-weight: 500; }
-        .booking-form select, .booking-form button { width: 100%; padding: 10px; margin-top: 5px; border-radius: 4px; border: 1px solid #ccc; box-sizing: border-box; }
-        .booking-form button { background-color: #ffcc00; color: #000080; font-weight: 600; cursor: pointer; transition: background-color 0.3s; margin-top: 20px; }
-        .booking-form button:hover { background-color: #e6b800; }
-        #results { background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-top: 20px; }
-        #results h3, #results h4 { color: #000080; margin-top: 0; }
-        #results p { margin: 5px 0; }
-        .disclaimer { margin-top: 30px; padding: 15px; background-color: #ffffdd; border: 1px solid #ffcc00; border-radius: 4px; font-size: 0.9em; }
-    </style>
 </head>
 
 <body>
@@ -283,11 +263,11 @@
     }
 
     // **********************************************
-    // ** CORRECTION APPLIED HERE **
+    // ** TIME ZONE CORRECTION LOGIC ADDED HERE **
     // **********************************************
 
     // NEW: Helper to adjust a UTC Date object to a specific offset and format it
-    // This is the fix to display correct local airport time.
+    // This correctly calculates and displays local time for the airport's offset.
     function formatLocalTimeWithOffset(utcDate, offsetHours) {
         const newDate = new Date(utcDate.getTime());
         // Directly adjust the UTC hours by the required offset.
@@ -350,7 +330,7 @@
         const arrivalUTCMs = nowUTC.getTime() + (flightHours * 3600000);
         const arrivalUTC = new Date(arrivalUTCMs);
 
-        // 3. Calculate and format Departure/Arrival times using the new helper
+        // 3. Calculate and format Departure/Arrival times using the new helper (The fix for your issue)
         const departureLocalTime = formatLocalTimeWithOffset(nowUTC, depUTC);
         const arrivalLocalDestinationTime = formatLocalTimeWithOffset(arrivalUTC, arrUTC);
 
@@ -365,4 +345,16 @@
             <p>Suggested Aircraft: <strong>${plane}</strong></p>
             <p>Estimated Flight Time: <strong>~${Math.floor(flightHours)}h ${Math.round((flightHours % 1) * 60)}m</strong></p>
             <hr>
-            <h4>Estimated Departure/Arrival (Simu
+            <h4>Estimated Departure/Arrival (Simulated)</h4>
+            <p>Takeoff (Your Local Time): <strong>${formatTime(userLocalDeparture)}</strong></p>
+            <p>Landing (Your Local Time): <strong>${formatTime(userLocalArrival)}</strong></p>
+            <p>Takeoff (Departure Local Time, UTC ${depUTC > 0 ? '+' : ''}${depUTC}): <strong>${departureLocalTime}</strong></p>
+            <p>Landing (Destination Local Time, UTC ${arrUTC > 0 ? '+' : ''}${arrUTC}): <strong>${arrivalLocalDestinationTime}</strong></p>
+            <p>Takeoff (UTC): <strong>${formatUTC(nowUTC)}</strong></p>
+            <p>Landing (UTC): <strong>${formatUTC(arrivalUTC)}</strong></p>
+        `;
+    }
+</script>
+
+</body>
+</html>
