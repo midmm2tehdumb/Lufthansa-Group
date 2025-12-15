@@ -687,8 +687,6 @@ const codeshare = ["CAN", "CKG", "TPE", "HGH", "CGK", "SGN", "HKT", "DAD", "SAI"
 
 const outOfService = ["TLV", "DAM", "BEY", "AMM", "EBL", "IKA", "KBP", "DME"]; 
 
-const mars = ["MARS", "PROXIMA"]; 
-const venus = ["VENUS", "MOON"];
 
 // -------------------- DRAW MARKERS --------------------
 Object.keys(airportCoords).forEach(code => {
@@ -698,8 +696,7 @@ Object.keys(airportCoords).forEach(code => {
   const subsidiaryColor = "#d88c6a"; 
   const codeshareColor = "#b86b6b"; 
   const outOfServiceColor = "#795548"; 
-  const marsColor = "#ABD3DF"; 
-  const venusColor = "#F2EFEA";
+
 
   const data = airportData[code] || {icao: "N/A", city: code}; 
 
@@ -717,12 +714,7 @@ Object.keys(airportCoords).forEach(code => {
   else if (codeshare.includes(code)) {
     color = codeshareColor;
   }
-    else if (mars.includes(code)) {
-    color = marsColor;
-  }
-    else if (venus.includes(code)) {
-    color = venusColor;
-    }
+
 
 
   L.circleMarker(airportCoords[code], {
