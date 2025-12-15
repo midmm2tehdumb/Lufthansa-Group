@@ -160,7 +160,7 @@
   </div>
 </div>
 
-<div id="indigoModal" class  ="modal">
+<div id="indigoModal" class="modal">
   <div class="modal-content">
     <span class="close-btn">&times;</span>
     <h3>Indigo Airlines</h3>
@@ -168,7 +168,7 @@
   </div>
 </div>
 
-<div id="starluxModal" class  ="modal">
+<div id="starluxModal" class="modal">
   <div class="modal-content">
     <span class="close-btn">&times;</span>
     <h3>Starlux Airlines</h3>
@@ -719,7 +719,7 @@ Object.keys(airportCoords).forEach(code => {
     const subsidiaryColor = "#d88c6a"; 
     const codeshareColor = "#b86b6b"; 
     const outOfServiceColor = "#795548"; 
-    const northColor = "#D4DADC";
+    const grayColor = "#D4DADC";
 
     const data = airportData[code] || {icao: "N/A", city: code}; 
 
@@ -737,8 +737,8 @@ Object.keys(airportCoords).forEach(code => {
     else if (codeshare.includes(code)) {
         color = codeshareColor;
     } 
-    else if (north.includes(code)) {
-        color = northColor;
+    else if (gray.includes(code)) {
+        color = grayColor;
     } 
 
 
