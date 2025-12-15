@@ -1,180 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lufthansa Destinations</title>
-    
-    <link rel="icon" type="image/png" href="logo.png"> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lufthansa Destinations</title>
+    
+    <link rel="icon" type="image/png" href="logo.png"> 
 
-    <meta property="og:title" content="Lufthansa Airlines">
-    
-    <meta property="og:url" content="https://midmm2tehdumb.github.io/Lufthansa-Group/destinations.html">
-    
-    <meta property="og:description" content="See an interactive route map of all Lufthansa destinations & codeshares.">
-    
-    <meta name="theme-color" content="#000080"> 
-    
-    <meta name="twitter:card" content="summary_large_image">
-    
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta property="og:title" content="Lufthansa Airlines">
+    
+    <meta property="og:url" content="https://midmm2tehdumb.github.io/Lufthansa-Group/booking.html">
+    
+    <meta property="og:description" content="See an interactive route map of all Lufthansa destinations & codeshares.">
+    
+    <meta name="theme-color" content="#000080"> 
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-  /* Base Styles */
-  body { font-family: Arial, sans-serif; margin:0; padding:0; }
-  #map { height: 80vh; width: 100%; margin-top: 20px; border-radius: 15px; }
-  .leaflet-popup-content button {
-    margin-top: 5px;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  .leaflet-popup-content button:hover { background-color: #0085a0; }
+  /* Base Styles */
+  body { font-family: Arial, sans-serif; margin:0; padding:0; }
+  #map { height: 80vh; width: 100%; margin-top: 20px; border-radius: 15px; }
+  .leaflet-popup-content button {
+    margin-top: 5px;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .leaflet-popup-content button:hover { background-color: #0085a0; }
 
 
-  /* Legend */
-  #legend { 
-    background: rgba(255,255,255,0.9); 
-    padding: 10px 15px; 
-    position: absolute; 
-    bottom: 30px; 
-    left: 30px; 
-    border-radius: 8px; 
-    font-size: 14px; 
-    z-index: 1000; 
-    box-shadow: 0 0 5px rgba(0,0,0,0.3);
-  }
-  .legend-dot { display:inline-block; width:12px; height:12px; border-radius:50%; margin-right:6px; }
+  /* Legend */
+  #legend { 
+    background: rgba(255,255,255,0.9); 
+    padding: 10px 15px; 
+    position: absolute; 
+    bottom: 30px; 
+    left: 30px; 
+    border-radius: 8px; 
+    font-size: 14px; 
+    z-index: 1000; 
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+  }
+  .legend-dot { display:inline-block; width:12px; height:12px; border-radius:50%; margin-right:6px; }
 
-  /* Disclaimer */
-  .disclaimer { background-color:#1A3F70; color:white; padding:30px; text-align:center; margin-top:20px; }
+  /* Disclaimer */
+  .disclaimer { background-color:#1A3F70; color:white; padding:30px; text-align:center; margin-top:20px; }
 
-  /* Codeshare Section Styles */
-  .about { text-align: center; padding: 20px; }
-  .codeshare-cards { display: flex; justify-content: center; gap: 20px; margin-top: 20px; }
-  .codeshare-card, .subsidiary-card {
-    padding: 15px 25px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.2s, background-color 0.2s;
-  }
-  .codeshare-card:hover, .subsidiary-card:hover { transform: translateY(-3px); }
+  /* Codeshare Section Styles */
+  .about { text-align: center; padding: 20px; }
+  .codeshare-cards { display: flex; justify-content: center; gap: 20px; margin-top: 20px; }
+  .codeshare-card, .subsidiary-card {
+    padding: 15px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s, background-color 0.2s;
+  }
+  .codeshare-card:hover, .subsidiary-card:hover { transform: translateY(-3px); }
 
-  /* Specific card colors (can be defined in style.css or here) */
-  .codeshare-card { background-color: #b86b6b; color: white; }
-  .subsidiary-card { background-color: #d88c6a; color: white; }
+  /* Specific card colors (can be defined in style.css or here) */
+  .codeshare-card { background-color: #b86b6b; color: white; }
+  .subsidiary-card { background-color: #d88c6a; color: white; }
 
-  /* Modal CSS */
-  .modal {
-    display: none; 
-    position: fixed; 
-    z-index: 10000; 
-    left: 0;
-    top: 0;
-    width: 100%; 
-    height: 100%; 
-    overflow: auto; 
-    background-color: rgba(0,0,0,0.4); 
-  }
+  /* Modal CSS */
+  .modal {
+    display: none; 
+    position: fixed; 
+    z-index: 10000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); 
+  }
 
-  .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; 
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; 
-    max-width: 500px;
-    border-radius: 10px;
-    position: relative;
-    text-align: left;
-  }
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+    max-width: 500px;
+    border-radius: 10px;
+    position: relative;
+    text-align: left;
+  }
 
-  .close-btn {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
+  .close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
 
-  .close-btn:hover,
-  .close-btn:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-  }
+  .close-btn:hover,
+  .close-btn:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="logo">Lufthansa Airlines</div>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="fleet.html">Fleet</a></li>
-    <li><a href="destinations.html">Destinations</a></li>
-    <li><a href="booking.html">Booking</a></li>
-    <li><a href="info.html">Information</a></li>
-    <li><a href="rp.html">RP</a></li>
-  </ul>
+  <div class="logo">Lufthansa Airlines</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="fleet.html">Fleet</a></li>
+    <li><a href="destinations.html">Destinations</a></li>
+    <li><a href="booking.html">Booking</a></li>
+    <li><a href="info.html">Information</a></li>
+    <li><a href="rp.html">RP</a></li>
+  </ul>
 </nav>
 
 <h2 style="text-align:center; margin-top:20px;">Our Destinations</h2>
 <div id="map"></div>
 
 <div id="legend">
-  <div><span class="legend-dot" style="background: #d4b063;"></span>Lufthansa Hub</div>
-  <div><span class="legend-dot" style="background: #d88c6a;"></span>Subsidiary Hub</div>
-  <div><span class="legend-dot" style="background: #6b9ebd;"></span>Destination</div>
-  <div><span class="legend-dot" style="background: #b86b6b;"></span>Codeshare Destination</div>
-  <div><span class="legend-dot" style="background: #795548;"></span>Out of Service</div>
+  <div><span class="legend-dot" style="background: #d4b063;"></span>Lufthansa Hub</div>
+  <div><span class="legend-dot" style="background: #d88c6a;"></span>Subsidiary Hub</div>
+  <div><span class="legend-dot" style="background: #6b9ebd;"></span>Destination</div>
+  <div><span class="legend-dot" style="background: #b86b6b;"></span>Codeshare Destination</div>
+  <div><span class="legend-dot" style="background: #795548;"></span>Out of Service</div>
 </div>
 
 <section class="about">
-  <h2>Lufthansa Group Partners</h2>
-  <p>Click on each airline to learn more:</p>
-  <div class="codeshare-cards">
-    <div class="codeshare-card" data-modal="singaporeModal">Singapore Airlines</div>
-    <div class="codeshare-card" data-modal="cathayModal">Cathay Pacific</div>
-    <div class="codeshare-card" data-modal="indigoModal">Indigo Airlines</div>
-    <div class="codeshare-card" data-modal="starluxModal">Starlux Airlines</div>
-  </div>
+  <h2>Lufthansa Group Partners</h2>
+  <p>Click on each airline to learn more:</p>
+  <div class="codeshare-cards">
+    <div class="codeshare-card" data-modal="singaporeModal">Singapore Airlines</div>
+    <div class="codeshare-card" data-modal="cathayModal">Cathay Pacific</div>
+    <div class="codeshare-card" data-modal="indigoModal">Indigo Airlines</div>
+    <div class="codeshare-card" data-modal="starluxModal">Starlux Airlines</div>
+  </div>
 </section>
 
 <div id="singaporeModal" class="modal">
-  <div class="modal-content">
-    <span class="close-btn">&times;</span>
-    <h3>Singapore Airlines</h3>
-    <p>SIN-CGK, SIN-SGN, SIN-HKT, SIN-DAD, SIN-SAI, SIN-KTI</p>
-  </div>
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h3>Singapore Airlines</h3>
+    <p>SIN-CGK, SIN-SGN, SIN-HKT, SIN-DAD, SIN-SAI, SIN-KTI</p>
+  </div>
 </div>
 
 <div id="cathayModal" class="modal">
-  <div class="modal-content">
-    <span class="close-btn">&times;</span>
-    <h3>Cathay Pacific</h3>
-    <p>HKG-CKG, HKG-CAN, HKG-TPE, HKG-HGH</p>
-  </div>
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h3>Cathay Pacific</h3>
+    <p>HKG-CKG, HKG-CAN, HKG-TPE, HKG-HGH</p>
+  </div>
 </div>
 
-<div id="indigoModal" class  ="modal">
-  <div class="modal-content">
-    <span class="close-btn">&times;</span>
-    <h3>Indigo Airlines</h3>
-    <p>DEL/BOM-AGR, DEL/BOM-JAI, DEL/BOM-VNS, DEL/BOM-GOI, DEL/BOM-COK</p>
-  </div>
+<div id="indigoModal" class  ="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h3>Indigo Airlines</h3>
+    <p>DEL/BOM-AGR, DEL/BOM-JAI, VDEL/BOM-NS, DEL/BOM-GOI, DEL/BOM-COK</p>
+  </div>
 </div>
 
-<div id="starluxModal" class  ="modal">
-  <div class="modal-content">
-    <span class="close-btn">&times;</span>
-    <h3>Starlux Airlines</h3>
-    <p>FRA/MUC-TPE</p>
-  </div>
+<div id="starluxModal" class  ="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h3>Starlux Airlines</h3>
+    <p>FRA/MUC-TPE</p>
+  </div>
 </div>
 
 
@@ -183,418 +183,506 @@
 // -------------------- INITIALIZE MAP --------------------
 const map = L.map('map').setView([20, 0], 2);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; OpenStreetMap contributors'
+  attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map);
-
-// CRITICAL FIX: Forces Leaflet to recalculate the container size, solving the "shattered" map tile issue.
-map.invalidateSize();
 
 // -------------------- AIRPORT DATA (IATA, ICAO, CITY) --------------------
 const airportData = {
+  "MARS": {icao: "SPACEX", city: "SpaceX Mars Colony"},
 
-  "FRA": {icao: "EDDF", city: "Frankfurt"},
+  "VENUS": {icao: "SPACEX", city: "SpaceX Venus Colony"},
 
-  "MUC": {icao: "EDDM", city: "Munich"},
+  "MOON": {icao: "SPACEX", city: "SpaceX Moon Colony"},
 
-  "ABV": {icao: "DNAA", city: "Abuja"},
+  "PROXIMA": {icao: "CENTAURI D", city: "Яжч ᐃ 語 ڤـ ف ℌ ⛭ ᠸ ᚠ ⌁ ₪ ᢆ ⵘ ◚ ⌘"},
+  
+  "FRA": {icao: "EDDF", city: "Frankfurt"},
 
-  "AUH": {icao: "OMAA", city: "Abu Dhabi"},
+  "MUC": {icao: "EDDM", city: "Munich"},
 
-  "ALC": {icao: "LEAL", city: "Alicante"},
+  "ABV": {icao: "DNAA", city: "Abuja"},
 
-  "ALG": {icao: "DAAG", city: "Algiers"},
+  "AUH": {icao: "OMAA", city: "Abu Dhabi"},
 
-  "ALA": {icao: "UAAA", city: "Almaty"},
+  "ALC": {icao: "LEAL", city: "Alicante"},
 
-  "AMM": {icao: "OJAI", city: "Amman"}, 
+  "ALG": {icao: "DAAG", city: "Algiers"},
 
-  "AMS": {icao: "EHAM", city: "Amsterdam"},
+  "ALA": {icao: "UAAA", city: "Almaty"},
 
-  "AOI": {icao: "LIPY", city: "Ancona"},
+  "AMM": {icao: "OJAI", city: "Amman"}, 
 
-  "ATH": {icao: "LGAV", city: "Athens"},
+  "AMS": {icao: "EHAM", city: "Amsterdam"},
 
-  "ATL": {icao: "KATL", city: "Atlanta"},
+  "AOI": {icao: "LIPY", city: "Ancona"},
 
-  "OVD": {icao: "LEAS", city: "Asturias"},
+  "ATH": {icao: "LGAV", city: "Athens"},
 
-  "GYD": {icao: "UBBB", city: "Baku"},
+  "ATL": {icao: "KATL", city: "Atlanta"},
 
-  "BKK": {icao: "VTBS", city: "Bangkok"},
+  "OVD": {icao: "LEAS", city: "Asturias"},
 
-  "BLR": {icao: "VOBL", city: "Bangalore"},
+  "GYD": {icao: "UBBB", city: "Baku"},
 
-  "BCN": {icao: "LEBL", city: "Barcelona"},
+  "BKK": {icao: "VTBS", city: "Bangkok"},
 
-  "BRI": {icao: "LIBD", city: "Bari"},
+  "BLR": {icao: "VOBL", city: "Bangalore"},
 
-  "BSL": {icao: "LFSB", city: "Basel"},
+  "BCN": {icao: "LEBL", city: "Barcelona"},
 
-  "BIA": {icao: "LFKB", city: "Bastia"},
+  "BRI": {icao: "LIBD", city: "Bari"},
 
-  "PEK": {icao: "ZBAA", city: "Beijing"},
+  "BSL": {icao: "LFSB", city: "Basel"},
 
-  "BEY": {icao: "OLBA", city: "Beirut"}, 
+  "BIA": {icao: "LFKB", city: "Bastia"},
 
-  "BEG": {icao: "LYBE", city: "Belgrade"},
+  "PEK": {icao: "ZBAA", city: "Beijing"},
 
-  "BGO": {icao: "ENBR", city: "Bergen"},
+  "BEY": {icao: "OLBA", city: "Beirut"}, 
 
-  "BER": {icao: "EDDB", city: "Berlin"},
+  "BEG": {icao: "LYBE", city: "Belgrade"},
 
-  "BIQ": {icao: "LFBZ", city: "Biarritz"},
+  "BGO": {icao: "ENBR", city: "Bergen"},
 
-  "BIO": {icao: "LEBB", city: "Bilbao"},
+  "BER": {icao: "EDDB", city: "Berlin"},
 
-  "BLL": {icao: "EKBI", city: "Billund"},
+  "BIQ": {icao: "LFBZ", city: "Biarritz"},
 
-  "BHX": {icao: "EGBB", city: "Birmingham"},
+  "BIO": {icao: "LEBB", city: "Bilbao"},
 
-  "BOG": {icao: "SKBO", city: "Bogota"},
+  "BLL": {icao: "EKBI", city: "Billund"},
 
-  "BLQ": {icao: "LIPE", city: "Bologna"},
+  "BHX": {icao: "EGBB", city: "Birmingham"},
 
-  "BOD": {icao: "LFBD", city: "Bordeaux"},
+  "BOG": {icao: "SKBO", city: "Bogota"},
 
-  "BOS": {icao: "KBOS", city: "Boston"},
+  "BLQ": {icao: "LIPE", city: "Bologna"},
 
-  "BRE": {icao: "EDDW", city: "Bremen"},
+  "BOD": {icao: "LFBD", city: "Bordeaux"},
 
-  "BDS": {icao: "LIBR", city: "Brindisi"},
+  "BOS": {icao: "KBOS", city: "Boston"},
 
-  "BRU": {icao: "EBBR", city: "Brussels"},
+  "BRE": {icao: "EDDW", city: "Bremen"},
 
-  "OTP": {icao: "LROP", city: "Bucharest"},
+  "BDS": {icao: "LIBR", city: "Brindisi"},
 
-  "BUD": {icao: "LHBP", city: "Budapest"},
+  "BRU": {icao: "EBBR", city: "Brussels"},
 
-  "EZE": {icao: "SAEZ", city: "Buenos Aires"},
+  "OTP": {icao: "LROP", city: "Bucharest"},
 
-  "BOJ": {icao: "LBBG", city: "Burgas"},
+  "BUD": {icao: "LHBP", city: "Budapest"},
 
-  "CAG": {icao: "LIEE", city: "Cagliari"},
+  "EZE": {icao: "SAEZ", city: "Buenos Aires"},
 
-  "CAI": {icao: "HECA", city: "Cairo"},
+  "BOJ": {icao: "LBBG", city: "Burgas"},
 
-  "YYC": {icao: "CYYC", city: "Calgary"},
+  "CAG": {icao: "LIEE", city: "Cagliari"},
 
-  "CPT": {icao: "FACT", city: "Cape Town"},
+  "CAI": {icao: "HECA", city: "Cairo"},
 
-  "CTA": {icao: "LICC", city: "Catania"},
+  "YYC": {icao: "CYYC", city: "Calgary"},
 
-  "CLT": {icao: "KCLT", city: "Charlotte"},
+  "CPT": {icao: "FACT", city: "Cape Town"},
 
-  "MAA": {icao: "VOMM", city: "Chennai"},
+  "CTA": {icao: "LICC", city: "Catania"},
 
-  "ORD": {icao: "KORD", city: "Chicago"},
+  "CLT": {icao: "KCLT", city: "Charlotte"},
 
-  "CLJ": {icao: "LRCL", city: "Cluj"},
+  "MAA": {icao: "VOMM", city: "Chennai"},
 
-  "CGN": {icao: "EDDK", city: "Cologne"},
+  "ORD": {icao: "KORD", city: "Chicago"},
 
-  "CPH": {icao: "EKCH", city: "Copenhagen"},
+  "CLJ": {icao: "LRCL", city: "Cluj"},
 
-  "ORK": {icao: "EICK", city: "Cork"},
+  "CGN": {icao: "EDDK", city: "Cologne"},
 
-  "CFU": {icao: "LGKR", city: "Corfu"},
+  "CPH": {icao: "EKCH", city: "Copenhagen"},
 
-  "DFW": {icao: "KDFW", city: "Dallas"},
+  "ORK": {icao: "EICK", city: "Cork"},
 
-  "DMM": {icao: "OEDF", city: "Dammam"},
+  "CFU": {icao: "LGKR", city: "Corfu"},
 
-  "DEB": {icao: "LHDC", city: "Debrecen"},
+  "DFW": {icao: "KDFW", city: "Dallas"},
 
-  "DEL": {icao: "VIDP", city: "Delhi"},
+  "DMM": {icao: "OEDF", city: "Dammam"},
 
-  "DEN": {icao: "KDEN", city: "Denver"},
+  "DEB": {icao: "LHDC", city: "Debrecen"},
 
-  "DTW": {icao: "KDTW", city: "Detroit"},
+  "DEL": {icao: "VIDP", city: "Delhi"},
 
-  "DRS": {icao: "EDDC", city: "Dresden"},
+  "DEN": {icao: "KDEN", city: "Denver"},
 
-  "DUB": {icao: "EIDW", city: "Dublin"},
+  "DTW": {icao: "KDTW", city: "Detroit"},
 
-  "DXB": {icao: "OMDB", city: "Dubai"},
+  "DRS": {icao: "EDDC", city: "Dresden"},
 
-  "DBV": {icao: "LDDU", city: "Dubrovnik"},
+  "DUB": {icao: "EIDW", city: "Dublin"},
 
- "DME": {icao: "UUDD", city: "Moscow"},
+  "DXB": {icao: "OMDB", city: "Dubai"},
 
-  "DUS": {icao: "EDDL", city: "Dusseldorf"},
+  "DBV": {icao: "LDDU", city: "Dubrovnik"},
 
-  "EDI": {icao: "EGPH", city: "Edinburgh"},
+ "DME": {icao: "UUDD", city: "Moscow"},
 
-  "ERF": {icao: "EDDE", city: "Erfurt"},
+  "DUS": {icao: "EDDL", city: "Dusseldorf"},
 
-  "EBL": {icao: "ORER", city: "Erbil"},
+  "EDI": {icao: "EGPH", city: "Edinburgh"},
 
-  "FAO": {icao: "LPFR", city: "Faro"},
+  "ERF": {icao: "EDDE", city: "Erfurt"},
 
-  "FLR": {icao: "LIRQ", city: "Florence"},
+  "EBL": {icao: "ORER", city: "Erbil"},
 
-  "GDN": {icao: "EPGD", city: "Gdansk"},
+  "FAO": {icao: "LPFR", city: "Faro"},
 
-  "GVA": {icao: "LSGG", city: "Geneva"},
+  "FLR": {icao: "LIRQ", city: "Florence"},
 
-  "GLA": {icao: "EGPF", city: "Glasgow"},
+  "GDN": {icao: "EPGD", city: "Gdansk"},
 
-  "GOT": {icao: "ESGG", city: "Gothenburg"},
+  "GVA": {icao: "LSGG", city: "Geneva"},
 
-  "GRZ": {icao: "LOWG", city: "Graz"},
+  "GLA": {icao: "EGPF", city: "Glasgow"},
 
-  "HAM": {icao: "EDDH", city: "Hamburg"},
+  "GOT": {icao: "ESGG", city: "Gothenburg"},
 
-  "HAJ": {icao: "EDDV", city: "Hanover"},
+  "GRZ": {icao: "LOWG", city: "Graz"},
 
-  "HEL": {icao: "EFHK", city: "Helsinki"},
+  "HAM": {icao: "EDDH", city: "Hamburg"},
 
-  "HER": {icao: "LGIR", city: "Heraklion"},
+  "HAJ": {icao: "EDDV", city: "Hanover"},
 
-  "HDF": {icao: "EDAH", city: "Heringsdorf"},
+  "HEL": {icao: "EFHK", city: "Helsinki"},
 
-  "HKG": {icao: "VHHH", city: "Hong Kong"},
+  "HER": {icao: "LGIR", city: "Heraklion"},
 
-  "IAH": {icao: "KIAH", city: "Houston"},
+  "HDF": {icao: "EDAH", city: "Heringsdorf"},
 
-  "HYD": {icao: "VOHY", city: "Hyderabad"},
+  "HKG": {icao: "VHHH", city: "Hong Kong"},
 
-  "IVL": {icao: "EFIV", city: "Ivalo"},
+  "IAH": {icao: "KIAH", city: "Houston"},
 
-  "IBZ": {icao: "LEIB", city: "Ibiza"},
+  "HYD": {icao: "VOHY", city: "Hyderabad"},
 
-  "IST": {icao: "LTBA", city: "Istanbul"},
+  "IVL": {icao: "EFIV", city: "Ivalo"},
 
-  "ADB": {icao: "LTBJ", city: "Izmir"},
+  "IBZ": {icao: "LEIB", city: "Ibiza"},
 
-  "JED": {icao: "OEJN", city: "Jeddah"},
+  "IST": {icao: "LTBA", city: "Istanbul"},
 
-  "JNB": {icao: "FAOR", city: "Johannesburg"},
+  "ADB": {icao: "LTBJ", city: "Izmir"},
 
-  "KLX": {icao: "LGKL", city: "Kalamata"},
+  "JED": {icao: "OEJN", city: "Jeddah"},
 
-  "KBP": {icao: "UKBB", city: "Kiev"},
+  "JNB": {icao: "FAOR", city: "Johannesburg"},
 
-  "FKB": {icao: "EDSB", city: "Karlsruhe"},
+  "KLX": {icao: "LGKL", city: "Kalamata"},
 
-  "KTW": {icao: "EPKT", city: "Katowice"},
+  "KBP": {icao: "UKBB", city: "Kiev"},
 
-  "EFL": {icao: "LGKF", city: "Kefalonia"},
+  "FKB": {icao: "EDSB", city: "Karlsruhe"},
 
-  "KTT": {icao: "EFKT", city: "Kittilä"},
+  "KTW": {icao: "EPKT", city: "Katowice"},
 
-  "KGS": {icao: "LGKO", city: "Kos"},
+  "EFL": {icao: "LGKF", city: "Kefalonia"},
 
-  "KRK": {icao: "EPKK", city: "Krakow"},
+  "KTT": {icao: "EFKT", city: "Kittilä"},
 
-  "KAO": {icao: "EFRO", city: "Kuusamo"},
+  "KGS": {icao: "LGKO", city: "Kos"},
 
-  "KWI": {icao: "OKKK", city: "Kuwait City"},
+  "KRK": {icao: "EPKK", city: "Krakow"},
 
-  "LOS": {icao: "DNMM", city: "Lagos"},
+  "KAO": {icao: "EFRO", city: "Kuusamo"},
 
-  "SUF": {icao: "LICA", city: "Lamezia"},
+  "KWI": {icao: "OKKK", city: "Kuwait City"},
 
-  "LCA": {icao: "LCLK", city: "Larnaca"},
+  "LOS": {icao: "DNMM", city: "Lagos"},
 
-  "LEJ": {icao: "EDDP", city: "Leipzig"},
+  "SUF": {icao: "LICA", city: "Lamezia"},
 
-  "LIS": {icao: "LPPT", city: "Lisbon"},
+  "LCA": {icao: "LCLK", city: "Larnaca"},
 
-  "LNZ": {icao: "LOWL", city: "Linz"},
+  "LEJ": {icao: "EDDP", city: "Leipzig"},
 
-  "LHR": {icao: "EGLL", city: "London"},
+  "LIS": {icao: "LPPT", city: "Lisbon"},
 
-  "STN": {icao: "EGSS", city: "London"},
+  "LNZ": {icao: "LOWL", city: "Linz"},
 
-  "LAX": {icao: "KLAX", city: "Los Angeles"},
+  "LHR": {icao: "EGLL", city: "London"},
 
-  "LAD": {icao: "FNLU", city: "Luanda"},
+  "STN": {icao: "EGSS", city: "London"},
 
-  "LUX": {icao: "ELLX", city: "Luxembourg"},
+  "LAX": {icao: "KLAX", city: "Los Angeles"},
 
-  "LYS": {icao: "LFLL", city: "Lyon"},
+  "LAD": {icao: "FNLU", city: "Luanda"},
 
-  "MAD": {icao: "LEMD", city: "Madrid"},
+  "LUX": {icao: "ELLX", city: "Luxembourg"},
 
-  "SSG": {icao: "FQMA", city: "Malabo"},
+  "LYS": {icao: "LFLL", city: "Lyon"},
 
-  "AGP": {icao: "LEMG", city: "Malaga"},
+  "MAD": {icao: "LEMD", city: "Madrid"},
 
-  "MLA": {icao: "LMML", city: "Malta"},
+  "SSG": {icao: "FQMA", city: "Malabo"},
 
-  "MAN": {icao: "EGCC", city: "Manchester"},
+  "AGP": {icao: "LEMG", city: "Malaga"},
 
-  "MRS": {icao: "LFML", city: "Marseille"},
+  "MLA": {icao: "LMML", city: "Malta"},
 
-  "MEX": {icao: "MMMX", city: "Mexico City"},
+  "MAN": {icao: "EGCC", city: "Manchester"},
 
-  "MIA": {icao: "KMIA", city: "Miami"},
+  "MRS": {icao: "LFML", city: "Marseille"},
 
-  "LIN": {icao: "LIML", city: "Milan"},
+  "MEX": {icao: "MMMX", city: "Mexico City"},
 
-  "MXP": {icao: "LIMC", city: "Milan"},
+  "MIA": {icao: "KMIA", city: "Miami"},
 
-  "MSP": {icao: "KMSP", city: "Minneapolis"},
+  "LIN": {icao: "LIML", city: "Milan"},
 
-  "YUL": {icao: "CYUL", city: "Montreal"},
+  "MXP": {icao: "LIMC", city: "Milan"},
 
-  "BOM": {icao: "VABB", city: "Mumbai"},
+  "MSP": {icao: "KMSP", city: "Minneapolis"},
 
-  "FMO": {icao: "EDDG", city: "Munster"},
+  "YUL": {icao: "CYUL", city: "Montreal"},
 
-  "JMK": {icao: "LGMK", city: "Mykonos"},
+  "BOM": {icao: "VABB", city: "Mumbai"},
 
-  "NBO": {icao: "HKJK", city: "Nairobi"},
+  "FMO": {icao: "EDDG", city: "Munster"},
 
-  "NTE": {icao: "LFRS", city: "Nantes"},
+  "JMK": {icao: "LGMK", city: "Mykonos"},
 
-  "NAP": {icao: "LIRN", city: "Naples"},
+  "NBO": {icao: "HKJK", city: "Nairobi"},
 
-  "NCL": {icao: "EGNT", city: "Newcastle"},
+  "NTE": {icao: "LFRS", city: "Nantes"},
 
-  "JFK": {icao: "KJFK", city: "New York"},
+  "NAP": {icao: "LIRN", city: "Naples"},
 
-  "EWR": {icao: "KEWR", city: "Newark"},
+  "NCL": {icao: "EGNT", city: "Newcastle"},
 
-  "NCE": {icao: "LFMN", city: "Nice"},
+  "JFK": {icao: "KJFK", city: "New York"},
 
-  "NUE": {icao: "EDDN", city: "Nuremberg"},
+  "EWR": {icao: "KEWR", city: "Newark"},
 
-  "OLB": {icao: "LIEO", city: "Olbia"},
+  "NCE": {icao: "LFMN", city: "Nice"},
 
-  "OSL": {icao: "ENGM", city: "Oslo"},
+  "NUE": {icao: "EDDN", city: "Nuremberg"},
 
-  "PMO": {icao: "LICJ", city: "Palermo"},
+  "OLB": {icao: "LIEO", city: "Olbia"},
 
-  "PMI": {icao: "LEPA", city: "Palma de Mallorca"},
+  "OSL": {icao: "ENGM", city: "Oslo"},
 
-  "PTY": {icao: "MPTO", city: "Panama City"},
+  "PMO": {icao: "LICJ", city: "Palermo"},
 
-  "PFO": {icao: "LCPH", city: "Paphos"},
+  "PMI": {icao: "LEPA", city: "Palma de Mallorca"},
 
-  "CDG": {icao: "LFPG", city: "Paris"},
+  "PTY": {icao: "MPTO", city: "Panama City"},
 
-  "PHL": {icao: "KPHL", city: "Philadelphia"},
+  "PFO": {icao: "LCPH", city: "Paphos"},
 
-  "PHC": {icao: "DNPO", city: "Port Harcourt"},
+  "CDG": {icao: "LFPG", city: "Paris"},
 
-  "OPO": {icao: "LPPR", city: "Porto"},
+  "PHL": {icao: "KPHL", city: "Philadelphia"},
 
-  "POZ": {icao: "EPPO", city: "Poznan"},
+  "PHC": {icao: "DNPO", city: "Port Harcourt"},
 
-  "PRG": {icao: "LKPR", city: "Prague"},
+  "OPO": {icao: "LPPR", city: "Porto"},
 
-  "PUY": {icao: "LDPL", city: "Pula"},
+  "POZ": {icao: "EPPO", city: "Poznan"},
 
-  "RDU": {icao: "KRDU", city: "Raleigh"},
+  "PRG": {icao: "LKPR", city: "Prague"},
 
-  "KEF": {icao: "BIKF", city: "Reykjavik"},
+  "PUY": {icao: "LDPL", city: "Pula"},
 
-  "RHO": {icao: "LGRP", city: "Rhodes"},
+  "RDU": {icao: "KRDU", city: "Raleigh"},
 
-  "RIX": {icao: "EVRA", city: "Riga"},
+  "KEF": {icao: "BIKF", city: "Reykjavik"},
 
-  "RJK": {icao: "LDRI", city: "Rijeka"},
+  "RHO": {icao: "LGRP", city: "Rhodes"},
 
-  "GIG": {icao: "SBGL", city: "Rio de Janeiro"},
+  "RIX": {icao: "EVRA", city: "Riga"},
 
-  "RUH": {icao: "OERK", city: "Riyadh"},
+  "RJK": {icao: "LDRI", city: "Rijeka"},
 
-  "FCO": {icao: "LIRF", city: "Rome"},
+  "GIG": {icao: "SBGL", city: "Rio de Janeiro"},
 
-  "RVN": {icao: "EFRO", city: "Rovaniemi"},
+  "RUH": {icao: "OERK", city: "Riyadh"},
 
-  "SZG": {icao: "LOWS", city: "Salzburg"},
+  "FCO": {icao: "LIRF", city: "Rome"},
 
-  "SFO": {icao: "KSFO", city: "San Francisco"},
+  "RVN": {icao: "EFRO", city: "Rovaniemi"},
 
-  "SJO": {icao: "MROC", city: "San Jose (CR)"},
+  "SZG": {icao: "LOWS", city: "Salzburg"},
 
-  "SJC": {icao: "KSJC", city: "San Jose (US)"},
+  "SFO": {icao: "KSFO", city: "San Francisco"},
 
-  "JTR": {icao: "LGSR", city: "Santorini"},
+  "SJO": {icao: "MROC", city: "San Jose (CR)"},
 
-  "SCQ": {icao: "LEST", city: "Santiago de Compostela"},
+  "SJC": {icao: "KSJC", city: "San Jose (US)"},
 
-  "SJJ": {icao: "LQSA", city: "Sarajevo"},
+  "JTR": {icao: "LGSR", city: "Santorini"},
 
-  "GRU": {icao: "SBGR", city: "Sao Paulo"},
+  "SCQ": {icao: "LEST", city: "Santiago de Compostela"},
 
-  "SEA": {icao: "KSEA", city: "Seattle"},
+  "SJJ": {icao: "LQSA", city: "Sarajevo"},
 
-  "ICN": {icao: "RKSI", city: "Seoul"},
+  "GRU": {icao: "SBGR", city: "Sao Paulo"},
 
-  "SVQ": {icao: "LEZL", city: "Seville"},
+  "SEA": {icao: "KSEA", city: "Seattle"},
 
-  "PVG": {icao: "ZSPD", city: "Shanghai"},
+  "ICN": {icao: "RKSI", city: "Seoul"},
 
-  "SIN": {icao: "WSSS", city: "Singapore"},
+  "SVQ": {icao: "LEZL", city: "Seville"},
 
-  "SOF": {icao: "LBSF", city: "Sofia"},
+  "PVG": {icao: "ZSPD", city: "Shanghai"},
 
-  "SPU": {icao: "LDSP", city: "Split"},
+  "SIN": {icao: "WSSS", city: "Singapore"},
 
-  "SVG": {icao: "ENZV", city: "Stavanger"},
+  "SOF": {icao: "LBSF", city: "Sofia"},
 
-  "STL": {icao: "KSTL", city: "St. Louis"},
+  "SPU": {icao: "LDSP", city: "Split"},
 
-  "ARN": {icao: "ESSA", city: "Stockholm"},
+  "SVG": {icao: "ENZV", city: "Stavanger"},
 
-  "SXB": {icao: "LFST", city: "Strasbourg"},
+  "STL": {icao: "KSTL", city: "St. Louis"},
 
-  "STR": {icao: "EDDS", city: "Stuttgart"},
+  "ARN": {icao: "ESSA", city: "Stockholm"},
 
-  "TLL": {icao: "EETN", city: "Tallinn"},
+  "SXB": {icao: "LFST", city: "Strasbourg"},
 
-  "IKA": {icao: "OIIE", city: "Tehran"},
+  "STR": {icao: "EDDS", city: "Stuttgart"},
 
-  "TLV": {icao: "LLBG", city: "Tel Aviv"}, 
+  "TLL": {icao: "EETN", city: "Tallinn"},
 
-  "SKG": {icao: "LGTS", city: "Thessaloniki"},
+  "IKA": {icao: "OIIE", city: "Tehran"},
 
-  "TIA": {icao: "LATI", city: "Tirana"},
+  "TLV": {icao: "LLBG", city: "Tel Aviv"}, 
 
-  "TIV": [42.4042, 18.7233],
-      "HND": [35.5494, 139.7798], 
-      "YYZ": [43.6777, -79.6248], 
-      "TOS": [69.6828, 18.9181], 
-      "TRD": [63.4571, 10.9241], 
-      "TUN": [36.8510, 10.2273],
-      "VLC": [39.4897, -0.4819], 
-      "YVR": [49.1936, -123.1836], 
-      "VAR": [43.2076, 27.8251], 
-      "VCE": [45.5052, 12.3519], 
-      "VIE": [48.1103, 16.5697], 
-      "VNO": [54.6740, 25.2854], 
-      "WAW": [52.1657, 20.9671], 
-      "IAD": [38.9444, -77.4558], 
-      "GWT": [54.9136, 8.3475], 
-      "WRO": [51.1020, 17.0304], 
-      "WBG": [49.8106, 9.9425], 
-      "ZAD": [44.1086, 15.3467], 
-      "ZAG": [45.7420, 16.0680], 
-      "ZTH": [37.7500, 20.8842], 
-      "ZRH": [47.4581, 8.5492], 
-      "PER": [-31.9385, 115.9672], 
-      "CAN": [23.1291, 113.2644], 
-      "CKG": [29.5630, 106.5516], 
-      "TPE": [25.0478, 121.5320], 
-      "HGH": [30.2741, 120.1551], 
-      "CGK": [-6.1256, 106.656], 
-      "SGN": [10.8188, 106.652], 
-      "HKT": [8.1132, 98.3169], 
-      "DAD": [16.0439, 108.199], 
-      "SAI": [13.369167, 104.223056], 
-      "KTI": [11.36, 104.92], 
-      "AGR": [27.1558, 77.9609], 
-      "JAI": [26.8242, 75.8122], 
-      "VNS": [25.4521, 82.8586], 
-      "GOI": [15.3808, 73.8314], 
-      "COK": [10.1520, 76.4019], 
-      "DAM": [33.4101, 36.6917]
-    };
+  "SKG": {icao: "LGTS", city: "Thessaloniki"},
 
-    airportCoords[code] = originalCoords[code];
+  "TIA": {icao: "LATI", city: "Tirana"},
+
+  "TIV": {icao: "LYTV", city: "Tivat"},
+
+  "HND": {icao: "RJTT", city: "Tokyo"},
+
+  "YYZ": {icao: "CYYZ", city: "Toronto"},
+
+  "TOS": {icao: "ENTC", city: "Tromsø"},
+
+  "TRD": {icao: "ENVA", city: "Trondheim"},
+
+  "TUN": {icao: "DTTA", city: "Tunis"},
+
+  "VLC": {icao: "LEVC", city: "Valencia"},
+
+  "YVR": {icao: "CYVR", city: "Vancouver"},
+
+  "VAR": {icao: "LBWN", city: "Varna"},
+
+  "VCE": {icao: "LIPZ", city: "Venice"},
+
+  "VIE": {icao: "LOWW", city: "Vienna"},
+
+  "VNO": {icao: "EYVI", city: "Vilnius"},
+
+  "WAW": {icao: "EPWA", city: "Warsaw"},
+
+  "IAD": {icao: "KIAD", city: "Washington"},
+
+  "GWT": {icao: "EDXW", city: "Westerland"},
+
+  "WRO": {icao: "EPWR", city: "Wroclaw"},
+
+  "WBG": {icao: "EDFW", city: "Wurzburg"},
+
+  "ZAD": {icao: "LDZD", city: "Zadar"},
+
+  "ZAG": {icao: "LDZA", city: "Zagreb"},
+
+  "ZTH": {icao: "LGZA", city: "Zakynthos"},
+
+  "ZRH": {icao: "LSZH", city: "Zurich"},
+
+  "PER": {icao: "YPPH", city: "Perth"},
+
+  "CAN": {icao: "ZGGG", city: "Guangzhou"},
+
+  "CKG": {icao: "ZUCK", city: "Chongqing"},
+
+  "TPE": {icao: "RCTP", city: "Taipei"},
+
+  "HGH": {icao: "ZSHC", city: "Hangzhou"},
+
+  "CGK": {icao: "WIII", city: "Jakarta"},
+
+  "SGN": {icao: "VVTS", city: "Ho Chi Minh City"},
+
+  "HKT": {icao: "VTSP", city: "Phuket"},
+
+  "DAD": {icao: "VVDN", city: "Da Nang"},
+
+  "SAI": {icao: "VVCM", city: "Siem Reap"},
+
+  "KTI": {icao: "VVKP", city: "Kratie"},
+
+  "AGR": {icao: "VIDN", city: "Agra"},
+
+  "JAI": {icao: "VIJP", city: "Jaipur"},
+
+  "VNS": {icao: "VIBN", city: "Varanasi"},
+
+  "GOI": {icao: "VOGO", city: "Goa"},
+
+  "COK": {icao: "VOCI", city: "Kochi"},
+
+  "DAM": {icao: "OSDI", city: "Damascus"}
+};
+
+// Convert airportData structure to the old airportCoords for the map coordinates
+const airportCoords = {};
+Object.keys(airportData).forEach(code => {
+    
+    // COMPLETED ORIGINAL COORDINATES LIST
+    const originalCoords = {
+      "MARS": [500.0379, 1500.5622], "VENUS": [-500.0379, -1250.5622], "MOON": [-500.0379, 500.5622], "PROXIMA": [500.0379, 4500.5622], "FRA": [50.0379, 8.5622], "MUC": [48.3538, 11.7861], "ABV": [9.0060, 7.2636], "AUH": [24.4321, 54.6516], "ALC": [38.2822, -0.5581], "ALG": [36.6911, 3.2158], "ALA": [43.3521, 77.0403], "AMM": [31.7226, 35.9935], "AMS": [52.3086, 4.7639], "AOI": [43.6169, 13.5189], "ATH": [37.9364, 23.9445], "ATL": [33.6407, -84.4279], "OVD": [43.5631, -6.0346], "GYD": [40.4675, 50.0469], "BKK": [13.6811, 100.7472], "BLR": [13.1979, 77.7063], "BCN": [41.2974, 2.0833], "BRI": [41.1388, 16.7600], "BSL": [47.5931, 7.5297], "BIA": [42.5522, 9.4831], "PEK": [40.0801, 116.5846], "BEY": [33.8886, 35.4955], "BEG": [44.8186, 20.3092], "BGO": [60.2931, 5.2189], "BER": [52.3667, 13.5033], "BIQ": [43.4681, -1.5316], "BIO": [43.3013, -2.9100], "BLL": [55.7401, 9.1517], "BHX": [52.4530, -1.7480], "BOG": [4.7016, -74.1469], "BLQ": [44.5356, 11.2889], "BOD": [44.8281, -0.7156], "BOS": [42.3656, -71.0096], "BRE": [53.0475, 8.7861], "BDS": [40.6578, 17.9478], "BRU": [50.9014, 4.4844], "OTP": [44.5722, 26.1025], "BUD": [47.4369, 19.2556], "EZE": [-34.8222, -58.5358], "BOJ": [42.5694, 27.5150], "CAG": [39.2511, 9.0544], "CAI": [30.1160, 31.4172], "YYC": [51.1139, -114.0196], "CPT": [-33.9700, 18.6021], "CTA": [37.4661, 15.0650], "CLT": [35.2140, -80.9431], "MAA": [12.9949, 80.1690], "ORD": [41.9742, -87.9073], "CLJ": [46.7857, 23.6861], "CGN": [50.8659, 7.1427], "CPH": [55.6181, 12.6558], "ORK": [51.8372, -8.4917], "CFU": [39.6019, 19.9117], "DFW": [32.8998, -97.0403], "DMM": [26.4714, 50.1033], "DEB": [47.3031, 21.6486], "DEL": [28.5562, 77.1000], "DEN": [39.8561, -104.6737], "DTW": [42.2124, -83.3534], "DRS": [51.1322, 13.7672], "DUB": [53.4273, -6.2436], "DXB": [25.2532, 55.3657], "DBV": [42.5610, 18.2680], "DUS": [51.2895, 6.7668], "EDI": [55.9500, -3.3725], "DME": [55.4088, 37.9063],"ERF": [51.8419, 11.0044], "EBL": [36.2390, 43.9630], "FAO": [37.0146, -7.9659], "FLR": [43.8106, 11.2050], "GDN": [54.3771, 18.4661], "GVA": [46.2381, 6.1083], "GLA": [55.8719, -4.4331], "GOT": [57.6681, 11.7869], "GRZ": [46.9914, 15.4390], "HAM": [53.6300, 9.9880], "HAJ": [52.4611, 9.6850], "HEL": [60.3172, 24.9633], "HER": [35.3397, 25.1808], "HDF": [54.5803, 13.4089], "HKG": [22.3080, 113.9185], "IAH": [29.9844, -95.3414], "HYD": [17.2313, 78.4294], "IVL": [68.6071, 27.4058], "IBZ": [38.8724, 1.3739], "IST": [40.9769, 28.8146], "ADB": [38.3206, 27.1561], "JED": [21.6796, 39.1566], "JNB": [-26.1392, 28.2460], "KLX": [36.8617, 22.4992], "FKB": [48.7800, 8.0800], "KTW": [50.4744, 19.0800],"KBP":[50.345, 30.8947], "EFL": [38.1206, 20.5000], "KTT": [67.7003, 24.8500], "KGS": [36.8917, 27.2883], "KRK": [50.0777, 19.7846], "KAO": [65.9800, 29.2300], "KWI": [29.2266, 47.9689], "LOS": [6.5773, 3.3212], "SUF": [38.9006, 16.2425], "LCA": [34.8756, 33.6244], "LEJ": [51.4231, 12.2367], "LIS": [38.7712, -9.1342], "LNZ": [48.2339, 14.1878], "LHR": [51.4700, -0.4543], "STN": [51.8890, 0.2330], "LAX": [33.9425, -118.4081], "LAD": [-8.8368, 13.2317], "LUX": [49.6266, 6.2110], "LYS": [45.7256, 5.0811], "MAD": [40.4719, -3.5626], "SSG": [3.7500, 8.7833], "AGP": [36.6749, -4.4991], "MLA": [35.8575, 14.4775], "MAN": [53.3650, -2.2725], "MRS": [43.4372, 5.2140], "MEX": [19.4361, -99.0719], "MIA": [25.7959, -80.2871], "LIN": [45.4450, 9.2769], "MXP": [45.6306, 8.7231], "MSP": [44.8848, -93.2223], "YUL": [45.4576, -73.7492], "BOM": [19.0896, 72.8656], "FMO": [52.1347, 7.6856], "JMK": [36.3969, 25.4294], "NBO": [-1.3192, 36.9275], "NTE": [47.1539, -1.6111], "NAP": [40.8860, 14.2906], "NCL": [55.0375, -1.6917], "JFK": [40.6413, -73.7781], "EWR": [40.6895, -74.1745], "NCE": [43.6584, 7.2159], "NUE": [49.4987, 11.0784], "OLB": [40.9022, 9.5172], "OSL": [60.1939, 11.1004], "PMO": [38.1758, 13.0914], "PMI": [39.5519, 2.7386], "PTY": [8.9533, -79.5558], "PFO": [34.7150, 32.4850], "CDG": [49.0097, 2.5479], "PHL": [39.8719, -75.2411], "PHC": [39.8719, -75.2411], "OPO": [41.2481, -8.6819], "POZ": [52.4214, 16.8261], "PRG": [50.1008, 14.2710], "PUY": [44.8936, 13.9189], "RDU": [35.8776, -78.7875], "KEF": [63.9850, -22.6056], "RHO": [36.4347, 28.2178], "RIX": [56.9225, 24.0831], "RJK": [45.2167, 14.5708], "GIG": [-22.8090, -43.2506], "RUH": [24.9570, 46.6985], "FCO": [41.7999, 12.2462], "RVN": [66.3625, 25.8300], "SZG": [47.7939, 13.0042], "SFO": [37.6189, -122.3750], "SJO": [9.9939, -84.2086], "SJC": [37.3626, -121.9290], "JTR": [36.3991, 25.4794], "SCQ": [42.8961, -8.4150], "SJJ": [43.8247, 18.3311], "GRU": [-23.4356, -46.4731], "SEA": [47.4489, -122.3090], "ICN": [37.4602, 126.4407], "SVQ": [37.4192, -5.9003], "PVG": [31.1443, 121.8083], "SIN": [1.3592, 103.9894], "SOF": [42.6950, 23.4060], "SPU": [43.5386, 16.2986], "SVG": [58.8761, 5.6375], "STL": [38.7487, -90.3700], "ARN": [59.6519, 17.9186], "SXB": [48.5383, 7.6283], "STR": [48.6897, 9.2219], "TLL": [59.4133, 24.8322], "IKA": [35.4161, 51.1522], "TLV": [32.0114, 34.8866], "SKG": [40.5181, 22.9747], "TIA": [41.4142, 19.7204], 
+      "TIV": [42.4042, 18.7233],
+      "HND": [35.5494, 139.7798], 
+      "YYZ": [43.6777, -79.6248], 
+      "TOS": [69.6828, 18.9181], 
+      "TRD": [63.4571, 10.9241], 
+      "TUN": [36.8510, 10.2273],
+      "VLC": [39.4897, -0.4819], 
+      "YVR": [49.1936, -123.1836], 
+      "VAR": [43.2076, 27.8251], 
+      "VCE": [45.5052, 12.3519], 
+      "VIE": [48.1103, 16.5697], 
+      "VNO": [54.6740, 25.2854], 
+      "WAW": [52.1657, 20.9671], 
+      "IAD": [38.9444, -77.4558], 
+      "GWT": [54.9136, 8.3475], 
+      "WRO": [51.1020, 17.0304], 
+      "WBG": [49.8106, 9.9425], 
+      "ZAD": [44.1086, 15.3467], 
+      "ZAG": [45.7420, 16.0680], 
+      "ZTH": [37.7500, 20.8842], 
+      "ZRH": [47.4581, 8.5492], 
+      "PER": [-31.9385, 115.9672], 
+      "CAN": [23.1291, 113.2644], 
+      "CKG": [29.5630, 106.5516], 
+      "TPE": [25.0478, 121.5320], 
+      "HGH": [30.2741, 120.1551], 
+      "CGK": [-6.1256, 106.656], 
+      "SGN": [10.8188, 106.652], 
+      "HKT": [8.1132, 98.3169], 
+      "DAD": [16.0439, 108.199], 
+      "SAI": [13.369167, 104.223056], 
+      "KTI": [11.36, 104.92], 
+      "AGR": [27.1558, 77.9609], 
+      "JAI": [26.8242, 75.8122], 
+      "VNS": [25.4521, 82.8586], 
+      "GOI": [15.3808, 73.8314], 
+      "COK": [10.1520, 76.4019], 
+      "DAM": [33.4101, 36.6917]
+    };
+
+    airportCoords[code] = originalCoords[code];
 });
 
 
@@ -602,54 +690,54 @@ const airportData = {
 const hubs = ["FRA", "MUC"];
 const subsidiaryHubs = ["ZRH", "VIE", "BRU", "GVA"];
 
-const codeshare = ["CAN", "CKG", "TPE", "HGH", "CGK", "SGN", "HKT", "DAD", "SAI", "KTI", "AGR", "JAI", "VNS", "GOI", "COK"]; 
+const codeshare = ["CAN", "CKG", "TPE", "HGH", "CGK", "SGN", "HKT", "DAD", "SAI", "KTI", "AGR", "JAI", "VNS", "GOI", "COK"]; 
 
-const outOfService = ["TLV", "DAM", "BEY", "AMM", "EBL", "IKA", "KBP", "DME"]; 
+const outOfService = ["TLV", "DAM", "BEY", "AMM", "EBL", "IKA", "KBP", "DME"]; 
 
-const mars = ["MARS", "PROXIMA"]; 
+const mars = ["MARS", "PROXIMA"]; 
 const venus = ["VENUS", "MOON"];
 
 // -------------------- DRAW MARKERS --------------------
 Object.keys(airportCoords).forEach(code => {
-  let color = "#6b9ebd"; // default destination color
-  
-  const hubColor = "#d4b063";      
-  const subsidiaryColor = "#d88c6a"; 
-  const codeshareColor = "#b86b6b"; 
-  const outOfServiceColor = "#795548"; 
-  const marsColor = "#ABD3DF"; 
-  const venusColor = "#F2EFEA";
+  let color = "#6b9ebd"; // default destination color
+  
+  const hubColor = "#d4b063";      
+  const subsidiaryColor = "#d88c6a"; 
+  const codeshareColor = "#b86b6b"; 
+  const outOfServiceColor = "#795548"; 
+  const marsColor = "#ABD3DF"; 
+  const venusColor = "#F2EFEA";
 
-  const data = airportData[code] || {icao: "N/A", city: code}; 
+  const data = airportData[code] || {icao: "N/A", city: code}; 
 
-  // Check for Out of Service status first
-  if (outOfService.includes(code)) {
-      color = outOfServiceColor;
-  } 
-  // Check for other statuses
-  else if (hubs.includes(code)) {
-    color = hubColor;
-  } 
-  else if (subsidiaryHubs.includes(code)) {
-    color = subsidiaryColor;
-  } 
-  else if (codeshare.includes(code)) {
-    color = codeshareColor;
-  }
-    else if (mars.includes(code)) {
-    color = marsColor;
-  }
-    else if (venus.includes(code)) {
-    color = venusColor;
-    }
+  // Check for Out of Service status first
+  if (outOfService.includes(code)) {
+      color = outOfServiceColor;
+  } 
+  // Check for other statuses
+  else if (hubs.includes(code)) {
+    color = hubColor;
+  } 
+  else if (subsidiaryHubs.includes(code)) {
+    color = subsidiaryColor;
+  } 
+  else if (codeshare.includes(code)) {
+    color = codeshareColor;
+  }
+    else if (mars.includes(code)) {
+    color = marsColor;
+  }
+    else if (venus.includes(code)) {
+    color = venusColor;
+    }
 
 
-  L.circleMarker(airportCoords[code], {
-    radius: 6,
-    color: color,
-    fillColor: color,
-    fillOpacity: 1
-  }).addTo(map).bindPopup(`<b>${code} / ${data.icao}</b><br>${data.city}`); 
+  L.circleMarker(airportCoords[code], {
+    radius: 6,
+    color: color,
+    fillColor: color,
+    fillOpacity: 1
+  }).addTo(map).bindPopup(`<b>${code} / ${data.icao}</b><br>${data.city}`); 
 });
 
 
@@ -660,16 +748,16 @@ const modalTriggers = document.querySelectorAll('[data-modal]');
 
 // Loop through each card and attach the click listener
 modalTriggers.forEach(card => {
-    card.addEventListener('click', () => {
-        // Get the ID of the modal from the data-modal attribute
-        const modalId = card.getAttribute('data-modal');
-        const modal = document.getElementById(modalId);
-        
-        // Display the modal
-        if (modal) {
-            modal.style.display = "block";
-        }
-    });
+    card.addEventListener('click', () => {
+        // Get the ID of the modal from the data-modal attribute
+        const modalId = card.getAttribute('data-modal');
+        const modal = document.getElementById(modalId);
+        
+        // Display the modal
+        if (modal) {
+            modal.style.display = "block";
+        }
+    });
 });
 
 // Get all close buttons
@@ -677,32 +765,32 @@ const closeButtons = document.querySelectorAll('.close-btn');
 
 // Loop through close buttons to close the modal when clicked
 closeButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        // Find the parent modal and hide it
-        const modal = btn.closest('.modal');
-        if (modal) {
-            modal.style.display = "none";
-        }
-    });
+    btn.addEventListener('click', () => {
+        // Find the parent modal and hide it
+        const modal = btn.closest('.modal');
+        if (modal) {
+            modal.style.display = "none";
+        }
+    });
 });
 
 // Close the modal if the user clicks anywhere outside of it
 window.onclick = function(event) {
-    modalTriggers.forEach(card => {
-        const modalId = card.getAttribute('data-modal');
-        const modal = document.getElementById(modalId);
-        if (event.target === modal) {
-            modal.style.display = "none";
-        }
-    });
+    modalTriggers.forEach(card => {
+        const modalId = card.getAttribute('data-modal');
+        const modal = document.getElementById(modalId);
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
 }
 </script>
 
 <section class="disclaimer">
-  <p>
-    <strong>Disclaimer:</strong> Lufthansa Airlines is a virtual GeoFS airline and does not represent the real-life Lufthansa Group. 
-    This website and content are intended for entertainment and educational purposes within the virtual flight simulator community.
-  </p>
+  <p>
+    <strong>Disclaimer:</strong> Lufthansa Airlines is a virtual GeoFS airline and does not represent the real-life Lufthansa Group. 
+    This website and content are intended for entertainment and educational purposes within the virtual flight simulator community.
+  </p>
 </section>
 
 </body>
