@@ -137,6 +137,7 @@
   <h2>Lufthansa Group Partners</h2>
   <p>Click on each airline to learn more:</p>
   <div class="codeshare-cards">
+    <div class="codeshare-card" data-modal="klmModal">KLM Royal Dutch Airlines</div>
     <div class="codeshare-card" data-modal="singaporeModal">Singapore Airlines</div>
     <div class="codeshare-card" data-modal="cathayModal">Cathay Pacific</div>
     <div class="codeshare-card" data-modal="indigoModal">Indigo Airlines</div>
@@ -144,6 +145,31 @@
   </div>
 </section>
 
+<div id="klmModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h3>KLM Royal Dutch Airlines</h3>
+    <p>All Lufthansa flights and KLM flights are codeshared. Uniquely (Not originally Lufthansa) is: LIM
+UIO
+GYE
+PBM
+AUA
+CUR
+BON
+SXM
+DAR
+ACC
+KGL
+EBB
+NRT
+KIX
+KUL
+MNL
+DPS
+DOH</p>
+  </div>
+</div>
+    
 <div id="singaporeModal" class="modal">
   <div class="modal-content">
     <span class="close-btn">&times;</span>
@@ -635,6 +661,44 @@ const airportData = {
   "COK": {icao: "VOCI", city: "Kochi"},
 
   "DAM": {icao: "OSDI", city: "Damascus"}
+      
+      // KLM ROUTES
+    "LIM": { icao: "SPJC", city: "Lima" },
+    
+    "UIO": { icao: "SEQM", city: "Quito" },
+    
+    "GYE": { icao: "SEGU", city: "Guayaquil" },
+    
+    "PBM": { icao: "SMJP", city: "Paramaribo" },
+    
+    "AUA": { icao: "TNCA", city: "Aruba" },
+    
+    "CUR": { icao: "TNCC", city: "Curaçao" },
+    
+    "BON": { icao: "TNCB", city: "Bonaire" },
+    
+    "SXM": { icao: "TNCM", city: "St. Maarten" },
+    
+    "DAR": { icao: "HTDA", city: "Dar es Salaam" },
+    
+    "ACC": { icao: "DGAA", city: "Accra" },
+    
+    "KGL": { icao: "HRYR", city: "Kigali" },
+    
+    "EBB": { icao: "HUEN", city: "Entebbe" },
+
+    "NRT": { icao: "RJAA", city: "Tokyo Narita" },
+    
+    "KIX": { icao: "RJBB", city: "Osaka Kansai" },
+    
+    "KUL": { icao: "WMKK", city: "Kuala Lumpur" },
+    
+    "MNL": { icao: "RPLL", city: "Manila" },
+    
+    "DPS": { icao: "WADD", city: "Denpasar Bali" },
+    
+    "DOH": { icao: "OTHH", city: "Doha" }
+    
 };
 
 // Convert airportData structure to the old airportCoords for the map coordinates
@@ -681,7 +745,27 @@ const airportCoords = {
       "VNS": [25.4521, 82.8586], 
       "GOI": [15.3808, 73.8314], 
       "COK": [10.1520, 76.4019], 
-      "DAM": [33.4101, 36.6917]
+      "DAM": [33.4101, 36.6917],
+    // KLM ROUTES
+    "LIM": [-12.0217, -77.1150],
+    "UIO": [-0.1244, -78.3542],
+    "GYE": [-2.2667, -79.8833],
+    "PBM": [5.4528, -55.1878],
+    "AUA": [12.5014, -70.0152],
+    "CUR": [12.1889, -68.9598],
+    "BON": [12.1311, -68.2686],
+    "SXM": [18.0417, -63.1083],
+    "DAR": [-6.8778, 39.2000],
+    "ACC": [5.6047, -0.1674],
+    "KGL": [-1.9664, 30.1331],
+    "EBB": [0.0447, 32.4431],
+    "NRT": [35.7736, 140.3883],
+    "KIX": [34.4272, 135.2439],
+    "KUL": [2.7608, 101.7117],
+    "MNL": [14.5086, 121.0194],
+    "DPS": [-8.7481, 115.1675],
+    "DOH": [25.2750, 51.6083]
+
     };
 
 
@@ -691,7 +775,7 @@ const airportCoords = {
 const hubs = ["FRA", "MUC"];
 const subsidiaryHubs = ["ZRH", "VIE", "BRU", "GVA"];
 
-const codeshare = ["CAN", "CKG", "TPE", "HGH", "CGK", "SGN", "HKT", "DAD", "SAI", "KTI", "AGR", "JAI", "VNS", "GOI", "COK"]; 
+const codeshare = ["CAN", "CKG", "TPE", "HGH", "CGK", "SGN", "HKT", "DAD", "SAI", "KTI", "AGR", "JAI", "VNS", "GOI", "COK", "LIM", "UIO", "GYE", "PBM", "AUA", "CUR", "BON", "SXM", "DAR", "ACC", "KGL", "EBB", "NRT", "KIX", "KUL", "MNL", "DPS", "DOH"]; 
 
 const outOfService = ["TLV", "DAM", "BEY", "AMM", "EBL", "IKA", "KBP", "DME"]; 
 
