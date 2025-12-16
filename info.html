@@ -1,183 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lufthansa Info</title>
-    
-    <link rel="icon" type="image/png" href="logo.png"> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lufthansa Info</title>
+    
+    <link rel="icon" type="image/png" href="logo.png"> 
 
-    <meta property="og:title" content="Lufthansa Airlines">
-    
-    <meta property="og:url" content="https://midmm2tehdumb.github.io/Lufthansa-Group/info.html">
-    
-    <meta property="og:description" content="Get additional information about Lufthansa such as the Constitution.">
-    
-    <meta name="theme-color" content="#000080"> 
-    
-    <meta name="twitter:card" content="summary_large_image">
-    
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta property="og:title" content="Lufthansa Airlines">
+    
+    <meta property="og:url" content="https://midmm2tehdumb.github.io/Lufthansa-Group/info.html">
+    
+    <meta property="og:description" content="Get additional information about Lufthansa such as the Constitution.">
+    
+    <meta name="theme-color" content="#000080"> 
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Minimal CSS for display consistency, assuming 'style.css' handles the rest */
-        .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 1000; 
-            left: 0;
-            top: 0;
-            width: 100%; 
-            height: 100%; 
-            overflow: auto; 
-            background-color: rgb(0,0,0); 
-            background-color: rgba(0,0,0,0.4); 
-            padding-top: 60px;
-        }
-        .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            position: relative;
-        }
-        .close-btn {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .close-btn:hover,
-        .close-btn:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        .modal-header {
-            text-align: center;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #eee;
-        }
-        .logo-img {
-            max-width: 80px;
-            margin-bottom: 10px;
-        }
-        .modal-content-inner {
-            max-height: 70vh;
-            overflow-y: auto;
-            padding: 10px 0;
-        }
-        .button-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 20px 0;
-            justify-content: center;
-        }
-        .article-btn, .sop-btn {
-            background-color: #000080;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        .article-btn:hover, .sop-btn:hover, .article-btn.active, .sop-btn.active {
-            background-color: #000050;
-        }
-        .article-content, #sopContent {
-            margin-top: 20px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        .modal-footer {
-            text-align: center;
-            font-size: 0.8em;
-            color: #666;
-            margin-top: 15px;
-            padding-top: 10px;
-            border-top: 1px solid #eee;
-        }
-        .subsidiary-card {
-            background-color: #f0f0f0;
-            padding: 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            text-align: center;
-            flex-grow: 1;
-        }
-        .subsidiary-card:hover {
-            background-color: #ddd;
-        }
-        .center-button {
-            justify-content: center;
-        }
-        .subsidiary-cards {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 15px;
-        }
-        /* Style for main nav and sections (placeholders) */
-        nav, .about, .flight-numbers-section, .disclaimer {
-            padding: 15px;
-            text-align: center;
-        }
-        .nav-links {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-        }
-        .nav-links li a {
-            padding: 10px;
-            text-decoration: none;
-            color: #000;
+        /* Minimal custom styles retained from your original CSS to remove list bullets */
+        .hubs-list {
+            list-style: none;      /* no bullets */
+            padding-left: 0;        /* remove default indent */
+            margin-left: 0;         /* optional, remove extra space */
         }
     </style>
 </head>
 <body>
 
 <nav>
-  <div class="logo">Lufthansa Airlines</div>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="fleet.html">Fleet</a></li>
-    <li><a href="destinations.html">Destinations</a></li>
-    <li><a href="booking.html">Booking</a></li>
-    <li><a href="info.html">Information</a></li>
-    <li><a href="rp.html">RP</a></li>
-  </ul>
+  <div class="logo">Lufthansa Airlines</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="fleet.html">Fleet</a></li>
+    <li><a href="destinations.html">Destinations</a></li>
+    <li><a href="booking.html">Booking</a></li>
+    <li><a href="info.html">Information</a></li>
+    <li><a href="rp.html">RP</a></li>
+  </ul>
 </nav>
 
 <section class="about">
-  <h2>Our Mission</h2>
-  <p>To bring realism, professionalism, and community engagement to the GeoFS flight simulator while still allowing freedom.  
-    We aim to replicate real airline operations while keeping things fun and accessible for everyone.</p>
+  <h2>Our Mission</h2>
+  <p>To bring realism, professionalism, and community engagement to the GeoFS flight simulator while still allowing freedom.  
+     We aim to replicate real airline operations while keeping things fun and accessible for everyone.</p>
 
 <h2>Hubs</h2>
 <ul class="hubs-list">
-  <li>Frankfurt Airport (FRA)</li>
-  <li>Munich Airport (MUC)</li>
+  <li>Frankfurt Airport (FRA)</li>
+  <li>Munich Airport (MUC)</li>
 </ul>
 </section>
 
 <div class="center-button button-group">
-  <button id="openSOP" class="subsidiary-card">View SOP Manual</button> <button id="openConstitution" class="subsidiary-card">View Constitution</button>
+  <button id="openSOP" class="subsidiary-card">View SOP Manual</button>
+  <button id="openConstitution" class="subsidiary-card">View Constitution</button>
 </div>
-
 
 <div id="sopModal" class="modal">
     <div class="modal-content">
@@ -185,7 +65,7 @@
 
         <div class="modal-header">
             <img src="https://images.seeklogo.com/logo-png/8/2/lufthansa-logo-png_seeklogo-86162.png" alt="Lufthansa Logo" class="logo-img">
-            <h1>Lufthansa GeoFS</h1>
+            <h1>Deutsche Lufthansa AG</h1>
             <h3>Standard Operating Procedures (SOP) Manual</h3>
             <p class="modal-subtext">Mandatory Procedures for Safe and Professional Flight Operations</p>
         </div>
@@ -198,18 +78,18 @@
             </div>
 
             <div class="sop-buttons button-group">
-                <button class="sop-btn" data-section="GeneralProcedures">General Procedures</button>
-                <button class="sop-btn" data-section="WeatherHazards">Weather & Hazards</button>
-                <button class="sop-btn" data-section="FlightPathManagement">Flight Path Management</button>
-                <button class="sop-btn" data-section="A320Family">Airbus A320 Family</button>
-                <button class="sop-btn" data-section="A330A340">Airbus A330 / A340</button>
-                <button class="sop-btn" data-section="A350">Airbus A350</button>
-                <button class="sop-btn" data-section="B777">Boeing 777</button>
-                <button class="sop-btn" data-section="A380">Airbus A380</button>
-                <button class="sop-btn" data-section="B787">Boeing 787-9</button>
-                <button class="sop-btn" data-section="B747">Boeing 747</button>
-                <button class="sop-btn" data-section="CRJ700">CRJ700</button>
-                <button class="sop-btn" data-section="A220">Airbus A220</button>
+                <button class="article-btn" data-section="GeneralProcedures">General Procedures</button>
+                <button class="article-btn" data-section="WeatherHazards">Weather & Hazards</button>
+                <button class="article-btn" data-section="FlightPathManagement">Flight Path Management</button>
+                <button class="article-btn" data-section="A320Family">Airbus A320 Family</button>
+                <button class="article-btn" data-section="A330A340">Airbus A330 / A340</button>
+                <button class="article-btn" data-section="A350">Airbus A350</button>
+                <button class="article-btn" data-section="B777">Boeing 777</button>
+                <button class="article-btn" data-section="A380">Airbus A380</button>
+                <button class="article-btn" data-section="B787">Boeing 787-9</button>
+                <button class="article-btn" data-section="B747">Boeing 747</button>
+                <button class="article-btn" data-section="CRJ700">CRJ700</button>
+                <button class="article-btn" data-section="A220">Airbus A220</button>
             </div>
 
             <div id="sopContent" class="article-content">
@@ -224,881 +104,640 @@
 </div>
 
 <div id="constitutionModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn" id="closeConstitution">&times;</span>
+  <div class="modal-content">
+    
+        <span class="close-btn" id="closeConstitution">&times;</span>
 
-        <div class="modal-header">
-            <img src="https://images.seeklogo.com/logo-png/8/2/lufthansa-logo-png_seeklogo-86162.png" alt="Lufthansa Logo" class="logo-img">
-            <h1>Lufthansa Airlines Ltd.</h1>
-            <h3>Corporate Constitution and Policy</h3>
-            <p class="modal-subtext">Effective December 1, 2025 — Established by CEO midmm2</p>
-        </div>
+        <div class="modal-header">
+      <img src="https://images.seeklogo.com/logo-png/8/2/lufthansa-logo-png_seeklogo-86162.png" alt="Lufthansa Logo" class="logo-img">
+      <h1>Deutsche Lufthansa AG</h1>
+      <h3>Corporate Constitution and Policy</h3>
+      <p class="modal-subtext">Effective December 1, 2025 — Established by CEO midmm2</p>
+    </div>
 
-        <div class="modal-content-inner">
-            
-            <p>Welcome to the Lufthansa Airlines Constitution and Policy section. Please select a part below to view the full details.</p>
+        <div class="modal-content-inner">
+      
+      <p>Welcome to the Lufthansa Airlines Constitution and Policy section. Please select a part below to view the full details.</p>
 
-            <div class="modal-preamble">
-                <p>In recognition of professionalism, integrity, and realism within the GeoFS aviation community,
-                    <strong>Deutsche Lufthansa AG</strong> establishes this <em>Company Constitution and Policy</em> as the foundation
-                    governing all divisions, members, and operations of the airline.
-                </p>
-            </div>
+            <div class="modal-preamble">
+        <p>In recognition of professionalism, integrity, and realism within the GeoFS aviation community,
+          <strong>Deutsche Lufthansa AG</strong> establishes this <em>Company Constitution and Policy</em> as the foundation
+          governing all divisions, members, and operations of the airline.
+        </p>
+      </div>
 
-            <div class="article-buttons button-group">
-                <button class="article-btn" data-article="I">Article I</button>
-                <button class="article-btn" data-article="II">Article II</button>
-                <button class="article-btn" data-article="III">Article III</button>
-                <button class="article-btn" data-article="IV">Article IV</button>
-                <button class="article-btn" data-article="V">Article V</button>
-                <button class="article-btn" data-article="VI">Article VI</button>
-                <button class="article-btn" data-article="VII">Article VII</button>
-                <button class="article-btn" data-article="VIII">Article VIII</button>
-                <button class="article-btn" data-article="IX">Article IX</button>
-            </div>
+            <div class="article-buttons button-group">
+        <button class="article-btn" data-article="I">Article I</button>
+        <button class="article-btn" data-article="II">Article II</button>
+        <button class="article-btn" data-article="III">Article III</button>
+        <button class="article-btn" data-article="IV">Article IV</button>
+        <button class="article-btn" data-article="V">Article V</button>
+        <button class="article-btn" data-article="VI">Article VI</button>
+        <button class="article-btn" data-article="VII">Article VII</button>
+        <button class="article-btn" data-article="VIII">Article VIII</button>
+        <button class="article-btn" data-article="IX">Article IX</button>
+      </div>
 
-            <div id="articleContent" class="article-content">
-                <p>Select an article above to view its contents.</p>
-            </div>
-        </div>
+            <div id="articleContent" class="article-content">
+        <p>Select an article above to view its contents.</p>
+      </div>
+    </div>
 
-        <div class="modal-footer">
-            © 2025 Lufthansa Group — A GeoFS Virtual Airline
-        </div>
-    </div>
+        <div class="modal-footer">
+      © 2025 Lufthansa Group — A GeoFS Virtual Airline
+    </div>
+
+  </div>
 </div>
 
 
 <section class="about">
-  <h2>Lufthansa Group & Subsidiaries</h2>
-  <p>Click on each subsidiary to learn more:</p>
-  <div class="subsidiary-cards">
-    <div class="subsidiary-card" data-modal="airlinesModal">Lufthansa Airlines</div>
-    <div class="subsidiary-card" data-modal="cargoModal">Lufthansa Cargo</div>
-    <div class="subsidiary-card" data-modal="swissModal">Swiss Airlines</div>
-    <div class="subsidiary-card" data-modal="austrianModal">Austrian Airlines</div>
-    <div class="subsidiary-card" data-modal="brusselsModal">Brussels Airlines</div>
-    <div class="subsidiary-card" data-modal="itaModal">ITA Airways</div>
-  </div>
+  <h2>Lufthansa Group & Subsidiaries</h2>
+  <p>Click on each subsidiary to learn more:</p>
+  <div class="subsidiary-cards">
+    <div class="subsidiary-card" data-modal="airlinesModal">Lufthansa Airlines</div>
+    <div class="subsidiary-card" data-modal="cargoModal">Lufthansa Cargo</div>
+    <div class="subsidiary-card" data-modal="swissModal">Swiss Airlines</div>
+    <div class="subsidiary-card" data-modal="austrianModal">Austrian Airlines</div>
+    <div class="subsidiary-card" data-modal="brusselsModal">Brussels Airlines</div>
+    <div class="subsidiary-card" data-modal="itaModal">ITA Airways</div>
+  </div>
 </section>
 
 <div id="airlinesModal" class="modal">
-  <div class="modal-content">
-    <span class="close-btn">&times;</span>
-    <h3>Lufthansa Airlines</h3></h3>
-    <p>Lufthansa Airlines is the main group of Lufthansa, doing most of the charter flights and all international flights.</p>
-    <img src="7478.webp" alt="Boeing 747-8" class="subsidiary-img">
-  </div>
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h3>Lufthansa Airlines</h3>
+    <p>Lufthansa Airlines is the main group of Lufthansa, doing most of the charter flights and all international flights.</p>
+    <img src="7478.webp" alt="Boeing 747-8" class="subsidiary-img">
+  </div>
 </div>
 
 <div id="cargoModal" class="modal">
-  <div class="modal-content">
-    <span class="close-btn">&times;</span>
-    <h3>Lufthansa Cargo</h3>
-    <p>Lufthansa Cargo operates all freighter operations for Lufthansa Airlines.</p>
-    <img src="777300.webp" alt="Cargo 777-300ER" class="subsidiary-img">
-  </div>
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h3>Lufthansa Cargo</h3>
+    <p>Lufthansa Cargo operates all freighter operations for Lufthansa Airlines.</p>
+    <img src="777300.webp" alt="Cargo 777-300ER" class="subsidiary-img">
+      </div>
 </div>
 
 <div id="swissModal" class="modal">
-  <div class="modal-content">
-    <span class="close-btn">&times;</span>
-    <h3>Swiss Airlines</h3>
-    <p>Swiss Airlines is an airline based in Switzerland that is part of the Lufthansa Group.</p>
-    <a href="https://discord.gg/KnYzShdjMP
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h3>Swiss Airlines</h3>
+    <p>Swiss Airlines is an airline based in Switzerland that is part of the Lufthansa Group.</p>
+    <a href="https://discord.gg/KnYzShdjMP
 ">Join Swiss</a>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/HB-JNB_Boeing_777-300_Swissair_LHR_4.11.20.jpg" alt="Swiss Airlines" class="subsidiary-img">
-  </div>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/HB-JNB_Boeing_777-300_Swissair_LHR_4.11.20.jpg" alt="Swiss Airlines" class="subsidiary-img">
+  </div>
 </div>
 
 <div id="austrianModal" class="modal">
-  <div class="modal-content">
-    <span class="close-btn">&times;</span>
-    <h3>Austrian Airlines</h3>
-    <p>Austrian Airlines is an airline based in Austria that is part of the Lufthansa Group.</p>
-    <a href="https://discord.gg/yGr9SNK7z6
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h3>Austrian Airlines</h3>
+    <p>Austrian Airlines is an airline based in Austria that is part of the Lufthansa Group.</p>
+    <a href="https://discord.gg/yGr9SNK7z6
 ">Join Austrian</a>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/OE-LPM_%40_VIE%2C_2024-08-30.jpg" alt="Austrian Airlines" class="subsidiary-img">
-  </div>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/OE-LPM_%40_VIE%2C_2024-08-30.jpg" alt="Austrian Airlines" class="subsidiary-img">
+  </div>
 </div>
 
 <div id="brusselsModal" class="modal">
-  <div class="modal-content">
-    <span class="close-btn">&times;</span>
-    <h3>Brussels Airlines</h3>
-    <p>Brussels Airlines is an airline based in Belgium that is part of the Lufthansa Group.</p>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Hamburg_Airport_Brussels_Airlines_Airbus_A319-111_OO-SSX_%28DSC00119%29.jpg" alt="Brussels Airlines" class="subsidiary-img">
-  </div>
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h3>Brussels Airlines</h3>
+    <p>Brussels Airlines is an airline based in Belgium that is part of the Lufthansa Group.</p>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Hamburg_Airport_Brussels_Airlines_Airbus_A319-111_OO-SSX_%28DSC00119%29.jpg" alt="Brussels Airlines" class="subsidiary-img">
+  </div>
 </div>
 
 <div id="itaModal" class="modal">
-  <div class="modal-content">
-    <span class="close-btn">&times;</span>
-    <h3>ITA Airwayss</h3>
-    <p>ITA Airways is an airline based in Italy that is part of the Lufthansa Group.</p>
-    <img src="https://www.flyingsmart.info/wp-content/uploads/2025/04/ITA-Airways_EI-IFF.jpg" alt="ITA Airlines" class="subsidiary-img">
-  </div>
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h3>ITA Airwayss</h3>
+    <p>ITA Airways is an airline based in Italy that is part of the Lufthansa Group.</p>
+    <img src="https://www.flyingsmart.info/wp-content/uploads/2025/04/ITA-Airways_EI-IFF.jpg" alt="ITA Airlines" class="subsidiary-img">
+  </div>
 </div>
 
 <section class="flight-numbers-section">
-  <h2>LH Flight Number Meanings</h2>
-  <div class="table-container">
-    <table class="info-table">
-      <thead>
-        <tr>
-          <th>Flight Numbers</th>
-          <th>Destination/Region</th>
-          <th>Flight Examples</th>
-          <th>Other Notes</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>LH1 - LH199</td>
-          <td>Domestic Lufthansa Flights</td>
-          <td>LH30 FRA → MUC</td>
-          <td>for short, German domestic flights.</td>
-        </tr>
-        <tr>
-          <td>LH200 - LH399</td>
-          <td>European Flights</td>
-          <td>LH320 FRA → CDG</td>
-          <td>For flights into European nations.</td>
-        </tr>
-        <tr>
-          <td>LH400 - LH699</td>
-          <td>Long-Haul Flights</td>
-          <td>LH553 FRA → HKA</td>
-          <td>For long-haul flights (6–12 hrs).</td>
-        </tr>
-        <tr>
-          <td>LH700 - LH799</td>
-          <td>Ultra-Long-Haul Flights</td>
-          <td>LH788 MUC → ATL</td>
-          <td>For ultra-long-haul flights (12+ hrs).</td>
-        </tr>
-        <tr>
-          <td>LH800 - LH999</td>
-          <td>Subsidiary Flights</td>
-          <td>LH887 ZRH → GVA </td>
-          <td>For flights of subsidiaries that are in the Lufthansa Group.</td>
-        </tr>
-        <tr>
-          <td>LH1000+</td>
-          <td>Codeshare / Cargo Flights</td>
-          <td>LH1024 FRA → LHR </td>
-          <td>For codeshare or cargo operations.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <h2>LH Flight Number Meanings</h2>
+  <div class="table-container">
+    <table class="info-table">
+      <thead>
+        <tr>
+          <th>Flight Numbers</th>
+          <th>Destination/Region</th>
+          <th>Flight Examples</th>
+          <th>Other Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>LH1 - LH199</td>
+          <td>Domestic Lufthansa Flights</td>
+          <td>LH30 FRA → MUC</td>
+          <td>for short, German domestic flights.</td>
+        </tr>
+        <tr>
+          <td>LH200 - LH399</td>
+          <td>European Flights</td>
+          <td>LH320 FRA → CDG</td>
+          <td>For flights into European nations.</td>
+        </tr>
+        <tr>
+          <td>LH400 - LH699</td>
+          <td>Long-Haul Flights</td>
+          <td>LH553 FRA → HKA</td>
+          <td>For long-haul flights (6–12 hrs).</td>
+        </tr>
+        <tr>
+          <td>LH700 - LH799</td>
+          <td>Ultra-Long-Haul Flights</td>
+          <td>LH788 MUC → ATL</td>
+          <td>For ultra-long-haul flights (12+ hrs).</td>
+        </tr>
+        <tr>
+          <td>LH800 - LH999</td>
+          <td>Subsidiary Flights</td>
+          <td>LH887 ZRH → GVA </td>
+          <td>For flights of subsidiaries that are in the Lufthansa Group.</td>
+        </tr>
+        <tr>
+          <td>LH1000+</td>
+          <td>Codeshare / Cargo Flights</td>
+          <td>LH1024 FRA → LHR </td>
+          <td>For codeshare or cargo operations.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>
 
 <section class="disclaimer">
-  <p><strong>Disclaimer:</strong> Lufthansa Airlines is a virtual GeoFS airline and does not represent the real-life Lufthansa Group.  
-    This website and content are intended for entertainment and educational purposes within the virtual flight simulator community.</p>
+  <p><strong>Disclaimer:</strong> Lufthansa Airlines is a virtual GeoFS airline and does not represent the real-life Lufthansa Group. 
+     This website and content are intended for entertainment and educational purposes within the virtual flight simulator community.</p>
 </section>
 
 <script>
-    // Modals
-    const modals = document.querySelectorAll('.modal');
-    const modalTriggers = document.querySelectorAll('[data-modal]');
-    const closeBtns = document.querySelectorAll('.close-btn');
+  // Modals
+  const modals = document.querySelectorAll('.modal');
+  const modalTriggers = document.querySelectorAll('[data-modal]');
+  const closeBtns = document.querySelectorAll('.close-btn');
+  const openSOPBtn = document.getElementById('openSOP');
+  const openConstitutionBtn = document.getElementById('openConstitution');
+  const sopModal = document.getElementById('sopModal');
+  const constitutionModal = document.getElementById('constitutionModal');
+  const closeSOPBtn = document.getElementById('closeSOP');
+  const closeConstitutionBtn = document.getElementById('closeConstitution');
 
-    modalTriggers.forEach(trigger => {
-      trigger.addEventListener('click', () => {
-        const modal = document.getElementById(trigger.dataset.modal);
-        modal.style.display = 'block';
+
+  modalTriggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const modal = document.getElementById(trigger.dataset.modal);
+      modal.style.display = 'flex'; // Use flex to center properly
+    });
+  });
+
+  closeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.closest('.modal').style.display = 'none';
+    });
+  });
+
+  window.addEventListener('click', e => {
+    modals.forEach(modal => {
+      if (e.target === modal) modal.style.display = 'none';
+    });
+  });
+
+  // SOP and Constitution specific open buttons
+  if (openSOPBtn) {
+      openSOPBtn.addEventListener('click', () => {
+          sopModal.style.display = 'flex';
       });
-    });
+  }
 
-    closeBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        btn.closest('.modal').style.display = 'none';
+  if (openConstitutionBtn) {
+      openConstitutionBtn.addEventListener('click', () => {
+          constitutionModal.style.display = 'flex';
       });
-    });
-
-    window.addEventListener('click', e => {
-      modals.forEach(modal => {
-        if (e.target === modal) modal.style.display = 'none';
+  }
+  
+  // SOP and Constitution specific close buttons
+  if (closeSOPBtn) {
+      closeSOPBtn.addEventListener('click', () => {
+          sopModal.style.display = 'none';
       });
-    });
+  }
 
-    // ===========================================
-    // SOP MANUAL LOGIC
-    // ===========================================
+  if (closeConstitutionBtn) {
+      closeConstitutionBtn.addEventListener('click', () => {
+          constitutionModal.style.display = 'none';
+      });
+  }
 
-    // SOP Content Object
-    const sopSections = {
-        GeneralProcedures: `
-            <h2>Section I: General Procedures and Documentation</h2>
-            
-            <h3>1. Safety and Incident Reporting Policy</h3>
-            
-            <h4>1.1. Reporting Mandate</h4>
-            <p>All pilots are required to document and report any event, occurrence, or safety hazard that affects or could potentially affect the safety of the flight. The primary mechanism for this reporting is the Incident Reports Channel.</p>
-            
-            <h4>1.2. Scope of Reportable Occurrences</h4>
-            <p>A report shall be filed for the following minimum criteria. This list is not exhaustive; when in doubt, report the occurrence.</p>
-            <ul>
-                <li>**A. Aircraft Damage and Maintenance**</li>
-                <li>Any damage, however small, discovered during pre-flight, post-flight, or during a phase of flight (e.g., minor hangar rash, bird strike, Foreign Object Debris (FOD) ingestion, lightning strike, hard landing, wingstrike).</li>
-                <li>Any system failure or defect that requires consulting the Minimum Equipment List (MEL) or requires maintenance action.</li>
-                <li>**B. Flight Path Management and Stability**</li>
-                <li>Any Go-Around executed for any reason (e.g., unstable approach, runway incursion, weather).</li>
-                <li>Any Autopilot Disconnect that was not planned (e.g., due to system failure or unexpected flight control input).</li>
-                <li>Any Runway Excursion or deviation from the taxiway/runway.</li>
-                <li>**C. Operational Safety Thresholds**</li>
-                <li>A report is mandatory for exceeding any of the following flight safety thresholds:</li>
-                <li>Unstable Approach: Failure to be stabilized by 1000 feet AGL (ILS) or 500 feet AGL (VFR), requiring a Go-Around.</li>
-                <li>Hard Landing: Any landing determined by pilot judgment or aircraft systems to exceed the threshold of 600fpm on touchdown, and/or 2.2Gs.</li>
-            </ul>
-            
-            <h4>1.3. Reporting Procedure and Content</h4>
-            <p>The report must be completed by the Pilot-in-Command (PIC) or a designated crew member immediately upon safe completion of the flight or, at the earliest opportunity.</p>
-            <ul>
-                <li>Notification: The PIC shall notify members of the Executive Team via a ping.</li>
-                <li>Report Submission: All details must be logged in the Incident Reports Channel.</li>
-                <li>Mandatory Content: Every report must contain the following minimum information for proper investigation:</li>
-                <li>Date and Time: The exact time the event occurred.</li>
-                <li>Aircraft Type: (e.g., A320).</li>
-                <li>Flight Number and/or Route: (e.g., LH784, MUC-PER).</li>
-                <li>Pilot-in-Command (PIC) username: (e.g., midmm2)</li>
-                <li>Phase of Flight: (e.g., Taxi Out, Final Approach, Cruise).</li>
-                <li>Detailed Narrative: A factual, extensive description of the event, including: What happened; Why it may have happened (Pilot assessment); Crew action taken (SOP followed, or deviation made); Outcome/Result.</li>
-            </ul>
-        `,
-        WeatherHazards: `
-            <h2>Section II: Weather and Hazardous Conditions</h2>
-            
-            <p>This section establishes mandatory operational limitations and procedural guidelines for operating the aircraft in adverse weather conditions, ensuring flight safety and adherence to company performance standards across the entire fleet.</p>
-            
-            <h3>2.1. Severe Weather Avoidance Policy</h3>
-            <ul>
-                <li>Thunderstorm Avoidance: The flight crew must utilize the onboard weather radar and ATC advisories to maintain a minimum clearance of 20nm from severe, Level 5 or 6 thunderstorms (Cumulonimbus clouds, CBs) at all cruise altitudes. Direct penetration of visible CB clouds is prohibited.</li>
-                <li>Turbulence Management: Upon encountering severe turbulence, the pilot shall immediately:</li>
-                <li>Disengage Autopilot and Autothrust/Autothrottle.</li>
-                <li>Maintain Pitch: Avoid large control inputs; do not chase the altimeter or vertical speed indicator.</li>
-                <li>Secure Cabin: PM shall notify the cabin crew to secure all services and ensure passengers are seated with seatbelts fastened.</li>
-            </ul>
-            
-            <h3>2.2. Operational Wind Limits (Mandatory)</h3>
-            <p>Operations are limited by performance and aircraft design. The following limits represent the absolute maximum demonstrated crosswind and tailwind components under dry runway conditions. The Pilot-in-Command (PIC) must apply conservative operational judgment, particularly when the wind includes a high gust factor. Exceeding these maximum demonstrated limits is strictly prohibited.</p>
-            <ul>
-                <li>**Maximum Demonstrated Crosswind / Tailwind Components**</li>
-                <li>A320 Family (A319/320/321): Maximum Demonstrated Crosswind: 30kts; Maximum Demonstrated Tailwind: 10kts</li>
-                <li>A330 / A340 Family: Maximum Demonstrated Crosswind: 30kts; Maximum Demonstrated Tailwind: 15kts</li>
-                <li>A350 Family (A350-900/1000): Maximum Demonstrated Crosswind: 35kts; Maximum Demonstrated Tailwind: 15kts</li>
-                <li>A380: Maximum Demonstrated Crosswind: 30kts; Maximum Demonstrated Tailwind: 15kts</li>
-                <li>Boeing 777 Family: Maximum Demonstrated Crosswind: 30kts; Maximum Demonstrated Tailwind: 15kts</li>
-                <li>Boeing 787-9 Dreamliner: Maximum Demonstrated Crosswind: 30kts; Maximum Demonstrated Tailwind: 15kts</li>
-                <li>CRJ700 / A220: Maximum Demonstrated Crosswind: 20kts; Maximum Demonstrated Tailwind: 10kts</li>
-                <li>**Note on Gust Factor:** When wind is gusting, the highest sustained wind speed plus 1/3 of the gust factor shall be used to determine the effective crosswind limit for operational planning.</li>
-            </ul>
-            
-            <h3>2.3. Contaminated Runway Operations</h3>
-            <p>If operating on a runway contaminated with standing water, slush, or snow, the crew shall:</p>
-            <ul>
-                <li>Use the most conservative flap setting available to minimize ground roll distance and maximize stability.</li>
-                <li>Apply reverse thrust on touchdown if possible to minimize ground roll distance. Do not engage reverse thrust before both main landing gears have contact with the ground.</li>
-            </ul>
-        `,
-        FlightPathManagement: `
-            <h2>Section III: Flight Path Management and Speed Control</h2>
-            
-            <p>This section establishes the primary philosophy and mandatory techniques for controlling the aircraft's energy (airspeed) and trajectory (flight path) across all flight phases.</p>
-            
-            <h3>3.1. Pitch and Power Concept</h3>
-            <p>The pilot must manage the aircraft using the Pitch and Power concept. This is the fundamental technique for controlling the aircraft's state:</p>
-            <ul>
-                <li>Pitch controls Airspeed (in the short term, or when not level).</li>
-                <li>Power/Thrust controls Altitude/Vertical Speed (when maintaining airspeed).</li>
-                <li>The reverse is true in low-speed flight and on approach: Pitch controls Vertical Speed (e.g., glideslope) and Power controls Airspeed. The crew must always maintain an awareness of the aircraft's current energy state (potential and kinetic).</li>
-            </ul>
-            
-            <h3>3.2. Angle of Attack (AOA) Awareness</h3>
-            <ul>
-                <li>Stall Prevention: Stall is a function of excessive AOA, not just low airspeed. Pilots must use proper, smooth control inputs to remain well clear of the stick shaker/pusher activation envelope.</li>
-                <li>Stall Recovery: If a stick shaker/pusher activates, the immediate, mandatory recovery action is:</li>
-                <li>Disconnect Autopilot/Autothrust.</li>
-                <li>Apply Maximum Available Thrust (set thrust levers to TOGA/MAX power).</li>
-                <li>Reduce Angle of Attack by pitching downward to reduce the stall.</li>
-                <li>Roll Level: Once out of the stall, recover to a level flight attitude.</li>
-            </ul>
-            
-            <h3>3.3. Speed Control and Energy Management</h3>
-            <ul>
-                <li>Energy Trading: The crew shall manage the aircraft's energy by anticipating the need to trade altitude for speed or vice-versa. Ex: If high on the approach profile, increase drag before reducing power to avoid becoming slow.</li>
-                <li>Speedbrakes/Spoilers: Use of speedbrakes is permitted in cruise and descent to manage energy. Speedbrakes must be retracted before selecting final approach flap settings. Spoilers will be deployed upon touchdown, with both main landing gears contacting the ground.</li>
-            </ul>
-            
-            <h3>3.4. Flight Rules</h3>
-            <p>The following limits are mandatory and represent the maximum speeds permitted in the given phase of flight or altitude band. The pilot must prioritize safety and reduce speed further as required by weather, traffic, or congestion.</p>
-            <ul>
-                <li>**A. Airspeed Limits**</li>
-                <li>Below 10,000 feet AGL/MSL: The maximum indicated airspeed (IAS) for all aircraft in the fleet is 250 knots. This restriction is mandatory and only superseded if a higher speed is required for minimum maneuvering speed or required by ATC clearance.</li>
-                <li>Class B Area: The maximum indicated airspeed when within 4 nautical miles of the primary airport and below 2,500 feet AGL is 200 knots.</li>
-                <li>**B. Ground Speed Limits (Taxi)**</li>
-                <li>Maintaining situational awareness and low ground speed is critical to preventing runway incursions and ground damage.</li>
-                <li>Straight Taxi Segments: Maximum ground speed on long, straight taxiways is 25 knots.</li>
-                <li>Congested Areas: Maximum ground speed in congested apron areas, while entering or exiting the gate, or during turns, is 10 knots.</li>
-                <li>Turning Speed: doing turns, the ground speed should not exceed 10 knots.</li>
-            </ul>
-        `,
-        A320Family: `
-            <h2>4.1. Airbus A320 Family Procedures</h2>
-            <p>This section has the procedures for the entire A320 family, including the A319, A320, and A321.</p>
-            
-            <h4>4.1.1. Takeoff Procedure</h4>
-            <ul>
-                <li>**A. Pre-Takeoff Configuration Check**</li>
-                <li>The Pilot confirms the thrust levers are in the IDLE detent.</li>
-                <li>The Pilot confirms the flap lever is set to a takeoff configuration.</li>
-                <li>That the FMC is operating normally, with all waypoints showing, making sure that the waypoints will bring them safely to their destination.</li>
-                <li>**B. The Takeoff Roll**</li>
-                <li>Thrust Application: The Pilot releases the brakes and increases the thrust to as high as possible.</li>
-                <li>**C. Initial Climb and Acceleration**</li>
-                <li>Gear Retraction: Upon confirming a positive rate of climb, the pilot raises the landing gears.</li>
-                <li>Autopilot Engagement: Upon reaching 600ft AGL, the pilot can enable the autopilot.</li>
-            </ul>
-            
-            <h4>4.1.3. Cruise Phase Management</h4>
-            <p>This phase focuses on maintaining the planned speed, altitude, and fuel burn efficiency.</p>
-            <ul>
-                <li>Level Off: Upon reaching the assigned cruise flight level, the Pilot Monitoring (PM) shall confirm the Mode Control Panel (MCP) or Flight Control Unit (FCU) shows Altitude Captured and the FMA (Flight Mode Annunciator) confirms the ALT CRZ mode.</li>
-                <li>Monitoring: The crew shall routinely scan the ECAM for any system warnings. The PM shall actively monitor the Flight Management System (FMS) for: Fuel Burn: Cross-checking actual fuel burn against the planned burn every 30-60 minutes; Time Check: Noting the estimated time of arrival (ETA) against the schedule.</li>
-                <li>Descent Preparation: Approximately 15 minutes prior to the Top of Descent (TOD) point, the Pilot Flying (PF) initiates the Descent Briefing. This must cover: Weather at destination; Expected arrival route and approach type; Go-Around procedure and missed approach altitude; Fuel status and any anticipated holding.</li>
-            </ul>
-            
-            <h4>4.1.4. Landing Procedure</h4>
-            <p>The Landing Procedure is executed when the aircraft is positioned for arrival. The goal is to be fully configured and stabilized by 1000ft AGL (on IFR), or 500ft AGL (on VFR).</p>
-            <ul>
-                <li>**A. Initial Approach and Configuration**</li>
-                <li>Speed Management: The pilot selects flaps in order to increase lift and reduce speed.</li>
-                <li>Gear Down: When cleared to land and the approach is confirmed, the pilot brings the gears down. This occurs roughly 5-7nm from the runway, and at ~1500-2500ft AGL.</li>
-                <li>**B. Final Approach and Stabilization**</li>
-                <li>Final Flaps: Upon reaching the final approach speed, the pilot sets final flap setting. A321 Note: For the A321, use of FLAP FULL (Detent 4) is the preferred final landing configuration unless specifically restricted.</li>
-                <li>Stabilization Check: At 1000ft AGL, the aircraft must meet all stabilization criteria (on glidepath, wings level, and at approach speed. It is up to the pilot to ensure that it is a stable approach.</li>
-                <li>**C. Touchdown and Rollout**</li>
-                <li>Retard Callout: When the aircraft radio altimeter announces "Retard," the pilot will move the thrust levers to IDLE.</li>
-                <li>Thrust Reversers: Immediately after touchdown, the pilot enables reverse thrust and spoilers.</li>
-                <li>Spoilers/Autobrake: The Ground Spoilers automatically deploy (If you have Autoland++), and the Autobrakes automatically engage (Use semicolon to put parking brake once gears are down, representing the brakes automatically deploying).</li>
-                <li>Rollout: As the aircraft slows below 70kts, the pilot shall smoothly reduce reverse thrust to idle. At the taxi speed, the pilot disables reverse thrust.</li>
-            </ul>
-        `,
-        A330A340: `
-            <h2>4.2. The Airbus A330 / A340 Procedures</h2>
-            <p>This section provides the procedures for the Airbus A330-A340 family. The procedures are largely unified, following the standard Airbus Fly-by-Wire philosophy, but require mandatory checks related to the four-engine A340 variant.</p>
-            
-            <h4>4.2.1. Takeoff Procedure</h4>
-            <ul>
-                <li>**A. Pre-Takeoff Configuration Check**</li>
-                <li>Thrust Levers: The Pilot confirms the thrust levers are in the IDLE detent.</li>
-                <li>Flaps: The Pilot confirms the flap lever is set to a takeoff configuration.</li>
-                <li>**B. The Takeoff Roll**</li>
-                <li>Thrust Application: The Pilot releases the brakes and increases the thrust to as high as possible.</li>
-                <li>A340 Supplement: The Pilot confirms all four engines reach the target thrust setting simultaneously before 80kts.</li>
-                <li>**C. Initial Climb and Acceleration**</li>
-                <li>Gear Retraction: Upon confirming a positive rate of climb, the pilot raises the landing gears.</li>
-                <li>Autopilot Engagement: Upon reaching 600ft AGL, the pilot can enable the autopilot.</li>
-            </ul>
-            
-            <h4>4.2.2. Short Cruise Phase Management</h4>
-            <ul>
-                <li>Level Off: Upon reaching the assigned cruise flight level, The Pilot confirms the FMA confirms the ALT CRZ mode.</li>
-                <li>Fuel Monitoring: The Pilot actively monitors the Fuel Distribution page on the ECAM, ensuring tanks are balanced and the Trim Tank (A340 only) is managed as required by the flight plan.</li>
-                <li>Descent Briefing: Prior to the Top of Descent (TOD), The Pilot initiates the comprehensive Descent Briefing covering weather, approach, Go-Around procedure, and fuel status.</li>
-            </ul>
-            
-            <h4>4.2.3. Landing Procedure</h4>
-            <ul>
-                <li>**A. Final Approach and Stabilization**</li>
-                <li>Speed Management: The Pilot manages speed and moves the Flap Lever to FLAP 1. The Pilot announces: "Flaps 1 Selected."</li>
-                <li>Gear Down: When cleared to land and the approach is confirmed, The Pilot calls for and executes Gear Down. The Pilot confirms three green lights and announces: "Gear Down, Three Green."</li>
-                <li>Final Flaps: The Pilot moves the Flap Lever to FLAP FULL (Detent 3) upon request, announcing: "Flaps Full Selected."</li>
-                <li>Stabilization Check: At 1000 feet AGL, The Pilot confirms the stabilization criteria are met and calls "Stable" or "Unstable, Go-Around."</li>
-                <li>**B. Touchdown and Rollout**</li>
-                <li>Thrust Idle: When the radio altimeter announces "Retard," The Pilot shall move the thrust levers to IDLE.</li>
-                <li>Thrust Reversers: Immediately after touchdown, The Pilot selects Reverse Thrust (up to maximum required).</li>
-                <li>A340 Supplement: The Pilot must confirm four reverse thrust indications are active on the ECAM.</li>
-                <li>Rollout: As the aircraft slows, The Pilot smoothly reduces reverse thrust to idle and deselects reverse thrust upon reaching taxi speed.</li>
-            </ul>
-            
-            <h4>4.2.4. A340 Quad-Jet Procedures</h4>
-            <p>(Mandatory checks specific to A340 operations.)</p>
-            <ul>
-                <li>Engine Start: The Pilot must manage the start sequence for all four engines, closely monitoring the ECAM to ensure proper pneumatic pressure and oil temperature on all four units before taxi.</li>
-                <li>Non-Normal Procedures: In the event of an Engine Failure: The Pilot follows the standard Airbus ECAM procedure for the failed engine.</li>
-                <li>Engine Out Landing: The Pilot must brief for a three-engine landing and calculate performance data accordingly, ensuring adequate rudder trim is applied for the power asymmetry.</li>
-                <li>Hydraulic Systems: The Pilot shall verify all four main hydraulic systems (Green, Blue, Yellow, and B/S - Brake/Steering) indicate normal pressure (3000 psi) during the Pre-Flight Check.</li>
-            </ul>
-        `,
-        A350: `
-            <h2>4.3. The Airbus A350 Procedures</h2>
-            <p>This section outlines the procedures for the A350, utilizing its advanced Fly-by-Wire systems and highly integrated cockpit displays.</p>
-            
-            <h4>4.3.1. Takeoff Procedure</h4>
-            <ul>
-                <li>**A. Pre-Takeoff Configuration Check**</li>
-                <li>FMC Check: The pilot verifies the FMC is operating normally, with all waypoints showing, making sure that the waypoints will bring them safely to their destination.</li>
-                <li>Flaps: The pilot confirms the flap lever is set to the pre-briefed numerical detent.</li>
-                <li>Spoilers: The pilot confirms the GROUND SPOILERS are armed.</li>
-                <li>Cockpit Displays: The pilot verifies the Electronic Centralized Aircraft Monitor (ECAM) and Multipurpose Cockpit Display (MPCD) are correctly configured for takeoff monitoring.</li>
-                <li>**B. The Takeoff Roll**</li>
-                <li>Thrust Application: The pilot releases the brakes and advances the thrust levers to the FLEX/MCT detent (or TOGA for maximum power). The pilot monitors the engine instruments, ensuring both engines accelerate symmetrically and reach the target thrust setting.</li>
-                <li>Monitoring and Speeds: The pilot monitors the speed tape, noting the V1 and VR thresholds.</li>
-                <li>Rotation: At VR, the pilot applies smooth aft pressure on the sidestick to initiate rotation.</li>
-                <li>**C. Initial Climb and Acceleration**</li>
-                <li>Gear Retraction: Upon confirming a positive rate of climb, the pilot moves the Landing Gear lever to the UP position.</li>
-                <li>Autopilot Engagement: Above 400 feet AGL, the pilot engages the Autopilot.</li>
-                <li>Thrust Reduction: Upon reaching the programmed thrust reduction altitude, the pilot moves the thrust levers back to the CLIMB detent.</li>
-                <li>Flap Retraction: Flaps are retracted sequentially based on the flap retraction speeds (F-Speed and S-Speed) until the aircraft is in a clean configuration.</li>
-            </ul>
-            
-            <h4>4.3.2. Short Cruise Phase Management</h4>
-            <ul>
-                <li>Level Off: Upon reaching the assigned cruise flight level, the pilot confirms the FMA (Flight Mode Annunciator) shows the correct cruise mode (ALT CRZ).</li>
-                <li>Monitoring: The pilot monitors the ECAM system page for any warnings and performs routine cross-checks of altitude and heading against the flight plan.</li>
-                <li>Descent Briefing: Prior to the Top of Descent (TOD), the pilot initiates the comprehensive Descent Briefing. This must cover: Weather at destination; Expected arrival route and approach type; Go-Around procedure and missed approach altitude; Fuel status and any anticipated holding.</li>
-            </ul>
-            
-            <h4>4.3.3. Landing Procedure</h4>
-            <ul>
-                <li>**A. Initial Approach and Configuration**</li>
-                <li>Speed Management: The pilot manages speed and moves the Flap Lever to the first approach detent (FLAP 1).</li>
-                <li>Gear Down: When cleared to land and the approach is confirmed, the pilot executes Gear Down. The pilot confirms three green lights.</li>
-                <li>Intermediate Flaps: The pilot moves the Flap Lever sequentially to the next detent (FLAP 2 or FLAP 3) as speed permits.</li>
-                <li>**B. Final Approach and Stabilization**</li>
-                <li>Final Flaps: The pilot moves the Flap Lever to the final landing detent (FLAP FULL/Detent 4) upon request.</li>
-                <li>Stabilization Check: At 1000 feet AGL, the pilot confirms the stabilization criteria are met (on glidepath, speed plus or minus 10 knots, required thrust set). The pilot decides to continue or execute a Go-Around.</li>
-                <li>Minimums: At the Decision Altitude/Height (DA/H), the pilot decides to continue the landing or execute a Go-Around.</li>
-                <li>**C. Touchdown and Rollout**</li>
-                <li>Thrust Idle: When the radio altimeter announces "Retard," the pilot shall move the thrust levers to IDLE.</li>
-                <li>Thrust Reversers: Immediately after touchdown, the pilot selects Reverse Thrust (up to maximum required).</li>
-                <li>Rollout: The Ground Spoilers automatically deploy, and the pilot monitors Autobrake engagement. As the aircraft slows, the pilot smoothly reduces reverse thrust and deselects it upon reaching taxi speed.</li>
-            </ul>
-        `,
-        B777: `
-            <h2>4.4. The Boeing 777 Procedures</h2>
-            <p>This section outlines the procedures for the Boeing 777 wide-body aircraft. Procedures are based on the conventional yoke and rudder pedal controls and the EICAS (Engine Indication and Crew Alerting System) logic.</p>
-            
-            <h4>4.4.1. Takeoff Procedure</h4>
-            <ul>
-                <li>**A. Pre-Takeoff Configuration Check**</li>
-                <li>FMC Check: The pilot verifies the FMC is operating normally, with all waypoints showing, making sure that the waypoints will bring them safely to their destination.</li>
-                <li>Flaps: The pilot confirms the flap lever is set to the pre-briefed numerical detent (typically FLAP 5, 10, 15, or 20).</li>
-                <li>Spoilers: The pilot confirms the SPEED BRAKE lever is armed.</li>
-                <li>Flight Controls: The pilot performs a full check of the primary flight controls (Aileron, Elevator, Rudder) to ensure smooth, full range movement.</li>
-                <li>**B. The Takeoff Roll**</li>
-                <li>Thrust Application: The pilot releases the brakes and advances the thrust levers to approximately 50% N1. The pilot pauses to confirm engine stability and then pushes the thrust levers into the TO/GA (Takeoff/Go-Around) detent. The autothrottle engages, setting the calculated takeoff thrust (assumed or full).</li>
-                <li>Monitoring and Speeds: The pilot monitors the EICAS for any warnings. The pilot monitors the speed tape, noting the V1 and VR thresholds.</li>
-                <li>Rotation: At VR, the pilot applies smooth aft pressure on the yoke to rotate the aircraft, targeting a pitch attitude of 15 degrees.</li>
-                <li>**C. Initial Climb and Acceleration**</li>
-                <li>Gear Retraction: Upon confirming a positive rate of climb, the pilot moves the Landing Gear lever to the UP position.</li>
-                <li>Autopilot Engagement: Above 400 feet AGL, the pilot engages the Autopilot via the Mode Control Panel (MCP).</li>
-                <li>Thrust Reduction: Upon reaching the thrust reduction altitude, the autothrottle automatically reduces thrust to the CLIMB setting. The pilot verifies the EICAS mode change.</li>
-                <li>Flap Retraction: Flaps are retracted sequentially based on the indications on the Primary Flight Display (PFD) until the aircraft is in a clean configuration.</li>
-            </ul>
-            
-            <h4>4.4.2. Short Cruise Phase Management</h4>
-            <ul>
-                <li>Level Off: Upon reaching the assigned cruise flight level, the pilot confirms the MCP shows the correct cruise mode (LNAV/VNAV).</li>
-                <li>Monitoring: The pilot monitors the EICAS system for any alerts and performs routine cross-checks of altitude and heading against the flight plan.</li>
-                <li>Descent Briefing: Prior to the Top of Descent (TOD), the pilot initiates the comprehensive Descent Briefing, covering destination weather, expected arrival route, and the mandatory Go-Around procedure.</li>
-            </ul>
-            
-            <h4>4.4.3. Landing Procedure</h4>
-            <ul>
-                <li>**A. Initial Approach and Configuration**</li>
-                <li>Gear Down: When cleared to land and the approach is confirmed, the pilot moves the Landing Gear lever to the DOWN position. The pilot confirms three green lights.</li>
-                <li>Flaps Extension: The pilot manages speed and moves the Flap Lever sequentially, selecting the first approach detent (typically FLAP 5 or 15) as speed permits.</li>
-                <li>Speedbrakes: The pilot ensures the SPEED BRAKE lever is armed prior to the final configuration to ensure automatic deployment on touchdown.</li>
-                <li>**B. Final Approach and Stabilization**</li>
-                <li>Final Flaps: The pilot selects the final landing detent (FLAP 30) upon request.</li>
-                <li>777-9 Note: The pilot must confirm the unique folding wingtips are locked in the fully extended position prior to selecting final flap settings.</li>
-                <li>Stabilization Check: At 1000 feet AGL, the pilot confirms the stabilization criteria are met (on glidepath, speed plus or minus 10 knots, required thrust set). The pilot decides to continue or execute a Go-Around.</li>
-                <li>Minimums: At the Decision Altitude/Height (DA/H), the pilot decides to continue the landing or execute a Go-Around.</li>
-                <li>**C. Touchdown and Rollout**</li>
-                <li>Thrust Idle: Over the runway threshold, the autothrottle automatically reduces thrust to idle. The pilot confirms the thrust levers are idle.</li>
-                <li>Thrust Reversers: Immediately after touchdown, the pilot raises the reverse thrust levers (up to maximum required).</li>
-                <li>Rollout: The Ground Spoilers automatically deploy, and the pilot monitors Autobrake engagement. As the aircraft slows, the pilot smoothly reduces reverse thrust and fully stows the reverse levers upon reaching taxi speed.</li>
-            </ul>
-        `,
-        A380: `
-            <h2>4.5. The Airbus A380 Procedures</h2>
-            <p>This section details the procedures for the Airbus A380, requiring specific attention due to its massive size, four engines, and high inertia.</p>
-            
-            <h4>4.5.1. Takeoff Procedure</h4>
-            <ul>
-                <li>**A. Pre-Takeoff Configuration Check**</li>
-                <li>FMC Check: The pilot verifies the FMC is operating normally, with all waypoints showing, making sure that the waypoints will bring them safely to their destination.</li>
-                <li>Flaps: The pilot confirms the flap lever is set to the pre-briefed numerical detent.</li>
-                <li>Spoilers: The pilot confirms the GROUND SPOILERS are armed.</li>
-                <li>Engine Status: The pilot confirms all four engines are stable and ready for takeoff thrust.</li>
-                <li>**B. The Takeoff Roll**</li>
-                <li>Thrust Application: The pilot releases the brakes and advances the thrust levers to the FLEX/MCT detent (or TOGA for maximum power). The pilot monitors the engine instruments, ensuring all four engines accelerate symmetrically and reach the target thrust setting.</li>
-                <li>Monitoring and Speeds: The pilot monitors the speed tape, noting the V1 and VR thresholds.</li>
-                <li>Rotation: At VR, the pilot applies smooth, deliberate aft pressure on the sidestick to achieve the target rotation rate and pitch attitude.</li>
-                <li>**C. Initial Climb and Acceleration**</li>
-                <li>Gear Retraction: Upon confirming a positive rate of climb, the pilot moves the Landing Gear lever to the UP position.</li>
-                <li>Autopilot Engagement: Above 400 feet AGL, the pilot engages the Autopilot.</li>
-                <li>Thrust Reduction: Upon reaching the programmed thrust reduction altitude, the pilot moves the thrust levers back to the CLIMB detent.</li>
-                <li>Flap Retraction: Flaps are retracted sequentially based on the FMS-calculated flap retraction speeds (F-Speed and S-Speed) until the aircraft is in a clean configuration.</li>
-            </ul>
-            
-            <h4>4.5.2. Short Cruise Phase Management</h4>
-            <ul>
-                <li>Level Off: Upon reaching the assigned cruise flight level, the pilot confirms the Flight Mode Annunciator (FMA) shows the correct cruise mode (ALT CRZ).</li>
-                <li>Monitoring: The pilot monitors the ECAM system page for any warnings. Due to the A380's size and inertia, the pilot must be highly proactive in monitoring attitude and speed stability.</li>
-                <li>Descent Briefing: Prior to the Top of Descent (TOD), the pilot initiates the comprehensive Descent Briefing, paying special attention to approach minimums and the heavy weight required landing performance.</li>
-            </ul>
-            
-            <h4>4.5.3. Landing Procedure</h4>
-            <ul>
-                <li>**A. Initial Approach and Configuration**</li>
-                <li>Speed Management: The pilot manages speed and moves the Flap Lever to the first approach detent (FLAP 1).</li>
-                <li>Gear Down: When cleared to land and the approach is confirmed, the pilot moves the Landing Gear lever to the DOWN position. The pilot confirms the multiple green gear lights are illuminated.</li>
-                <li>Intermediate Flaps: The pilot moves the Flap Lever sequentially to the final landing detent (FLAP FULL/Detent 4) as speed permits.</li>
-                <li>**B. Final Approach and Stabilization**</li>
-                <li>Stabilization Check: At 1000 feet AGL, the pilot confirms the stabilization criteria are met (on glidepath, speed plus or minus 10 knots, required thrust set). The pilot decides to continue or execute a Go-Around.</li>
-                <li>Minimums: At the Decision Altitude/Height (DA/H), the pilot decides to continue the landing or execute a Go-Around.</li>
-                <li>**C. Touchdown and Rollout**</li>
-                <li>Thrust Idle: When the radio altimeter announces "Retard," the pilot shall move the thrust levers to IDLE.</li>
-                <li>Thrust Reversers: Immediately after touchdown, the pilot selects Reverse Thrust (up to maximum required). The pilot confirms all four reverse thrust indications are active.</li>
-                <li>Rollout: The pilot monitors the powerful Ground Spoilers and Autobrake system. As the aircraft slows, the pilot smoothly reduces reverse thrust and deselects it upon reaching taxi speed, noting the very long taxi path required for this large aircraft.</li>
-            </ul>
-        `,
-        B787: `
-            <h2>4.6. The Boeing 787-9 Dreamliner Procedures</h2>
-            <p>This section outlines the procedures for the Boeing 787, characterized by its reliance on electronic systems, large integrated displays, and unique features like electronic anti-ice and brake systems.</p>
-            
-            <h4>4.6.1. Takeoff Procedure</h4>
-            <ul>
-                <li>**A. Pre-Takeoff Configuration Check**</li>
-                <li>FMC Check: The pilot verifies the FMC is operating normally, with all waypoints showing, making sure that the waypoints will bring them safely to their destination.</li>
-                <li>Flaps: The pilot confirms the flap lever is set to the pre-briefed numerical detent (typically FLAP 5 or 15).</li>
-                <li>Spoilers: The pilot confirms the SPEED BRAKE lever is armed.</li>
-                <li>Flight Controls: The pilot performs a full check of the primary flight controls using the yoke to ensure free and correct movement.</li>
-                <li>**B. The Takeoff Roll**</li>
-                <li>Thrust Application: The pilot releases the brakes and advances the thrust levers to approximately 50% N1. The pilot pauses to confirm engine stability and then pushes the thrust levers into the TO/GA detent. The autothrottle engages, setting the calculated takeoff thrust.</li>
-                <li>Monitoring and Speeds: The pilot monitors the EICAS (Engine Indication and Crew Alerting System) for any warnings. The pilot monitors the speed tape, noting the V1 and VR thresholds.</li>
-                <li>Rotation: At VR, the pilot applies smooth aft pressure on the yoke to rotate the aircraft, targeting a pitch attitude of 15 degrees.</li>
-                <li>**C. Initial Climb and Acceleration**</li>
-                <li>Gear Retraction: Upon confirming a positive rate of climb, the pilot moves the Landing Gear lever to the UP position.</li>
-                <li>Autopilot Engagement: Above 400 feet AGL, the pilot engages the Autopilot via the Mode Control Panel (MCP).</li>
-                <li>Thrust Reduction: Upon reaching the thrust reduction altitude, the autothrottle automatically reduces thrust to the CLIMB setting. The pilot verifies the EICAS mode change.</li>
-                <li>Flap Retraction: Flaps are retracted sequentially based on the indications on the Primary Flight Display (PFD) until the aircraft is in a clean configuration.</li>
-            </ul>
-            
-            <h4>4.6.2. Short Cruise Phase Management</h4>
-            <ul>
-                <li>Level Off: Upon reaching the assigned cruise flight level, the pilot confirms the MCP shows the correct cruise mode (LNAV/VNAV).</li>
-                <li>Monitoring: The pilot actively uses the large, multi-function displays to monitor systems, specifically checking the integrated electronic brake and hydraulic systems.</li>
-                <li>Descent Briefing: Prior to the Top of Descent (TOD), the pilot initiates the comprehensive Descent Briefing, covering destination weather, expected arrival route, and the mandatory Go-Around procedure.</li>
-            </ul>
-            
-            <h4>4.6.3. Landing Procedure</h4>
-            <ul>
-                <li>**A. Initial Approach and Configuration**</li>
-                <li>Gear Down: When cleared to land and the approach is confirmed, the pilot moves the Landing Gear lever to the DOWN position. The pilot confirms three green lights.</li>
-                <li>Flaps Extension: The pilot manages speed and moves the Flap Lever sequentially, selecting the first approach detent (typically FLAP 5, 15, or 20) as speed permits.</li>
-                <li>Speedbrakes: The pilot ensures the SPEED BRAKE lever is armed prior to the final configuration to ensure automatic deployment on touchdown.</li>
-                <li>**B. Final Approach and Stabilization**</li>
-                <li>Final Flaps: The pilot selects the final landing detent (FLAP 25 or 30) upon request.</li>
-                <li>Stabilization Check: At 1000 feet AGL, the pilot confirms the stabilization criteria are met (on glidepath, speed plus or minus 10 knots, required thrust set). The pilot decides to continue or execute a Go-Around.</li>
-                <li>Minimums: At the Decision Altitude/Height (DA/H), the pilot decides to continue the landing or execute a Go-Around.</li>
-                <li>**C. Touchdown and Rollout**</li>
-                <li>Thrust Idle: Over the runway threshold, the autothrottle automatically reduces thrust to idle. The pilot confirms the thrust levers are idle.</li>
-                <li>Thrust Reversers: Immediately after touchdown, the pilot raises the reverse thrust levers (up to maximum required).</li>
-                <li>Rollout: The Ground Spoilers automatically deploy, and the pilot monitors electronic Autobrake engagement. As the aircraft slows, the pilot smoothly reduces reverse thrust and fully stows the reverse levers upon reaching taxi speed.</li>
-            </ul>
-        `,
-        B747: `
-            <h2>4.7. The Boeing 747 Procedures</h2>
-            <p>This section outlines the procedures for the Boeing 747, a heavy, four-engine aircraft that requires specific attention to power management and handling due to its weight and momentum.</p>
-            
-            <h4>4.7.1. Takeoff Procedure</h4>
-            <ul>
-                <li>**A. Pre-Takeoff Configuration Check**</li>
-                <li>FMC Check: The pilot verifies the FMC is operating normally, with all waypoints showing, making sure that the waypoints will bring them safely to their destination.</li>
-                <li>Flaps: The pilot confirms the flap lever is set to the pre-briefed numerical detent (typically FLAP 10 or 20).</li>
-                <li>Spoilers: The pilot confirms the SPEED BRAKE lever is armed.</li>
-                <li>Engine Status: The pilot confirms all four engines are stable and ready for takeoff thrust.</li>
-                <li>**B. The Takeoff Roll**</li>
-                <li>Thrust Application: The pilot releases the brakes and advances the four thrust levers to approximately 50% N1. The pilot pauses to confirm engine stability and then pushes the thrust levers into the TO/GA detent. The autothrottle engages, setting the calculated takeoff thrust.</li>
-                <li>Monitoring and Speeds: The pilot monitors the EICAS for any warnings. The pilot monitors the speed tape, noting the V1 and VR thresholds.</li>
-                <li>Rotation: At VR, the pilot applies smooth aft pressure on the yoke to rotate the aircraft.</li>
-                <li>**C. Initial Climb and Acceleration**</li>
-                <li>Gear Retraction: Upon confirming a positive rate of climb, the pilot moves the Landing Gear lever to the UP position.</li>
-                <li>Autopilot Engagement: Above 400 feet AGL, the pilot engages the Autopilot via the Mode Control Panel (MCP).</li>
-                <li>Thrust Reduction: Upon reaching the thrust reduction altitude, the autothrottle automatically reduces thrust to the CLIMB setting. The pilot verifies the EICAS mode change.</li>
-                <li>Flap Retraction: Flaps are retracted sequentially based on the indications on the Primary Flight Display (PFD) until the aircraft is in a clean configuration.</li>
-            </ul>
-            
-            <h4>4.7.2. Short Cruise Phase Management</h4>
-            <ul>
-                <li>Level Off: Upon reaching the assigned cruise flight level, the pilot confirms the MCP shows the correct cruise mode (LNAV/VNAV).</li>
-                <li>Monitoring: The pilot monitors the four-engine EICAS system for any alerts and performs routine cross-checks of altitude and heading against the flight plan.</li>
-                <li>Descent Briefing: Prior to the Top of Descent (TOD), the pilot initiates the comprehensive Descent Briefing, with special emphasis on energy management due to the aircraft's high inertia.</li>
-            </ul>
-            
-            <h4>4.7.3. Landing Procedure</h4>
-            <ul>
-                <li>**A. Initial Approach and Configuration**</li>
-                <li>Gear Down: When cleared to land and the approach is confirmed, the pilot moves the Landing Gear lever to the DOWN position. The pilot confirms the multiple green lights for the main and body gear are illuminated.</li>
-                <li>Flaps Extension: The pilot manages speed and moves the Flap Lever sequentially, selecting approach detents (typically FLAP 20 or 25) as speed permits.</li>
-                <li>Speedbrakes: The pilot ensures the SPEED BRAKE lever is armed prior to the final configuration to ensure automatic deployment on touchdown.</li>
-                <li>**B. Final Approach and Stabilization**</li>
-                <li>Final Flaps: The pilot selects the final landing detent (FLAP 30 or 25 for strong crosswinds) upon request.</li>
-                <li>Stabilization Check: At 1000 feet AGL, the pilot confirms the stabilization criteria are met (on glidepath, speed plus or minus 10 knots, required thrust set). The pilot decides to continue or execute a Go-Around.</li>
-                <li>Minimums: At the Decision Altitude/Height (DA/H), the pilot decides to continue the landing or execute a Go-Around.</li>
-                <li>**C. Touchdown and Rollout**</li>
-                <li>Thrust Idle: Over the runway threshold, the autothrottle automatically reduces thrust to idle. The pilot confirms the thrust levers are idle.</li>
-                <li>Thrust Reversers: Immediately after touchdown, the pilot raises the reverse thrust levers (up to maximum required). The pilot confirms reverse thrust on the four outboard engines is active.</li>
-                <li>Rollout: The Ground Spoilers automatically deploy, and the pilot monitors Autobrake engagement. Due to its size, the pilot applies diligent rudder and nose wheel steering to maintain centerline control during deceleration.</li>
-            </ul>
-        `,
-        CRJ700: `
-            <h2>4.8. The CRJ700 Procedures</h2>
-            <p>This section outlines the procedures for the Bombardier/Mitsubishi CRJ700, a regional jet that features a traditional yoke and throttle quadrant, emphasizing adherence to regional operating limits and strict energy management.</p>
-            
-            <h4>4.8.1. Takeoff Procedure</h4>
-            <ul>
-                <li>**A. Pre-Takeoff Configuration Check**</li>
-                <li>FMC Check: The pilot verifies the FMC is operating normally, with all waypoints showing, making sure that the waypoints will bring them safely to their destination.</li>
-                <li>Flaps: The pilot confirms the flap lever is set to the pre-briefed numerical detent (typically FLAP 8 or 20).</li>
-                <li>Spoilers: The pilot confirms the flight spoilers (lift dump) are armed.</li>
-                <li>Flight Controls: The pilot performs a full check of the primary flight controls using the yoke to ensure free and correct movement.</li>
-                <li>**B. The Takeoff Roll**</li>
-                <li>Thrust Application: The pilot advances the thrust levers to approximately 40% N1. The pilot confirms engine parameters are matching and then smoothly advances the thrust levers to the calculated Takeoff Rated Thrust (TRT) setting.</li>
-                <li>Monitoring and Speeds: The pilot monitors the engine gauges for stable output. The pilot monitors the speed tape, noting the V1 and VR thresholds.</li>
-                <li>Rotation: At VR, the pilot applies smooth aft pressure on the yoke to rotate the aircraft to the target pitch attitude.</li>
-                <li>**C. Initial Climb and Acceleration**</li>
-                <li>Gear Retraction: Upon confirming a positive rate of climb and sufficient runway clearance, the pilot moves the Landing Gear lever to the UP position.</li>
-                <li>Autopilot Engagement: Above 400 feet AGL, the pilot engages the Autopilot via the Mode Control Panel (MCP).</li>
-                <li>Thrust Reduction: Upon reaching the thrust reduction altitude, the pilot sets the thrust to the CLIMB detent or calculated maximum continuous thrust (MCT) limit.</li>
-                <li>Flap Retraction: Flaps are retracted sequentially based on the scheduled speeds until the aircraft is in a clean configuration.</li>
-            </ul>
-            
-            <h4>4.8.2. Short Cruise Phase Management</h4>
-            <ul>
-                <li>Level Off: Upon reaching the assigned cruise flight level, the pilot confirms the Flight Director shows the correct cruise mode (LNAV/VNAV or FLC/ALT).</li>
-                <li>Monitoring: The pilot monitors the EICAS for any alerts and performs frequent cross-checks of fuel and system status.</li>
-                <li>Descent Briefing: Prior to the Top of Descent (TOD), the pilot initiates the comprehensive Descent Briefing, with careful attention paid to the strict airspace and speed restrictions common in regional operations.</li>
-            </ul>
-            
-            <h4>4.8.3. Landing Procedure</h4>
-            <ul>
-                <li>**A. Initial Approach and Configuration**</li>
-                <li>Gear Down: When cleared to land and the approach is confirmed, the pilot moves the Landing Gear lever to the DOWN position. The pilot confirms three green lights.</li>
-                <li>Flaps Extension: The pilot manages speed and moves the Flap Lever sequentially, selecting the first approach detent (typically FLAP 20 or 30) as speed permits.</li>
-                <li>Spoilers: The pilot confirms the flight spoilers are armed prior to the final configuration.</li>
-                <li>**B. Final Approach and Stabilization**</li>
-                <li>Final Flaps: The pilot selects the final landing detent (FLAP 45) upon request.</li>
-                <li>Stabilization Check: At 1000 feet AGL, the pilot confirms the stabilization criteria are met (on glidepath, speed plus or minus 10 knots, required thrust set). The pilot decides to continue or execute a Go-Around.</li>
-                <li>Minimums: At the Decision Altitude/Height (DA/H), the pilot decides to continue the landing or execute a Go-Around.</li>
-                <li>**C. Touchdown and Rollout**</li>
-                <li>Thrust Idle: Over the runway threshold, the pilot smoothly moves the thrust levers to IDLE.</li>
-                <li>Thrust Reversers: Immediately after touchdown, the pilot raises the reverse thrust levers (up to maximum required).</li>
-                <li>Rollout: The pilot monitors the lift dump and Autobrake engagement. Due to the aircraft's high wing loading, the pilot maintains positive control on the yoke and uses nose wheel steering for centerline control.</li>
-            </ul>
-        `,
-        A220: `
-            <h2>4.9. The A220 Procedures</h2>
-            <p>This section outlines the procedures for the Airbus A220 (formerly Bombardier CSeries), a modern regional jet that blends traditional yoke controls with modern Airbus-style integrated display and FMS logic.</p>
-            
-            <h4>4.9.1. Takeoff Procedure</h4>
-            <ul>
-                <li>**A. Pre-Takeoff Configuration Check**</li>
-                <li>FMC Check: The pilot verifies the FMC is operating normally, with all waypoints showing, making sure that the waypoints will bring them safely to their destination.</li>
-                <li>Flaps: The pilot confirms the flap lever is set to the pre-briefed numerical detent (typically FLAP 1 or 2).</li>
-                <li>Spoilers: The pilot confirms the flight spoilers (ground lift dump) are armed.</li>
-                <li>Systems: The pilot verifies the advanced integrated avionics displays are correctly configured for takeoff.</li>
-                <li>**B. The Takeoff Roll**</li>
-                <li>Thrust Application: The pilot releases the brakes and advances the thrust levers to approximately 40% N1. The pilot pauses to confirm engine stability and then advances the thrust levers to the calculated Takeoff Rated Thrust (TRT) setting. The autothrottle system manages the final target.</li>
-                <li>Monitoring and Speeds: The pilot monitors the engine gauges and the large integrated PFD/ND displays. The pilot notes the V1 and VR thresholds.</li>
-                <li>Rotation: At VR, the pilot applies smooth aft pressure on the yoke to rotate the aircraft to the target pitch attitude.</li>
-                <li>**C. Initial Climb and Acceleration**</li>
-                <li>Gear Retraction: Upon confirming a positive rate of climb, the pilot moves the Landing Gear lever to the UP position.</li>
-                <li>Autopilot Engagement: Above 400 feet AGL, the pilot engages the Autopilot.</li>
-                <li>Thrust Reduction: Upon reaching the programmed thrust reduction altitude, the pilot sets the thrust to the CLIMB detent or verifies the autothrottle has done so.</li>
-                <li>Flap Retraction: Flaps are retracted sequentially based on the scheduled speeds until the aircraft is in a clean configuration.</li>
-            </ul>
-            
-            <h4>4.9.2. Short Cruise Phase Management</h4>
-            <ul>
-                <li>Level Off: Upon reaching the assigned cruise flight level, the pilot confirms the Flight Director shows the correct cruise mode (LNAV/VNAV).</li>
-                <li>Monitoring: The pilot actively monitors the integrated avionics displays for system status, paying close attention to the highly automated engine and anti-ice systems.</li>
-                <li>Descent Briefing: Prior to the Top of Descent (TOD), the pilot initiates the comprehensive Descent Briefing, ensuring all high-speed and altitude constraints are loaded into the FMC.</li>
-            </ul>
-            
-            <h4>4.9.3. Landing Procedure</h4>
-            <ul>
-                <li>**A. Initial Approach and Configuration**</li>
-                <li>Gear Down: When cleared to land and the approach is confirmed, the pilot moves the Landing Gear lever to the DOWN position. The pilot confirms three green lights.</li>
-                <li>Flaps Extension: The pilot manages speed and moves the Flap Lever sequentially, selecting the first approach detent (typically FLAP 3) as speed permits.</li>
-                <li>Spoilers: The pilot confirms the flight spoilers are armed prior to the final configuration.</li>
-                <li>**B. Final Approach and Stabilization**</li>
-                <li>Final Flaps: The pilot selects the final landing detent (FLAP 4 or 5) upon request.</li>
-                <li>Stabilization Check: At 1000 feet AGL, the pilot confirms the stabilization criteria are met (on glidepath, speed plus or minus 10 knots, required thrust set). The pilot decides to continue or execute a Go-Around.</li>
-                <li>Minimums: At the Decision Altitude/Height (DA/H), the pilot decides to continue the landing or execute a Go-Around.</li>
-                <li>**C. Touchdown and Rollout**</li>
-                <li>Thrust Idle: Over the runway threshold, the pilot smoothly moves the thrust levers to IDLE.</li>
-                <li>Thrust Reversers: Immediately after touchdown, the pilot raises the reverse thrust levers (up to maximum required).</li>
-                <li>Rollout: The pilot monitors the ground lift dump and Autobrake engagement. The pilot uses the rudder and nose wheel steering to maintain centerline control during the rollout.</li>
-            </ul>
-        `
-    };
+  // Constitution Articles
+  const articles = {
+      I: `<h2>Article I — Identity and Structure</h2>
+<p>The official name of this organization shall be <strong>Deutsche Lufthansa AG.</strong>, hereafter referred to as “the Airline.” The Airline is headquartered in Frankfurt, Rhine-Main, Germany, and operates as a professional virtual airline with structured management, operational divisions, and designated subsidiaries. All domestic, regional, and international flights are operated under the main brand, with subsidiaries functioning under the oversight of central management.</p>
 
-    const sopBtns = document.querySelectorAll('.sop-btn');
-    const sopContent = document.getElementById('sopContent');
+<p>The organizational structure is hierarchical and clearly defined to ensure accountability, efficiency, and operational integrity. Authority is vested in the Chief Executive Officer (CEO), who serves as the ultimate governing authority of all airline operations, strategic decisions, and policy enforcement. Supporting the CEO is the Executive Team, comprised of the Chief Operating Officer (COO), Vice President, Human Resources Manager, Director of Operatons, Corporate Executive, and other high-ranking roles as designated by the CEO. Each member oversees their respective areas and ensures compliance with all airline policies and standards.</p>
 
-    sopBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const key = btn.dataset.section;
-            sopContent.style.opacity = 0;
-            setTimeout(() => {
-                sopContent.innerHTML = sopSections[key];
-                sopContent.style.opacity = 1;
-            }, 200);
+<p>Below the Executive Team, Regional Managers are appointed for each major hub or operational region. Their responsibilities include supervising local operations, maintaining personnel compliance with airline policies, overseeing scheduling and routing, and ensuring all flights meet established standards. All members, regardless of rank, must comply fully with directives issued by the Executive Team and the CEO.</p>
 
-            sopBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-        });
-    });
+<p>The Airline maintains subsidiary divisions, including regional and cargo branches. Subsidiaries operate in alignment with the Airline’s policies, branding, and operational standards, with clearly defined operational limits, responsibilities, and reporting requirements to ensure integration into the overall structure.</p>
 
-    // SOP modal open
-    document.getElementById('openSOP').addEventListener('click', () => {
-      document.getElementById('sopModal').style.display = 'block';
-    });
-    // SOP modal close is handled by the general closeBtns logic
+<p>The Airline’s identity encompasses operational role and professional reputation within the virtual aviation community. Members are expected to uphold this identity through professional conduct, operational excellence, and promotion of a respectful, realistic flight environment. Branding, communication, and operational representation must reflect this identity at all times.</p>
 
-    // ===========================================
-    // CONSTITUTION LOGIC
-    // ===========================================
+<p>Organizational changes, including new subsidiaries, restructuring, or modifications of authority, must be formally documented and approved by the CEO and Executive Team, with timely communication to all members to ensure awareness and compliance.</p>`,
 
-    const articles = {
-        I: `<h2>Article I — Identity and Structure</h2>
-            <p>The official name of this organization shall be <strong>Deutsche Lufthansa AG.</strong>, hereafter referred to as “the Airline.”</p>
-            <h3>Section 1.1. Core Identity</h3>
-            <p>The Airline is a Virtual Airline (VA) operating within the GeoFS flight simulation platform. It is not affiliated with the real-world Deutsche Lufthansa AG, nor does it claim any official status with real-world aviation organizations.</p>
-            <h3>Section 1.2. Command Structure</h3>
-            <p>The Airline shall be governed by a hierarchical structure, including:</p>
-            <ul>
-                <li><strong>Chief Executive Officer (CEO):</strong> The supreme authority, responsible for all final decisions, corporate policy, and long-term strategy.</li>
-                <li><strong>Chief Operating Officer (COO):</strong> Responsible for day-to-day operations, pilot recruitment, and flight procedures, reporting directly to the CEO.</li>
-                <li><strong>Executive Team:</strong> A group of trusted members assisting the CEO and COO in managing departments (e.g., Fleet, Route Planning, Training).</li>
-            </ul>
-            <h3>Section 1.3. Subsidiaries</h3>
-            <p>Subsidiaries (e.g., Lufthansa Cargo, Swiss, Austrian) shall operate under the umbrella of the Lufthansa Group but may maintain distinct operational procedures (SOPs), provided they do not conflict with the core Lufthansa Constitution.</p>
-        `,
-        II: `<h2>Article II — Membership</h2>
-            <p>Membership is open to all individuals who agree to abide by this Constitution and the Airline’s Standard Operating Procedures (SOPs).</p>
-            <h3>Section 2.1. Application and Training</h3>
-            <ul>
-                <li><strong>Application:</strong> Prospective members must submit an application and pass any required knowledge assessment set by the COO or Executive Team.</li>
-                <li><strong>Training:</strong> New members must complete a mandatory initial orientation (training flight) to ensure basic proficiency in navigation, communication, and adherence to SOPs.</li>
-            </ul>
-            <h3>Section 2.2. Pilot Tiers and Ranks</h3>
-            <p>Pilot ranks shall be determined by total flight hours logged and demonstrated proficiency. Pilots are encouraged to progress through the ranks, unlocking new aircraft and routes.</p>
-            <h3>Section 2.3. Conduct and Professionalism</h3>
-            <p>All members shall conduct themselves with professionalism and respect toward fellow members, staff, and the wider GeoFS community. Any conduct deemed disruptive, abusive, or harmful to the Airline's reputation will result in disciplinary action.</p>
-        `,
-        III: `<h2>Article III — Operations and Flight Logging</h2>
-            <p>All flights conducted under the Lufthansa Group banner must adhere to the principles of professionalism, realism, and safety.</p>
-            <h3>Section 3.1. Realistic Operations</h3>
-            <ul>
-                <li><strong>Flight Planning:</strong> Pilots must file a realistic flight plan (route, speed, altitude) using external tools (e.g., SimBrief, SkyVector) or follow pre-planned routes.</li>
-                <li><strong>Air Traffic Control (ATC):</strong> When operating in airspace controlled by human ATC, pilots must follow all instructions accurately and promptly.</li>
-            </ul>
-            <h3>Section 3.2. Logging Requirements</h3>
-            <ul>
-                <li><strong>Mandatory Logging:</strong> All flights must be logged in the designated flight logging channel or system.</li>
-                <li><strong>Minimum Information:</strong> The log must contain, at a minimum: Aircraft Type (e.g., A380), Flight Number (e.g., LH456), Route (Departure ICAO → Arrival ICAO), Flight Time, and Pilot Username.</li>
-                <li><strong>Realistic Flight:</strong> Flights must adhere to the 4x speed rule (no more than 4x speed) and must not utilize unrealistically high speeds (above Mach 0.94) or altitudes (above FL510).</li>
-            </ul>
-            <h3>Section 3.3. Standard Operating Procedures (SOP)</h3>
-            <p>Compliance with the SOP manual, detailing specific procedures for take-off, approach, landing, and non-normal events, is mandatory for all flights.</p>
-        `,
-        IV: `<h2>Article IV — Executive and Staff Roles</h2>
-            <p>The Executive Team and staff members hold positions of responsibility and are expected to uphold the highest standards of conduct and dedication.</p>
-            <h3>Section 4.1. Staff Appointment and Tenure</h3>
-            <p>Staff members are appointed by the CEO or COO. Tenure is indefinite, subject to performance review and adherence to this Constitution.</p>
-            <h3>Section 4.2. Staff Duties</h3>
-            <ul>
-                <li><strong>Staff Activity:</strong> Staff members must maintain a reasonable level of activity, participating in meetings, handling administration, and flying regularly.</li>
-                <li><strong>Staff Oversight:</strong> Staff members are responsible for overseeing pilot logs, answering questions, and enforcing the Constitution and SOPs fairly and impartially.</li>
-            </ul>
-            <h3>Section 4.3. Code of Conduct</h3>
-            <p>Staff shall avoid any appearance of favoritism or bias. Conflicts of interest must be disclosed to the CEO or COO immediately.</p>
-        `,
-        V: `<h2>Article V — Disciplinary Action</h2>
-            <p>This Article defines the framework for addressing violations of the Constitution or SOPs.</p>
-            <h3>Section 5.1. Minor Violations (Warning)</h3>
-            <p>Minor violations (e.g., incorrect log format, minor SOP non-compliance, brief unprofessionalism) shall result in a formal warning from a staff member.</p>
-            <h3>Section 5.2. Moderate Violations (Temporary Suspension)</h3>
-            <p>Repeated minor violations or single instances of moderate misconduct (e.g., intentional speed violations, disrespect toward staff/members) may result in a temporary suspension from logging flights or participating in group events (typically 1–7 days).</p>
-            <h3>Section 5.3. Severe Violations (Termination)</h3>
-            <p>Severe violations (e.g., cheating, persistent abuse, severe disruption, security breach, repeated violations after suspension) shall result in immediate and permanent termination of membership, decided by the CEO or COO.</p>
-            <h3>Section 5.4. Appeals</h3>
-            <p>A member may appeal any disciplinary action to the CEO/COO within 48 hours of receiving the notice. The decision of the CEO/COO is final.</p>
-        `,
-        VI: `<h2>Article VI — Assets and Finances (Virtual)</h2>
-            <p>The Airline's fleet, routes, and currency are entirely virtual and intended for simulation only.</p>
-            <h3>Section 6.1. Fleet Management</h3>
-            <p>The official fleet consists of aircraft utilized by the real-world Lufthansa Group. New aircraft acquisitions and retirements are at the discretion of the Executive Team.</p>
-            <h3>Section 6.2. Virtual Economy</h3>
-            <p>The virtual economy (e.g., virtual currency, company net worth) is maintained for roleplay and engagement purposes only. No real-world currency exchange or investment is involved.</p>
-            <h3>Section 6.3. Route Network</h3>
-            <p>The route network shall mirror, to the extent possible, the real-world Lufthansa routes, with additional virtual routes added for diversity, provided they are realistic.</p>
-        `,
-        VII: `<h2>Article VII — Amendments</h2>
-            <p>The Constitution may be amended to reflect changes in policy, operations, or the virtual aviation community.</p>
-            <h3>Section 7.1. Proposal of Amendments</h3>
-            <p>Any member of the Executive Team may propose an amendment to the Constitution.</p>
-            <h3>Section 7.2. Amendment Process</h3>
-            <p>Proposed amendments must be ratified by a majority vote of the Executive Team, and then formally approved by the CEO.</p>
-            <h3>Section 7.3. Immediate Amendments</h3>
-            <p>The CEO reserves the right to enact immediate, temporary amendments in response to urgent operational needs or community crises.</p>
-        `,
-        VIII: `<h2>Article VIII — Discord and Communication</h2>
-            <p>The official Discord server is the primary means of communication for the Airline.</p>
-            <h3>Section 8.1. Server Rules</h3>
-            <p>All members must adhere to the Discord server rules, which complement this Constitution.</p>
-            <h3>Section 8.2. Official Channels</h3>
-            <p>Announcements, flight logging, and official discussions must take place in the designated channels. The use of appropriate channels is mandatory.</p>
-        `,
-        IX: `<h2>Article IX — Code of Ethics and Integrity</h2>
-            <p>The Airline is built on trust, integrity, and fair play.</p>
-            <h3>Section 9.1. Cheating and Exploitation</h3>
-            <p>Any deliberate manipulation of flight logging systems, GeoFS mechanics, or other unfair practices (e.g., unrealistically high-speed flying, exploiting bugs for flight time) is strictly prohibited and constitutes a severe violation.</p>
-            <h3>Section 9.2. Realism</h3>
-            <p>Members are encouraged to strive for the highest degree of realism and simulation possible, including the use of checklists, realistic flight phases, and appropriate weather settings.</p>
-        `
-    };
+  II: `<h2>Article II — Mission and Vision</h2>
+<p><strong>Mission:</strong> The mission of the Lufthansa Group is to provide safe, professional, and realistic virtual aviation experiences. This includes adherence to operational standards, cultivating professionalism, and commitment to training and development for all personnel. Operations prioritize safety, accuracy, and realism in all flights, scheduling, and member interaction.</p>
 
-    const articleBtns = document.querySelectorAll('.article-btn');
-    const articleContent = document.getElementById('articleContent');
+<p>Members must act with integrity, transparency, and accountability. All operations adhere to standard procedures, safety protocols, and regulatory compliance. The Airline provides training and resources to ensure personnel can execute responsibilities at the highest standard.</p>
 
-    articleBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const articleKey = btn.dataset.article;
-            articleContent.style.opacity = 0;
-            setTimeout(() => {
-                articleContent.innerHTML = articles[articleKey];
-                articleContent.style.opacity = 1;
-            }, 200);
-            
-            articleBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-        });
-    });
+<p><strong>Vision:</strong> The vision is to become the most respected, professional, and operationally excellent virtual airline. Realism, precision, and professionalism are foundational principles of all operations and interactions.</p>
 
-    // Constitution modal open
-    document.getElementById('openConstitution').addEventListener('click', () => {
-      document.getElementById('constitutionModal').style.display = 'block';
-    });
-    // Constitution modal close is handled by the general closeBtns logic
+<p>The Airline envisions sustainable growth, evaluating operational decisions, membership expansion, and fleet additions carefully in line with strategic goals. Goals include maintaining operational quality, providing realistic experiences, and fostering a collaborative, learning-focused community.</p>
+
+<p>Guidelines include:</p>
+<ul>
+  <li>Standardized flight operations, communication, and reporting procedures.</li>
+  <li>Clearly defined roles and responsibilities to prevent ambiguity.</li>
+  <li>Continuous training programs to meet performance and procedural standards.</li>
+  <li>Regular review of operations for improvement and best practices adherence.</li>
+  <li>Strict safety, conduct, and branding policies.</li>
+</ul>
+
+<p>The Airline actively cultivates accountability and transparency. Staff members failing to meet mission and vision expectations are subject to corrective action as outlined in subsequent articles.</p>
+`,
+
+  III: `<h2>Article III — Governance and Leadership</h2>
+<p>Governance is vested in a structured hierarchy for efficiency, accountability, and consistent policy enforcement. At the top is the CEO, who holds ultimate authority over all operations, strategic decisions, and policy enforcement, acting in the best interest of organizational integrity, realism, and community standards.</p>
+
+<p>The Executive Team, including the COO, President, Vice President, Human Resources Manager, Director of Operations, Corporate Executive, Operations Supervisor, and other heads, ensures divisions operate efficiently, safely, and according to policies. The COO manages day-to-day operations, scheduling, and resource allocation. The Head of Fleet and Routes ensures proper aircraft utilization and deployment. The HR Lead manages personnel, training, and performance compliance.</p>
+
+<p>Regional Managers oversee each hub, supervise staff, coordinate operations, monitor compliance, and report to the Executive Team, ensuring adherence to standards and effective communication.</p>
+
+<p>Governance requires transparency, accountability, and structured decision-making. Directives from the CEO or Executive Team must be documented and communicated. Members have access to guidelines and operational manuals. Decisions affecting membership, procedures, or structure follow the established chain of authority.</p>
+
+<p>The Airline refers to members and staff for feedback on operations and policy decisions. Leadership emphasizes ethical conduct, operational excellence, and professionalism. Executives act as role models, resolve conflicts fairly, and uphold mission, vision, and standards. The governance system ensures consistent authority, checks and balances, and a sustainable virtual airline.</p>
+`,
+
+  IV: `<h2>Article IV — Membership and Conduct</h2>
+<p>Membership is a privilege for those committed to the Airline’s mission, standards, and professional conduct. All members must follow policies and procedures. Membership is contingent on acceptance of these rules, maintaining high standards of behavior in operations and community.</p>
+
+<p>New members complete onboarding, including reviewing operational manuals, code of conduct, and training. Membership roles include operational (pilots, crew, ground staff), administrative (management, coordinators), and support (training, advisory, technical). Members must operate professionally, including:</p>
+<ul>
+  <li>Adherence to flight procedures, safety, and operational protocols.</li>
+  <li>Courteous communication with all members and external parties.</li>
+  <li>Prompt reporting of incidents or violations.</li>
+  <li>Compliance with scheduling, attendance, and reporting requirements.</li>
+  <li>No disruptive behavior or harassment.</li>
+</ul>
+
+<p>Failure to comply may result in warnings, retraining, suspension, or termination. Staff inactivity over 30 days without notice may result in leadership review. Members must notify absences in advance. Exceptions may be granted by the Executive Team.</p>
+
+<p>Members must respect intellectual property and branding. Unauthorized use of logos, liveries, documents, or communications is prohibited. Membership includes rights to participate in operations according to assigned roles. Members are encouraged to contribute positively through improvements, training, and mentoring, aligning with organizational goals.</p>
+
+<p>Members must uphold the Airline’s reputation in external interactions. Misconduct contrary to values or standards may result in corrective action to maintain a professional environment.</p>
+`,
+
+  V: `<h2>Article V — Operations and Standards</h2>
+<p>Operations follow standards, procedures, and protocols to ensure safety, professionalism, and realism. All staff must adhere strictly to these standards.</p>
+
+<p>1. <strong>Flight Operations:</strong> Only approved aircraft types are used, flight plans are submitted and approved, and unauthorized deviations are prohibited unless for safety or emergencies.</p>
+
+<p>2. <strong>Crew Responsibilities:</strong> Maintain clear communication, coordinate with staff and ATC, ensure passenger safety, and follow SOPs. Professional conduct is mandatory throughout all flight phases.</p>
+
+<p>3. <strong>Routes and Destinations:</strong> Follow assigned routes. Requests for modifications must be pre-approved. Report issues or mishaps as soon as you can..</p>
+
+<p>4. <strong>Standard Operating Procedures (SOPs):</strong> Include all aspects of flight operations and emergencies. Crew must follow SOPs precisely.</p>
+
+<p>5. <strong>Safety and Compliance:</strong> Safety is paramount. Violations may result in disciplinary action. (Such as 1000fpm+ landing)</p>
+
+<p>6. <strong>Reporting and Documentation:</strong> Document all operations accurately. Timely submission is required. Falsification is prohibited. (Includes alting, which is strictly banned.)</p>
+
+<p>7. <strong>Operational Ethics:</strong> Maintain fairness, integrity, and transparency. Avoid conflicts of interest and report misconduct.</p>
+
+<p>8. <strong>Performance Standards:</strong> Maintain proficiency. Training and evaluations ensure skill improvement.</p>
+
+<p>9. <strong>Continuous Improvement:</strong> Members may propose operational enhancements. Approved changes are implemented in a controlled manner.</p>
+
+<p>Failure to comply may result in progressive discipline, preserving safety, professionalism, and operational integrity.</p>
+`,
+
+  VI: `<h2>Article VI — Branding and Representation</h2>
+<p>The Airline maintains a strong brand identity representing professionalism, integrity, and excellence. Members must adhere to branding standards.</p>
+
+<p>1. <strong>Branding Assets:</strong> Logos, liveries, color schemes are proprietary and cannot be modified without approval.</p>
+
+<p>2. <strong>Communication Standards:</strong> Professional tone and accuracy are required in internal and external communications.</p>
+
+<p>3. <strong>Livery and Aircraft Presentation:</strong> Aircraft must use approved liveries. Proposed changes require approval.</p>
+
+<p>4. <strong>Events and Community Engagement:</strong> Members must act professionally in public events and pre-approved engagements.</p>
+
+<p>5. <strong>Social Media:</strong> Official postings must follow guidelines. Personal accounts must indicate personal opinions clearly.</p>
+
+<p>6. <strong>Intellectual Property:</strong> All content belongs to the Airline. Unauthorized use is prohibited.</p>
+
+<p>7. <strong>Enforcement:</strong> Executive Team monitors compliance. Violations may result in warnings, suspension, or expulsion.</p>
+
+<p>8. <strong>Continuous Improvement:</strong> Branding standards are periodically reviewed. Members are encouraged to suggest improvements.</p>
+`,
+
+  VII: `<h2>Article VII — Amendments</h2>
+<p>Amendments may be proposed by the CEO or a majority of the Executive Team. All proposals must be documented with rationale. The Executive Team reviews and approves amendments with at least a two-thirds majority. Discussion and feedback are encouraged before approval.</p>
+
+<p>After approval, amendments are communicated to all members with the full text, approval date, and instructions. Members must comply immediately unless a specific implementation date is provided.</p>
+
+<p>Amendments must not violate professionalism, safety, or operational integrity. The CEO has final authority to validate amendments.</p>
+`,
+
+  VIII: `<h2>Article VIII — Enforcement and Interpretation</h2>
+<p>The CEO and Executive Team are responsible for enforcement and interpretation of this Constitution, ensuring fairness and adherence to principles, policies, and procedures.</p>
+
+<p>Enforcement may include warnings, retraining, suspension, or other corrective actions. All actions must be proportional, documented, and communicated to affected members.</p>
+
+<p>Interpretation is required for ambiguities or novel situations. Decisions consider the spirit and intent of the Constitution, prioritizing professionalism, safety, and operational integrity.</p>
+
+<p> Any member can start a "Vote of No Confidence" (VoNC) for any part of administration, where a vote will take place to either keep or remove that member of the staff team.</p>
+
+<p>The CEO has final authority, with Executive Team advisory input. All decisions are recorded for consistency. Members must comply with enforcement and interpretations. Failure may result in additional disciplinary measures, up to termination.</p>
+`,
+
+  IX: `<h2>Article IX - Elections and Campaigns</h2>
+  <p>1. Admin may register their candidacy for an election by sending a DM to <strong>midmm2</strong> on the 10th of the month. All campaigning will stop 24 hours before the election begins at midnight, Mountain Standard Time, election day. Admin may only register their candidacy for one office at a time and if defeated in an election may register their candidacy for the upcoming elections in a general election cycle.</p>
+  <p>1. Admin may register their candidacy for an election during or after the campaigning period if no other admin has registered.</p>
+
+  <p>2. Campaigning is banned for the full 24-hour duration of all scheduled elections. Election day campaigning is defined as soliciting votes and sending out campaign telegrams to members. Soliciting votes is defined as contacting members publicly or privately in order to convince them to vote for a certain candidate and advocating for a vote for their candidacy in the Chat or other discussion pages.</p>
+
+  <p>1. Campaigns on election day result in the candidate being taken off the ballot and all votes for them nullified, along with being unable to run in any other potential contests during the next 3 months. If a non-candidate campaigns for a candidate on election day, they will receive an election ban for 1 cycle.</p>
+
+  <p>2. If more than one candidate remains in the event of a candidate being removed from the ballot, the election will be rescheduled for another full 24 hours at the soonest possible time, and no longer than a day after the removal of the candidate. Election day campaigning is allowed during interim election campaigns, besides incentivizing citizens to vote for a certain candidate.</p>
+
+  <p>3. All campaign materials and the candidate’s names are to be linked in a server-wide message to all members on election day, along with the election poll. This is to be replicated in a post as well. Campaign materials are the official campaign dispatches of all candidates or an official statement when provided by a candidate who lacks a campaign dispatch.</p>
+
+  <p>3. Elections will be held every 3 months subject to change from <strong>midmm2</strong>.</p>
+
+  <p>1. Elections for President will be held on the 30th.</p>
+  <p>2. The Vice President will be appointed by the President, then voted to either stay or be replaced.</p>
+  <p>3. Elections for other offices, if applicable, will be held on the fourteenth of these months.</p>
+
+  <p>4. If there is only 1 candidate, that person automatically holds the office. If there are more than two candidates, the election will be decided via a two-round system, in which the top two candidates advance to a second round if no one wins 51% or more of the vote.</p>
+
+  <p>5. All elections will last 24 hours with the second round being held the next day for 24 hours.</p>
+
+  <p>4. If a tie occurs, the affected candidates will discuss how to resolve the tie.</p>
+
+  <p>1. If within 24 hours of the election elapsing the affected candidates have not reached a consensus, then a game of random chance will be held by <strong>midmm2</strong> to determine the winner.</p>
+  <p>2. Random chance games must be best out of 5 unless agreed otherwise.</p>
+  <p>3. If <strong>midmm2</strong> is not present to administer the game live, then the game may be administered by another person agreed upon by the affected candidates; otherwise, the game will be delayed until he can administer it.</p>
+
+  <p>5. After winning an election, admin who already hold an office must resign from their previous position to accept their new office if their term hasn't expired.</p>
+
+  <p>6. If a scheduled election is not held on the date it is meant to be held, the election in question will be held the day after the error is first highlighted (Mountain Standard Time).</p>
+
+  <p>7. <strong>midmm2</strong> can order an investigation into an election if he and 2 other members or admin provide evidence that suggests election manipulation. An absolute majority of the server members must confirm the order.</p>
+
+  <p>1. Upon the order, the election is frozen and no new votes are counted.</p>
+  <p>2. If it is proven beyond a reasonable doubt that election manipulation has taken place, the election is to be scrapped with the candidacy of the perpetrating person disqualified.</p>
+  <p>3. If it is not proven beyond a reasonable doubt, the election resumes as normal.</p>
+  <p>4. Reasonable doubt is defined as evidence that is factual and clearly defined such that any rational person would accept it.</p>
+
+  <p>8. Bribery is strictly prohibited.</p>
+
+  <p>1. Bribery is defined as any offer of a potential appointment in exchange for a vote, money, warning clearance, protection from bans, and other clear and definable instances of bribery determined by Mid and approved by the constitution.</p>
+  <p>2. Members accused of bribery will be subject to an interrogation and, if found guilty, will receive a 1-year political ban. If the accused is a member of the Executive team, they will be subject to impeachment.</p>
+`,
+  };
+  
+  // SOP MANUAL CONTENT
+  const sopSections = {
+      GeneralProcedures: `
+          <h2>Section I: General Procedures and Documentation</h2>
+          
+          <h3>1. Safety and Incident Reporting Policy</h3>
+          
+          <h4>1.1. Reporting Mandate</h4>
+          <p>All pilots are required to document and report any event, occurrence, or safety hazard that affects or could potentially affect the safety of the flight. The primary mechanism for this reporting is the Incident Reports Channel.</p>
+          
+          <h4>1.2. Scope of Reportable Occurrences</h4>
+          <p>A report shall be filed for the following minimum criteria. This list is not exhaustive; when in doubt, report the occurrence.</p>
+          <ul>
+              <li>**A. Aircraft Damage and Maintenance**</li>
+              <li>Any damage, however small, discovered during pre-flight, post-flight, or during a phase of flight (e.g., minor hangar rash, bird strike, Foreign Object Debris (FOD) ingestion, lightning strike, hard landing, wingstrike).</li>
+              <li>Any system failure or defect that requires consulting the Minimum Equipment List (MEL) or requires maintenance action.</li>
+              <li>**B. Flight Path Management and Stability**</li>
+              <li>Any Go-Around executed for any reason (e.g., unstable approach, runway incursion, weather).</li>
+              <li>Any Autopilot Disconnect that was not planned (e.g., due to system failure or unexpected flight control input).</li>
+              <li>Any Runway Excursion or deviation from the taxiway/runway.</li>
+              <li>**C. Operational Safety Thresholds**</li>
+              <li>A report is mandatory for exceeding any of the following flight safety thresholds:</li>
+              <li>Unstable Approach: Failure to be stabilized by 1000 feet AGL (ILS) or 500 feet AGL (VFR), requiring a Go-Around.</li>
+              <li>Hard Landing: Any landing determined by pilot judgment or aircraft systems to exceed the threshold of 600fpm on touchdown, and/or 2.2Gs.</li>
+          </ul>
+          
+          <h4>1.3. Reporting Procedure and Content</h4>
+          <p>The report must be completed by the Pilot-in-Command (PIC) or a designated crew member immediately upon safe completion of the flight or, at the earliest opportunity.</p>
+          <ul>
+              <li>Notification: The PIC shall notify members of the Executive Team via a ping.</li>
+              <li>Report Submission: All details must be logged in the Incident Reports Channel.</li>
+              <li>Mandatory Content: Every report must contain the following minimum information for proper investigation:</li>
+              <li>Date and Time: The exact time the event occurred.</li>
+              <li>Aircraft Type: (e.g., A320).</li>
+              <li>Flight Number and/or Route: (e.g., LH784, MUC-PER).</li>
+              <li>Pilot-in-Command (PIC) username: (e.g., midmm2)</li>
+              <li>Phase of Flight: (e.g., Taxi Out, Final Approach, Cruise).</li>
+              <li>Detailed Narrative: A factual, extensive description of the event, including: What happened; Why it may have happened (Pilot assessment); Crew action taken (SOP followed, or deviation made); Outcome/Result.</li>
+          </ul>
+      `,
+      WeatherHazards: `
+          <h2>Section II: Weather and Hazardous Conditions</h2>
+          
+          <p>This section establishes mandatory operational limitations and procedural guidelines for operating the aircraft in adverse weather conditions, ensuring flight safety and adherence to company performance standards across the entire fleet.</p>
+          
+          <h3>2.1. Severe Weather Avoidance Policy</h3>
+          <ul>
+              <li>Thunderstorm Avoidance: The flight crew must utilize the onboard weather radar and ATC advisories to maintain a minimum clearance of 20nm from severe, Level 5 or 6 thunderstorms (Cumulonimbus clouds, CBs) at all cruise altitudes. Direct penetration of visible CB clouds is prohibited.</li>
+              <li>Turbulence Management: Upon encountering severe turbulence, the pilot shall immediately:</li>
+              <li>Disengage Autopilot and Autothrust/Autothrottle.</li>
+              <li>Maintain Pitch: Avoid large control inputs; do not chase the altimeter or vertical speed indicator.</li>
+              <li>Secure Cabin: PM shall notify the cabin crew to secure all services and ensure passengers are seated with seatbelts fastened.</li>
+          </ul>
+          
+          <h3>2.2. Operational Wind Limits (Mandatory)</h3>
+          <p>Operations are limited by performance and aircraft design. The following limits represent the absolute maximum demonstrated crosswind and tailwind components under dry runway conditions. The Pilot-in-Command (PIC) must apply conservative operational judgment, particularly when the wind includes a high gust factor. Exceeding these maximum demonstrated limits is strictly prohibited.</p>
+          <ul>
+              <li>**Maximum Demonstrated Crosswind / Tailwind Components**</li>
+              <li>A320 Family (A319/320/321): Maximum Demonstrated Crosswind: 30kts; Maximum Demonstrated Tailwind: 10kts</li>
+              <li>A330 / A340 Family: Maximum Demonstrated Crosswind: 30kts; Maximum Demonstrated Tailwind: 15kts</li>
+              <li>A350 Family (A350-900/1000): Maximum Demonstrated Crosswind: 35kts; Maximum Demonstrated Tailwind: 15kts</li>
+              <li>A380: Maximum Demonstrated Crosswind: 30kts; Maximum Demonstrated Tailwind: 15kts</li>
+              <li>Boeing 777 Family: Maximum Demonstrated Crosswind: 30kts; Maximum Demonstrated Tailwind: 15kts</li>
+              <li>Boeing 787-9 Dreamliner: Maximum Demonstrated Crosswind: 30kts; Maximum Demonstrated Tailwind: 15kts</li>
+              <li>CRJ700 / A220: Maximum Demonstrated Crosswind: 20kts; Maximum Demonstrated Tailwind: 10kts</li>
+              <li>**Note on Gust Factor:** When wind is gusting, the highest sustained wind speed plus 1/3 of the gust factor shall be used to determine the effective crosswind limit for operational planning.</li>
+          </ul>
+          
+          <h3>2.3. Contaminated Runway Operations</h3>
+          <p>If operating on a runway contaminated with standing water, slush, or snow, the crew shall:</p>
+          <ul>
+              <li>Use the most conservative flap setting available to minimize ground roll distance and maximize stability.</li>
+              <li>Apply reverse thrust on touchdown if possible to minimize ground roll distance. Do not engage reverse thrust before both main landing gears have contact with the ground.</li>
+          </ul>
+      `,
+      FlightPathManagement: `
+          <h2>Section III: Flight Path Management and Speed Control</h2>
+          
+          <p>This section establishes the primary philosophy and mandatory techniques for controlling the aircraft's energy (airspeed) and trajectory (flight path) across all flight phases.</p>
+          
+          <h3>3.1. Pitch and Power Concept</h3>
+          <p>The pilot must manage the aircraft using the Pitch and Power concept. This is the fundamental technique for controlling the aircraft's state:</p>
+          <ul>
+              <li>Pitch controls Airspeed (in the short term, or when not level).</li>
+              <li>Power/Thrust controls Altitude/Vertical Speed (when maintaining airspeed).</li>
+              <li>The reverse is true in low-speed flight and on approach: Pitch controls Vertical Speed (e.g., glideslope) and Power controls Airspeed. The crew must always maintain an awareness of the aircraft's current energy state (potential and kinetic).</li>
+          </ul>
+          
+          <h3>3.2. Angle of Attack (AOA) Awareness</h3>
+          <ul>
+              <li>Stall Prevention: Stall is a function of excessive AOA, not just low airspeed. Pilots must use proper, smooth control inputs to remain well clear of the stick shaker/pusher activation envelope.</li>
+              <li>Stall Recovery: If a stick shaker/pusher activates, the immediate, mandatory recovery action is:</li>
+              <li>Disconnect Autopilot/Autothrust.</li>
+              <li>Apply Maximum Available Thrust (set thrust levers to TOGA/MAX power).</li>
+              <li>Reduce Angle of Attack by pitching downward to reduce the stall.</li>
+              <li>Roll Level: Once out of the stall, recover to a level flight attitude.</li>
+          </ul>
+          
+          <h3>3.3. Speed Control and Energy Management</h3>
+          <ul>
+              <li>Energy Trading: The crew shall manage the aircraft's energy by anticipating the need to trade altitude for speed or vice-versa. Ex: If high on the approach profile, increase drag before reducing power to avoid becoming slow.</li>
+              <li>Speedbrakes/Spoilers: Use of speedbrakes is permitted in cruise and descent to manage energy. Speedbrakes must be retracted before selecting final approach flap settings. Spoilers will be deployed upon touchdown, with both main landing gears have contact with the ground.</li>
+          </ul>
+          
+          <h3>3.4. Flight Rules</h3>
+          <p>The following limits are mandatory and represent the maximum speeds permitted in the given phase of flight or altitude band. The pilot must prioritize safety and reduce speed further as required by weather, traffic, or congestion.</p>
+          <ul>
+              <li>**A. Airspeed Limits**</li>
+              <li>Below 10,000 feet AGL/MSL: The maximum indicated airspeed (IAS) for all aircraft in the fleet is 250 knots. This restriction is mandatory and only superseded if a higher speed is required for minimum maneuvering speed or required by ATC clearance.</li>
+              <li>Class B Area: The maximum indicated airspeed when within 4 nautical miles of the primary airport and below 2,500 feet AGL is 200 knots.</li>
+              <li>**B. Ground Speed Limits (Taxi)**</li>
+              <li>Maintaining situational awareness and low ground speed is critical to preventing runway incursions and ground damage.</li>
+              <li>Straight Taxi Segments: Maximum ground speed on long, straight taxiways is 25 knots.</li>
+              <li>Congested Areas: Maximum ground speed in congested apron areas, while entering or exiting the gate, or during turns, is 10 knots.</li>
+              <li>Turning Speed: doing turns, the ground speed should not exceed 10 knots.</li>
+          </ul>
+      `,
+      A320Family: `
+          <h2>4.1. Airbus A320 Family Procedures</h2>
+          <p>This section has the procedures for the entire A320 family, including the A319, A320, and A321.</p>
+          
+          <h4>4.1.1. Takeoff Procedure</h4>
+          <ul>
+              <li>**A. Pre-Takeoff Configuration Check**</li>
+              <li>The Pilot confirms the thrust levers are in the IDLE detent.</li>
+              <li>The Pilot confirms the flap lever is set to a takeoff configuration.</li>
+              <li>That the FMC is operating normally, with all waypoints showing, making sure that the waypoints will bring them safely to their destination.</li>
+              <li>**B. The Takeoff Roll**</li>
+              <li>Thrust Application: The Pilot releases the brakes and increases the thrust to as high as possible.</li>
+              <li>**C. Initial Climb and Acceleration**</li>
+              <li>Gear Retraction: Upon confirming a positive rate of climb, the pilot raises the landing gears.</li>
+              <li>Autopilot Engagement: Upon reaching 600ft AGL, the pilot can enable the autopilot.</li>
+          </ul>
+          
+          <h4>4.1.3. Cruise Phase Management</h4>
+          <p>This phase focuses on maintaining the planned speed, altitude, and fuel burn efficiency.</p>
+          <ul>
+              <li>Level Off: Upon reaching the assigned cruise flight level, the Pilot Monitoring (PM) shall confirm the Mode Control Panel (MCP) or Flight Control Unit (FCU) shows Altitude Captured and the FMA (Flight Mode Annunciator) confirms the ALT CRZ mode.</li>
+              <li>Monitoring: The crew shall routinely scan the ECAM for any system warnings. The PM shall actively monitor the Flight Management System (FMS) for: Fuel Burn: Cross-checking actual fuel burn against the planned burn every 30-60 minutes; Time Check: Noting the estimated time of arrival (ETA) against the schedule.</li>
+              <li>Descent Preparation: Approximately 15 minutes prior to the Top of Descent (TOD) point, the Pilot Flying (PF) initiates the Descent Briefing. This must cover: Weather at destination; Expected arrival route and approach type; Go-Around procedure and missed approach altitude; Fuel status and any anticipated holding.</li>
+          </ul>
+          
+          <h4>4.1.4. Landing Procedure</h4>
+          <p>The Landing Procedure is executed when the aircraft is positioned for arrival. The goal is to be fully configured and stabilized by 1000ft AGL (on IFR), or 500ft AGL (on VFR).</p>
+          <ul>
+              <li>**A. Initial Approach and Configuration**</li>
+              <li>Speed Management: The pilot selects flaps in order to increase lift and reduce speed.</li>
+              <li>Gear Down: When cleared to land and the approach is confirmed, the pilot brings the gears down. This occurs roughly 5-7nm from the runway, and at ~1500-2500ft AGL.</li>
+              <li>**B. Final Approach and Stabilization**</li>
+              <li>Final Flaps: Upon reaching the final approach speed, the pilot sets final flap setting. A321 Note: For the A321, use of FLAP FULL (Detent 4) is the preferred final landing configuration unless specifically restricted.</li>
+              <li>Stabilization Check: At 1000ft AGL, the aircraft must meet all stabilization criteria (on glidepath, wings level, and at approach speed. It is up to the pilot to ensure that it is a stable approach.</li>
+              <li>**C. Touchdown and Rollout**</li>
+              <li>Retard Callout: When the aircraft radio altimeter announces "Retard," the pilot will move the thrust levers to IDLE.</li>
+              <li>Thrust Reversers: Immediately after touchdown, the pilot enables reverse thrust and spoilers.</li>
+              <li>Spoilers/Autobrake: The Ground Spoilers automatically deploy (If you have Autoland++), and the Autobrakes automatically engage (Use semicolon to put parking brake once gears are down, representing the brakes automatically deploying).</li>
+              <li>Rollout: As the aircraft slows below 70kts, the pilot shall smoothly reduce reverse thrust to idle. At the taxi speed, the pilot disables reverse thrust.</li>
+          </ul>
+      `,
+      A330A340: `
+          <h2>4.2. The Airbus A330 / A340 Procedures</h2>
+          <p>This section provides the procedures for the Airbus A330-A</p>
+          <p>... Content forthcoming ...</p>
+      `,
+      A350: `<h2>4.3. Airbus A350 Procedures (TBA)</h2><p>Procedures for the A350 will be added soon.</p>`,
+      B777: `<h2>4.4. Boeing 777 Procedures (TBA)</h2><p>Procedures for the Boeing 777 will be added soon.</p>
+      <p>... Content forthcoming ...</p>`,
+      A380: `<h2>4.5. Airbus A380 Procedures (TBA)</h2><p>Procedures for the A380 will be added soon.</p>
+      <p>... Content forthcoming ...</p>`,
+      B787: `<h2>4.6. Boeing 787-9 Procedures (TBA)</h2><p>Procedures for the Boeing 787-9 will be added soon.</p>
+      <p>... Content forthcoming ...</p>`,
+      B747: `<h2>4.7. Boeing 747 Procedures (TBA)</h2><p>Procedures for the Boeing 747 will be added soon.</p>
+      <p>... Content forthcoming ...</p>`,
+      CRJ700: `<h2>4.8. CRJ700 Procedures (TBA)</h2><p>Procedures for the CRJ700 will be added soon.</p>
+      <p>... Content forthcoming ...</p>`,
+      A220: `<h2>4.9. Airbus A220 Procedures (TBA)</h2><p>Procedures for the Airbus A220 will be added soon.</p>
+      <p>... Content forthcoming ...</p>`,
+  };
+
+
+  const sopContentDiv = document.getElementById('sopContent');
+  const sopButtons = document.querySelectorAll('.sop-buttons .article-btn');
+
+
+  sopButtons.forEach(button => {
+      button.addEventListener('click', () => {
+          const section = button.dataset.section;
+          sopContentDiv.style.opacity = 0;
+          
+          setTimeout(() => {
+              sopContentDiv.innerHTML = sopSections[section] || `<p>Content for ${section} is currently unavailable.</p>`;
+              sopContentDiv.style.opacity = 1;
+              // Scroll content to the top
+              sopContentDiv.closest('.modal-content-inner').scrollTop = 0;
+          }, 200);
+
+
+          // Remove active class from all SOP buttons
+          sopButtons.forEach(btn => btn.classList.remove('active'));
+          // Add active class to the clicked SOP button
+          button.classList.add('active');
+      });
+  });
+
+
+  const articleBtns = document.querySelectorAll('.article-buttons .article-btn');
+  const articleContent = document.getElementById('articleContent');
+
+  articleBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.dataset.article;
+      articleContent.style.opacity = 0;
+      setTimeout(() => {
+        articleContent.innerHTML = articles[key];
+        articleContent.style.opacity = 1;
+        // Scroll content to the top
+        articleContent.closest('.modal-content-inner').scrollTop = 0;
+      }, 200);
+
+      articleBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
 
 </script>
 
