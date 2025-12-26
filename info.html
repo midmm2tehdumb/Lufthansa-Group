@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lufthansa Information </title>
-    
+
     <link rel="stylesheet" href="style.css"> 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <link rel="icon" type="image/png" href="logo.png">
     <meta property="og:title" content="Lufthansa Airlines">
     <meta property="og:url" content="https://midmm2tehdumb.github.io/Lufthansa-Group/info.html">
@@ -44,6 +44,7 @@
     <div class="center-button button-group">
       <button id="openSOP" class="subsidiary-card">View SOP Manual</button>
       <button id="openConstitution" class="subsidiary-card">View Constitution</button>
+      <button id="openHonCircle" class="subsidiary-card">HON Circle Group</button>
     </div>
 
     <div id="sopModal" class="modal">
@@ -79,41 +80,6 @@
                     <button class="article-btn" data-section="A220">Airbus A220</button>
                 </div>
 
-<div id="honCircleModal" class="modal">
-  <div class="modal-content">
-    <span class="close-btn" id="closeHonCircle">&times;</span>
-    <div class="modal-header">
-      <img src="https://images.seeklogo.com/logo-png/8/2/lufthansa-logo-png_seeklogo-86162.png" alt="Lufthansa Logo" class="logo-img">
-      <h2>Lufthansa Group</h2>
-      <h3>HON Circle Alliance</h3>
-      <p class="modal-subtext">A premium network for extended global reach</p>
-    </div>
-    <div class="modal-content-inner">
-      <!-- This <p> line matches the SOP modal style -->
-      <p>Welcome to the HON Circle Alliance directory. Select a member airline below to view its full profile, leadership, and network.</p>
-      
-      <div class="modal-preamble">
-        <p>The HON Circle Group is an extension of the Lufthansa Group for further reach. All routes in the HON Circle Group are codeshares with all other members and the Lufthansa Group.</p>
-      </div>
-  </div>
-
-      <!-- Button group class follows SOP modal pattern -->
-      <div class="article-buttons button-group">
-        <button class="article-btn" data-member="KLM">KLM</button>
-        <button class="article-btn" data-member="AirAsia">Air Asia</button>
-        <button class="article-btn" data-member="Akasa">Akasa Air</button>
-        <button class="article-btn" data-member="Eva">Eva Air</button>
-      </div>
-
-      <div id="honCircleContent" class="article-content">
-        <p>Select a member airline above to view its contents.</p>
-      </div>
-    </div>
-    <div class="modal-footer">
-      © 2025 Lufthansa Group — A GeoFS Virtual Airline
-    </div>
-  </div>
-
                 <div id="sopContent" class="article-content">
                     <p>Select a section above to view its contents.</p>
                 </div>
@@ -125,9 +91,42 @@
         </div>
     </div>
 
+    <div id="honCircleModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeHonCircle">&times;</span>
+            <div class="modal-header">
+                <img src="https://images.seeklogo.com/logo-png/8/2/lufthansa-logo-png_seeklogo-86162.png" alt="Lufthansa Logo" class="logo-img">
+                <h2>Lufthansa Group</h2>
+                <h3>HON Circle Alliance</h3>
+                <p class="modal-subtext">A premium network for extended global reach</p>
+            </div>
+            <div class="modal-content-inner">
+                <p>Welcome to the HON Circle Alliance directory. Select a member airline below to view its full profile, leadership, and network.</p>
+                
+                <div class="modal-preamble">
+                    <p>The HON Circle Group is an extension of the Lufthansa Group for further reach. All routes in the HON Circle Group are codeshares with all other members and the Lufthansa Group.</p>
+                </div>
+
+                <div class="article-buttons button-group">
+                    <button class="article-btn" data-member="KLM">KLM</button>
+                    <button class="article-btn" data-member="AirAsia">Air Asia</button>
+                    <button class="article-btn" data-member="Akasa">Akasa Air</button>
+                    <button class="article-btn" data-member="Eva">Eva Air</button>
+                </div>
+
+                <div id="honCircleContent" class="article-content">
+                    <p>Select a member airline above to view its contents.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                © 2025 Lufthansa Group — A GeoFS Virtual Airline
+            </div>
+        </div>
+    </div>
+
     <div id="constitutionModal" class="modal">
       <div class="modal-content">
-        
+
             <span class="close-btn" id="closeConstitution">&times;</span>
 
             <div class="modal-header">
@@ -138,7 +137,7 @@
         </div>
 
             <div class="modal-content-inner">
-          
+
           <p>Welcome to the Lufthansa Airlines Constitution and Policy section. Please select a part below to view the full details.</p>
 
                 <div class="modal-preamble">
@@ -316,47 +315,47 @@
 </main>
 
 <script>
+    // --- HON Circle Modal Logic ---
+    const honCircleMembers = {
+        KLM: `<p>Fill in KLM details here.</p>`,
+        AirAsia: `<p>Fill in Air Asia details here.</p>`,
+        Akasa: `<p>Fill in Akasa Air details here.</p>`,
+        Eva: `<p>Fill in Eva Air details here.</p>`
+    };
+    
+    const openHonCircleBtn = document.getElementById('openHonCircle');
+    const honCircleModal = document.getElementById('honCircleModal');
+    const closeHonCircleBtn = document.getElementById('closeHonCircle');
+    const honCircleContentDiv = document.getElementById('honCircleContent');
+    const honCircleButtons = document.querySelectorAll('#honCircleModal .article-btn');
 
-// --- HON Circle Modal Logic ---
-const honCircleMembers = {
-    KLM: `<p>Fill in KLM details here.</p>`,
-    AirAsia: `<p>Fill in Air Asia details here.</p>`,
-    Akasa: `<p>Fill in Akasa Air details here.</p>`,
-    Eva: `<p>Fill in Eva Air details here.</p>`
-};
+    // Open/Close Modal
+    if (openHonCircleBtn) {
+        openHonCircleBtn.addEventListener('click', () => {
+            honCircleModal.style.display = 'block';
+        });
+    }
+    if (closeHonCircleBtn) {
+        closeHonCircleBtn.addEventListener('click', () => {
+            honCircleModal.style.display = 'none';
+        });
+    }
 
-const openHonCircleBtn = document.getElementById('openHonCircle');
-const honCircleModal = document.getElementById('honCircleModal');
-const closeHonCircleBtn = document.getElementById('closeHonCircle');
-const honCircleContentDiv = document.getElementById('honCircleContent');
-const honCircleButtons = document.querySelectorAll('#honCircleModal .article-btn');
-
-// Open/Close Modal
-if (openHonCircleBtn) {
-    openHonCircleBtn.addEventListener('click', () => {
-        honCircleModal.style.display = 'block';
+    // Load Member Content
+    honCircleButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const member = button.dataset.member;
+            honCircleContentDiv.style.opacity = 0;
+            setTimeout(() => {
+                honCircleContentDiv.innerHTML = honCircleMembers[member] || `<p>Content for ${member} is currently unavailable.</p>`;
+                honCircleContentDiv.style.opacity = 1;
+                honCircleContentDiv.closest('.modal-content-inner').scrollTop = 0;
+            }, 200);
+            honCircleButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+        });
     });
-}
-if (closeHonCircleBtn) {
-    closeHonCircleBtn.addEventListener('click', () => {
-        honCircleModal.style.display = 'none';
-    });
-}
 
-// Load Member Content
-honCircleButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const member = button.dataset.member;
-        honCircleContentDiv.style.opacity = 0;
-        setTimeout(() => {
-            honCircleContentDiv.innerHTML = honCircleMembers[member] || `<p>Content for ${member} is currently unavailable.</p>`;
-            honCircleContentDiv.style.opacity = 1;
-            honCircleContentDiv.closest('.modal-content-inner').scrollTop = 0;
-        }, 200);
-        honCircleButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-    });
-}); 
     // --- SOP Content (Filled in Placeholders) ---
     // The content remains extensive and is placed here for completeness
     const sopSections = {
