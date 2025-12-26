@@ -106,9 +106,9 @@ const airportData = {
 
 "MARIANA": {icao: "TRENCH", city: "Challenger Deep, the deepest part of the ocean."},
 
-  "FRA": {icao: "EDDF", city: "Frankfurt"},
+  "FRA": {icao: "EDDF", city: "Frankfurt - Lufthansa Primary"},
 
-  "MUC": {icao: "EDDM", city: "Munich"},
+  "MUC": {icao: "EDDM", city: "Munich - Lufthansa Secondary"},
 
   "ABV": {icao: "DNAA", city: "Abuja"},
 
@@ -122,7 +122,7 @@ const airportData = {
 
   "AMM": {icao: "OJAI", city: "Amman"}, 
 
-  "AMS": {icao: "EHAM", city: "Amsterdam"},
+  "AMS": {icao: "EHAM", city: "Amsterdam - KLM Hub"},
 
   "AOI": {icao: "LIPY", city: "Ancona"},
 
@@ -176,7 +176,7 @@ const airportData = {
 
   "BDS": {icao: "LIBR", city: "Brindisi"},
 
-  "BRU": {icao: "EBBR", city: "Brussels"},
+  "BRU": {icao: "EBBR", city: "Brussels - Brussels Airlines hub   "},
 
   "OTP": {icao: "LROP", city: "Bucharest"},
 
@@ -248,7 +248,7 @@ const airportData = {
 
   "GDN": {icao: "EPGD", city: "Gdansk"},
 
-  "GVA": {icao: "LSGG", city: "Geneva"},
+  "GVA": {icao: "LSGG", city: "Geneva - Swiss Hub"},
 
   "GLA": {icao: "EGPF", city: "Glasgow"},
 
@@ -488,7 +488,7 @@ const airportData = {
 
   "VCE": {icao: "LIPZ", city: "Venice"},
 
-  "VIE": {icao: "LOWW", city: "Vienna"},
+  "VIE": {icao: "LOWW", city: "Vienna - Austrian Hub"},
 
   "VNO": {icao: "EYVI", city: "Vilnius"},
 
@@ -611,7 +611,7 @@ const airportData = {
 
 "TSA": {icao: "RCSS", city: "Taipei Songshan - Served by EVA"},
 
-"TPE": {icao: "RCTP", city: "Taipei Taoyuan - Served by EVA"},
+"TPE": {icao: "RCTP", city: "Taipei Taoyuan - Eva Hub"},
 
 
 "TSN": {icao: "ZBTJ", city: "Tianjin - Served by EVA"},
@@ -620,7 +620,6 @@ const airportData = {
 
 
 // Air Asia Routes
-"DMK": {icao: "VTBD", city: "Bangkok - Served by Air Asia"},
 "CNX": {icao: "VTCC", city: "Chiang Mai - Served by Air Asia"},
 
 "HDY": {icao: "VTSS", city: "Hat Yai - Served by Air Asia"},
@@ -653,7 +652,7 @@ const airportData = {
 
 "MAA": {icao: "VOMM", city: "Chennai - Served by Air Asia"},
 
-"BOM": {icao: "VABB", city: "Mumbai - Served by Air Asia"},
+"BOM": {icao: "VABB", city: "Mumbai - Akasa Hub"},
 
 "TRV": {icao: "VOTV", city: "Trivandrum - Served by Air Asia"},
 
@@ -934,7 +933,6 @@ const airportCoords = {
     "EBB": [0.0447, 32.4431],
     "NRT": [35.7736, 140.3883],
     "KIX": [34.4272, 135.2439],
-    "KUL": [2.7608, 101.7117],
     "MNL": [14.5086, 121.0194],
     "DPS": [-8.7481, 115.1675],
     "DOH": [25.2750, 51.6083],
@@ -957,6 +955,7 @@ const airportCoords = {
     "UKB": [34.6328, 135.2239],
 
     // Air Asia Routes
+"KUL": [2.7608, 101.7117],
 "DMK": [13.9126, 100.6068],
 "CNX": [18.7668, 98.9626],
 "HDY": [6.9332, 100.3928],
@@ -1001,15 +1000,15 @@ const airportCoords = {
 
 // Define hub types
 const hubs = ["FRA", "MUC"];
-const subsidiaryHubs = ["ZRH", "VIE", "BRU", "GVA", "AMS", "TPE"];
+const subsidiaryHubs = ["ZRH", "VIE", "BRU", "GVA", "AMS", "TPE", "KUL", "BOM"];
 
 const codeshare = ["CAN", "CKG", "HGH", "CGK", "SGN", "HKT", "DAD", "SAI", "KTI", "AGR", "JAI", "VNS", "GOI"];
 
-const circle = ["LIM", "UIO", "GYE", "PBM", "AUA", "CUR", "BON", "SXM", "DAR", "ACC", "KGL", "EBB", "NRT", "KIX", "KUL", "MNL", "DPS", "DOH", 
+const circle = ["LIM", "UIO", "GYE", "PBM", "AUA", "CUR", "BON", "SXM", "DAR", "ACC", "KGL", "EBB", "NRT", "KIX", "MNL", "DPS", "DOH", 
 
-"BKI", "CRK", "CTS", "GMP", "KHH", "KWL", "MNL", "MFM", "NGB", "PEN", "PUS", "RMQ", "TSA", "TSN", "UKB", "TPE",
+"BKI", "CRK", "CTS", "GMP", "KHH", "KWL", "MNL", "MFM", "NGB", "PEN", "PUS", "RMQ", "TSA", "TSN", "UKB", 
 
-"DMK", "CNX", "HDY", "DPS", "UPG", "MDC", "PDG", "KNO", "PLM", "SOC", "YIA", "CEB", "LAO", "KLO", "ILO", "TAC", "BLR", "MAA", "BOM", "COK", "TRV", "AMD", "CCU", "JAI", "GOI", "SYD", "MEL", "PER", "OOL", "CBR", "DRW", "PPS", "UTH", "CEI", "BPN", "PLW", "COK"];
+"DMK", "CNX", "HDY", "DPS", "UPG", "MDC", "PDG", "KNO", "PLM", "SOC", "YIA", "CEB", "LAO", "KLO", "ILO", "TAC", "BLR", "MAA", "l "COK", "TRV", "AMD", "CCU", "JAI", "GOI", "SYD", "MEL", "PER", "OOL", "CBR", "DRW", "PPS", "UTH", "CEI", "BPN", "PLW", "COK"];
 
 const outOfService = ["TLV", "DAM", "BEY", "AMM", "EBL", "IKA", "KBP", "DME"]; 
 
