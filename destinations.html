@@ -657,8 +657,6 @@ const airportData = {
 
 "BOM": {icao: "VABB", city: "Mumbai - Served by Air Asia"},
 
-"DEL": {icao: "VIDP", city: "Delhi - Served by Air Asia"},
-
 "COK": {icao: "VOCI", city: "Kochi - Served by Air Asia"},
 
 "TRV": {icao: "VOTV", city: "Trivandrum - Served by Air Asia"},
@@ -1030,6 +1028,7 @@ Object.keys(airportCoords).forEach(code => {
     
     // *** FIX 3: Prevent plotting markers if coordinates are far outside Earth bounds (This stops extreme distortion) ***
     if (lat < -90 || lat > 90 || lon < -180 || lon > 180) {
+return;
     }
 
 
