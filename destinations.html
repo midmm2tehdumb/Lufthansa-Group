@@ -605,25 +605,25 @@ const airportData = {
 
   "PER": {icao: "YPPH", city: "Perth"},
 
-  "CAN": {icao: "ZGGG", city: "Guangzhou"},
+// CODESHARE
 
-  "CKG": {icao: "ZUCK", city: "Chongqing"},
+  "CAN": {icao: "ZGGG", city: "Guangzhou -  Served by CPA"},
 
-  "TPE": {icao: "RCTP", city: "Taipei"},
+  "CKG": {icao: "ZUCK", city: "Chongqing -  Served by CPA"},
 
-  "HGH": {icao: "ZSHC", city: "Hangzhou"},
+  "HGH": {icao: "ZSHC", city: "Hangzhou -  Served by CPA"},
 
-  "CGK": {icao: "WIII", city: "Jakarta"},
+  "CGK": {icao: "WIII", city: "Jakarta - Served by SIA"},
 
-  "SGN": {icao: "VVTS", city: "Ho Chi Minh City"},
+  "SGN": {icao: "VVTS", city: "Ho Chi Minh City - Served by SIA"},
 
-  "HKT": {icao: "VTSP", city: "Phuket"},
+  "HKT": {icao: "VTSP", city: "Phuket - Served by SIA"},
 
-  "DAD": {icao: "VVDN", city: "Da Nang"},
+  "DAD": {icao: "VVDN", city: "Da Nang - Served by SIA"},
 
-  "SAI": {icao: "VVCM", city: "Siem Reap"},
+  "SAI": {icao: "VVCM", city: "Siem Reap - Served by SIA"},
 
-  "KTI": {icao: "VVKP", city: "Kratie"},
+  "KTI": {icao: "VVKP", city: "Kratie - Served by SIA"},
 
   "AGR": {icao: "VIDN", city: "Agra"},
 
@@ -702,7 +702,10 @@ const airportData = {
 
 "RMQ": {icao: "RCMQ", city: "Taichung - Served by EVA"},
 
-"TSA": {icao: "RCSS", city: "Taipei - Served by EVA"},
+"TSA": {icao: "RCSS", city: "Taipei Songshan - Served by EVA"},
+
+"TPE": {icao: "RCTP", city: "Taipei Taoyuan - Served by EVA"},
+
 
 "TSN": {icao: "ZBTJ", city: "Tianjin - Served by EVA"},
 
@@ -802,11 +805,11 @@ const airportCoords = {
 const hubs = ["FRA", "MUC"];
 const subsidiaryHubs = ["ZRH", "VIE", "BRU", "GVA", "AMS"];
 
-const codeshare = ["CAN", "CKG", "TPE", "HGH", "CGK", "SGN", "HKT", "DAD", "SAI", "KTI", "AGR", "JAI", "VNS", "GOI", "COK"];
+const codeshare = ["CAN", "CKG", "HGH", "CGK", "SGN", "HKT", "DAD", "SAI", "KTI", "AGR", "JAI", "VNS", "GOI", "COK"];
 
 const circle = ["LIM", "UIO", "GYE", "PBM", "AUA", "CUR", "BON", "SXM", "DAR", "ACC", "KGL", "EBB", "NRT", "KIX", "KUL", "MNL", "DPS", "DOH", 
 
-"BKI", "CRK", "CTS", "GMP", "KHH", "KWL", "MNL", "MFM", "NGB", "PEN", "PUS", "RMQ", "TSA", "TSN", "UKB"];
+"BKI", "CRK", "CTS", "GMP", "KHH", "KWL", "MNL", "MFM", "NGB", "PEN", "PUS", "RMQ", "TSA", "TSN", "UKB", "TPE"];
 
 const outOfService = ["TLV", "DAM", "BEY", "AMM", "EBL", "IKA", "KBP", "DME"]; 
 
