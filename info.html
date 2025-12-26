@@ -95,6 +95,7 @@
       <div class="modal-preamble">
         <p>The HON Circle Group is an extension of the Lufthansa Group for further reach. All routes in the HON Circle Group are codeshares with all other members and the Lufthansa Group.</p>
       </div>
+  </div>
 
       <!-- Button group class follows SOP modal pattern -->
       <div class="article-buttons button-group">
@@ -112,7 +113,7 @@
       © 2025 Lufthansa Group — A GeoFS Virtual Airline
     </div>
   </div>
-</div>
+
                 <div id="sopContent" class="article-content">
                     <p>Select a section above to view its contents.</p>
                 </div>
@@ -316,12 +317,46 @@
 
 <script>
 
+// --- HON Circle Modal Logic ---
 const honCircleMembers = {
-  KLM: `<p>Fill in KLM details here.</p>`,
-  AirAsia: `<p>Fill in Air Asia details here.</p>`,
-  Akasa: `<p>Fill in Akasa Air details here.</p>`,
-  Eva: `<p>Fill in Eva Air details here.</p>`
-}; 
+    KLM: `<p>Fill in KLM details here.</p>`,
+    AirAsia: `<p>Fill in Air Asia details here.</p>`,
+    Akasa: `<p>Fill in Akasa Air details here.</p>`,
+    Eva: `<p>Fill in Eva Air details here.</p>`
+};
+
+const openHonCircleBtn = document.getElementById('openHonCircle');
+const honCircleModal = document.getElementById('honCircleModal');
+const closeHonCircleBtn = document.getElementById('closeHonCircle');
+const honCircleContentDiv = document.getElementById('honCircleContent');
+const honCircleButtons = document.querySelectorAll('#honCircleModal .article-btn');
+
+// Open/Close Modal
+if (openHonCircleBtn) {
+    openHonCircleBtn.addEventListener('click', () => {
+        honCircleModal.style.display = 'block';
+    });
+}
+if (closeHonCircleBtn) {
+    closeHonCircleBtn.addEventListener('click', () => {
+        honCircleModal.style.display = 'none';
+    });
+}
+
+// Load Member Content
+honCircleButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const member = button.dataset.member;
+        honCircleContentDiv.style.opacity = 0;
+        setTimeout(() => {
+            honCircleContentDiv.innerHTML = honCircleMembers[member] || `<p>Content for ${member} is currently unavailable.</p>`;
+            honCircleContentDiv.style.opacity = 1;
+            honCircleContentDiv.closest('.modal-content-inner').scrollTop = 0;
+        }, 200);
+        honCircleButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+    });
+}); 
     // --- SOP Content (Filled in Placeholders) ---
     // The content remains extensive and is placed here for completeness
     const sopSections = {
