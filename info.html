@@ -79,6 +79,40 @@
                     <button class="article-btn" data-section="A220">Airbus A220</button>
                 </div>
 
+<div id="honCircleModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" id="closeHonCircle">&times;</span>
+    <div class="modal-header">
+      <img src="https://images.seeklogo.com/logo-png/8/2/lufthansa-logo-png_seeklogo-86162.png" alt="Lufthansa Logo" class="logo-img">
+      <h2>Lufthansa Group</h2>
+      <h3>HON Circle Alliance</h3>
+      <p class="modal-subtext">A premium network for extended global reach</p>
+    </div>
+    <div class="modal-content-inner">
+      <!-- This <p> line matches the SOP modal style -->
+      <p>Welcome to the HON Circle Alliance directory. Select a member airline below to view its full profile, leadership, and network.</p>
+      
+      <div class="modal-preamble">
+        <p>The HON Circle Group is an extension of the Lufthansa Group for further reach. All routes in the HON Circle Group are codeshares with all other members and the Lufthansa Group.</p>
+      </div>
+
+      <!-- Button group class follows SOP modal pattern -->
+      <div class="article-buttons button-group">
+        <button class="article-btn" data-member="KLM">KLM</button>
+        <button class="article-btn" data-member="AirAsia">Air Asia</button>
+        <button class="article-btn" data-member="Akasa">Akasa Air</button>
+        <button class="article-btn" data-member="Eva">Eva Air</button>
+      </div>
+
+      <div id="honCircleContent" class="article-content">
+        <p>Select a member airline above to view its contents.</p>
+      </div>
+    </div>
+    <div class="modal-footer">
+      © 2025 Lufthansa Group — A GeoFS Virtual Airline
+    </div>
+  </div>
+</div>
                 <div id="sopContent" class="article-content">
                     <p>Select a section above to view its contents.</p>
                 </div>
@@ -281,6 +315,13 @@
 </main>
 
 <script>
+
+const honCircleMembers = {
+  KLM: `<p>Fill in KLM details here.</p>`,
+  AirAsia: `<p>Fill in Air Asia details here.</p>`,
+  Akasa: `<p>Fill in Akasa Air details here.</p>`,
+  Eva: `<p>Fill in Eva Air details here.</p>`
+}; 
     // --- SOP Content (Filled in Placeholders) ---
     // The content remains extensive and is placed here for completeness
     const sopSections = {
