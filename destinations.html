@@ -136,40 +136,12 @@
 <section class="about">
   <h2>Lufthansa Group Partners</h2>
   <p>Click on each airline to learn more:</p>
-  <div class="codeshare-cards">
-    <div class="codeshare-card" data-modal="klmModal">KLM Royal Dutch Airlines</div>
     <div class="codeshare-card" data-modal="singaporeModal">Singapore Airlines</div>
     <div class="codeshare-card" data-modal="cathayModal">Cathay Pacific</div>
     <div class="codeshare-card" data-modal="indigoModal">Indigo Airlines</div>
     <div class="codeshare-card" data-modal="starluxModal">Starlux Airlines</div>
   </div>
 </section>
-
-<div id="klmModal" class="modal">
-  <div class="modal-content">
-    <span class="close-btn">&times;</span>
-    <h3>KLM Royal Dutch Airlines</h3>
-    <p>All Lufthansa flights and KLM flights are codeshared. Uniquely (Not originally Lufthansa) are: LIM
-UIO
-GYE
-PBM
-AUA
-CUR
-BON
-SXM
-DAR
-ACC
-KGL
-EBB
-NRT
-KIX
-KUL
-MNL
-DPS
-DOH</p>
-      <p>Join KLM Discord in the info page!</p>
-  </div>
-</div>
     
 <div id="singaporeModal" class="modal">
   <div class="modal-content">
@@ -776,7 +748,9 @@ const airportCoords = {
 const hubs = ["FRA", "MUC"];
 const subsidiaryHubs = ["ZRH", "VIE", "BRU", "GVA", "AMS"];
 
-const codeshare = ["CAN", "CKG", "TPE", "HGH", "CGK", "SGN", "HKT", "DAD", "SAI", "KTI", "AGR", "JAI", "VNS", "GOI", "COK", "LIM", "UIO", "GYE", "PBM", "AUA", "CUR", "BON", "SXM", "DAR", "ACC", "KGL", "EBB", "NRT", "KIX", "KUL", "MNL", "DPS", "DOH"]; 
+const codeshare = ["CAN", "CKG", "TPE", "HGH", "CGK", "SGN", "HKT", "DAD", "SAI", "KTI", "AGR", "JAI", "VNS", "GOI", "COK"];
+
+const circle = ["LIM", "UIO", "GYE", "PBM", "AUA", "CUR", "BON", "SXM", "DAR", "ACC", "KGL", "EBB", "NRT", "KIX", "KUL", "MNL", "DPS", "DOH"];
 
 const outOfService = ["TLV", "DAM", "BEY", "AMM", "EBL", "IKA", "KBP", "DME"]; 
 
@@ -805,6 +779,7 @@ Object.keys(airportCoords).forEach(code => {
     const subsidiaryColor = "#d88c6a"; 
     const codeshareColor = "#b86b6b"; 
     const outOfServiceColor = "#795548"; 
+   const circleColor = "#3b9ebd";
     const grayColor = "#D1D7DB";
 
     const data = airportData[code] || {icao: "N/A", city: code}; 
@@ -822,6 +797,9 @@ Object.keys(airportCoords).forEach(code => {
     } 
     else if (codeshare.includes(code)) {
         color = codeshareColor;
+   } 
+    else if (circle.includes(code)) {
+        color = circleColor;
     } 
     else if (gray.includes(code)) {
         color = grayColor;
