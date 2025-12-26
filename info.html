@@ -177,7 +177,7 @@
       <div class="subsidiary-cards">
         <div class="subsidiary-card" data-modal="airlinesModal">Lufthansa Airlines</div>
         <div class="subsidiary-card" data-modal="cargoModal">Lufthansa Cargo</div>
-        <div class="subsidiary-card" data-modal="klmModal">KLM Royal Airlines</div>
+
         <div class="subsidiary-card" data-modal="swissModal">Swiss Airlines</div>
         <div class="subsidiary-card" data-modal="austrianModal">Austrian Airlines</div>
         <div class="subsidiary-card" data-modal="brusselsModal">Brussels Airlines</div>
@@ -203,15 +203,7 @@
           </div>
     </div>
 
-    <div id="klmModal" class="modal">
-      <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <h3>KLM Royal Dutch Airlines</h3>
-        <p>Aquired on December 15th, 2025, KLM lead by mileflight makes Lufthansa the most dominant airline in Europe.</p>
-       <a href="https://discord.gg/x4WyPNVDzj">Join KLM</a>
-        <img src="https://images.unsplash.com/photo-1719965377157-93fd0bade9de?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8a2xtfGVufDB8fDB8fHww" alt="KLM A330" class="subsidiary-img">
-          </div>
-    </div>
+
 
     <div id="swissModal" class="modal">
       <div class="modal-content">
@@ -317,10 +309,68 @@
 <script>
     // --- HON Circle Modal Logic ---
     const honCircleMembers = {
-        KLM: `<p>Fill in KLM details here.</p>`,
-        AirAsia: `<p>Fill in Air Asia details here.</p>`,
-        Akasa: `<p>Fill in Akasa Air details here.</p>`,
-        Eva: `<p>Fill in Eva Air details here.</p>`
+        KLM: `
+    <h2>KLM Royal Dutch Airlines</h2>
+    <p><strong>Leader:</strong> Mileflight</p>
+    <p><strong>Operates in:</strong> Global network across 6 continents</p>
+    <p><strong>Date Joined HON Circle Group:</strong> December 15, 2025</p>
+    <p><strong>Invite Link:</strong> <a href="https://discord.gg/x4WyPNVDzj" target="_blank">Join KLM Discord</a></p>
+    
+    <h3>Key Destinations</h3>
+    <p><strong>Africa:</strong> HKJK, HTDA, FAOR, FACT, DGAA, DNMM, HRYR, HUEN</p>
+    <p><strong>South America & Caribbean:</strong> SBGR, SBGL, SAEZ, SPJC, SKBO, SEQM, SEGU, SMJP, TNCA, TNCC, TNCB, TNCM</p>
+    <p><strong>North America:</strong> KJFK, KATL, KLAX, KSFO, KORD, KIAD, KBOS, KIAH, CYYZ, CYUL, CYYC, CYVR, MMMX</p>
+    <p><strong>Europe:</strong> EGLL, LFPG, EDDB, LIRF, LEMD, LOWW, EBBR, LSZH, LSGG, ESSA, EKCH, ENGM, EFHK, EVRA, EETN, EYVI, LPPR, LPPT, EPKK, EPWA, LKPR, LHBP, LROP, LFML, LFMN, LGAV</p>
+    <p><strong>Middle East:</strong> OMDB, OMAA, OKBK, OTHH, LLBG</p>
+    <p><strong>Asia:</strong> VIDP, VABB, VOBL, ZBAA, ZSPD, VHHH, RJAA, RJBB, RKSI, VTBS, WSSS, WMKK, WIII, RPLL, RCTP, WADD</p>
+`,
+        AirAsia: `
+    <h2>Air Asia</h2>
+    <p><strong>Leader:</strong> Fanboylikespace</p>
+    <p><strong>Operates in:</strong> Asia-Pacific region</p>
+    <p><strong>Date Joined HON Circle Group:</strong> December 24, 2025</p>
+    <p><strong>Invite Link:</strong> <a href="https://discord.gg/KJBQ4NNM5" target="_blank">Join Air Asia Discord</a></p>
+    
+    <h3>Destinations</h3>
+    <p><strong>Malaysia:</strong> WMKK (Kuala Lumpur), WMKC (Kota Bharu), WMKP (Penang), WMKD (Kuantan), WMKI (Ipoh), WMKJ (Johor Bahru), WMKK (Subang), WMKL (Langkawi), WMKN (Kuala Terengganu)</p>
+    <p><strong>Thailand:</strong> VTBS (Bangkok Suvarnabhumi), VTBD (Bangkok Don Mueang), VTCC (Chiang Mai), VTSF (Phuket), VTSE (Hat Yai), VTSM (Samui), VTSS (Songkhla)</p>
+    <p><strong>Indonesia:</strong> WIII (Jakarta), WADD (Denpasar Bali), WAAA (Makassar), WAMM (Manado), WIBB (Padang), WIMM (Medan), WIPP (Palembang), WRSJ (Surakarta), WRSQ (Yogyakarta), WRRR (Kuching), WSSS (Singapore)</p>
+    <p><strong>Philippines:</strong> RPLL (Manila), RPVM (Cebu), RPMD (Davao), RPLC (Clark), RPUT (Laoag), RPVK (Kalibo), RPVA (Iloilo), RPVT (Tacloban)</p>
+    <p><strong>India:</strong> VOBL (Bangalore), VOMM (Chennai), VABB (Mumbai), VIDP (Delhi), VOCI (Kochi), VOTV (Trivandrum), VAAH (Ahmedabad), VECC (Kolkata), VIJP (Jaipur), VAGO (Goa)</p>
+    <p><strong>Australia:</strong> YSSY (Sydney), YMML (Melbourne), YPPH (Perth), YBCG (Gold Coast), YBBN (Brisbane), YSCB (Canberra), YPDN (Darwin)</p>
+    <p><strong>Other Asia:</strong> VHHH (Hong Kong), RCTP (Taipei), WMKC (Kota Kinabalu), RPVI (Bacolod), RPVP (Puerto Princesa), VTUD (Udon Thani), VTCT (Chiang Rai), WIOO (Balikpapan), WAML (Palu)</p>
+`,
+        Akasa: `
+    <h2>Akasa Air</h2>
+    <p><strong>Leader:</strong> Capt. House</p>
+    <p><strong>Operates in:</strong> India domestic network</p>
+    <p><strong>Date Joined HON Circle Group:</strong> December 25, 2025</p>
+    <p><strong>Invite Link:</strong> <a href="https://discord.gg/Sh42XcV6Am" target="_blank">Join Akasa Air Discord</a></p>
+    
+    <h3>Destinations</h3>
+    <p><strong>Primary Airports:</strong> VOBL (Bengaluru), 
+VOCI (Kochi), 
+VAAH (Ahmedabad), 
+VECC (Kolkata)</p>
+
+`,
+        Eva: `
+    <h2>EVA Air</h2>
+    <p><strong>Leader:</strong> MRP Avgeek</p>
+    <p><strong>Operates in:</strong> Global network with focus on Asia-North America</p>
+    <p><strong>Date Joined HON Circle Group:</strong> December 24, 2025</p>
+    <p><strong>Invite Link:</strong> <a href="https://discord.gg/cKcka6Bes3" target="_blank">Join EVA Air Discord</a></p>
+    
+    <h3>Destinations</h3>
+    <p><strong>Taiwan Hubs:</strong> RCTP (Taipei Taoyuan), RCSS (Taipei Songshan), RCFN (Tainan), RCKH (Kaohsiung)</p>
+    <p><strong>North America:</strong> KLAX (Los Angeles), KSFO (San Francisco), KSEA (Seattle), KORD (Chicago), KJFK (New York), KIAH (Houston), KDFW (Dallas), CYVR (Vancouver), CYYZ (Toronto), MMUN (Cancún), MMMX (Mexico City)</p>
+    <p><strong>Northeast Asia:</strong> RJAA (Tokyo Narita), RJBB (Osaka Kansai), RJCC (Sapporo), RJFK (Kagoshima), RKSI (Seoul Incheon), RKPK (Busan), VHHH (Hong Kong), ZBAA (Beijing), ZSPD (Shanghai), ZGGG (Guangzhou), ZGSZ (Shenzhen), ZSAM (Xiamen), ZPPP (Kunming)</p>
+    <p><strong>Southeast Asia:</strong> VTBS (Bangkok), WSSS (Singapore), WIII (Jakarta), WADD (Denpasar Bali), WMKK (Kuala Lumpur), RPLL (Manila), VVNB (Hanoi), VVTS (Ho Chi Minh City), VDPP (Phnom Penh), VLVT (Vientiane), VYYY (Yangon)</p>
+    <p><strong>South Asia:</strong> VABB (Mumbai), VIDP (Delhi), VOBL (Bangalore), VCBI (Colombo), VNCG (Kathmandu)</p>
+    <p><strong>Australia & Oceania:</strong> YSSY (Sydney), YMML (Melbourne), YPPH (Perth), YBCG (Gold Coast), NZAA (Auckland), NFFN (Nadi), PGUM (Guam)</p>
+    <p><strong>Europe:</strong> LFPG (Paris), EDDF (Frankfurt), EHAM (Amsterdam), EGLL (London), LIRF (Rome), LEMD (Madrid), LOWW (Vienna), LSZH (Zurich), LFSB (Basel), EDDM (Munich), LEBL (Barcelona)</p>
+    <p><strong>Middle East:</strong> OMSJ (Sharjah), OEDR (Riyadh), OEJN (Jeddah), OJAI (Amman), OTHH (Doha), OMDB (Dubai), LLBG (Tel Aviv)</p>
+`,
     };
     
     const openHonCircleBtn = document.getElementById('openHonCircle');
