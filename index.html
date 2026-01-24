@@ -13,7 +13,9 @@
     <nav class="main-nav">
         <div class="nav-container">
             <div class="nav-left">
-                <img src="logo.png" alt="Lufthansa" class="nav-logo">
+                <div class="logo-container">
+                    <img src="logo.png" alt="Lufthansa" class="nav-logo">
+                </div>
                 <a href="index.html" class="home-link">HOME</a>
             </div>
             
@@ -27,20 +29,10 @@
 
             <div class="nav-right">
                 <div class="search-box">
-                    <input type="text" list="site-map" id="site-search" placeholder="Search fleet, routes...">
+                    <input type="text" list="site-map" id="site-search" placeholder="Search fleet...">
                     <datalist id="site-map">
-                        <option value="Airbus A220">
-                        <option value="Airbus A319">
-                        <option value="Airbus A320">
-                        <option value="Airbus A321">
-                        <option value="Airbus A330-200">
-                        <option value="Airbus A340-300">
                         <option value="Airbus A350-900">
-                        <option value="Airbus A350-1000">
-                        <option value="Airbus A380">
                         <option value="Boeing 747-8">
-                        <option value="Boeing 777-9">
-                        <option value="Boeing 787">
                         <option value="CRJ-700">
                         <option value="Roleplay (RP)">
                     </datalist>
@@ -75,24 +67,24 @@
             <h2 class="news-title">Discover further topics</h2>
             <div class="news-grid">
                 <div class="news-card" onclick="openNews('remake')">
-                    <img src="narrow1.webp" alt="Site Remake">
+                    <img src="narrow1.webp">
                     <div class="news-content">
                         <h3>Remaking the Site</h3>
-                        <p>Discover our new digital interface designed for virtual flight operations.</p>
+                        <p>Our transition to a high-fidelity virtual airline interface.</p>
                     </div>
                 </div>
                 <div class="news-card" onclick="openNews('snowstorm')">
-                    <img src="wide2.webp" alt="Snowstorm">
+                    <img src="wide2.webp">
                     <div class="news-content">
                         <h3>North American snowstorm causes closures</h3>
-                        <p>Operational updates regarding winter weather impacts on our hubs.</p>
+                        <p>Real-time operational alerts for our Transatlantic routes.</p>
                     </div>
                 </div>
                 <div class="news-card" onclick="openNews('hon')">
-                    <img src="wide4.webp" alt="HON Circle">
+                    <img src="wide4.webp">
                     <div class="news-content">
                         <h3>HON Circle Group expands</h3>
-                        <p>The HON Circle Group, an extension of the Lufthansa Group, welcomes new tiers.</p>
+                        <p>Exclusive benefits for the top-tier pilots of the Lufthansa Group.</p>
                     </div>
                 </div>
             </div>
@@ -107,9 +99,9 @@
     </div>
 
     <div id="galleryModal" class="modal">
-        <div class="modal-content gallery-container">
+        <div class="modal-content">
             <span class="close" onclick="closeModal('galleryModal')">&times;</span>
-            <h2 class="modal-title">Lufthansa Fleet Gallery</h2>
+            <h2 style="color:var(--lh-blue); margin-bottom:20px;">Fleet Gallery</h2>
             <div class="tab-buttons">
                 <button class="tab-btn active" data-tab="narrow">Narrowbody</button>
                 <button class="tab-btn" data-tab="wide">Widebody</button>
@@ -118,17 +110,12 @@
                 <div class="scroll-gallery">
                     <img src="narrow1.webp" class="gallery-img">
                     <img src="narrow2.webp" class="gallery-img">
-                    <img src="narrow3.webp" class="gallery-img">
-                    <img src="narrow4.png" class="gallery-img">
                 </div>
             </div>
             <div id="wide" class="tab-page">
                 <div class="scroll-gallery">
                     <img src="wide1.webp" class="gallery-img">
                     <img src="wide2.webp" class="gallery-img">
-                    <img src="wide3.webp" class="gallery-img">
-                    <img src="wide4.webp" class="gallery-img">
-                    <img src="wide5.webp" class="gallery-img">
                 </div>
             </div>
         </div>
@@ -144,31 +131,17 @@
     </footer>
 
     <script>
-        // --- DATA ---
         const newsData = {
-            remake: { title: "Remaking the Site", text: "We have updated our fleet pages and navigation to provide a more streamlined experience for our pilots. Check out the new search bar to find aircraft faster." },
-            snowstorm: { title: "North American snowstorm causes closures", text: "Severe winter weather in the Northeast US and Canada has resulted in temporary closures of several virtual hubs. Stay tuned for re-opening times." },
-            hon: { title: "HON Circle Group expands", text: "The HON Circle Group is a premium extension of the Lufthansa Group. We are expanding our exclusive benefits for our most dedicated long-haul pilots." }
+            remake: { title: "Remaking the Site", text: "We have overhauled our digital hub to better serve our pilots with a professional, operational interface." },
+            snowstorm: { title: "North American snowstorm causes closures", text: "Severe winter conditions in the US and Canada have led to temporary hub closures. Check Discord for flight rerouting." },
+            hon: { title: "HON Circle Group expands", text: "The HON Circle Group, an extension of the Lufthansa Group, is launching new elite pilot programs today." }
         };
 
-        // --- SEARCH ---
-        document.getElementById('site-search').addEventListener('input', function(e) {
-            const val = e.target.value;
-            const pageMap = {
-                "Airbus A220": "a220.html", "Airbus A319": "a319.html", "Airbus A320": "a320.html",
-                "Airbus A321": "a321.html", "Airbus A330-200": "a330200.html", "Airbus A340-300": "a340300.html",
-                "Airbus A350-900": "a350900.html", "Airbus A350-1000": "a3501000.html", "Airbus A380": "a380.html",
-                "Boeing 747-8": "7478.html", "Boeing 777-9": "7779.html", "Boeing 787": "787.html",
-                "CRJ-700": "crj700.html", "Roleplay (RP)": "rp.html", "Fleet Overview": "fleet.html"
-            };
-            if (pageMap[val]) window.location.href = pageMap[val];
-        });
-
-        // --- MODALS ---
         function openNews(id) {
             document.getElementById('news-body-content').innerHTML = `<h2>${newsData[id].title}</h2><p>${newsData[id].text}</p>`;
             document.getElementById('newsModal').style.display = 'block';
         }
+
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
         
         document.getElementById("openGalleryBtn").onclick = () => document.getElementById("galleryModal").style.display = "block";
@@ -180,7 +153,6 @@
             };
         });
 
-        // --- TABS ---
         document.querySelectorAll(".tab-btn").forEach(btn => {
             btn.onclick = () => {
                 document.querySelectorAll(".tab-btn, .tab-page").forEach(el => el.classList.remove("active"));
@@ -189,7 +161,7 @@
             }
         });
 
-        window.onclick = (e) => { if(e.target.classList.contains('modal') || e.target.classList.contains('image-modal')) e.target.style.display = 'none'; };
+        window.onclick = (e) => { if(e.target.className === 'modal' || e.target.className === 'image-modal') e.target.style.display = 'none'; };
     </script>
 </body>
 </html>
