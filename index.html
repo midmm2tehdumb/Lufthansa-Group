@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lufthansa Group | Virtual Airline</title>
-    <link rel="icon" type="image/png" href="logo.png"> 
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
@@ -13,9 +12,6 @@
     <nav class="main-nav">
         <div class="nav-container">
             <div class="nav-left">
-                <div class="logo-wrapper">
-                    <img src="logo.png" alt="Lufthansa Logo" class="nav-logo">
-                </div>
                 <a href="index.html" class="home-link">HOME</a>
             </div>
             
@@ -32,7 +28,6 @@
                 <datalist id="site-map">
                     <option value="Boeing 747-8">
                     <option value="Airbus A350-900">
-                    <option value="CRJ-700">
                     <option value="Airbus A380">
                 </datalist>
             </div>
@@ -52,40 +47,42 @@
         </div>
     </header>
 
-    <section class="ad-section">
-        <div class="video-container">
-            <video id="adVideo" muted controls poster="lufthansa.jpg">
-                <source src="lufthansa.mp4" type="video/mp4">
-            </video>
-        </div>
-    </section>
+    <main>
+        <section class="ad-section">
+            <div class="video-container">
+                <video id="adVideo" muted controls poster="lufthansa.jpg">
+                    <source src="lufthansa.mp4" type="video/mp4">
+                </video>
+            </div>
+        </section>
 
-    <section class="news-section">
-        <h2 class="news-title">Discover further topics</h2>
-        <div class="news-grid">
-            <div class="news-card" onclick="openNews('remake')">
-                <img src="narrow1.webp">
-                <div class="news-content">
-                    <h3>Remaking the Site</h3>
-                    <p>Updating our virtual systems for 2026 operations.</p>
+        <section class="news-section">
+            <h2 class="news-title">Discover further topics</h2>
+            <div class="news-grid">
+                <div class="news-card" onclick="openNews('remake')">
+                    <img src="narrow1.webp">
+                    <div class="news-content">
+                        <h3>Remaking the Site</h3>
+                        <p>Modernizing our virtual airline operations for 2026.</p>
+                    </div>
+                </div>
+                <div class="news-card" onclick="openNews('snowstorm')">
+                    <img src="wide2.webp">
+                    <div class="news-content">
+                        <h3>North American snowstorm causes closures</h3>
+                        <p>Check active NOTAMs for our East Coast hubs.</p>
+                    </div>
+                </div>
+                <div class="news-card" onclick="openNews('hon')">
+                    <img src="wide4.webp">
+                    <div class="news-content">
+                        <h3>HON Circle Group expands</h3>
+                        <p>Expanding the elite Lufthansa Group extension.</p>
+                    </div>
                 </div>
             </div>
-            <div class="news-card" onclick="openNews('snowstorm')">
-                <img src="wide2.webp">
-                <div class="news-content">
-                    <h3>North American snowstorm causes closures</h3>
-                    <p>Operational alerts for current weather disruptions.</p>
-                </div>
-            </div>
-            <div class="news-card" onclick="openNews('hon')">
-                <img src="wide4.webp">
-                <div class="news-content">
-                    <h3>HON Circle Group expands</h3>
-                    <p>The HON Circle Group, an extension of the Lufthansa Group, is growing.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <div id="newsModal" class="modal">
         <div class="modal-content">
@@ -97,23 +94,19 @@
     <div id="galleryModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('galleryModal')">&times;</span>
-            <h2>Fleet Gallery</h2>
+            <h2 style="color:var(--lh-blue); margin-bottom:15px;">Fleet Gallery</h2>
             <div class="tab-buttons">
                 <button class="tab-btn active" data-tab="narrow">Narrowbody</button>
                 <button class="tab-btn" data-tab="wide">Widebody</button>
             </div>
             <div id="narrow" class="tab-page active">
                 <div class="scroll-gallery">
-                    <img src="narrow1.webp" class="gallery-img">
-                    <img src="narrow2.webp" class="gallery-img">
-                    <img src="narrow3.webp" class="gallery-img">
+                    <img src="narrow1.webp" class="gallery-img"><img src="narrow2.webp" class="gallery-img">
                 </div>
             </div>
             <div id="wide" class="tab-page">
                 <div class="scroll-gallery">
-                    <img src="wide1.webp" class="gallery-img">
-                    <img src="wide2.webp" class="gallery-img">
-                    <img src="wide3.webp" class="gallery-img">
+                    <img src="wide1.webp" class="gallery-img"><img src="wide2.webp" class="gallery-img">
                 </div>
             </div>
         </div>
@@ -130,9 +123,9 @@
 
     <script>
         const newsData = {
-            remake: { title: "Remaking the Site", text: "Welcome to our upgraded 2026 operational hub." },
-            snowstorm: { title: "North American snowstorm causes closures", text: "Severe winter weather has grounded operations in North American hubs." },
-            hon: { title: "HON Circle Group expands", text: "New elite status tiers are now live for the HON Circle Group extension." }
+            remake: { title: "Remaking the Site", text: "Our digital hub has been fully optimized for better navigation and operational efficiency." },
+            snowstorm: { title: "North American snowstorm causes closures", text: "Severe winter conditions in the Northeast US have led to temporary ground stops for all long-haul flights." },
+            hon: { title: "HON Circle Group expands", text: "We are introducing new recruitment phases for the HON Circle Group, an extension of the Lufthansa Group." }
         };
 
         function openNews(id) {
