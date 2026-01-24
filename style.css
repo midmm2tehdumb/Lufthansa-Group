@@ -1,3 +1,4 @@
+/* --- VARIABLES & RESET --- */
 :root {
     --lh-blue: #00235f;
     --lh-yellow: #ffcc00;
@@ -18,6 +19,7 @@ body {
     background-color: white;
     color: var(--text-dark);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 /* --- NAVIGATION --- */
@@ -42,7 +44,7 @@ body {
     padding: 0 40px; 
 }
 
-.logo { 
+.nav-left .home-link { 
     color: white; 
     text-decoration: none; 
     font-weight: 700; 
@@ -70,118 +72,171 @@ body {
     color: var(--lh-yellow);
 }
 
+/* --- SEARCH BAR --- */
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+
+#site-search {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 8px 15px;
+    border-radius: 2px; /* Lufthansa uses sharper edges */
+    color: white;
+    font-size: 0.85rem;
+    outline: none;
+    transition: all 0.3s ease;
+    width: 180px;
+}
+
+#site-search:focus {
+    background: white;
+    color: var(--lh-blue);
+    width: 220px;
+}
+
 /* --- HERO SECTION --- */
 .hero { 
     height: 100vh; 
     width: 100%;
     background: url('lufthansa.jpg') center/cover no-repeat;
-    margin-top: -75px; /* Pulls image under transparent-ish nav */
+    margin-top: -75px; 
 }
 
 .hero-overlay { 
     height: 100%; 
-    background: linear-gradient(90deg, rgba(0,35,95,0.6), transparent); 
+    background: linear-gradient(90deg, rgba(0,35,95,0.7), transparent); 
     display: flex; 
     align-items: center; 
     padding-left: 10%; 
 }
 
 .hero-content { color: white; max-width: 700px; }
+
+.pre-title {
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    color: var(--lh-yellow);
+}
+
 .hero h1 { 
     font-size: 4rem; 
     font-weight: 300; 
-    margin-bottom: 25px; 
+    margin-bottom: 30px; 
     line-height: 1.1; 
 }
 
-.btn-primary { 
-    background: var(--lh-yellow); 
-    color: var(--lh-blue); 
-    padding: 15px 35px; 
-    text-decoration: none; 
-    font-weight: 700; 
-    display: inline-block; 
-    border-radius: 2px; 
-    transition: transform 0.2s;
-}
+.hero-cta { display: flex; gap: 15px; }
 
-.btn-primary:hover { transform: translateY(-2px); }
-
-/* --- DESTINATIONS MAP --- */
-#map { 
-    height: 75vh; 
-    width: 90%; 
-    margin: 40px auto; 
-    border-radius: 4px; 
-    border: 1px solid var(--border);
-    z-index: 1; 
-}
-
-#legend { 
-    background: white; 
-    padding: 15px; 
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    font-size: 14px; 
-    line-height: 2;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.legend-dot { 
-    display: inline-block; 
-    width: 12px; 
-    height: 12px; 
-    border-radius: 50%; 
-    margin-right: 10px; 
-}
-
-/* --- FLEET GRID --- */
-.fleet-main { max-width: 1400px; margin: 40px auto; padding: 0 40px; }
-
-.fleet-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 30px;
-}
-
-.fleet-card {
-    border: 1px solid var(--border);
-    background: white;
+.btn-primary, .btn-secondary {
+    padding: 15px 35px;
     text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.fleet-card:hover { 
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-    background-color: #fcfcfc;
-}
-
-.card-image-container { 
-    position: relative; 
-    background: white; 
-    border-bottom: 1px solid var(--border); 
-}
-
-.fleet-card img { 
-    width: 100%; 
-    height: 200px; 
-    object-fit: contain; 
-    padding: 20px; 
-}
-
-/* --- TAGS --- */
-.tag {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 5px 10px;
-    font-size: 10px;
-    font-weight: 900;
-    color: white;
+    font-weight: 700;
     text-transform: uppercase;
+    font-size: 0.9rem;
+    border-radius: 2px;
+    transition: 0.3s;
+    cursor: pointer;
+    border: none;
 }
-.in-service { background: #2ecc71; }
-.grounded { background: #e74c3c; }
+
+.btn-primary {
+    background: var(--lh-yellow);
+    color: var(--lh-blue);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-primary:hover { background: #e6b800; transform: translateY(-2px); }
+.btn-secondary:hover { background: white; color: var(--lh-blue); }
+
+/* --- AD VIDEO SECTION --- */
+.ad-section { padding: 60px 0; background: var(--bg-light); text-align: center; }
+.video-container { max-width: 1000px; margin: 0 auto; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+#adVideo { width: 100%; display: block; }
+
+/* --- NEWS SECTION --- */
+.news-section { max-width: 1400px; margin: 60px auto; padding: 0 40px; }
+.news-title { margin-bottom: 30px; color: var(--lh-blue); font-weight: 300; font-size: 2rem; }
+.news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+
+.news-card {
+    background: white;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.news-card:hover { border-color: var(--lh-blue); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+.news-card img { width: 100%; height: 200px; object-fit: cover; }
+.news-content { padding: 20px; }
+.news-content h3 { color: var(--lh-blue); margin-bottom: 10px; }
+
+/* --- MODALS --- */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 3000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 35, 95, 0.9);
+}
+
+.modal-content {
+    background: white;
+    margin: 5% auto;
+    padding: 40px;
+    width: 90%;
+    max-width: 900px;
+    position: relative;
+    border-radius: 2px;
+}
+
+.close, .close-full {
+    position: absolute;
+    right: 20px; top: 15px;
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--lh-blue);
+}
+
+/* --- GALLERY TABS --- */
+.tab-buttons { margin-bottom: 25px; border-bottom: 1px solid var(--border); }
+.tab-btn {
+    padding: 10px 25px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-weight: 700;
+    color: #999;
+}
+.tab-btn.active { color: var(--lh-blue); border-bottom: 3px solid var(--lh-yellow); }
+.tab-page { display: none; }
+.tab-page.active { display: block; }
+
+.scroll-gallery { display: flex; gap: 15px; overflow-x: auto; padding-bottom: 15px; }
+.gallery-img { height: 200px; cursor: pointer; border-radius: 2px; transition: 0.2s; }
+.gallery-img:hover { opacity: 0.8; }
+
+/* --- FULL IMAGE MODAL --- */
+.image-modal {
+    display: none;
+    position: fixed;
+    z-index: 4000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.95);
+    justify-content: center;
+    align-items: center;
+}
+
+#fullImage { max-width: 90%; max-height: 80%; border: 4px solid white; }
 
 /* --- FOOTER --- */
 .site-footer { 
@@ -190,11 +245,12 @@ body {
     padding: 40px; 
     text-align: center; 
     margin-top: 60px; 
+    font-size: 0.9rem;
 }
 
 /* --- RESPONSIVE --- */
 @media (max-width: 768px) {
-    .nav-links { display: none; } /* Standard for mobile nav unless you add a burger menu */
+    .nav-links, .nav-right { display: none; }
     .hero h1 { font-size: 2.5rem; }
-    .nav-container { padding: 0 20px; }
+    .hero-content { padding-right: 10%; }
 }
