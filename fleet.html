@@ -1,73 +1,151 @@
-<main class="fleet-main">
-    <header class="page-header">
-        <h1>Our Fleet</h1>
-        <p>Explore the diverse aircraft that connect our virtual world.</p>
-    </header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fleet | Lufthansa Group Virtual</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
 
-    <section class="fleet-grid">
-    <a class="fleet-card" href="crj700.html">
-        <div class="card-image-container">
-            <span class="tag retiring">Retiring</span>
-            <img src="crj700.png" alt="CRJ700">
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="index.html" class="home-link">HOME</a>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="fleet.html">Fleet</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="booking.html">Booking</a></li>
+                <li><a href="info.html">Information</a></li>
+                <li><a href="rp.html">RP</a></li>
+            </ul>
+
+            <div class="nav-right">
+                <input type="text" list="site-map" id="site-search" placeholder="Search pages or aircraft...">
+                <datalist id="site-map">
+                    <option value="Boeing 747-8">
+                    <option value="Boeing 777-9">
+                    <option value="Boeing 777F">
+                    <option value="Boeing 787">
+                    <option value="Airbus A220">
+                    <option value="Airbus A319">
+                    <option value="Airbus A320">
+                    <option value="Airbus A321">
+                    <option value="Airbus A330-200">
+                    <option value="Airbus A340-300">
+                    <option value="Airbus A350-900">
+                    <option value="Airbus A350-1000">
+                    <option value="Airbus A380">
+                    <option value="CRJ-700">
+                </datalist>
+            </div>
         </div>
-        <div class="fleet-info"><h3>CRJ700</h3></div>
-    </a>
+    </nav>
 
-    <a class="fleet-card" href="a319.html">
-        <div class="card-image-container">
-            <span class="tag retiring">Retiring</span>
-            <img src="a319.webp" alt="A319">
-        </div>
-        <div class="fleet-info"><h3>A319</h3></div>
-    </a>
+    <main class="fleet-main">
+        <header class="page-header">
+            <h1>Our Fleet</h1>
+            <p>Explore the diverse aircraft that connect our virtual world.</p>
+        </header>
 
-    <a class="fleet-card" href="a340300.html">
-        <div class="card-image-container">
-            <span class="tag retiring">Retiring</span>
-            <img src="a340300.webp" alt="A340-300">
-        </div>
-        <div class="fleet-info"><h3>A340-300</h3></div>
-    </a>
+        <section class="fleet-grid">
+            <a class="fleet-card" href="crj700.html">
+                <div class="card-image-container">
+                    <span class="tag retiring">Retiring</span>
+                    <img src="crj700.png" alt="CRJ700">
+                </div>
+                <div class="fleet-info"><h3>CRJ700</h3></div>
+            </a>
 
-    <a class="fleet-card" href="a350900.html">
-        <div class="card-image-container">
-            <span class="tag service-order">In Service/Ordering</span>
-            <img src="a350900.webp" alt="A350-900">
-        </div>
-        <div class="fleet-info"><h3>A350-900</h3></div>
-    </a>
+            <a class="fleet-card" href="a319.html">
+                <div class="card-image-container">
+                    <span class="tag retiring">Retiring</span>
+                    <img src="a319.webp" alt="A319">
+                </div>
+                <div class="fleet-info"><h3>A319</h3></div>
+            </a>
 
-    <a class="fleet-card" href="a3501000.html">
-        <div class="card-image-container">
-            <span class="tag service-order">In Service/Ordering</span>
-            <img src="a3501000.webp" alt="A350-1000">
-        </div>
-        <div class="fleet-info"><h3>A350-1000</h3></div>
-    </a>
+            <a class="fleet-card" href="a340300.html">
+                <div class="card-image-container">
+                    <span class="tag retiring">Retiring</span>
+                    <img src="a340300.webp" alt="A340-300">
+                </div>
+                <div class="fleet-info"><h3>A340-300</h3></div>
+            </a>
 
-    <a class="fleet-card" href="7779.html">
-        <div class="card-image-container">
-            <span class="tag service-order">In Service/Ordering</span>
-            <img src="7779.webp" alt="777-9">
-        </div>
-        <div class="fleet-info"><h3>777-9</h3></div>
-    </a>
+            <a class="fleet-card" href="a350900.html">
+                <div class="card-image-container">
+                    <span class="tag service-order">In Service/Ordering</span>
+                    <img src="a350900.webp" alt="A350-900">
+                </div>
+                <div class="fleet-info"><h3>A350-900</h3></div>
+            </a>
 
-    <a class="fleet-card" href="787.html">
-        <div class="card-image-container">
-            <span class="tag service-order">In Service/Ordering</span>
-            <img src="787.webp" alt="787-9">
-        </div>
-        <div class="fleet-info"><h3>787-9</h3></div>
-    </a>
+            <a class="fleet-card" href="a3501000.html">
+                <div class="card-image-container">
+                    <span class="tag service-order">In Service/Ordering</span>
+                    <img src="a3501000.webp" alt="A350-1000">
+                </div>
+                <div class="fleet-info"><h3>A350-1000</h3></div>
+            </a>
 
-    <a class="fleet-card" href="7478.html">
-        <div class="card-image-container">
-            <span class="tag in-service">In Service</span>
-            <img src="7478.webp" alt="747-8">
-        </div>
-        <div class="fleet-info"><h3>747-8</h3></div>
-    </a>
+            <a class="fleet-card" href="7779.html">
+                <div class="card-image-container">
+                    <span class="tag service-order">In Service/Ordering</span>
+                    <img src="7779.webp" alt="777-9">
+                </div>
+                <div class="fleet-info"><h3>777-9</h3></div>
+            </a>
 
+            <a class="fleet-card" href="787.html">
+                <div class="card-image-container">
+                    <span class="tag service-order">In Service/Ordering</span>
+                    <img src="787.webp" alt="787-9">
+                </div>
+                <div class="fleet-info"><h3>787-9</h3></div>
+            </a>
+
+            <a class="fleet-card" href="7478.html">
+                <div class="card-image-container">
+                    <span class="tag in-service">In Service</span>
+                    <img src="7478.webp" alt="747-8">
+                </div>
+                <div class="fleet-info"><h3>747-8</h3></div>
+            </a>
+
+            <a class="fleet-card" href="a380.html">
+                <div class="card-image-container">
+                    <span class="tag in-service">In Service</span>
+                    <img src="a380.webp" alt="A380">
+                </div>
+                <div class="fleet-info"><h3>A380</h3></div>
+            </a>
         </section>
-</main>
+    </main>
+
+    <footer class="site-footer">
+        <p><strong>Disclaimer:</strong> Lufthansa Airlines is a <strong>fully operational virtual airline</strong> for GeoFS.</p>
+    </footer>
+
+    <script>
+        document.getElementById('site-search').addEventListener('input', function(e) {
+            const val = e.target.value;
+            const pageMap = {
+                "Boeing 747-8": "7478.html",
+                "Boeing 777-9": "7779.html",
+                "Boeing 787": "787.html",
+                "Airbus A319": "a319.html",
+                "Airbus A340-300": "a340300.html",
+                "Airbus A350-900": "a350900.html",
+                "Airbus A350-1000": "a3501000.html",
+                "Airbus A380": "a380.html",
+                "CRJ-700": "crj700.html"
+            };
+            if (pageMap[val]) window.location.href = pageMap[val];
+        });
+    </script>
+</body>
+</html>
