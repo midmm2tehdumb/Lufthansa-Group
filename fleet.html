@@ -24,22 +24,33 @@
             </ul>
 
             <div class="nav-right">
-                <input type="text" list="site-map" id="site-search" placeholder="Search pages or aircraft...">
+                <input type="text" list="site-map" id="site-search" placeholder="Search the airline...">
                 <datalist id="site-map">
-                    <option value="Boeing 747-8">
-                    <option value="Boeing 777-9">
-                    <option value="Boeing 777F">
-                    <option value="Boeing 787">
-                    <option value="Airbus A220">
-                    <option value="Airbus A319">
-                    <option value="Airbus A320">
-                    <option value="Airbus A321">
-                    <option value="Airbus A330-200">
-                    <option value="Airbus A340-300">
-                    <option value="Airbus A350-900">
-                    <option value="Airbus A350-1000">
-                    <option value="Airbus A380">
-                    <option value="CRJ-700">
+                    <option value="Home">
+                    <option value="Fleet Overview">
+                    <option value="Destinations">
+                    <option value="Booking">
+                    <option value="Information">
+                    <option value="Roleplay">
+                    <option value="News">
+                    <option value="History">
+                    <option value="Foreign">
+                    <option value="Profiles">
+                    <option value="Misc">
+                    <option value="CRJ700">
+                    <option value="A220">
+                    <option value="A319">
+                    <option value="A320">
+                    <option value="A321">
+                    <option value="A330-200">
+                    <option value="A340-300">
+                    <option value="A350-900">
+                    <option value="A350-1000">
+                    <option value="A380">
+                    <option value="747-8">
+                    <option value="777-9">
+                    <option value="777F">
+                    <option value="787-9">
                 </datalist>
             </div>
         </div>
@@ -134,15 +145,33 @@
         document.getElementById('site-search').addEventListener('input', function(e) {
             const val = e.target.value;
             const pageMap = {
-                "Boeing 747-8": "7478.html",
-                "Boeing 777-9": "7779.html",
-                "Boeing 787": "787.html",
-                "Airbus A319": "a319.html",
-                "Airbus A340-300": "a340300.html",
-                "Airbus A350-900": "a350900.html",
-                "Airbus A350-1000": "a3501000.html",
-                "Airbus A380": "a380.html",
-                "CRJ-700": "crj700.html"
+                // Main Navigation Mapping
+                "Home": "index.html",
+                "Fleet Overview": "fleet.html",
+                "Destinations": "destinations.html",
+                "Booking": "booking.html",
+                "Information": "info.html",
+                "Roleplay": "rp.html",
+                "News": "news.html",
+                "History": "history.html",
+                "Foreign": "foreign.html",
+                "Profiles": "profiles.html",
+                "Misc": "misc.html",
+                // Aircraft Mapping
+                "CRJ700": "crj700.html",
+                "A220": "a220.html",
+                "A319": "a319.html",
+                "A320": "a320.html",
+                "A321": "a321.html",
+                "A330-200": "a330200.html",
+                "A340-300": "a340300.html",
+                "A350-900": "a350900.html",
+                "A350-1000": "a3501000.html",
+                "A380": "a380.html",
+                "747-8": "7478.html",
+                "777-9": "7779.html",
+                "777F": "777f.html",
+                "787-9": "787.html"
             };
             if (pageMap[val]) window.location.href = pageMap[val];
         });
