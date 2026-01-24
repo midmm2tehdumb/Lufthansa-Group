@@ -8,534 +8,344 @@
     <link rel="icon" type="image/png" href="logo.png"> 
 
     <meta property="og:title" content="Lufthansa Airlines">
-    
     <meta property="og:url" content="https://midmm2tehdumb.github.io/Lufthansa-Group/booking.html">
-    
     <meta property="og:description" content="See an interactive route map of all Lufthansa destinations & codeshares.">
-    
     <meta name="theme-color" content="#000080"> 
-    
     <meta name="twitter:card" content="summary_large_image">
     
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" /> <style>
-  /* Base Styles */
-  body { font-family: Arial, sans-serif; margin:0; padding:0; }
-  #map { height: 80vh; width: 100%; margin-top: 20px; border-radius: 15px; }
-  .leaflet-popup-content button {
-    margin-top: 5px;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  .leaflet-popup-content button:hover { background-color: #0085a0; }
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" /> 
+    
+    <style>
+        /* Base Styles and Map Tweaks */
+        body { font-family: 'Roboto', sans-serif; margin:0; padding:0; background: white; }
+        
+        #map { 
+            height: 75vh; 
+            width: 90%; 
+            margin: 20px auto; 
+            border-radius: 15px; 
+            z-index: 1; /* Keeps map below the dropdowns */
+        }
 
+        /* Legend Consistency */
+        #legend { 
+            background: rgba(255,255,255,0.95); 
+            padding: 15px; 
+            position: absolute; 
+            bottom: 40px; 
+            left: 80px; 
+            border: 1px solid #dbdee1;
+            border-radius: 8px; 
+            font-size: 14px; 
+            z-index: 1000; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            line-height: 1.8;
+        }
+        .legend-dot { display:inline-block; width:12px; height:12px; border-radius:50%; margin-right:8px; }
 
-  /* Legend */
-  #legend { 
-    background: rgba(255,255,255,0.9); 
-    padding: 10px 15px; 
-    position: absolute; 
-    bottom: 30px; 
-    left: 30px; 
-    border-radius: 8px; 
-    font-size: 14px; 
-    z-index: 1000; 
-    box-shadow: 0 0 5px rgba(0,0,0,0.3);
-  }
-  .legend-dot { display:inline-block; width:12px; height:12px; border-radius:50%; margin-right:6px; }
+        /* Match the page header style from Fleet page */
+        .dest-header { text-align: center; margin-top: 40px; color: #00235f; }
+        .dest-header h1 { font-size: 2.5rem; font-weight: 700; }
 
-  /* Disclaimer */
-  .disclaimer { background-color:#1A3F70; color:white; padding:30px; text-align:center; margin-top:20px; }
-
-
-</style>
+        /* Disclaimer Alignment */
+        .site-footer { background: #00235f; color: white; padding: 40px; text-align: center; margin-top: 60px; }
+    </style>
 </head>
 <body>
 
-<nav>
-  <div class="logo">Lufthansa Airlines</div>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="fleet.html">Fleet</a></li>
-    <li><a href="destinations.html">Destinations</a></li>
-    <li><a href="booking.html">Booking</a></li>
-    <li><a href="info.html">Information</a></li>
-    <li><a href="rp.html">RP</a></li>
-  </ul>
-</nav>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="index.html" class="home-link">HOME</a>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="fleet.html">Fleet</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="booking.html">Booking</a></li>
+                <li><a href="info.html">Information</a></li>
+                <li><a href="rp.html">RP</a></li>
+            </ul>
 
-<h2 style="text-align:center; margin-top:20px;">Our Destinations</h2>
-<div id="map"></div>
+            <div class="nav-right">
+                <input type="text" list="site-map" id="site-search" placeholder="Search the airline...">
+                <datalist id="site-map">
+                    <option value="Home"><option value="Fleet Overview"><option value="Destinations">
+                    <option value="Booking"><option value="Information"><option value="Roleplay">
+                    <option value="News"><option value="History"><option value="Foreign">
+                    <option value="Profiles"><option value="Misc">
+                </datalist>
+            </div>
+        </div>
+    </nav>
 
-<div id="legend">
-  <div><span class="legend-dot" style="background: #d4b063;"></span>Lufthansa Hub</div>
-  <div><span class="legend-dot" style="background: #d88c6a;"></span>Subsidiary Hub</div>
-  <div><span class="legend-dot" style="background: #6b9ebd;"></span>Destination</div>
-  <div><span class="legend-dot" style="background: #b86b6b;"></span>Codeshare Destination</div>
-  <div><span class="legend-dot" style="background: #A4AC86;"></span>HON Circle Group Destination</div>
-  <div><span class="legend-dot" style="background: #795548;"></span>Out of Service</div>
+<header class="dest-header">
+    <h1>Our Destinations</h1>
+    <p>Connecting the virtual world via GeoFS.</p>
+</header>
+
+<div style="position: relative;">
+    <div id="map"></div>
+
+    <div id="legend">
+      <div><span class="legend-dot" style="background: #d4b063;"></span>Lufthansa Hub</div>
+      <div><span class="legend-dot" style="background: #d88c6a;"></span>Subsidiary Hub</div>
+      <div><span class="legend-dot" style="background: #6b9ebd;"></span>Destination</div>
+      <div><span class="legend-dot" style="background: #b86b6b;"></span>Codeshare Destination</div>
+      <div><span class="legend-dot" style="background: #A4AC86;"></span>HON Circle Group Destination</div>
+      <div><span class="legend-dot" style="background: #795548;"></span>Out of Service</div>
+    </div>
 </div>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script>
+// -------------------- SEARCH BAR SCRIPT --------------------
+document.getElementById('site-search').addEventListener('input', function(e) {
+    const val = e.target.value;
+    const pageMap = {
+        "Home": "index.html",
+        "Fleet Overview": "fleet.html",
+        "Destinations": "destinations.html",
+        "Booking": "booking.html",
+        "Information": "info.html",
+        "Roleplay": "rp.html"
+    };
+    if (pageMap[val]) window.location.href = pageMap[val];
+});
+
 // -------------------- INITIALIZE MAP --------------------
 const map = L.map('map').setView([20, 0], 2);
 
-// *** FIX 1: TILE LAYER SWAP to resolve 'shattered' map issue ***
 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
 }).addTo(map);
 
-// -------------------- AIRPORT DATA (IATA, ICAO, CITY) --------------------
+// -------------------- ALL YOUR DATA (NOT DELETED) --------------------
 const airportData = {
   "NORTH": {icao: "POLE", city: "Santa's Workshop"},
-
   "MALAYSIAN": {icao: "370", city: "The spot where MH370 mysteriously disappeared."},
-
  "POINT": {icao: "NEMO", city: "2,688km away from closest land."},
-
 "MARIANA": {icao: "TRENCH", city: "Challenger Deep, the deepest part of the ocean."},
-
   "FRA": {icao: "EDDF", city: "Frankfurt - Lufthansa Primary"},
-
   "MUC": {icao: "EDDM", city: "Munich - Lufthansa Secondary"},
-
   "ABV": {icao: "DNAA", city: "Abuja"},
-
   "AUH": {icao: "OMAA", city: "Abu Dhabi"},
-
   "ALC": {icao: "LEAL", city: "Alicante"},
-
   "ALG": {icao: "DAAG", city: "Algiers"},
-
   "ALA": {icao: "UAAA", city: "Almaty"},
-
   "AMM": {icao: "OJAI", city: "Amman"}, 
-
   "AMS": {icao: "EHAM", city: "Amsterdam - KLM Hub"},
-
   "AOI": {icao: "LIPY", city: "Ancona"},
-
   "ATH": {icao: "LGAV", city: "Athens"},
-
   "ATL": {icao: "KATL", city: "Atlanta"},
-
   "OVD": {icao: "LEAS", city: "Asturias"},
-
   "GYD": {icao: "UBBB", city: "Baku"},
-
   "BKK": {icao: "VTBS", city: "Bangkok"},
-
   "BLR": {icao: "VOBL", city: "Bangalore"},
-
   "BCN": {icao: "LEBL", city: "Barcelona"},
-
   "BRI": {icao: "LIBD", city: "Bari"},
-
   "BSL": {icao: "LFSB", city: "Basel"},
-
   "BIA": {icao: "LFKB", city: "Bastia"},
-
   "PEK": {icao: "ZBAA", city: "Beijing"},
-
   "BEY": {icao: "OLBA", city: "Beirut"}, 
-
   "BEG": {icao: "LYBE", city: "Belgrade"},
-
   "BGO": {icao: "ENBR", city: "Bergen"},
-
   "BER": {icao: "EDDB", city: "Berlin"},
-
   "BIQ": {icao: "LFBZ", city: "Biarritz"},
-
   "BIO": {icao: "LEBB", city: "Bilbao"},
-
   "BLL": {icao: "EKBI", city: "Billund"},
-
   "BHX": {icao: "EGBB", city: "Birmingham"},
-
   "BOG": {icao: "SKBO", city: "Bogota"},
-
   "BLQ": {icao: "LIPE", city: "Bologna"},
-
   "BOD": {icao: "LFBD", city: "Bordeaux"},
-
   "BOS": {icao: "KBOS", city: "Boston"},
-
   "BRE": {icao: "EDDW", city: "Bremen"},
-
   "BDS": {icao: "LIBR", city: "Brindisi"},
-
-  "BRU": {icao: "EBBR", city: "Brussels - Brussels Airlines hub   "},
-
+  "BRU": {icao: "EBBR", city: "Brussels - Brussels Airlines hub    "},
   "OTP": {icao: "LROP", city: "Bucharest"},
-
   "BUD": {icao: "LHBP", city: "Budapest"},
-
   "EZE": {icao: "SAEZ", city: "Buenos Aires"},
-
   "BOJ": {icao: "LBBG", city: "Burgas"},
-
   "CAG": {icao: "LIEE", city: "Cagliari"},
-
   "CAI": {icao: "HECA", city: "Cairo"},
-
   "YYC": {icao: "CYYC", city: "Calgary"},
-
   "CPT": {icao: "FACT", city: "Cape Town"},
-
   "CTA": {icao: "LICC", city: "Catania"},
-
   "CLT": {icao: "KCLT", city: "Charlotte"},
-
   "MAA": {icao: "VOMM", city: "Chennai"},
-
   "ORD": {icao: "KORD", city: "Chicago"},
-
   "CLJ": {icao: "LRCL", city: "Cluj"},
-
   "CGN": {icao: "EDDK", city: "Cologne"},
-
   "CPH": {icao: "EKCH", city: "Copenhagen"},
-
   "ORK": {icao: "EICK", city: "Cork"},
-
   "CFU": {icao: "LGKR", city: "Corfu"},
-
   "DFW": {icao: "KDFW", city: "Dallas"},
-
   "DMM": {icao: "OEDF", city: "Dammam"},
-
   "DEB": {icao: "LHDC", city: "Debrecen"},
-
   "DEL": {icao: "VIDP", city: "Delhi"},
-
   "DEN": {icao: "KDEN", city: "Denver"},
-
   "DTW": {icao: "KDTW", city: "Detroit"},
-
   "DRS": {icao: "EDDC", city: "Dresden"},
-
   "DUB": {icao: "EIDW", city: "Dublin"},
-
   "DXB": {icao: "OMDB", city: "Dubai"},
-
   "DBV": {icao: "LDDU", city: "Dubrovnik"},
-
  "DME": {icao: "UUDD", city: "Moscow"},
-
   "DUS": {icao: "EDDL", city: "Dusseldorf"},
-
   "EDI": {icao: "EGPH", city: "Edinburgh"},
-
   "ERF": {icao: "EDDE", city: "Erfurt"},
-
   "EBL": {icao: "ORER", city: "Erbil"},
-
   "FAO": {icao: "LPFR", city: "Faro"},
-
   "FLR": {icao: "LIRQ", city: "Florence"},
-
   "GDN": {icao: "EPGD", city: "Gdansk"},
-
   "GVA": {icao: "LSGG", city: "Geneva - Swiss Hub"},
-
   "GLA": {icao: "EGPF", city: "Glasgow"},
-
   "GOT": {icao: "ESGG", city: "Gothenburg"},
-
   "GRZ": {icao: "LOWG", city: "Graz"},
-
   "HAM": {icao: "EDDH", city: "Hamburg"},
-
   "HAJ": {icao: "EDDV", city: "Hanover"},
-
   "HEL": {icao: "EFHK", city: "Helsinki"},
-
   "HER": {icao: "LGIR", city: "Heraklion"},
-
   "HDF": {icao: "EDAH", city: "Heringsdorf"},
-
   "HKG": {icao: "VHHH", city: "Hong Kong"},
-
   "IAH": {icao: "KIAH", city: "Houston"},
-
   "HYD": {icao: "VOHY", city: "Hyderabad"},
-
   "IVL": {icao: "EFIV", city: "Ivalo"},
-
   "IBZ": {icao: "LEIB", city: "Ibiza"},
-
   "IST": {icao: "LTBA", city: "Istanbul"},
-
   "ADB": {icao: "LTBJ", city: "Izmir"},
-
   "JED": {icao: "OEJN", city: "Jeddah"},
-
   "JNB": {icao: "FAOR", city: "Johannesburg"},
-
   "KLX": {icao: "LGKL", city: "Kalamata"},
-
   "KBP": {icao: "UKBB", city: "Kiev"},
-
   "FKB": {icao: "EDSB", city: "Karlsruhe"},
-
   "KTW": {icao: "EPKT", city: "Katowice"},
-
   "EFL": {icao: "LGKF", city: "Kefalonia"},
-
   "KTT": {icao: "EFKT", city: "Kittilä"},
-
   "KGS": {icao: "LGKO", city: "Kos"},
-
   "KRK": {icao: "EPKK", city: "Krakow"},
-
   "KAO": {icao: "EFRO", city: "Kuusamo"},
-
   "KWI": {icao: "OKKK", city: "Kuwait City"},
-
   "LOS": {icao: "DNMM", city: "Lagos"},
-
   "SUF": {icao: "LICA", city: "Lamezia"},
-
   "LCA": {icao: "LCLK", city: "Larnaca"},
-
   "LEJ": {icao: "EDDP", city: "Leipzig"},
-
   "LIS": {icao: "LPPT", city: "Lisbon"},
-
   "LNZ": {icao: "LOWL", city: "Linz"},
-
   "LHR": {icao: "EGLL", city: "London"},
-
   "STN": {icao: "EGSS", city: "London"},
-
   "LAX": {icao: "KLAX", city: "Los Angeles"},
-
   "LAD": {icao: "FNLU", city: "Luanda"},
-
   "LUX": {icao: "ELLX", city: "Luxembourg"},
-
   "LYS": {icao: "LFLL", city: "Lyon"},
-
   "MAD": {icao: "LEMD", city: "Madrid"},
-
   "SSG": {icao: "FQMA", city: "Malabo"},
-
   "AGP": {icao: "LEMG", city: "Malaga"},
-
   "MLA": {icao: "LMML", city: "Malta"},
-
   "MAN": {icao: "EGCC", city: "Manchester"},
-
   "MRS": {icao: "LFML", city: "Marseille"},
-
   "MEX": {icao: "MMMX", city: "Mexico City"},
-
   "MIA": {icao: "KMIA", city: "Miami"},
-
   "LIN": {icao: "LIML", city: "Milan"},
-
   "MXP": {icao: "LIMC", city: "Milan"},
-
   "MSP": {icao: "KMSP", city: "Minneapolis"},
-
   "YUL": {icao: "CYUL", city: "Montreal"},
-
   "BOM": {icao: "VABB", city: "Mumbai"},
-
   "FMO": {icao: "EDDG", city: "Munster"},
-
   "JMK": {icao: "LGMK", city: "Mykonos"},
-
   "NBO": {icao: "HKJK", city: "Nairobi"},
-
   "NTE": {icao: "LFRS", city: "Nantes"},
-
   "NAP": {icao: "LIRN", city: "Naples"},
-
   "NCL": {icao: "EGNT", city: "Newcastle"},
-
   "JFK": {icao: "KJFK", city: "New York"},
-
   "EWR": {icao: "KEWR", city: "Newark"},
-
   "NCE": {icao: "LFMN", city: "Nice"},
-
   "NUE": {icao: "EDDN", city: "Nuremberg"},
-
   "OLB": {icao: "LIEO", city: "Olbia"},
-
   "OSL": {icao: "ENGM", city: "Oslo"},
-
   "PMO": {icao: "LICJ", city: "Palermo"},
-
   "PMI": {icao: "LEPA", city: "Palma de Mallorca"},
-
   "PTY": {icao: "MPTO", city: "Panama City"},
-
   "PFO": {icao: "LCPH", city: "Paphos"},
-
   "CDG": {icao: "LFPG", city: "Paris"},
-
   "PHL": {icao: "KPHL", city: "Philadelphia"},
-
   "PHC": {icao: "DNPO", city: "Port Harcourt"},
-
   "OPO": {icao: "LPPR", city: "Porto"},
-
   "POZ": {icao: "EPPO", city: "Poznan"},
-
   "PRG": {icao: "LKPR", city: "Prague"},
-
   "PUY": {icao: "LDPL", city: "Pula"},
-
   "RDU": {icao: "KRDU", city: "Raleigh"},
-
   "KEF": {icao: "BIKF", city: "Reykjavik"},
-
   "RHO": {icao: "LGRP", city: "Rhodes"},
-
   "RIX": {icao: "EVRA", city: "Riga"},
-
   "RJK": {icao: "LDRI", city: "Rijeka"},
-
   "GIG": {icao: "SBGL", city: "Rio de Janeiro"},
-
   "RUH": {icao: "OERK", city: "Riyadh"},
-
   "FCO": {icao: "LIRF", city: "Rome"},
-
   "RVN": {icao: "EFRO", city: "Rovaniemi"},
-
   "SZG": {icao: "LOWS", city: "Salzburg"},
-
   "SFO": {icao: "KSFO", city: "San Francisco"},
-
   "SJO": {icao: "MROC", city: "San Jose (CR)"},
-
   "SJC": {icao: "KSJC", city: "San Jose (US)"},
-
   "JTR": {icao: "LGSR", city: "Santorini"},
-
   "SCQ": {icao: "LEST", city: "Santiago de Compostela"},
-
   "SJJ": {icao: "LQSA", city: "Sarajevo"},
-
   "GRU": {icao: "SBGR", city: "Sao Paulo"},
-
   "SEA": {icao: "KSEA", city: "Seattle"},
-
   "ICN": {icao: "RKSI", city: "Seoul"},
-
   "SVQ": {icao: "LEZL", city: "Seville"},
-
   "PVG": {icao: "ZSPD", city: "Shanghai"},
-
   "SIN": {icao: "WSSS", city: "Singapore"},
-
   "SOF": {icao: "LBSF", city: "Sofia"},
-
   "SPU": {icao: "LDSP", city: "Split"},
-
   "SVG": {icao: "ENZV", city: "Stavanger"},
-
   "STL": {icao: "KSTL", city: "St. Louis"},
-
   "ARN": {icao: "ESSA", city: "Stockholm"},
-
   "SXB": {icao: "LFST", city: "Strasbourg"},
-
   "STR": {icao: "EDDS", city: "Stuttgart"},
-
   "TLL": {icao: "EETN", city: "Tallinn"},
-
   "IKA": {icao: "OIIE", city: "Tehran"},
-
   "TLV": {icao: "LLBG", city: "Tel Aviv"}, 
-
   "SKG": {icao: "LGTS", city: "Thessaloniki"},
-
   "TIA": {icao: "LATI", city: "Tirana"},
-
   "TIV": {icao: "LYTV", city: "Tivat"},
-
   "HND": {icao: "RJTT", city: "Tokyo"},
-
   "YYZ": {icao: "CYYZ", city: "Toronto"},
-
   "TOS": {icao: "ENTC", city: "Tromsø"},
-
   "TRD": {icao: "ENVA", city: "Trondheim"},
-
   "TUN": {icao: "DTTA", city: "Tunis"},
-
   "VLC": {icao: "LEVC", city: "Valencia"},
-
   "YVR": {icao: "CYVR", city: "Vancouver"},
-
   "VAR": {icao: "LBWN", city: "Varna"},
-
   "VCE": {icao: "LIPZ", city: "Venice"},
-
   "VIE": {icao: "LOWW", city: "Vienna - Austrian Hub"},
-
   "VNO": {icao: "EYVI", city: "Vilnius"},
-
   "WAW": {icao: "EPWA", city: "Warsaw"},
-
   "IAD": {icao: "KIAD", city: "Washington"},
-
   "GWT": {icao: "EDXW", city: "Westerland"},
-
   "WRO": {icao: "EPWR", city: "Wroclaw"},
-
   "WBG": {icao: "EDFW", city: "Wurzburg"},
-
   "ZAD": {icao: "LDZD", city: "Zadar"},
-
   "ZAG": {icao: "LDZA", city: "Zagreb"},
-
   "ZTH": {icao: "LGZA", city: "Zakynthos"},
-
   "ZRH": {icao: "LSZH", city: "Zurich - Swiss Hub"},
-
   "PER": {icao: "YPPH", city: "Perth - Longest DLH Flight (17HR)"},
-
 // CODESHARE
-
   "CAN": {icao: "ZGGG", city: "Guangzhou -  Served by Cathay Pacific"},
-
   "CKG": {icao: "ZUCK", city: "Chongqing -  Served by Cathay Pacific"},
-
   "HGH": {icao: "ZSHC", city: "Hangzhou -  Served by Cathay Pacific"},
-
   "CGK": {icao: "WIII", city: "Jakarta - Served by Singapore Airlines"},
-
   "SGN": {icao: "VVTS", city: "Ho Chi Minh City - Served by Singapore Airlines"},
-
   "HKT": {icao: "VTSP", city: "Phuket - Served by Singapore Airlines"},
-
   "DAD": {icao: "VVDN", city: "Da Nang - Served by Singapore Airlines"},
-
   "SAI": {icao: "VVCM", city: "Siem Reap - Served by Singapore Airlines"},
-
   "KTI": {icao: "VVKP", city: "Kratie - Served by Singapore Airlines"},
-
   "AGR": {icao: "VIDN", city: "Agra - Served by Indigo"},
-
   "JAI": {icao: "VIJP", city: "Jaipur - Served by Indigo"},
-
   "VNS": {icao: "VIBN", city: "Varanasi - Served by Indigo"},
-
   "GOI": {icao: "VOGO", city: "Goa - Served by Indigo"},
-
   "COK": {icao: "VOCI", city: "Kochi - Served by Indigo"},
-
   "DAM": {icao: "OSDI", city: "Damascus - Served by Indigo"},
   
     
@@ -576,125 +386,68 @@ const airportData = {
     
     "DOH": { icao: "OTHH", city: "Doha - Served by KLM" },
 
-
-
 // EVA AIR ROUTES
 "BKI": {icao: "WBKK", city: "Kota Kinabalu - Served by EVA"},
-
 "CRK": {icao: "RPLC", city: "Angeles City - Served by EVA"},
-
 "CTS": {icao: "RJCC", city: "Sapporo - Served by EVA"},
-
 "GMP": {icao: "RKSS", city: "Seoul - Served by EVA"},
-
 "KHH": {icao: "RCKH", city: "Kaohsiung - Served by EVA"},
-
 "KWL": {icao: "ZGKL", city: "Guilin - Served by EVA"},
-
 "MNL": {icao: "RPLL", city: "Manila - Served by EVA"},
-
 "MFM": {icao: "VMMC", city: "Macau - Served by EVA"},
-
 "NGB": {icao: "ZSNB", city: "Ningbo - Served by EVA"},
-
 "PEN": {icao: "WMKP", city: "Penang - Served by EVA"},
-
 "PUS": {icao: "RKPK", city: "Busan - Served by EVA"},
-
 "RMQ": {icao: "RCMQ", city: "Taichung - Served by EVA"},
-
 "TSA": {icao: "RCSS", city: "Taipei Songshan - Served by EVA"},
-
 "TPE": {icao: "RCTP", city: "Taipei Taoyuan - Eva Hub"},
-
 "AKL": {icao: "NZAA", city: "Auckland - Served by EVA"},
-
-
 "TSN": {icao: "ZBTJ", city: "Tianjin - Served by EVA"},
-
 "UKB": {icao: "RJBE", city: "Kobe - Served by EVA"},
-
 
 // Air Asia Routes
 "CNX": {icao: "VTCC", city: "Chiang Mai - Served by Air Asia"},
-
 "HDY": {icao: "VTSS", city: "Hat Yai - Served by Air Asia"},
-
 "DPS": {icao: "WADD", city: "Denpasar - Served by Air Asia"},
-
 "DMK": {icao: "VTBD", city: "Bangkok Don Mueang - Served by Air Asia"},
-
 "UPG": {icao: "WAAA", city: "Makassar - Served by Air Asia"},
-
 "MDC": {icao: "WAMM", city: "Manado - Served by Air Asia"},
-
 "PDG": {icao: "WIBB", city: "Padang - Served by Air Asia"},
-
 "KNO": {icao: "WIMM", city: "Medan - Served by Air Asia"},
-
 "PLM": {icao: "WIPP", city: "Palembang - Served by Air Asia"},
-
 "SOC": {icao: "WRSJ", city: "Surakarta - Served by Air Asia"},
-
 "YIA": {icao: "WRSQ", city: "Yogyakarta - Served by Air Asia"},
-
 "CEB": {icao: "RPVM", city: "Cebu - Served by Air Asia"},
-
 "LAO": {icao: "RPUT", city: "Laoag - Served by Air Asia"},
-
 "KLO": {icao: "RPVK", city: "Kalibo - Served by Air Asia"},
-
 "ILO": {icao: "RPVI", city: "Iloilo - Served by Air Asia"},
-
 "TAC": {icao: "RPVT", city: "Tacloban - Served by Air Asia"},
-
 "MAA": {icao: "VOMM", city: "Chennai - Served by Air Asia"},
-
 "BOM": {icao: "VABB", city: "Mumbai - Akasa Hub"},
-
 "TRV": {icao: "VOTV", city: "Trivandrum - Served by Air Asia"},
-
-
-
 "SYD": {icao: "YSSY", city: "Sydney - Served by Air Asia"},
-
 "MEL": {icao: "YMML", city: "Melbourne - Served by Air Asia"},
-
 "OOL": {icao: "YBCG", city: "Gold Coast - Served by Air Asia"},
-
 "CBR": {icao: "YSCB", city: "Canberra - Served by Air Asia"},
-
 "DRW": {icao: "YPDN", city: "Darwin - Served by Air Asia"},
-
 "PPS": {icao: "RPVP", city: "Puerto Princesa - Served by Air Asia"},
 "UTH": {icao: "VTUD", city: "Udon Thani - Served by Air Asia"},
-
 "CEI": {icao: "VTCT", city: "Chiang Rai - Served by Air Asia"},
-
 "BPN": {icao: "WIOO", city: "Balikpapan - Served by Air Asia"},
-
 "PLW": {icao: "WAML", city: "Palu - Served by Air Asia"},
 
 // AKASA AIR DESTINATIONS
-
 "AMD": {icao: "VAAH", city: "Ahmedabad - Served by Akasa Air"},
-
 "CCU": {icao: "VECC", city: "Kolkata - Served by Akasa Air"},
-
 "COK": {icao: "VOCI", city: "Kochi - Served by Akasa Air"},
-
-"BLR": {icao: "VOBL", city: "Bangalore - Served by Akasa Air"},
-
-    
+"BLR": {icao: "VOBL", city: "Bangalore - Served by Akasa Air"},    
 };
 
-// Convert airportData structure to the old airportCoords for the map coordinates
 const airportCoords = {
       "NORTH": [89.9888, 0.000],
       "POINT": [-48.875, -123.392],
       "MALAYSIAN": [6.9367, 103.585],
       "MARIANA": [11.373, 142.592],
-    // Lufthansa
     "FRA": [50.0379, 8.5622],
     "MUC": [48.3538, 11.7861],
     "ABV": [9.0060, 7.2636],
@@ -898,8 +651,6 @@ const airportCoords = {
     "ZTH": [37.7500, 20.8842],
     "ZRH": [47.4581, 8.5492],
     "PER": [-31.9385, 115.9672],
-
-// CODESHARED
     "CAN": [23.1291, 113.2644],
     "CKG": [29.5630, 106.5516],
     "HGH": [30.2741, 120.1551],
@@ -915,8 +666,6 @@ const airportCoords = {
     "GOI": [15.3808, 73.8314],
     "COK": [10.1520, 76.4019],
     "DAM": [33.4101, 36.6917],
-
-// KLM
     "LIM": [-12.0217, -77.1150],
     "UIO": [-0.1244, -78.3542],
     "GYE": [-2.2667, -79.8833],
@@ -934,8 +683,6 @@ const airportCoords = {
     "MNL": [14.5086, 121.0194],
     "DPS": [-8.7481, 115.1675],
     "DOH": [25.2750, 51.6083],
-
-    // EVA AIR ROUTES 
     "TPE": [25.0478, 121.5320],
     "BKI": [5.9372, 116.0514],
     "CRK": [15.1860, 120.5602],
@@ -952,117 +699,76 @@ const airportCoords = {
     "TSN": [39.1244, 117.3464],
     "UKB": [34.6328, 135.2239],
     "AKL": [-37.0118, 174.7861],
+    "KUL": [2.7608, 101.7117],
+    "DMK": [13.9126, 100.6068],
+    "CNX": [18.7668, 98.9626],
+    "HDY": [6.9332, 100.3928],
+    "DPS": [-8.7482, 115.1672],
+    "UPG": [-5.0616, 119.5542],
+    "MDC": [1.5494, 124.9260],
+    "PDG": [-0.8750, 100.3519],
+    "KNO": [3.6422, 98.8853],
+    "PLM": [-2.8981, 104.7019],
+    "SOC": [-7.5161, 110.7569],
+    "YIA": [-7.9075, 110.0550],
+    "CEB": [10.3078, 123.9789],
+    "LAO": [18.1803, 120.5319],
+    "KLO": [11.6804, 122.3767],
+    "ILO": [10.7130, 122.5453],
+    "TAC": [11.2266, 125.0253],
+    "BLR": [13.1979, 77.7063],
+    "MAA": [12.9944, 80.1806],
+    "BOM": [19.0887, 72.8679],
+    "DEL": [28.5562, 77.1000],
+    "COK": [10.1556, 76.3914],
+    "TRV": [8.4821, 76.9203],
+    "AMD": [23.0772, 72.6347],
+    "CCU": [22.6547, 88.4467],
+    "JAI": [26.8242, 75.8122],
+    "GOI": [15.3808, 73.8314],
+    "SYD": [-33.9461, 151.1772],
+    "MEL": [-37.6733, 144.8433],
+    "OOL": [-28.1644, 153.5047],
+    "CBR": [-35.3069, 149.1950],
+    "DRW": [-12.4083, 130.8726],
+    "PPS": [9.7422, 118.7586],
+    "UTH": [17.3864, 102.7881],
+    "CEI": [19.9522, 99.8828],
+    "BPN": [-1.2683, 116.8944],
+    "PLW": [-0.9186, 119.9094]
+};
 
-    // Air Asia Routes
-"KUL": [2.7608, 101.7117],
-"DMK": [13.9126, 100.6068],
-"CNX": [18.7668, 98.9626],
-"HDY": [6.9332, 100.3928],
-"DPS": [-8.7482, 115.1672],
-"UPG": [-5.0616, 119.5542],
-"MDC": [1.5494, 124.9260],
-"PDG": [-0.8750, 100.3519],
-"KNO": [3.6422, 98.8853],
-"PLM": [-2.8981, 104.7019],
-"SOC": [-7.5161, 110.7569],
-"YIA": [-7.9075, 110.0550],
-"CEB": [10.3078, 123.9789],
-"LAO": [18.1803, 120.5319],
-"KLO": [11.6804, 122.3767],
-"ILO": [10.7130, 122.5453],
-"TAC": [11.2266, 125.0253],
-"BLR": [13.1979, 77.7063],
-"MAA": [12.9944, 80.1806],
-"BOM": [19.0887, 72.8679],
-"DEL": [28.5562, 77.1000],
-"COK": [10.1556, 76.3914],
-"TRV": [8.4821, 76.9203],
-"AMD": [23.0772, 72.6347],
-"CCU": [22.6547, 88.4467],
-"JAI": [26.8242, 75.8122],
-"GOI": [15.3808, 73.8314],
-"SYD": [-33.9461, 151.1772],
-"MEL": [-37.6733, 144.8433],
-"OOL": [-28.1644, 153.5047],
-"CBR": [-35.3069, 149.1950],
-"DRW": [-12.4083, 130.8726],
-"PPS": [9.7422, 118.7586],
-"UTH": [17.3864, 102.7881],
-"CEI": [19.9522, 99.8828],
-"BPN": [-1.2683, 116.8944],
-"PLW": [-0.9186, 119.9094]
-
-    };
-
-
-
-
-// Define hub types
 const hubs = ["FRA", "MUC"];
 const subsidiaryHubs = ["ZRH", "VIE", "BRU", "GVA", "AMS", "TPE", "KUL", "BOM"];
-
 const codeshare = ["CAN", "CKG", "HGH", "CGK", "SGN", "HKT", "DAD", "SAI", "KTI", "AGR", "JAI", "VNS", "GOI"];
-
-const circle = ["LIM", "UIO", "GYE", "PBM", "DAR", "ACC", "KGL", "EBB", "NRT", "KIX", "MNL", "DPS", "DOH", 
-
-"BKI", "CRK", "CTS", "GMP", "KHH", "KWL", "MNL", "MFM", "NGB", "PEN", "PUS", "RMQ", "TSA", "TSN", "UKB", "AKL",
-
-"DMK", "CNX", "HDY", "DPS", "UPG", "MDC", "PDG", "KNO", "PLM", "SOC", "YIA", "CEB", "LAO", "KLO", "ILO", "TAC", "BLR", "MAA", "COK", "TRV", "AMD", "CCU", "JAI", "GOI", "SYD", "MEL", "PER", "OOL", "CBR", "DRW", "PPS", "UTH", "CEI", "BPN", "PLW", "COK"];
-
+const circle = ["LIM", "UIO", "GYE", "PBM", "DAR", "ACC", "KGL", "EBB", "NRT", "KIX", "MNL", "DPS", "DOH", "BKI", "CRK", "CTS", "GMP", "KHH", "KWL", "MNL", "MFM", "NGB", "PEN", "PUS", "RMQ", "TSA", "TSN", "UKB", "AKL", "DMK", "CNX", "HDY", "DPS", "UPG", "MDC", "PDG", "KNO", "PLM", "SOC", "YIA", "CEB", "LAO", "KLO", "ILO", "TAC", "BLR", "MAA", "COK", "TRV", "AMD", "CCU", "JAI", "GOI", "SYD", "MEL", "PER", "OOL", "CBR", "DRW", "PPS", "UTH", "CEI", "BPN", "PLW", "COK"];
 const outOfService = ["TLV", "DAM", "BEY", "AMM", "EBL", "IKA", "KBP", "DME", "AUA", "CUR", "BON", "SXM", "KWI", "ATL", "DFW", "PHL", "JFK", "RDU", "IAD", "CLT", "EWR", "PHC", "IAH", "BOS", "DTW", "YYZ", "YUL", "MIA", "LAX", "SJC", "SFO"]; 
-
 const gray = ["NORTH", "MALAYSIAN", "POINT", "MARIANA"];
 
 // -------------------- DRAW MARKERS --------------------
 Object.keys(airportCoords).forEach(code => {
-    
-    // Check if coordinates exist (important for the space destinations)
-    if (!airportCoords[code] || airportCoords[code].length < 2) {
-        console.warn(`Skipping marker for ${code}: Coordinates are invalid or missing.`);
-        return; 
-    }
+    if (!airportCoords[code] || airportCoords[code].length < 2) return; 
     
     const lat = airportCoords[code][0];
     const lon = airportCoords[code][1];
-    
-    // *** FIX 3: Prevent plotting markers if coordinates are far outside Earth bounds (This stops extreme distortion) ***
-    if (lat < -90 || lat > 90 || lon < -180 || lon > 180) {
-return;
-    }
-
+    if (lat < -90 || lat > 90 || lon < -180 || lon > 180) return;
 
     let color = "#6b9ebd"; // default destination color
-    
     const hubColor = "#d4b063";      
     const subsidiaryColor = "#d88c6a"; 
     const codeshareColor = "#b86b6b"; 
     const outOfServiceColor = "#795548"; 
-   const circleColor = "#A4AC86";
+    const circleColor = "#A4AC86";
     const grayColor = "#D1D7DB";
 
     const data = airportData[code] || {icao: "N/A", city: code}; 
 
-    // Check for Out of Service status first
-    if (outOfService.includes(code)) {
-        color = outOfServiceColor;
-    } 
-    // Check for other statuses
-    else if (hubs.includes(code)) {
-        color = hubColor;
-    } 
-    else if (subsidiaryHubs.includes(code)) {
-        color = subsidiaryColor;
-    } 
-    else if (codeshare.includes(code)) {
-        color = codeshareColor;
-   } 
-    else if (circle.includes(code)) {
-        color = circleColor;
-    } 
-    else if (gray.includes(code)) {
-        color = grayColor;
-    } 
-
+    if (outOfService.includes(code)) color = outOfServiceColor;
+    else if (hubs.includes(code)) color = hubColor;
+    else if (subsidiaryHubs.includes(code)) color = subsidiaryColor;
+    else if (codeshare.includes(code)) color = codeshareColor;
+    else if (circle.includes(code)) color = circleColor;
+    else if (gray.includes(code)) color = grayColor;
 
     L.circleMarker(airportCoords[code], {
         radius: 6,
@@ -1071,59 +777,11 @@ return;
         fillOpacity: 1
     }).addTo(map).bindPopup(`<b>${code} / ${data.icao}</b><br>${data.city}`); 
 });
-
-
-// -------------------- MODAL JAVASCRIPT (No Changes Needed) --------------------
-
-// Get all the cards that trigger modals
-const modalTriggers = document.querySelectorAll('[data-modal]');
-
-// Loop through each card and attach the click listener
-modalTriggers.forEach(card => {
-    card.addEventListener('click', () => {
-        // Get the ID of the modal from the data-modal attribute
-        const modalId = card.getAttribute('data-modal');
-        const modal = document.getElementById(modalId);
-        
-        // Display the modal
-        if (modal) {
-            modal.style.display = "block";
-        }
-    });
-});
-
-// Get all close buttons
-const closeButtons = document.querySelectorAll('.close-btn');
-
-// Loop through close buttons to close the modal when clicked
-closeButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        // Find the parent modal and hide it
-        const modal = btn.closest('.modal');
-        if (modal) {
-            modal.style.display = "none";
-        }
-    });
-});
-
-// Close the modal if the user clicks anywhere outside of it
-window.onclick = function(event) {
-    modalTriggers.forEach(card => {
-        const modalId = card.getAttribute('data-modal');
-        const modal = document.getElementById(modalId);
-        if (event.target === modal) {
-            modal.style.display = "none";
-        }
-    });
-}
 </script>
 
-<section class="disclaimer">
-  <p>
-    <strong>Disclaimer:</strong> Lufthansa Airlines is a virtual GeoFS airline and does not represent the real-life Lufthansa Group. 
-    This website and content are intended for entertainment and educational purposes within the virtual flight simulator community.
-  </p>
-</section>
+<footer class="site-footer">
+    <p><strong>Disclaimer:</strong> Lufthansa Airlines is a <strong>fully operational virtual airline</strong> for GeoFS and does not represent the real-life Lufthansa Group.</p>
+</footer>
 
 </body>
 </html>
