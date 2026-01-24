@@ -321,3 +321,30 @@ nav, .main-nav {
 .tag.retiring { border-left: 5px solid #e74c3c; color: #c0392b; }
 .tag.service { border-left: 5px solid #2ecc71; color: #27ae60; }
 .tag.ordered { border-left: 5px solid var(--lh-yellow); color: var(--lh-blue); }
+
+
+/* --- ADVERTISEMENT SECTION FIX --- */
+.ad-section {
+    width: 100%;
+    background: var(--bg-light);
+    padding: 60px 0; /* Vertical spacing */
+    display: flex;
+    justify-content: center;
+}
+
+.video-container {
+    width: 90%;
+    max-width: 1200px; /* Limits how wide it can get on big screens */
+    margin: 0 auto;
+    aspect-ratio: 16 / 9; /* Maintains a standard cinematic shape */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+#adVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video fills the container without stretching */
+    display: block;
+}
