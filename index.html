@@ -4,14 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lufthansa Group | Virtual Airline</title>
-    
     <link rel="icon" type="image/png" href="logo.png"> 
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-
-    <meta property="og:title" content="Lufthansa Airlines">
-    <meta property="og:description" content="Deutsche Lufthansa AG - Say yes to the world.">
-    <meta name="theme-color" content="#000080">
 </head>
 <body>
 
@@ -34,24 +29,9 @@
                     <input type="text" list="site-map" id="site-search" placeholder="Search fleet, routes...">
                     <datalist id="site-map">
                         <option value="Fleet Overview">
-                        <option value="Destinations">
-                        <option value="Booking">
-                        <option value="Information">
-                        <option value="Roleplay (RP)">
-                        <option value="Airbus A220">
-                        <option value="Airbus A319">
-                        <option value="Airbus A320">
-                        <option value="Airbus A321">
-                        <option value="Airbus A330-200">
-                        <option value="Airbus A340-300">
                         <option value="Airbus A350-900">
-                        <option value="Airbus A350-1000">
-                        <option value="Airbus A380">
                         <option value="Boeing 747-8">
-                        <option value="Boeing 777-9">
-                        <option value="Boeing 777F (Cargo)">
-                        <option value="Boeing 787">
-                        <option value="CRJ-700">
+                        <option value="Roleplay (RP)">
                     </datalist>
                 </div>
             </div>
@@ -63,11 +43,6 @@
             <div class="hero-content">
                 <p class="pre-title">SAY YES TO THE WORLD</p>
                 <h1>Explore the world<br>with Lufthansa.</h1>
-                <div class="hero-stats">
-                    <div class="stat-item"><strong>300+</strong> Subsidiaries</div>
-                    <div class="stat-item"><strong>300+</strong> Destinations</div>
-                    <div class="stat-item"><strong>700+</strong> Aircraft</div>
-                </div>
                 <div class="hero-cta">
                     <a href="https://discord.gg/kXRPrWTKTF" target="_blank" class="btn-primary">Join our Discord</a>
                     <button id="openGalleryBtn" class="btn-secondary">Open Gallery</button>
@@ -76,146 +51,111 @@
         </div>
     </header>
 
-    <main>
-        <section class="ad-section">
-            <div class="container">
-                <h2 class="section-title">Non-stop to the world</h2>
-                <div class="video-wrapper">
-                    <video id="adVideo" muted controls poster="lufthansa.jpg">
-                        <source src="lufthansa.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+    <section class="ad-section">
+        <div class="video-wrapper">
+            <video id="adVideo" muted controls poster="lufthansa.jpg">
+                <source src="lufthansa.mp4" type="video/mp4">
+            </video>
+        </div>
+    </section>
+
+    <section class="news-section">
+        <h2 class="news-title">Discover further topics</h2>
+        <div class="news-grid">
+            <div class="news-card">
+                <img src="narrow1.webp" alt="Catering">
+                <div class="news-content">
+                    <h3>Healthy Choice</h3>
+                    <p>Pre-order a salad or bowl now and enjoy a complimentary drink on board.</p>
                 </div>
             </div>
-        </section>
-    </main>
+            <div class="news-card">
+                <img src="wide2.webp" alt="Prices">
+                <div class="news-content">
+                    <h3>Best Price Alert</h3>
+                    <p>Choose your desired routes and never miss the best price again.</p>
+                </div>
+            </div>
+            <div class="news-card">
+                <img src="wide4.webp" alt="Tours">
+                <div class="news-content">
+                    <h3>Exclusive Tour Deals</h3>
+                    <p>Save up to 50% on selected virtual experiences for a limited time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <div id="galleryModal" class="modal">
         <div class="modal-content">
             <span class="close" id="closeGallery">&times;</span>
-            <div class="modal-header">
-                <h2 class="modal-title">Lufthansa Fleet Gallery</h2>
-                <p class="dm-note">Go to <strong>#📷┃gallery-submissions</strong> on Discord to contribute.</p>
-                <p class="zoom-note">Click any image to view in fullscreen.</p>
-            </div>
-
+            <h2>Lufthansa Fleet Gallery</h2>
             <div class="tab-buttons">
                 <button class="tab-btn active" data-tab="narrow">Narrowbody</button>
                 <button class="tab-btn" data-tab="wide">Widebody</button>
             </div>
-
             <div id="narrow" class="tab-page active">
                 <div class="scroll-gallery">
                     <img src="narrow1.webp" class="gallery-img">
                     <img src="narrow2.webp" class="gallery-img">
-                    <img src="narrow3.webp" class="gallery-img">
-                    <img src="narrow4.png" class="gallery-img">
                 </div>
             </div>
-
             <div id="wide" class="tab-page">
                 <div class="scroll-gallery">
                     <img src="wide1.webp" class="gallery-img">
                     <img src="wide2.webp" class="gallery-img">
-                    <img src="wide3.webp" class="gallery-img">
-                    <img src="wide4.webp" class="gallery-img">
-                    <img src="wide5.webp" class="gallery-img">
                 </div>
             </div>
         </div>
     </div>
 
     <div id="imageModal" class="image-modal">
-        <span class="close">&times;</span>
+        <span class="close-full">&times;</span>
         <img id="fullImage" src="">
     </div>
 
     <footer class="site-footer">
-        <div class="footer-container">
-            <div class="disclaimer-text">
-                <p><strong>IMPORTANT:</strong> Lufthansa Airlines is a <strong>virtual GeoFS airline</strong> and does not represent the real-life Deutsche Lufthansa AG. This website is for entertainment purposes within the flight simulator community.</p>
-            </div>
-        </div>
+        <p><strong>Disclaimer:</strong> This is a virtual GeoFS airline fan site and is not affiliated with Deutsche Lufthansa AG.</p>
     </footer>
 
     <script>
-        // --- SEARCH LOGIC ---
+        // Search Logic
         document.getElementById('site-search').addEventListener('input', function(e) {
             const val = e.target.value;
-            const list = document.getElementById('site-map').options;
-            for (let i = 0; i < list.length; i++) {
-                if (list[i].value === val) {
-                    navigate(val);
-                    break;
-                }
-            }
-        });
-
-        function navigate(name) {
             const pageMap = {
                 "Fleet Overview": "fleet.html",
-                "Destinations": "destinations.html",
-                "Booking": "booking.html",
-                "Information": "info.html",
-                "Roleplay (RP)": "rp.html",
-                "Airbus A220": "a220.html",
-                "Airbus A319": "a319.html",
-                "Airbus A320": "a320.html",
-                "Airbus A321": "a321.html",
-                "Airbus A330-200": "a330200.html",
-                "Airbus A340-300": "a340300.html",
                 "Airbus A350-900": "a350900.html",
-                "Airbus A350-1000": "a3501000.html",
-                "Airbus A380": "a380.html",
                 "Boeing 747-8": "7478.html",
-                "Boeing 777-9": "7779.html",
-                "Boeing 777F (Cargo)": "777f.html",
-                "Boeing 787": "787.html",
-                "CRJ-700": "crj700.html"
+                "Roleplay (RP)": "rp.html"
             };
-            if (pageMap[name]) window.location.href = pageMap[name];
-        }
-
-        // --- VIDEO AUTO-PLAY ---
-        const video = document.getElementById('adVideo');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) video.play().catch(() => {});
-                else video.pause();
-            });
-        }, { threshold: 0.5 });
-        observer.observe(video);
-
-        // --- GALLERY MODAL LOGIC ---
-        const openGalleryBtn = document.getElementById("openGalleryBtn");
-        const galleryModal = document.getElementById("galleryModal");
-        const closeGallery = document.getElementById("closeGallery");
-        const tabs = document.querySelectorAll(".tab-btn");
-        const pages = document.querySelectorAll(".tab-page");
-
-        openGalleryBtn.onclick = () => galleryModal.style.display = "block";
-        closeGallery.onclick = () => galleryModal.style.display = "none";
-        window.onclick = (e) => { if(e.target === galleryModal) galleryModal.style.display = 'none'; };
-
-        tabs.forEach(btn => {
-            btn.onclick = () => {
-                tabs.forEach(b => b.classList.remove("active"));
-                btn.classList.add("active");
-                pages.forEach(p => p.classList.remove("active"));
-                document.getElementById(btn.dataset.tab).classList.add("active");
-            };
+            if (pageMap[val]) window.location.href = pageMap[val];
         });
 
-        // --- FULLSCREEN IMAGE ---
-        const imgModal = document.getElementById('imageModal');
-        const fullImg = document.getElementById('fullImage');
+        // Gallery & Fullscreen Logic
+        const gModal = document.getElementById("galleryModal");
+        const iModal = document.getElementById("imageModal");
+        const fullImg = document.getElementById("fullImage");
+
+        document.getElementById("openGalleryBtn").onclick = () => gModal.style.display = "block";
+        document.getElementById("closeGallery").onclick = () => gModal.style.display = "none";
+
         document.querySelectorAll('.gallery-img').forEach(img => {
             img.onclick = () => {
                 fullImg.src = img.src;
-                imgModal.style.display = 'flex';
+                iModal.style.display = "flex";
+            };
+        });
+
+        document.querySelector(".close-full").onclick = () => iModal.style.display = "none";
+        
+        // Tab switching
+        document.querySelectorAll(".tab-btn").forEach(btn => {
+            btn.onclick = () => {
+                document.querySelectorAll(".tab-btn, .tab-page").forEach(el => el.classList.remove("active"));
+                btn.classList.add("active");
+                document.getElementById(btn.dataset.tab).classList.add("active");
             }
         });
-        imgModal.querySelector('.close').onclick = () => imgModal.style.display = 'none';
     </script>
 </body>
 </html>
