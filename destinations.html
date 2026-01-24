@@ -67,29 +67,22 @@
     <li><a href="rp.html">RP</a></li>
   </ul>
 </nav>
-<header class="page-banner">
-    <div class="banner-content">
-        <h1>Global Network</h1>
-        <p>Explore our primary hubs, subsidiaries, and global partners.</p>
-    </div>
-</header>
 
-<main class="content-wrapper">
-    <section class="standard-section">
-        <div id="map-container">
-            <div id="map"></div>
+<h2 style="text-align:center; margin-top:20px;">Our Destinations</h2>
+<div id="map"></div>
 
-            <div class="map-legend-bar">
-                <div class="legend-item"><span class="dot" style="background: #d4b063;"></span> Hub</div>
-                <div class="legend-item"><span class="dot" style="background: #d88c6a;"></span> Subsidiary</div>
-                <div class="legend-item"><span class="dot" style="background: #6b9ebd;"></span> Destination</div>
-                <div class="legend-item"><span class="dot" style="background: #b86b6b;"></span> Codeshare</div>
-                <div class="legend-item"><span class="dot" style="background: #A4AC86;"></span> HON Circle</div>
-                <div class="legend-item"><span class="dot" style="background: #795548;"></span> Suspended</div>
-            </div>
-        </div>
-    </section>
-</main>
+<div id="legend">
+  <div><span class="legend-dot" style="background: #d4b063;"></span>Lufthansa Hub</div>
+  <div><span class="legend-dot" style="background: #d88c6a;"></span>Subsidiary Hub</div>
+  <div><span class="legend-dot" style="background: #6b9ebd;"></span>Destination</div>
+  <div><span class="legend-dot" style="background: #b86b6b;"></span>Codeshare Destination</div>
+  <div><span class="legend-dot"
+ style="background: #A4AC86;"></span>HON Circle Group Destination</div>
+  <div><span class="legend-dot" style="background: #795548;"></span>Out of Service</div>
+</div>
+
+
+
 
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -1022,7 +1015,7 @@ const circle = ["LIM", "UIO", "GYE", "PBM", "DAR", "ACC", "KGL", "EBB", "NRT", "
 
 "DMK", "CNX", "HDY", "DPS", "UPG", "MDC", "PDG", "KNO", "PLM", "SOC", "YIA", "CEB", "LAO", "KLO", "ILO", "TAC", "BLR", "MAA", "COK", "TRV", "AMD", "CCU", "JAI", "GOI", "SYD", "MEL", "PER", "OOL", "CBR", "DRW", "PPS", "UTH", "CEI", "BPN", "PLW", "COK"];
 
-const outOfService = ["TLV", "DAM", "BEY", "AMM", "EBL", "IKA", "KBP", "DME", "AUA", "CUR", "BON", "SXM", "KWI", "ATL", "DFW", "PHL", "JFK", "RDU", "IAD", "CLT", "EWR", "PHC", "IAH", "BOS", "DTW", "YYZ", "YUL", "MIA", "LAX", "SJC", "SFO"]; 
+const outOfService = ["TLV", "DAM", "BEY", "AMM", "EBL", "IKA", "KBP", "DME", "AUA", "CUR", "BON", "SXM", "KWI"]; 
 
 const gray = ["NORTH", "MALAYSIAN", "POINT", "MARIANA"];
 
