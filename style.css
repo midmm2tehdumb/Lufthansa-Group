@@ -248,3 +248,76 @@ nav, .main-nav {
         height: 450px; /* Shorter height for mobile */
     }
 }
+
+/* --- FLEET PAGE GRID & CONTAINER --- */
+.fleet-main { 
+    max-width: 1400px; 
+    margin: 40px auto; 
+    padding: 0 40px; 
+    /* Ensures content doesn't hide behind the sticky nav */
+    padding-top: 20px; 
+}
+
+.fleet-grid {
+    display: grid;
+    /* Automatically fits as many cards as possible, minimum 320px wide */
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+/* --- AIRCRAFT CARDS --- */
+.fleet-card {
+    position: relative; /* CRITICAL: Necessary for absolute positioning of tags */
+    border: 1px solid var(--border);
+    background: white;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+    overflow: hidden; /* Clips the tag to the card's rounded corners */
+    border-radius: 4px;
+}
+
+.fleet-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.fleet-card img { 
+    width: 100%; 
+    height: 200px; 
+    object-fit: cover; /* Prevents image stretching */
+}
+
+.fleet-info {
+    padding: 20px;
+    background: white;
+}
+
+.fleet-info h3 {
+    color: var(--lh-blue);
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+}
+
+/* --- STATUS TAGS FIX --- */
+/* This positions the tag at the very top of the card image */
+.tag {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 8px 15px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid var(--border);
+    z-index: 10;
+}
+
+/* Specific colors for different aircraft statuses */
+.tag.retiring { border-left: 5px solid #e74c3c; color: #c0392b; }
+.tag.service { border-left: 5px solid #2ecc71; color: #27ae60; }
+.tag.ordered { border-left: 5px solid var(--lh-yellow); color: var(--lh-blue); }
