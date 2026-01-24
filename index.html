@@ -24,11 +24,28 @@
             </ul>
 
             <div class="nav-right">
-                <input type="text" list="site-map" id="site-search" placeholder="Search fleet...">
+                <input type="text" list="site-map" id="site-search" placeholder="Search pages or aircraft...">
                 <datalist id="site-map">
                     <option value="Boeing 747-8">
+                    <option value="Boeing 777-9">
+                    <option value="Boeing 777F">
+                    <option value="Boeing 787">
+                    <option value="Airbus A220">
+                    <option value="Airbus A319">
+                    <option value="Airbus A320">
+                    <option value="Airbus A321">
+                    <option value="Airbus A330-200">
+                    <option value="Airbus A340-300">
                     <option value="Airbus A350-900">
+                    <option value="Airbus A350-1000">
                     <option value="Airbus A380">
+                    <option value="CRJ-700">
+                    <option value="Fleet Overview">
+                    <option value="Destinations">
+                    <option value="Booking">
+                    <option value="Information">
+                    <option value="Roleplay">
+                    <option value="Home">
                 </datalist>
             </div>
         </div>
@@ -122,6 +139,37 @@
     </footer>
 
     <script>
+        // Mapping search terms to the file list provided in your image
+        document.getElementById('site-search').addEventListener('input', function(e) {
+            const val = e.target.value;
+            const pageMap = {
+                "Boeing 747-8": "7478.html",
+                "Boeing 777-9": "7779.html",
+                "Boeing 777F": "777f.html",
+                "Boeing 787": "787.html",
+                "Airbus A220": "a220.html",
+                "Airbus A319": "a319.html",
+                "Airbus A320": "a320.html",
+                "Airbus A321": "a321.html",
+                "Airbus A330-200": "a330200.html",
+                "Airbus A340-300": "a340300.html",
+                "Airbus A350-900": "a350900.html",
+                "Airbus A350-1000": "a3501000.html",
+                "Airbus A380": "a380.html",
+                "CRJ-700": "crj700.html",
+                "Fleet Overview": "fleet.html",
+                "Destinations": "destinations.html",
+                "Booking": "booking.html",
+                "Information": "info.html",
+                "Roleplay": "rp.html",
+                "Home": "index.html"
+            };
+            
+            if (pageMap[val]) {
+                window.location.href = pageMap[val];
+            }
+        });
+
         const newsData = {
             remake: { title: "Remaking the Site", text: "Our digital hub has been fully optimized for better navigation and operational efficiency." },
             snowstorm: { title: "North American snowstorm causes closures", text: "Severe winter conditions in the Northeast US have led to temporary ground stops for all long-haul flights." },
