@@ -12,10 +12,7 @@
 
     <nav class="main-nav">
         <div class="nav-container">
-            <div class="nav-left">
-                <a href="index.html" class="home-link">HOME</a>
-            </div>
-            
+            <div class="nav-left"><a href="index.html" class="home-link">HOME</a></div>
             <ul class="nav-links">
                 <li><a href="fleet.html">Fleet</a></li>
                 <li><a href="destinations.html">Destinations</a></li>
@@ -23,15 +20,11 @@
                 <li><a href="info.html">Information</a></li>
                 <li><a href="rp.html">RP</a></li>
             </ul>
-
             <div class="nav-right">
                 <div class="search-box">
-                    <input type="text" list="site-map" id="site-search" placeholder="Search fleet, routes...">
+                    <input type="text" list="site-map" id="site-search" placeholder="Search fleet...">
                     <datalist id="site-map">
-                        <option value="Fleet Overview">
-                        <option value="Airbus A350-900">
-                        <option value="Boeing 747-8">
-                        <option value="Roleplay (RP)">
+                        <option value="Fleet Overview"><option value="Boeing 747-8"><option value="Airbus A350-900">
                     </datalist>
                 </div>
             </div>
@@ -62,93 +55,82 @@
     <section class="news-section">
         <h2 class="news-title">Discover further topics</h2>
         <div class="news-grid">
-            <div class="news-card">
-                <img src="narrow1.webp" alt="Catering">
+            <div class="news-card" onclick="openNews('remake')">
+                <img src="narrow1.webp">
                 <div class="news-content">
-                    <h3>Healthy Choice</h3>
-                    <p>Pre-order a salad or bowl now and enjoy a complimentary drink on board.</p>
+                    <h3>Remaking the Site</h3>
+                    <p>Click to learn about our new digital interface and system upgrades.</p>
                 </div>
             </div>
-            <div class="news-card">
-                <img src="wide2.webp" alt="Prices">
+            <div class="news-card" onclick="openNews('snowstorm')">
+                <img src="wide2.webp">
                 <div class="news-content">
-                    <h3>Best Price Alert</h3>
-                    <p>Choose your desired routes and never miss the best price again.</p>
+                    <h3>North American snowstorm causes closures</h3>
+                    <p>Operational updates regarding weather impact on our North American routes.</p>
                 </div>
             </div>
-            <div class="news-card">
-                <img src="wide4.webp" alt="Tours">
+            <div class="news-card" onclick="openNews('hon')">
+                <img src="wide4.webp">
                 <div class="news-content">
-                    <h3>Exclusive Tour Deals</h3>
-                    <p>Save up to 50% on selected virtual experiences for a limited time.</p>
+                    <h3>HON Circle Group expands</h3>
+                    <p>The HON Circle Group, an extension of the Lufthansa Group, introduces new tiers.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <div id="newsModal" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('newsModal')">&times;</span><div id="news-body-content"></div></div></div>
+
     <div id="galleryModal" class="modal">
         <div class="modal-content">
-            <span class="close" id="closeGallery">&times;</span>
-            <h2>Lufthansa Fleet Gallery</h2>
+            <span class="close" onclick="closeModal('galleryModal')">&times;</span>
+            <h2 style="color:#00235f; margin-bottom:20px;">Fleet Gallery</h2>
             <div class="tab-buttons">
                 <button class="tab-btn active" data-tab="narrow">Narrowbody</button>
                 <button class="tab-btn" data-tab="wide">Widebody</button>
             </div>
             <div id="narrow" class="tab-page active">
                 <div class="scroll-gallery">
-                    <img src="narrow1.webp" class="gallery-img">
-                    <img src="narrow2.webp" class="gallery-img">
+                    <img src="narrow1.webp" class="gallery-img"><img src="narrow2.webp" class="gallery-img"><img src="narrow3.webp" class="gallery-img">
                 </div>
             </div>
             <div id="wide" class="tab-page">
                 <div class="scroll-gallery">
-                    <img src="wide1.webp" class="gallery-img">
-                    <img src="wide2.webp" class="gallery-img">
+                    <img src="wide1.webp" class="gallery-img"><img src="wide2.webp" class="gallery-img"><img src="wide3.webp" class="gallery-img">
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="imageModal" class="image-modal">
-        <span class="close-full">&times;</span>
-        <img id="fullImage" src="">
-    </div>
+    <div id="imageModal" class="image-modal"><span class="close-full" onclick="closeModal('imageModal')">&times;</span><img id="fullImage"></div>
 
     <footer class="site-footer">
-        <p><strong>Disclaimer:</strong> This is a virtual GeoFS airline fan site and is not affiliated with Deutsche Lufthansa AG.</p>
+        <p><strong>Disclaimer:</strong> Lufthansa Airlines is a <strong>fully operational virtual airline</strong> for GeoFS and is not affiliated with the real-world Deutsche Lufthansa AG.</p>
     </footer>
 
     <script>
-        // Search Logic
-        document.getElementById('site-search').addEventListener('input', function(e) {
-            const val = e.target.value;
-            const pageMap = {
-                "Fleet Overview": "fleet.html",
-                "Airbus A350-900": "a350900.html",
-                "Boeing 747-8": "7478.html",
-                "Roleplay (RP)": "rp.html"
-            };
-            if (pageMap[val]) window.location.href = pageMap[val];
-        });
+        const newsData = {
+            remake: { title: "Remaking the Site", text: "Our new site is designed for maximum efficiency, featuring a clean UI that mirrors the real Lufthansa standard." },
+            snowstorm: { title: "North American snowstorm causes closures", text: "Due to severe winter weather, several North American destinations are currently under ground stops. Check Discord for flight re-routing." },
+            hon: { title: "HON Circle Group expands", text: "The HON Circle Group, a dedicated extension of the Lufthansa Group, is now accepting applications for elite status pilots." }
+        };
 
-        // Gallery & Fullscreen Logic
-        const gModal = document.getElementById("galleryModal");
-        const iModal = document.getElementById("imageModal");
-        const fullImg = document.getElementById("fullImage");
+        function openNews(id) {
+            document.getElementById('news-body-content').innerHTML = `<h2>${newsData[id].title}</h2><p>${newsData[id].text}</p>`;
+            document.getElementById('newsModal').style.display = 'block';
+        }
 
-        document.getElementById("openGalleryBtn").onclick = () => gModal.style.display = "block";
-        document.getElementById("closeGallery").onclick = () => gModal.style.display = "none";
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+
+        document.getElementById("openGalleryBtn").onclick = () => document.getElementById("galleryModal").style.display = "block";
 
         document.querySelectorAll('.gallery-img').forEach(img => {
             img.onclick = () => {
-                fullImg.src = img.src;
-                iModal.style.display = "flex";
+                document.getElementById("fullImage").src = img.src;
+                document.getElementById("imageModal").style.display = "flex";
             };
         });
 
-        document.querySelector(".close-full").onclick = () => iModal.style.display = "none";
-        
-        // Tab switching
         document.querySelectorAll(".tab-btn").forEach(btn => {
             btn.onclick = () => {
                 document.querySelectorAll(".tab-btn, .tab-page").forEach(el => el.classList.remove("active"));
@@ -156,6 +138,8 @@
                 document.getElementById(btn.dataset.tab).classList.add("active");
             }
         });
+
+        window.onclick = (e) => { if (e.target.className === 'modal' || e.target.className === 'image-modal') e.target.style.display = 'none'; };
     </script>
 </body>
 </html>
