@@ -1,306 +1,55 @@
-/* ===================== LUFTHANSA BRAND IDENTITY ===================== */
 :root {
-    --lh-blue: #001a57;
+    --lh-blue: #00235f;
     --lh-yellow: #ffcc00;
-    --lh-grey: #f3f4f5;
-    --lh-white: #ffffff;
     --border: #dbdee1;
-    --text-dark: #333333;
+    --lh-white: #ffffff;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
 
-body {
-    font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-    background-color: var(--lh-white);
-    color: var(--text-dark);
-    line-height: 1.6;
-    overflow-x: hidden;
-}
+/* NAVIGATION */
+.main-nav { background: var(--lh-blue); height: 70px; position: sticky; top: 0; z-index: 1000; }
+.nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 100%; padding: 0 40px; }
+.home-link, .nav-links a { color: white; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; }
+.nav-links { display: flex; list-style: none; gap: 30px; }
+#site-search { padding: 8px 15px; border: none; border-radius: 2px; width: 220px; }
 
-/* ===================== NAVIGATION (Home Left, Search Right) ===================== */
-.main-nav {
-    background: var(--lh-white);
-    height: 70px;
-    border-bottom: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
+/* HERO */
+.hero { height: 70vh; background: url('lufthansa.jpg') center/cover; }
+.hero-overlay { height: 100%; background: linear-gradient(90deg, rgba(0,35,95,0.8), transparent); display: flex; align-items: center; padding-left: 10%; }
+.hero-content { color: white; max-width: 600px; }
+.hero h1 { font-size: 3.5rem; font-weight: 300; margin-bottom: 20px; }
+.btn-primary { background: var(--lh-yellow); color: var(--lh-blue); padding: 15px 30px; text-decoration: none; font-weight: 700; display: inline-block; }
+.btn-secondary { background: transparent; border: 2px solid white; color: white; padding: 13px 30px; cursor: pointer; margin-left: 10px; }
 
-.nav-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-    padding: 0 40px;
-}
+/* ADVERTISEMENT FIX */
+.ad-section { padding: 40px 0; text-align: center; }
+.video-wrapper { max-width: 900px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+video { width: 100%; height: auto; display: block; }
 
-.home-link {
-    color: var(--lh-blue);
-    font-weight: 700;
-    text-decoration: none;
-    font-size: 1.2rem;
-    letter-spacing: 1px;
-}
+/* NEWS CARDS */
+.news-section { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+.news-title { color: var(--lh-blue); margin-bottom: 25px; font-weight: 300; font-size: 2rem; }
+.news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.news-card { border: 1px solid var(--border); border-radius: 4px; overflow: hidden; transition: 0.3s; }
+.news-card:hover { box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+.news-card img { width: 100%; height: 200px; object-fit: cover; }
+.news-content { padding: 20px; }
+.news-content h3 { color: var(--lh-blue); margin-bottom: 10px; }
 
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 30px;
-}
+/* MODALS */
+.modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 2000; padding: 50px; }
+.modal-content { background: white; padding: 30px; max-width: 1000px; margin: auto; border-radius: 4px; position: relative; }
+.image-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 3000; justify-content: center; align-items: center; }
+#fullImage { max-width: 90%; max-height: 90%; border: 4px solid white; }
+.close, .close-full { position: absolute; right: 20px; top: 10px; font-size: 2rem; cursor: pointer; color: var(--lh-blue); }
+.close-full { color: white; top: 20px; right: 40px; }
 
-.nav-links a {
-    text-decoration: none;
-    color: var(--lh-blue);
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    font-weight: 600;
-    transition: color 0.2s;
-}
-
-.nav-links a:hover {
-    color: #0044bb;
-}
-
-/* SEARCH BOX */
-#site-search {
-    padding: 10px 15px;
-    border: 1px solid var(--border);
-    background: var(--lh-grey);
-    width: 220px;
-    outline: none;
-    border-radius: 2px;
-    transition: all 0.3s ease;
-}
-
-#site-search:focus {
-    width: 280px;
-    background: white;
-    border-color: var(--lh-blue);
-}
-
-/* ===================== HERO SECTION ===================== */
-.hero {
-    height: 75vh;
-    background: url('lufthansa.jpg') center/cover no-repeat;
-    position: relative;
-}
-
-.hero-overlay {
-    background: linear-gradient(90deg, rgba(0,26,87,0.85) 0%, rgba(0,26,87,0) 70%);
-    height: 100%;
-    display: flex;
-    align-items: center;
-    padding-left: 8%;
-}
-
-.hero-content {
-    color: white;
-    max-width: 700px;
-    text-align: left;
-}
-
-.pre-title {
-    font-size: 1rem;
-    letter-spacing: 3px;
-    margin-bottom: 10px;
-    font-weight: 400;
-}
-
-.hero h1 {
-    font-size: 4rem;
-    font-weight: 300;
-    margin-bottom: 25px;
-    line-height: 1.1;
-}
-
-.hero-stats {
-    display: flex;
-    gap: 30px;
-    margin-bottom: 40px;
-}
-
-.stat-item {
-    border-left: 2px solid var(--lh-yellow);
-    padding-left: 15px;
-}
-
-/* BUTTONS */
-.btn-primary {
-    background: var(--lh-yellow);
-    color: var(--lh-blue);
-    padding: 15px 35px;
-    text-decoration: none;
-    font-weight: 700;
-    text-transform: uppercase;
-    border-radius: 2px;
-    display: inline-block;
-    transition: opacity 0.2s;
-}
-
-.btn-secondary {
-    background: transparent;
-    border: 2px solid white;
-    color: white;
-    padding: 13px 35px;
-    cursor: pointer;
-    text-transform: uppercase;
-    font-weight: 700;
-    border-radius: 2px;
-    margin-left: 15px;
-}
-
-.btn-primary:hover, .btn-secondary:hover {
-    opacity: 0.9;
-}
-
-/* ===================== ADVERTISEMENT FIX ===================== */
-.ad-section {
-    padding: 80px 20px;
-    text-align: center;
-}
-
-.section-title {
-    font-size: 2rem;
-    color: var(--lh-blue);
-    margin-bottom: 30px;
-    font-weight: 300;
-}
-
-.video-wrapper {
-    max-width: 900px; /* Prevents video from being 2x screen size */
-    width: 100%;
-    margin: 0 auto;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-    background: #000;
-    line-height: 0;
-}
-
-video {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* ===================== GALLERY MODAL FIX ===================== */
-.modal {
-    display: none; /* Keeps gallery hidden until button is clicked */
-    position: fixed;
-    z-index: 2000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 26, 87, 0.9);
-    overflow: hidden; /* Prevents background scroll */
-}
-
-.modal-content {
-    background-color: white;
-    margin: 5vh auto;
-    padding: 40px;
-    width: 90%;
-    max-width: 1100px;
-    height: 85vh;
-    overflow-y: auto;
-    position: relative;
-    border-radius: 2px;
-}
-
-.close {
-    position: absolute;
-    right: 25px;
-    top: 15px;
-    font-size: 35px;
-    cursor: pointer;
-    color: var(--lh-blue);
-}
-
-/* TAB STYLING */
-.tab-buttons {
-    display: flex;
-    gap: 10px;
-    margin: 25px 0;
-    border-bottom: 1px solid var(--border);
-}
-
-.tab-btn {
-    padding: 10px 25px;
-    border: none;
-    background: none;
-    cursor: pointer;
-    font-weight: 600;
-    color: #888;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-}
-
-.tab-btn.active {
-    color: var(--lh-blue);
-    border-bottom: 3px solid var(--lh-yellow);
-}
-
-/* GRID FIX */
+/* TAB PAGES */
 .tab-page { display: none; }
 .tab-page.active { display: block; }
+.scroll-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
+.gallery-img { width: 100%; height: 150px; object-fit: cover; cursor: pointer; }
 
-.scroll-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    padding-bottom: 20px;
-}
-
-.gallery-img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    cursor: pointer;
-    border: 1px solid var(--border);
-    transition: transform 0.2s;
-}
-
-.gallery-img:hover {
-    transform: scale(1.02);
-    border-color: var(--lh-blue);
-}
-
-/* ===================== FOOTER ===================== */
-.site-footer {
-    background: var(--lh-blue);
-    color: white;
-    padding: 60px 20px;
-}
-
-.disclaimer-text {
-    max-width: 850px;
-    margin: 0 auto;
-    text-align: center;
-    font-size: 0.85rem;
-    opacity: 0.8;
-    line-height: 1.6;
-}
-
-/* FULLSCREEN IMAGE MODAL */
-.image-modal {
-    display: none;
-    position: fixed;
-    z-index: 3000;
-    background: rgba(0,0,0,0.9);
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-}
-
-#fullImage {
-    max-width: 90%;
-    max-height: 90%;
-}
+/* FOOTER */
+.site-footer { background: var(--lh-blue); color: white; padding: 40px; text-align: center; font-size: 0.8rem; margin-top: 40px; }
