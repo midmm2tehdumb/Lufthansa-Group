@@ -13,7 +13,7 @@
     <nav class="main-nav">
         <div class="nav-container">
             <div class="nav-left">
-                <div class="logo-container">
+                <div class="logo-wrapper">
                     <img src="logo.png" alt="Lufthansa Logo" class="nav-logo">
                 </div>
                 <a href="index.html" class="home-link">HOME</a>
@@ -33,6 +33,7 @@
                     <option value="Boeing 747-8">
                     <option value="Airbus A350-900">
                     <option value="CRJ-700">
+                    <option value="Airbus A380">
                 </datalist>
             </div>
         </div>
@@ -103,12 +104,16 @@
             </div>
             <div id="narrow" class="tab-page active">
                 <div class="scroll-gallery">
-                    <img src="narrow1.webp" class="gallery-img"><img src="narrow2.webp" class="gallery-img">
+                    <img src="narrow1.webp" class="gallery-img">
+                    <img src="narrow2.webp" class="gallery-img">
+                    <img src="narrow3.webp" class="gallery-img">
                 </div>
             </div>
             <div id="wide" class="tab-page">
                 <div class="scroll-gallery">
-                    <img src="wide1.webp" class="gallery-img"><img src="wide2.webp" class="gallery-img">
+                    <img src="wide1.webp" class="gallery-img">
+                    <img src="wide2.webp" class="gallery-img">
+                    <img src="wide3.webp" class="gallery-img">
                 </div>
             </div>
         </div>
@@ -154,7 +159,7 @@
             }
         });
 
-        window.onclick = (e) => { if(e.target.className === 'modal' || e.target.className === 'image-modal') e.target.style.display = 'none'; };
+        window.onclick = (e) => { if (e.target.className === 'modal' || e.target.className === 'image-modal') e.target.style.display = 'none'; };
     </script>
 </body>
 </html>
