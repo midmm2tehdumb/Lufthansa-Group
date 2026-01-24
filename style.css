@@ -215,3 +215,36 @@ nav, .main-nav {
     .plane-header img { width: 100%; }
     .nav-links { display: none; }
 }
+
+/* --- FLIGHT RADAR STYLING --- */
+.radar-section {
+    max-width: 1400px; /* Matches your Destinations map width */
+    margin: 50px auto; /* Adds spacing between the two maps */
+    padding: 0 40px;   /* Matches your site's side padding */
+}
+
+.radar-title {
+    color: #00235f;    /* Lufthansa Blue */
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 20px;
+    text-align: center; /* Matches 'Our Destinations' title alignment */
+}
+
+.radar-container {
+    width: 100%;
+    border-radius: 12px; /* Matches the rounded corners of your Destinations map */
+    overflow: hidden;    /* Ensures the iframe corners are rounded */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: 1px solid #dbdee1;
+}
+
+/* Ensures the radar is responsive on smaller screens */
+@media (max-width: 768px) {
+    .radar-section {
+        padding: 0 20px;
+    }
+    .radar-container iframe {
+        height: 450px; /* Shorter height for mobile */
+    }
+}
