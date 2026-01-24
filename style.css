@@ -6,102 +6,6 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
 
-/* NAVIGATION */
-.main-nav { 
-    background: var(--lh-blue); 
-    height: 75px; 
-    position: sticky; 
-    top: 0; 
-    z-index: 2000; 
-}
-
-.nav-container { 
-    max-width: 1400px; 
-    margin: 0 auto; 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    height: 100%; 
-    padding: 0 40px; 
-}
-
-.nav-left { display: flex; align-items: center; }
-
-.home-link { 
-    color: white; 
-    text-decoration: none; 
-    font-weight: 700; 
-    font-size: 1.1rem; 
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.nav-links { display: flex; list-style: none; gap: 30px; }
-.nav-links a { color: white; text-decoration: none; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; }
-
-#site-search { padding: 8px 12px; border: none; border-radius: 2px; width: 180px; outline: none; }
-
-/* HERO: FULL SCREEN COVER */
-.hero { 
-    height: 100vh; 
-    width: 100%;
-    background: url('lufthansa.jpg') center/cover no-repeat;
-    margin-top: -75px; /* Pulls hero under the navbar */
-}
-
-.hero-overlay { 
-    height: 100%; 
-    width: 100%;
-    background: linear-gradient(90deg, rgba(0,35,95,0.7) 0%, transparent 100%); 
-    display: flex; 
-    align-items: center; 
-    padding-left: 10%; 
-}
-
-.hero-content { color: white; max-width: 700px; padding-top: 75px; }
-.hero h1 { font-size: 4rem; font-weight: 300; margin-bottom: 25px; line-height: 1.1; }
-
-.btn-primary { background: var(--lh-yellow); color: var(--lh-blue); padding: 15px 35px; text-decoration: none; font-weight: 700; display: inline-block; border-radius: 2px; }
-.btn-secondary { background: transparent; border: 2px solid white; color: white; padding: 13px 30px; cursor: pointer; margin-left: 10px; font-weight: 700; border-radius: 2px; }
-
-/* ADVERTISEMENT */
-.ad-section { width: 100%; padding: 60px 0; display: flex; justify-content: center; background: white; }
-.video-container { width: 90%; max-width: 1100px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); border-radius: 4px; overflow: hidden; }
-video { width: 100%; display: block; object-fit: contain; max-height: 80vh; }
-
-/* NEWS */
-.news-section { max-width: 1200px; margin: 60px auto; padding: 0 20px; }
-.news-title { color: var(--lh-blue); font-size: 2.2rem; font-weight: 300; margin-bottom: 35px; }
-.news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
-.news-card { border: 1px solid var(--border); border-radius: 4px; overflow: hidden; cursor: pointer; transition: transform 0.3s; background: white; }
-.news-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-.news-card img { width: 100%; height: 220px; object-fit: cover; }
-.news-content { padding: 25px; }
-
-/* MODALS */
-.modal { display: none; position: fixed; inset: 0; background: rgba(0,35,95,0.9); z-index: 10000; padding: 100px 20px; overflow-y: auto; }
-.modal-content { background: white; padding: 45px; max-width: 800px; margin: auto; position: relative; border-radius: 4px; }
-.close { position: absolute; right: 25px; top: 15px; font-size: 3rem; cursor: pointer; color: var(--lh-blue); }
-
-.scroll-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; }
-.gallery-img { width: 100%; height: 160px; object-fit: cover; cursor: pointer; transition: 0.2s; border-radius: 2px; }
-.gallery-img:hover { transform: scale(1.05); }
-
-/* FULLSCREEN IMAGE */
-.image-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 20000; justify-content: center; align-items: center; }
-#fullImage { max-width: 90%; max-height: 85%; border: 6px solid white; box-shadow: 0 0 50px black; }
-.close-full { position: absolute; right: 40px; top: 20px; font-size: 4rem; color: white; cursor: pointer; }
-
-.site-footer { background: var(--lh-blue); color: white; padding: 60px; text-align: center; font-size: 0.9rem; margin-top: 60px; }
-
-:root {
-    --lh-blue: #00235f;
-    --lh-yellow: #ffcc00;
-    --border: #dbdee1;
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
-
 /* NAVIGATION - Solid Blue, No Shadows */
 .main-nav { 
     background: var(--lh-blue); 
@@ -141,7 +45,7 @@ video { width: 100%; display: block; object-fit: contain; max-height: 80vh; }
     outline: none; 
 }
 
-/* HERO: FULL SCREEN - Removed heavy shadow overlay */
+/* HERO: FULL SCREEN */
 .hero { 
     height: 100vh; 
     width: 100%;
@@ -151,7 +55,6 @@ video { width: 100%; display: block; object-fit: contain; max-height: 80vh; }
 
 .hero-overlay { 
     height: 100%; 
-    /* Lightened gradient to keep the image crisp */
     background: linear-gradient(90deg, rgba(0,35,95,0.4), transparent); 
     display: flex; 
     align-items: center; 
@@ -164,12 +67,12 @@ video { width: 100%; display: block; object-fit: contain; max-height: 80vh; }
 .btn-primary { background: var(--lh-yellow); color: var(--lh-blue); padding: 15px 35px; text-decoration: none; font-weight: 700; display: inline-block; border-radius: 2px; }
 .btn-secondary { background: transparent; border: 2px solid white; color: white; padding: 13px 30px; cursor: pointer; margin-left: 10px; font-weight: 700; border-radius: 2px; }
 
-/* ADVERTISEMENT - Removed shadows and borders */
+/* ADVERTISEMENT */
 .ad-section { width: 100%; padding: 60px 0; display: flex; justify-content: center; background: white; }
 .video-container { width: 90%; max-width: 1000px; max-height: 80vh; overflow: hidden; }
 video { width: 100%; height: auto; max-height: 80vh; display: block; object-fit: contain; }
 
-/* NEWS - Clean flat design, no shadows */
+/* NEWS */
 .news-section { max-width: 1200px; margin: 60px auto; padding: 0 20px; }
 .news-title { color: var(--lh-blue); font-size: 2.2rem; font-weight: 300; margin-bottom: 35px; }
 .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
@@ -179,9 +82,12 @@ video { width: 100%; height: auto; max-height: 80vh; display: block; object-fit:
 .news-content { padding: 25px; }
 
 /* FOOTER */
-.site-footer { background: var(--lh-blue); color: white; padding: 60px; text-align: center; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.1); }
+.site-footer { background: var(--lh-blue); color: white; padding: 60px; text-align: center; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 60px; }
 
-/* FLEET PAGE SPECIFICS */
+/* ——————————————————————————————————————————————————————————————————————————
+   FLEET PAGE SPECIFICS (UPDATED WITH TAGS)
+   —————————————————————————————————————————————————————————————————————————— */
+
 .fleet-main {
     max-width: 1400px;
     margin: 40px auto;
@@ -206,28 +112,57 @@ video { width: 100%; height: auto; max-height: 80vh; display: block; object-fit:
     gap: 30px;
 }
 
+/* Card Container */
 .fleet-card {
     text-decoration: none;
     color: inherit;
     border: 1px solid var(--border);
     transition: background 0.2s ease;
+    background: white;
 }
 
 .fleet-card:hover {
     background-color: #f4f4f4;
 }
 
+/* Image Wrapper for Tags */
+.card-image-container {
+    position: relative;
+    width: 100%;
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+}
+
 .fleet-card img {
     width: 100%;
-    height: 200px;
-    object-fit: contain; /* Keeps the aircraft profile visible */
-    background: #fff;
-    padding: 10px;
+    height: 180px;
+    object-fit: contain;
+    padding: 25px;
+    display: block;
 }
+
+/* STATUS TAGS */
+.tag {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: white;
+    z-index: 10;
+}
+
+/* Status Tag Colors */
+.in-service { background-color: #2ecc71; }        /* Green */
+.service-order { background-color: #27ae60; }     /* Dark Green */
+.retiring { background-color: #f39c12; }          /* Orange */
+.grounded { background-color: #e74c3c; }          /* Red */
+.planned { background-color: #3498db; }           /* Blue */
 
 .fleet-info {
     padding: 20px;
-    border-top: 1px solid var(--border);
     text-align: center;
 }
 
