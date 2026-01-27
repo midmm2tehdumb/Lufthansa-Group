@@ -810,3 +810,33 @@ body { background: var(--lh-grey); overflow-x: hidden; color: #333; }
     border-left: 4px solid var(--lh-yellow);
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
+
+/* --- FLEET PAGE TOP FEATURE BOX --- */
+
+.fleet-featured-hero {
+    width: 100%;
+    height: 400px; /* Adjust height as needed */
+    background: #fff;
+    border-radius: 30px; /* Deep curves like your Flight Ops iframe */
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    margin-bottom: 60px; /* Pushes the fleet categories down */
+    border: 1px solid rgba(0,0,0,0.05);
+    position: relative;
+}
+
+.fleet-featured-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image fills the curved box */
+    display: block;
+}
+
+/* Optional Overlay Text on the Box */
+.hero-box-label {
+    position: absolute;
+    bottom: 30px;
+    left: 40px;
+    color: white;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
