@@ -1,11 +1,142 @@
-/* ... Keep existing desktop styles ... */
+/* --- LUFTHANSA MASTER STYLESHEET --- */
+:root {
+    --lh-blue: #001f4b;
+    --lh-yellow: #ffbc00;
+    --lh-grey: #f2f2f2;
+    --white: #ffffff;
+    --max-width: 1440px;
+    --nav-height: 80px;
+}
 
-/* MOBILE SIDEBAR REFINEMENT */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
+body { background: var(--lh-grey); overflow-x: hidden; color: #333; }
+
+/* LAYOUT PROTECTION */
+.content-wrapper, .nav-wrapper {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* NAVIGATION */
+.main-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: var(--nav-height);
+    background: var(--white);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+}
+
+.nav-hidden { transform: translateY(-100%); }
+
+.nav-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--lh-blue);
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.nav-logo { 
+    height: 40px; 
+    margin-right: 10px; 
+    image-rendering: -webkit-optimize-contrast; 
+}
+
+/* DESKTOP PILLARS */
+.nav-links { display: flex; list-style: none; gap: 30px; }
+.pillar-link {
+    color: var(--lh-blue);
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+    list-style: none;
+}
+.pillar-link:hover { color: var(--lh-yellow); }
+
+/* HAMBURGER */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 10px;
+}
+.bar { width: 25px; height: 3px; background: var(--lh-blue); transition: 0.3s; }
+
+/* MEGA PANELS (Desktop) */
+.mega-panel {
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    width: 100%;
+    background: var(--white);
+    display: none;
+    padding: 50px 0;
+    z-index: 1900;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+.mega-panel.active { display: block; animation: slideDown 0.3s ease-out; }
+.panel-content {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding: 0 40px;
+}
+.menu-col h3 {
+    color: var(--lh-blue);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--lh-yellow);
+    display: inline-block;
+}
+.menu-col a {
+    display: block;
+    text-decoration: none;
+    color: #444;
+    padding: 8px 0;
+    font-size: 0.95rem;
+}
+
+/* MOBILE SIDEBAR PANEL */
+.mobile-nav-panel {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 85%;
+    height: 100vh;
+    background: var(--white);
+    z-index: 3000;
+    transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-nav-panel.open { right: 0; }
+
 .mobile-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
+    min-height: 50px;
 }
 
 #mobile-back {
@@ -13,30 +144,44 @@
     font-weight: 700;
     cursor: pointer;
     font-size: 1.1rem;
+    text-decoration: none;
+}
+
+.close-mobile {
+    font-size: 2.5rem;
+    color: var(--lh-blue);
+    cursor: pointer;
+    line-height: 1;
+}
+
+/* Fix for the bunched links in your screenshot */
+.mobile-links, .mobile-sub-menu {
+    display: flex;
+    flex-direction: column; /* Forces links to stack vertically */
+    width: 100%;
 }
 
 .mobile-pillar {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     color: var(--lh-blue);
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-weight: 700;
-    padding: 15px 0;
+    padding: 20px 0;
     border-bottom: 1px solid #eee;
     cursor: pointer;
 }
 
-.mobile-pillar span {
-    color: var(--lh-yellow);
-}
+.mobile-pillar span { color: var(--lh-yellow); font-size: 1.5rem; }
 
 .mobile-sub-menu a {
     display: block;
-    color: #444;
+    color: var(--lh-blue);
     font-size: 1.2rem;
-    padding: 12px 0;
+    padding: 18px 0;
     text-decoration: none;
-    border-bottom: 1px solid #f9f9f9;
+    border-bottom: 1px solid #f2f2f2;
 }
 
 .mobile-cta {
@@ -45,5 +190,53 @@
     text-align: center;
     padding: 15px;
     border-radius: 4px;
-    margin-top: 20px;
+    margin-top: 30px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+/* OVERLAY */
+.mega-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.3);
+    display: none;
+    z-index: 1800;
+    backdrop-filter: blur(3px);
+}
+.mega-overlay.active { display: block; }
+
+/* HERO */
+.hero { position: relative; height: 100vh; width: 100%; }
+#heroVideo { width: 100%; height: 100%; object-fit: cover; }
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0,31,75,0.6), transparent);
+    display: flex;
+    align-items: center;
+}
+.say-yes { color: var(--white); letter-spacing: 5px; margin-bottom: 10px; font-weight: 300; }
+.hero-overlay h1 { color: var(--white); font-size: 3.5rem; line-height: 1.1; margin-bottom: 30px; }
+.cta-box { display: flex; gap: 20px; }
+.btn-gold { background: var(--lh-yellow); color: var(--lh-blue); padding: 15px 30px; text-decoration: none; font-weight: 700; border-radius: 4px; }
+.btn-outline { border: 2px solid var(--white); color: var(--white); padding: 15px 30px; text-decoration: none; font-weight: 700; border-radius: 4px; }
+
+/* BREAKPOINT */
+@media (max-width: 1024px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .hero-overlay h1 { font-size: 2.5rem; }
+    .content-wrapper, .nav-wrapper { padding: 0 20px; }
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
