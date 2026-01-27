@@ -1,282 +1,229 @@
-/* --- 1. VARIABLES & RESET --- */
+/* --- LUFTHANSA MASTER STYLESHEET --- */
 :root {
-    --lh-blue: #00235f;
-    --lh-yellow: #ffcc00;
-    --lh-hover: #001a46;
-    --border: #dbdee1;
-    --text-dark: #333333;
-    --bg-light: #f4f4f4;
-    --max-width: 1440px; /* Prevents site from stretching too thin on wide monitors */
+    --lh-blue: #001f4b;
+    --lh-yellow: #ffbc00;
+    --lh-grey: #f2f2f2;
+    --white: #ffffff;
+    --max-width: 1440px;
+    --nav-height: 80px;
+    --glass: rgba(255, 255, 255, 0.95);
 }
 
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 
 body {
-    background-color: white;
-    color: var(--text-dark);
-    line-height: 1.6;
-    font-family: 'Poppins', 'Roboto', sans-serif;
-    overflow-x: hidden; /* Fixes the "8x screen size" scroll issue */
+    background-color: var(--lh-grey);
+    overflow-x: hidden;
 }
 
-/* --- 2. NAVIGATION (Flexible & No Cut-offs) --- */
-nav, .main-nav { 
-    background: var(--lh-blue); 
-    min-height: 75px; 
-    position: sticky; 
-    top: 0; 
-    z-index: 2000; 
+/* --- LAYOUT WRAPPER --- */
+.content-wrapper, .nav-wrapper {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* --- SMART NAVIGATION --- */
+.main-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: var(--nav-height);
+    background: var(--white);
+    z-index: 2000;
     display: flex;
     align-items: center;
-    width: 100%;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
 }
 
-.nav-container {
-    max-width: var(--max-width); 
-    margin: 0 auto; 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    width: 100%;
-    padding: 0 40px;
-    flex-wrap: wrap; /* Allows nav to wrap on smaller screens instead of cutting off */
+.nav-hidden {
+    transform: translateY(-100%);
 }
 
-.logo, .home-link { 
-    color: white; 
-    text-decoration: none; 
-    font-weight: 700; 
-    font-size: 1.2rem; 
-    text-transform: uppercase;
+.nav-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--lh-blue);
+    font-weight: 700;
+    font-size: 1.2rem;
     letter-spacing: 1px;
 }
 
-.nav-links { 
-    display: flex; 
-    list-style: none; 
-    gap: 25px; 
-    flex-wrap: wrap;
+.nav-logo {
+    height: 45px;
+    margin-right: 12px;
 }
 
-.nav-links a { 
-    color: white; 
-    text-decoration: none; 
-    font-weight: 600; 
-    font-size: 0.85rem; 
-    text-transform: uppercase; 
-    transition: 0.2s;
-    white-space: nowrap;
-}
-
-.nav-links a:hover { color: var(--lh-yellow); }
-
-#site-search {
-    background: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 8px 15px;
-    border-radius: 2px;
-    color: white;
-    outline: none;
-    width: 180px;
-}
-
-/* --- 3. HERO SECTION (Wide-screen responsive) --- */
-.hero { 
-    height: 100vh; 
-    background: linear-gradient(rgba(0,35,95,0.4), rgba(0,35,95,0.4)), url('lufthansa.jpg') center/cover no-repeat;
-    margin-top: -75px; 
+.nav-links {
     display: flex;
-    align-items: center;
-}
-
-.hero-overlay { 
-    width: 100%;
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 0 5%;
-}
-
-/* Fixing "Say Yes to the World" text */
-.hero-overlay p, .hero-overlay span {
-    color: white !important;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: 600;
-}
-
-.hero h1 { 
-    color: white; 
-    font-size: clamp(2.5rem, 6vw, 4.5rem); 
-    font-weight: 300; 
-    line-height: 1.1; 
-    margin-bottom: 20px;
-}
-
-/* --- 4. BUTTONS --- */
-.btn-primary, .btn-secondary {
-    padding: 15px 35px;
-    text-decoration: none;
-    font-weight: 700;
-    text-transform: uppercase;
-    border-radius: 2px;
-    transition: 0.3s;
-    display: inline-block;
-}
-.btn-primary { background: var(--lh-yellow); color: var(--lh-blue); }
-.btn-secondary { background: transparent; color: white; border: 2px solid white; margin-left: 10px; }
-
-/* --- 5. FLEET GRID & CARDS --- */
-.fleet-main { 
-    max-width: var(--max-width); 
-    margin: 40px auto; 
-    padding: 20px 40px; 
-}
-
-.fleet-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    list-style: none;
     gap: 30px;
 }
 
-.fleet-card {
-    position: relative; /* Context for status tags */
-    border: 1px solid var(--border);
-    transition: 0.3s;
-    text-decoration: none;
-    color: inherit;
-    border-radius: 4px;
-    overflow: hidden;
-    background: white;
-}
-
-.fleet-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-.fleet-card img { width: 100%; height: 200px; object-fit: cover; }
-
-.fleet-info { padding: 20px; }
-.fleet-info h3 { color: var(--lh-blue); font-size: 1.4rem; }
-
-/* Status Tags */
-.tag {
-    position: absolute;
-    top: 0; left: 0; width: 100%;
-    padding: 8px 15px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    background: rgba(255, 255, 255, 0.95);
-    border-bottom: 1px solid var(--border);
-    z-index: 10;
-}
-.tag.retiring { border-left: 5px solid #e74c3c; color: #c0392b; }
-.tag.service { border-left: 5px solid #2ecc71; color: #27ae60; }
-.tag.ordered { border-left: 5px solid var(--lh-yellow); color: var(--lh-blue); }
-
-/* --- 6. AIRCRAFT DETAILS PAGE --- */
-.aircraft-details { 
-    max-width: 1200px; 
-    margin: 50px auto; 
-    padding: 0 40px; 
-}
-
-.plane-header {
-    display: flex;
-    gap: 40px;
-    align-items: center;
-    margin-bottom: 50px;
-    background: var(--bg-light);
-    padding: 30px;
-    border-radius: 8px;
-}
-
-.plane-header img { 
-    width: 60%; 
-    border-radius: 4px; 
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1); 
-    height: 400px;
-    object-fit: cover;
-}
-
-.plane-info { flex: 1; }
-.plane-info h3 { color: var(--lh-blue); border-bottom: 3px solid var(--lh-yellow); display: inline-block; margin-bottom: 15px; }
-
-.seat-config { border: 1px solid var(--border); padding: 30px; background: #fff; }
-.config-selector { margin: 20px 0; display: flex; gap: 10px; flex-wrap: wrap; }
-.config-selector button {
-    padding: 10px 20px;
-    border: 2px solid var(--lh-blue);
-    background: white;
+.pillar-link {
+    color: var(--lh-blue);
+    font-weight: 500;
     cursor: pointer;
-    font-weight: 700;
+    padding: 10px 0;
+    position: relative;
+    transition: color 0.3s;
 }
-.config-selector button.active { background: var(--lh-blue); color: white; }
-.config-content { display: none; padding: 20px; background: var(--bg-light); margin-top: 15px; border-left: 5px solid var(--lh-yellow); }
-.config-content.active { display: block; }
 
-/* --- 7. FLIGHT RADAR & DESTINATIONS --- */
-.radar-section {
+.pillar-link:hover {
+    color: var(--lh-yellow);
+}
+
+/* --- MEGA MENU PANELS --- */
+.mega-panel {
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    width: 100%;
+    background: var(--white);
+    display: none;
+    padding: 50px 0;
+    z-index: 1900;
+    border-top: 1px solid #eee;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.mega-panel.active {
+    display: block;
+    animation: slideDown 0.4s ease-out;
+}
+
+.panel-content {
     max-width: var(--max-width);
-    margin: 50px auto;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
     padding: 0 40px;
 }
 
-.radar-title { color: var(--lh-blue); font-size: 2.5rem; font-weight: 300; text-align: center; margin-bottom: 20px; }
+.menu-col h3 {
+    color: var(--lh-blue);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--lh-yellow);
+    display: inline-block;
+}
 
-.radar-container {
+.menu-col a {
+    display: block;
+    text-decoration: none;
+    color: #444;
+    padding: 8px 0;
+    transition: 0.2s;
+}
+
+.menu-col a:hover {
+    color: var(--lh-blue);
+    padding-left: 5px;
+}
+
+.mega-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.4);
+    display: none;
+    z-index: 1800;
+    backdrop-filter: blur(4px);
+}
+
+.mega-overlay.active { display: block; }
+
+/* --- HERO SECTION --- */
+.hero {
+    position: relative;
+    height: 100vh;
     width: 100%;
-    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    border: 1px solid var(--border);
 }
 
-/* --- 8. ADVERTISEMENT FIX --- */
-.ad-section {
+#heroVideo {
     width: 100%;
-    background: var(--bg-light);
-    padding: 60px 0;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0,31,75,0.7), transparent);
     display: flex;
-    justify-content: center;
+    align-items: center;
 }
 
-.video-container {
-    width: 90%;
-    max-width: 1100px;
-    aspect-ratio: 16 / 9;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+.say-yes {
+    color: var(--white);
+    font-size: 1.2rem;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+}
+
+.hero-overlay h1 {
+    color: var(--white);
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 30px;
+}
+
+/* --- BUTTONS --- */
+.cta-box { display: flex; gap: 20px; }
+
+.btn-gold {
+    background: var(--lh-yellow);
+    color: var(--lh-blue);
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: 700;
     border-radius: 4px;
-    overflow: hidden;
+    transition: 0.3s;
 }
 
-/* --- 9. GALLERY (Horizontal Scroll Fix) --- */
-.scroll-gallery {
-    display: flex;
-    gap: 15px;
-    overflow-x: auto;
-    padding: 20px 0;
-    -webkit-overflow-scrolling: touch;
-}
-
-.gallery-img {
-    height: 300px;
-    flex-shrink: 0; /* Prevents squishing */
+.btn-outline {
+    border: 2px solid var(--white);
+    color: var(--white);
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: 700;
     border-radius: 4px;
+    transition: 0.3s;
 }
 
-/* --- 10. FOOTER & RESPONSIVE --- */
-.site-footer, .disclaimer {
-    background: var(--lh-blue);
-    color: white;
-    padding: 40px;
-    text-align: center;
-    margin-top: 50px;
+.btn-gold:hover { background: #e6a900; }
+.btn-outline:hover { background: var(--white); color: var(--lh-blue); }
+
+/* --- ANIMATIONS --- */
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-@media (max-width: 900px) {
-    .plane-header { flex-direction: column; }
-    .plane-header img { width: 100%; height: auto; }
-    .nav-links { gap: 10px; }
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+    .hero-overlay h1 { font-size: 2.5rem; }
+    .panel-content { grid-template-columns: repeat(2, 1fr); }
 }
