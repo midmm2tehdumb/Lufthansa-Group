@@ -903,3 +903,18 @@ body {
     margin-top: 20px;
     border-left: 4px solid var(--lh-yellow);
 }
+
+/* This stops the image from being a page-filler */
+.hero-image img {
+    width: 100%;
+    max-width: 600px; /* Adjust this number to make the plane smaller or larger */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Also ensure the container doesn't get pushed out of shape */
+.hero-image {
+    flex: 1.2;
+    max-width: 50%; /* Keeps the image on its own half of the screen */
+}
