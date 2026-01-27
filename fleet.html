@@ -45,6 +45,46 @@
                 <div class="menu-col"><h3>Hubs</h3><a href="hub-info.html#fra">Frankfurt (FRA)</a><a href="hub-info.html#muc">Munich (MUC)</a></div>
             </div>
         </div>
+        <div id="media-news" class="mega-panel">
+            <div class="panel-content">
+                <div class="menu-col"><h3>The Gazette</h3><a href="news.html">Latest News</a><a href="gallery.html">Fleet Gallery</a></div>
+            </div>
+        </div>
+        <div id="crew-menu" class="mega-panel">
+            <div class="panel-content">
+                <div class="menu-col"><h3>The Elite</h3><a href="hall-of-fame.html">Hall of Fame</a><a href="service-medals.html">Service Medals</a></div>
+                <div class="menu-col"><h3>Highlights</h3><a href="highlights.html">Our Perks</a></div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="mobile-nav-panel">
+            <div class="mobile-header">
+                <span id="mobile-back" onclick="backToMainMobile()" style="display:none;">← Back</span>
+                <span class="close-mobile" onclick="toggleMobileMenu()">&times;</span>
+            </div>
+            
+            <div id="mobile-main-links" class="mobile-links">
+                <div class="mobile-pillar" onclick="showSubMobile('mob-ops')">Flight Operations <span>›</span></div>
+                <div class="mobile-pillar" onclick="showSubMobile('mob-net')">Live Network <span>›</span></div>
+                <div class="mobile-pillar" onclick="showSubMobile('mob-med')">Media & News <span>›</span></div>
+                <div class="mobile-pillar" onclick="showSubMobile('mob-crew')">Crew & Community <span>›</span></div>
+                <hr>
+                <a href="index.html" class="mobile-cta">Home</a>
+            </div>
+
+            <div id="mob-ops" class="mobile-sub-menu" style="display:none;">
+                <a href="ops.html">Flight Dispatch</a><a href="livery-db.html">Livery Database</a><a href="fleet.html">Main Fleet</a><a href="sop-manuals.html">SOP & Manuals</a>
+            </div>
+            <div id="mob-net" class="mobile-sub-menu" style="display:none;">
+                <a href="network.html">Route Map</a><a href="radar.html">Live Radar</a><a href="hub-info.html">Hub Info</a>
+            </div>
+            <div id="mob-med" class="mobile-sub-menu" style="display:none;">
+                <a href="news.html">Latest News</a><a href="gallery.html">Fleet Gallery</a>
+            </div>
+            <div id="mob-crew" class="mobile-sub-menu" style="display:none;">
+                <a href="hall-of-fame.html">Hall of Fame</a><a href="service-medals.html">Service Medals</a><a href="highlights.html">Our Perks</a>
+            </div>
+        </div>
     </nav>
 
     <main class="fleet-section" style="padding-top: 120px;">
@@ -290,6 +330,26 @@
             document.querySelectorAll('.mega-panel').forEach(p => p.classList.remove('active'));
             const overlay = document.getElementById("menu-overlay");
             if (overlay) overlay.classList.remove("active");
+        }
+
+        // --- Mobile Menu Logic ---
+        function toggleMobileMenu() {
+            const m = document.getElementById("mobile-menu");
+            m.classList.toggle("open");
+            if(!m.classList.contains("open")) backToMainMobile();
+            document.body.style.overflow = m.classList.contains("open") ? "hidden" : "auto";
+        }
+
+        function showSubMobile(subId) {
+            document.getElementById("mobile-main-links").style.display = "none";
+            document.getElementById(subId).style.display = "block";
+            document.getElementById("mobile-back").style.display = "inline";
+        }
+
+        function backToMainMobile() {
+            document.getElementById("mobile-main-links").style.display = "block";
+            document.querySelectorAll(".mobile-sub-menu").forEach(s => s.style.display = "none");
+            document.getElementById("mobile-back").style.display = "none";
         }
     </script>
 </body>
