@@ -286,3 +286,41 @@ body { background: var(--lh-grey); overflow-x: hidden; color: #333; }
         right: 20px;
     }
 }
+
+.ops-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.ops-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.ops-card h3 {
+    color: #001f4b;
+    margin-bottom: 15px;
+    border-left: 4px solid #ffbc00;
+    padding-left: 15px;
+}
+
+.btn-outline-blue {
+    border: 2px solid #001f4b;
+    color: #001f4b;
+    padding: 12px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.btn-outline-blue:hover {
+    background: #001f4b;
+    color: #fff;
+}
