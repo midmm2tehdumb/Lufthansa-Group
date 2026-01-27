@@ -1,4 +1,3 @@
-/* --- LUFTHANSA MASTER STYLESHEET --- */
 :root {
     --lh-blue: #001f4b;
     --lh-yellow: #ffbc00;
@@ -6,29 +5,19 @@
     --white: #ffffff;
     --max-width: 1440px;
     --nav-height: 80px;
-    --glass: rgba(255, 255, 255, 0.95);
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
+body { background: var(--lh-grey); overflow-x: hidden; }
 
-body {
-    background-color: var(--lh-grey);
-    overflow-x: hidden;
-}
-
-/* --- LAYOUT WRAPPER --- */
+/* LAYOUT PROTECTION */
 .content-wrapper, .nav-wrapper {
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 0 40px;
 }
 
-/* --- SMART NAVIGATION --- */
+/* NAVIGATION */
 .main-nav {
     position: fixed;
     top: 0;
@@ -38,13 +27,11 @@ body {
     z-index: 2000;
     display: flex;
     align-items: center;
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     box-shadow: 0 2px 15px rgba(0,0,0,0.05);
 }
 
-.nav-hidden {
-    transform: translateY(-100%);
-}
+.nav-hidden { transform: translateY(-100%); }
 
 .nav-wrapper {
     width: 100%;
@@ -59,35 +46,33 @@ body {
     text-decoration: none;
     color: var(--lh-blue);
     font-weight: 700;
-    font-size: 1.2rem;
-    letter-spacing: 1px;
+    font-size: 1.1rem;
 }
 
-.nav-logo {
-    height: 45px;
-    margin-right: 12px;
-}
+.nav-logo { height: 40px; margin-right: 10px; image-rendering: -webkit-optimize-contrast; }
 
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 30px;
-}
+.nav-links { display: flex; list-style: none; gap: 30px; }
 
 .pillar-link {
     color: var(--lh-blue);
     font-weight: 500;
     cursor: pointer;
-    padding: 10px 0;
-    position: relative;
-    transition: color 0.3s;
+    transition: 0.3s;
 }
 
-.pillar-link:hover {
-    color: var(--lh-yellow);
+.pillar-link:hover { color: var(--lh-yellow); }
+
+/* HAMBURGER (Hidden on Desktop) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
 }
 
-/* --- MEGA MENU PANELS --- */
+.bar { width: 25px; height: 3px; background: var(--lh-blue); transition: 0.3s; }
+
+/* MEGA PANELS */
 .mega-panel {
     position: fixed;
     top: var(--nav-height);
@@ -97,14 +82,10 @@ body {
     display: none;
     padding: 50px 0;
     z-index: 1900;
-    border-top: 1px solid #eee;
     box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 
-.mega-panel.active {
-    display: block;
-    animation: slideDown 0.4s ease-out;
-}
+.mega-panel.active { display: block; animation: slideDown 0.3s ease-out; }
 
 .panel-content {
     max-width: var(--max-width);
@@ -117,9 +98,9 @@ body {
 
 .menu-col h3 {
     color: var(--lh-blue);
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     border-bottom: 2px solid var(--lh-yellow);
     display: inline-block;
 }
@@ -129,12 +110,7 @@ body {
     text-decoration: none;
     color: #444;
     padding: 8px 0;
-    transition: 0.2s;
-}
-
-.menu-col a:hover {
-    color: var(--lh-blue);
-    padding-left: 5px;
+    font-size: 0.95rem;
 }
 
 .mega-overlay {
@@ -143,87 +119,62 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0,0,0,0.3);
     display: none;
     z-index: 1800;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(3px);
 }
 
 .mega-overlay.active { display: block; }
 
-/* --- HERO SECTION --- */
-.hero {
-    position: relative;
-    height: 100vh;
-    width: 100%;
-    overflow: hidden;
-}
-
-#heroVideo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
+/* HERO */
+.hero { position: relative; height: 100vh; width: 100%; }
+#heroVideo { width: 100%; height: 100%; object-fit: cover; }
 .hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to right, rgba(0,31,75,0.7), transparent);
+    background: linear-gradient(to right, rgba(0,31,75,0.6), transparent);
     display: flex;
     align-items: center;
 }
 
-.say-yes {
-    color: var(--white);
-    font-size: 1.2rem;
-    letter-spacing: 4px;
-    margin-bottom: 10px;
-}
+.say-yes { color: var(--white); letter-spacing: 5px; margin-bottom: 10px; font-weight: 300; }
+.hero-overlay h1 { color: var(--white); font-size: 4rem; line-height: 1.1; margin-bottom: 30px; }
 
-.hero-overlay h1 {
-    color: var(--white);
-    font-size: 4rem;
-    line-height: 1.1;
-    margin-bottom: 30px;
-}
-
-/* --- BUTTONS --- */
 .cta-box { display: flex; gap: 20px; }
+.btn-gold { background: var(--lh-yellow); color: var(--lh-blue); padding: 15px 30px; text-decoration: none; font-weight: 700; border-radius: 4px; }
+.btn-outline { border: 2px solid var(--white); color: var(--white); padding: 15px 30px; text-decoration: none; font-weight: 700; border-radius: 4px; }
 
-.btn-gold {
-    background: var(--lh-yellow);
-    color: var(--lh-blue);
-    padding: 15px 30px;
-    text-decoration: none;
-    font-weight: 700;
-    border-radius: 4px;
-    transition: 0.3s;
+/* MOBILE SIDEBAR PANEL */
+.mobile-nav-panel {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 85%;
+    height: 100vh;
+    background: var(--white);
+    z-index: 3000;
+    transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 80px 40px;
 }
 
-.btn-outline {
-    border: 2px solid var(--white);
-    color: var(--white);
-    padding: 15px 30px;
-    text-decoration: none;
-    font-weight: 700;
-    border-radius: 4px;
-    transition: 0.3s;
-}
+.mobile-nav-panel.open { right: 0; }
+.mobile-links a { display: block; color: var(--lh-blue); font-size: 1.4rem; font-weight: 700; text-decoration: none; margin-bottom: 25px; }
+.mobile-cta { color: var(--lh-yellow) !important; }
+.close-mobile { position: absolute; top: 25px; right: 30px; font-size: 2.5rem; color: var(--lh-blue); cursor: pointer; }
 
-.btn-gold:hover { background: #e6a900; }
-.btn-outline:hover { background: var(--white); color: var(--lh-blue); }
-
-/* --- ANIMATIONS --- */
-@keyframes slideDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* --- RESPONSIVE --- */
+/* RESPONSIVE BREAKPOINT */
 @media (max-width: 1024px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
     .hero-overlay h1 { font-size: 2.5rem; }
-    .panel-content { grid-template-columns: repeat(2, 1fr); }
+    .content-wrapper, .nav-wrapper { padding: 0 20px; }
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
