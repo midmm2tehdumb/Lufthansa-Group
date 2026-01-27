@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOP & Manuals | Lufthansa GeoFS</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="sop-layout.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="main-nav" id="navbar">
+        <div class="nav-wrapper">
+            <div class="nav-left">
+                <a href="index.html" class="logo-link">
+                    <img src="logo.png" alt="Logo" class="nav-logo">
+                    <span>Lufthansa GeoFS</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li class="pillar-link" onclick="toggleMenu('ops-menu')">Flight Operations</li>
+                <li class="pillar-link" onclick="toggleMenu('network-menu')">Live Network</li>
+                <li class="pillar-link" onclick="toggleMenu('media-menu')">Media & News</li>
+                <li class="pillar-link" onclick="toggleMenu('crew-menu')">Crew & Community</li>
+            </ul>
+        </div>
+        </nav>
+
+    <header class="sop-hero">
+        <div class="hero-overlay">
+            <p class="say-yes">OPERATIONS DIVISION</p>
+            <h1>Standard Operating Procedures</h1>
+        </div>
+    </header>
+
+    <div class="sop-container">
+        <aside class="sop-sidebar">
+            <div class="sidebar-group">GENERAL</div>
+            <button class="sop-tab active" onclick="openSOP(event, 'gen-proc')">1. General Procedures</button>
+            <button class="sop-tab" onclick="openSOP(event, 'weather')">2. Weather & Hazards</button>
+            <button class="sop-tab" onclick="openSOP(event, 'flightpath')">3. Flight Path Mgmt</button>
+            
+            <div class="sidebar-group">AIRBUS FLEET</div>
+            <button class="sop-tab" onclick="openSOP(event, 'a220')">A220-300</button>
+            <button class="sop-tab" onclick="openSOP(event, 'a320')">A320 / A321</button>
+            <button class="sop-tab" onclick="openSOP(event, 'a330')">A330 / A340</button>
+            <button class="sop-tab" onclick="openSOP(event, 'a350')">A350-900</button>
+            <button class="sop-tab" onclick="openSOP(event, 'a380')">A380-800</button>
+
+            <div class="sidebar-group">BOEING & REGIONAL</div>
+            <button class="sop-tab" onclick="openSOP(event, 'b747')">B747-8i</button>
+            <button class="sop-tab" onclick="openSOP(event, 'b777')">B777-9 / B777F</button>
+            <button class="sop-tab" onclick="openSOP(event, 'b787')">B787-9</button>
+            <button class="sop-tab" onclick="openSOP(event, 'crj')">CRJ-700</button>
+        </aside>
+
+        <main class="sop-content">
+            
+            <div class="sop-actions">
+                <a href="https://docs.google.com/document/d/1WbIp33ZtwFwJwhUNJzfGMQCQBz6YhJa5H0TOjYNeoYE/edit?usp=sharing" target="_blank" class="btn-original">
+                    View Original SOP Document ↗
+                </a>
+            </div>
+
+            <div id="gen-proc" class="sop-article active">
+                <h2>1. General Procedures</h2>
+                <div class="sop-card">
+                    <h3>Safety and Incident Reporting</h3>
+                    <p>Safety is the primary concern of Lufthansa. All pilots are required to report any safety-related occurrences, aircraft damage, unstable approaches, and hard landings (defined as >600fpm or 2.2Gs).</p>
+                    <p>Incident reports must be submitted via the Crew Portal or to a Flight Operations Officer within 24 hours of the event.</p>
+                </div>
+                <div class="sop-card">
+                    <h3>Livery & Callsign Compliance</h3>
+                    <p>Pilots must use the liveries specified in the <strong>Livery Database</strong>. Standard Lufthansa (DLH) or Lufthansa Cargo (GEC) callsigns must be used. Regional partners (CityLine) should use the appropriate subsidiary prefix.</p>
+                </div>
+            </div>
+
+            <div id="weather" class="sop-article">
+                <h2>2. Weather & Hazardous Conditions</h2>
+                <div class="sop-card">
+                    <h3>Thunderstorm & Wind Limits</h3>
+                    <ul>
+                        <li><strong>Avoidance:</strong> Maintain 20nm distance from any cell showing red on weather radar.</li>
+                        <li><strong>Narrowbody Crosswind:</strong> 30 Kts limit.</li>
+                        <li><strong>Widebody Crosswind:</strong> 35 Kts limit.</li>
+                        <li><strong>Tailwind:</strong> 10 Kts maximum for all landings.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="flightpath" class="sop-article">
+                <h2>3. Flight Path Management</h2>
+                <div class="sop-card">
+                    <h3>Standard Operating Altitudes</h3>
+                    <ul>
+                        <li><strong>Below 10,000ft:</strong> Maximum Speed 250 KIAS.</li>
+                        <li><strong>Below 2,500ft:</strong> Speed 170-190 KIAS (Flaps 1 or 2).</li>
+                        <li><strong>Stabilized Approach:</strong> Aircraft must be stabilized (on speed, on path, configured) by 1,000ft AGL.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="crj" class="sop-article">
+                <h2>Bombardier CRJ-700</h2>
+                <div class="sop-card">
+                    <h3>Takeoff & Climb</h3>
+                    <p><strong>Thrust:</strong> TOGA. <strong>Rotate:</strong> 135kts. <strong>Pitch:</strong> 15° initially. Retract flaps at 180kts.</p>
+                </div>
+                <div class="sop-card">
+                    <h3>Cruise & Landing</h3>
+                    <p><strong>Cruise:</strong> Mach 0.77. <strong>Approach:</strong> 140kts. <strong>Landing:</strong> Flaps 45 (Full), Vref 130kts. Note: CRJ is known for a low-profile approach; avoid excessive flare.</p>
+                </div>
+            </div>
+
+            </main>
+    </div>
+
+    <script>
+        function openSOP(evt, sectionId) {
+            var i, articles, tabs;
+            articles = document.getElementsByClassName("sop-article");
+            for (i = 0; i < articles.length; i++) { articles[i].classList.remove("active"); }
+            tabs = document.getElementsByClassName("sop-tab");
+            for (i = 0; i < tabs.length; i++) { tabs[i].classList.remove("active"); }
+            document.getElementById(sectionId).classList.add("active");
+            evt.currentTarget.classList.add("active");
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
