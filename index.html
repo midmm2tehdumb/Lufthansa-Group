@@ -119,84 +119,99 @@
     </header>
 
     <script>
-        // --- HERO VIDEO & HOVER LOGIC ---
-        const trigger = document.getElementById('vidTrigger');
-        const heroImg = document.getElementById('heroImg');
-        const muteBtn = document.getElementById('muteBtn');
-        const video = document.getElementById('heroVideo');
+    // --- HERO VIDEO & HOVER TOGGLE LOGIC (1-Second Delay) ---
+    const trigger = document.getElementById('vidTrigger');
+    const heroImg = document.getElementById('heroImg');
+    const muteBtn = document.getElementById('muteBtn');
+    const video = document.getElementById('heroVideo');
+    
+    let hoverTimer;
+    let isVideoActive = false;
 
-        trigger.addEventListener('mouseenter', () => {
-            heroImg.style.opacity = '0'; 
-            muteBtn.classList.add('visible');
-        });
-
-        trigger.addEventListener('mouseleave', () => {
-            heroImg.style.opacity = '1'; 
-            muteBtn.classList.remove('visible'); 
-            video.muted = true; 
-            muteBtn.innerText = "UNMUTE";
-        });
-
-        muteBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); 
-            if (video.muted) {
-                video.muted = false;
-                muteBtn.innerText = "MUTE";
+    trigger.addEventListener('mouseenter', () => {
+        // Start a 1-second timer when mouse enters the pill
+        hoverTimer = setTimeout(() => {
+            if (!isVideoActive) {
+                // Switch to Video
+                heroImg.style.opacity = '0';
+                muteBtn.classList.add('visible');
+                isVideoActive = true;
             } else {
+                // Switch back to Image
+                heroImg.style.opacity = '1';
+                muteBtn.classList.remove('visible');
                 video.muted = true;
                 muteBtn.innerText = "UNMUTE";
+                isVideoActive = false;
             }
-        });
+        }, 1000); // 1000ms = 1 second
+    });
 
-        // --- NAVIGATION LOGIC ---
-        let lastScrollY = window.scrollY;
-        const navbar = document.getElementById("navbar");
+    trigger.addEventListener('mouseleave', () => {
+        // If they move the mouse away BEFORE 1 second, cancel the toggle
+        clearTimeout(hoverTimer);
+    });
 
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > lastScrollY && window.scrollY > 150) {
-                navbar.classList.add("nav-hidden");
-                closeAllMenus(); 
-            } else { 
-                navbar.classList.remove("nav-hidden"); 
-            }
-            lastScrollY = window.scrollY;
-        });
-
-        function toggleMenu(menuId) {
-            const menu = document.getElementById(menuId);
-            const overlay = document.getElementById("menu-overlay");
-            const isOpen = menu.classList.contains("active");
-            closeAllMenus();
-            if (!isOpen) { 
-                menu.classList.add("active"); 
-                overlay.classList.add("active"); 
-            }
+    muteBtn.addEventListener('click', (e) => {
+        e.stopPropagation(); 
+        if (video.muted) {
+            video.muted = false;
+            muteBtn.innerText = "MUTE";
+        } else {
+            video.muted = true;
+            muteBtn.innerText = "UNMUTE";
         }
+    });
 
-        function closeAllMenus() {
-            document.querySelectorAll('.mega-panel').forEach(p => p.classList.remove('active'));
-            document.getElementById("menu-overlay").classList.remove("active");
-        }
+    // --- YOUR EXISTING NAVIGATION LOGIC (Untouched) ---
+    let lastScrollY = window.scrollY;
+    const navbar = document.getElementById("navbar");
 
-        // --- MOBILE MENU LOGIC ---
-        function toggleMobileMenu() {
-            const m = document.getElementById("mobile-menu");
-            m.classList.toggle("open");
-            if(!m.classList.contains("open")) backToMainMobile();
-            document.body.style.overflow = m.classList.contains("open") ? "hidden" : "auto";
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > lastScrollY && window.scrollY > 150) {
+            navbar.classList.add("nav-hidden");
+            closeAllMenus(); 
+        } else { 
+            navbar.classList.remove("nav-hidden"); 
         }
+        lastScrollY = window.scrollY;
+    });
 
-        function showSubMobile(subId) {
-            document.getElementById("mobile-main-links").style.display = "none";
-            document.getElementById(subId).style.display = "block";
-            document.getElementById("mobile-back").style.display = "inline";
+    function toggleMenu(menuId) {
+        const menu = document.getElementById(menuId);
+        const overlay = document.getElementById("menu-overlay");
+        const isOpen = menu.classList.contains("active");
+        closeAllMenus();
+        if (!isOpen) { 
+            menu.classList.add("active"); 
+            overlay.classList.add("active"); 
         }
+    }
 
-        function backToMainMobile() {
-            document.getElementById("mobile-main-links").style.display = "block";
-            document.querySelectorAll(".mobile-sub-menu").forEach(s => s.style.display = "none");
-            document.getElementById("mobile-back").style.display = "none";
-        }
-    </script>
+    function closeAllMenus() {
+        document.querySelectorAll('.mega-panel').forEach(p => p.classList.remove('active'));
+        document.getElementById("menu-overlay").classList.remove("active");
+    }
+
+    // --- YOUR EXISTING MOBILE LOGIC (Untouched) ---
+    function toggleMobileMenu() {
+        const m = document.getElementById("mobile-menu");
+        m.classList.toggle("open");
+        if(!m.classList.contains("open")) backToMainMobile();
+        document.body.style.overflow = m.classList.contains("open") ? "hidden" : "auto";
+    }
+
+    function showSubMobile(subId) {
+        document.getElementById("mobile-main-links").style.display = "none";
+        document.getElementById(subId).style.display = "block";
+        document.getElementById("mobile-back").style.display = "inline";
+    }
+
+    function backToMainMobile() {
+        document.getElementById("mobile-main-links").style.display = "block";
+        document.querySelectorAll(".mobile-sub-menu").forEach(s => s.style.display = "none");
+        document.getElementById("mobile-back").style.display = "none";
+    }
+</script>
 </body>
 </html>
