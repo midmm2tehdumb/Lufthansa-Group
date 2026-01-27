@@ -350,3 +350,96 @@ body { background: var(--lh-grey); overflow-x: hidden; color: #333; }
     min-width: 200px;
     text-align: center;
 }
+
+/* --- HERO IMAGE TO VIDEO TRANSITION --- */
+.hero { 
+    position: relative; 
+    height: calc(100vh - var(--nav-height)); 
+    width: 100%; 
+    overflow: hidden;
+    background: #000; /* Backdrop for when video is loading */
+}
+
+/* The 748.jpg layer */
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: 2; /* Sits above the video */
+    opacity: 1; 
+    transition: opacity 1.2s ease-in-out; /* Smooth fade-out AND fade-in */
+}
+
+#heroVideo { 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    z-index: 1; /* Sits behind the image */
+}
+
+/* --- VIDEO TRIGGER PILL & MUTE BUTTON --- */
+.video-trigger {
+    position: absolute;
+    bottom: 30px;
+    left: 40px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    background: rgba(0, 31, 75, 0.8); /* Lufthansa Blue with transparency */
+    padding: 12px 22px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    transition: all 0.4s ease;
+}
+
+.video-trigger:hover {
+    background: var(--lh-yellow);
+    transform: scale(1.02);
+}
+
+.play-icon, .trigger-text {
+    color: white;
+    transition: 0.3s;
+}
+
+.video-trigger:hover .play-icon, 
+.video-trigger:hover .trigger-text {
+    color: var(--lh-blue);
+    font-weight: 700;
+}
+
+/* MUTE TOGGLE LOGIC */
+.mute-toggle {
+    background: white;
+    color: var(--lh-blue);
+    border: none;
+    padding: 6px 14px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    border-radius: 20px;
+    cursor: pointer;
+    display: none; /* Hidden until Javascript adds .visible */
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    margin-left: 5px;
+}
+
+.mute-toggle.visible {
+    display: block;
+    opacity: 1;
+}
+
+.mute-toggle:hover {
+    background: var(--lh-grey);
+    transform: scale(1.05);
+}
