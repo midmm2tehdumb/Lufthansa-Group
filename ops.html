@@ -39,6 +39,24 @@
                 <div class="menu-col"><h3>Fleet</h3><a href="fleet.html">Main Fleet</a><a href="sop-manuals.html">SOP & Manuals</a></div>
             </div>
         </div>
+        <div id="network-menu" class="mega-panel">
+            <div class="panel-content">
+                <div class="menu-col"><h3>Network Hub</h3><a href="network.html">Route Map</a><a href="radar.html">Live Radar</a></div>
+                <div class="menu-col"><h3>Hubs</h3><a href="hub-info.html#fra">Frankfurt (FRA)</a><a href="hub-info.html#muc">Munich (MUC)</a></div>
+            </div>
+        </div>
+        <div id="media-news" class="mega-panel">
+            <div class="panel-content">
+                <div class="menu-col"><h3>The Gazette</h3><a href="news.html">Latest News</a><a href="gallery.html">Fleet Gallery</a></div>
+            </div>
+        </div>
+        <div id="crew-menu" class="mega-panel">
+            <div class="panel-content">
+                <div class="menu-col"><h3>The Elite</h3><a href="hall-of-fame.html">Hall of Fame</a><a href="service-medals.html">Service Medals</a></div>
+                <div class="menu-col"><h3>Highlights</h3><a href="highlights.html">Our Perks</a></div>
+            </div>
+        </div>
+
         <div id="mobile-menu" class="mobile-nav-panel">
             <div class="mobile-header">
                 <span id="mobile-back" onclick="backToMainMobile()" style="display:none;">← Back</span>
@@ -51,22 +69,85 @@
                 <div class="mobile-pillar" onclick="showSubMobile('mob-med')">Media & News <span>›</span></div>
                 <div class="mobile-pillar" onclick="showSubMobile('mob-crew')">Crew & Community <span>›</span></div>
                 <hr>
-                <a href="https://discord.gg/kXRPrWTKTF" class="mobile-cta">Join Discord</a>
+                <a href="index.html" class="mobile-cta">Home</a>
             </div>
 
             <div id="mob-ops" class="mobile-sub-menu" style="display:none;">
                 <a href="ops.html">Flight Dispatch</a><a href="livery-db.html">Livery Database</a><a href="fleet.html">Main Fleet</a><a href="sop-manuals.html">SOP & Manuals</a>
             </div>
+            <div id="mob-net" class="mobile-sub-menu" style="display:none;">
+                <a href="network.html">Route Map</a><a href="radar.html">Live Radar</a><a href="hub-info.html">Hub Info</a>
             </div>
+            <div id="mob-med" class="mobile-sub-menu" style="display:none;">
+                <a href="news.html">Latest News</a><a href="gallery.html">Fleet Gallery</a>
+            </div>
+            <div id="mob-crew" class="mobile-sub-menu" style="display:none;">
+                <a href="hall-of-fame.html">Hall of Fame</a><a href="service-medals.html">Service Medals</a><a href="highlights.html">Our Perks</a>
+            </div>
+        </div>
     </nav>
 
     <main class="ops-main">
-        </main>
+        <header class="page-title">
+            <h1>Flight Operations</h1>
+            <div class="title-underline"></div>
+            <p>Ready for departure? Access your tools and hub conditions below.</p>
+        </header>
+
+        <div class="ops-grid">
+            <div class="ops-card">
+                <div class="card-content">
+                    <h3>Flight Planning</h3>
+                    <p>Generate your Operational Flight Plan using SimBrief. Ensure you use airline code <strong>DLH</strong> for realism.</p>
+                </div>
+                <a href="https://www.simbrief.com/system/dispatch.php" target="_blank" class="btn-gold">Launch SimBrief</a>
+            </div>
+
+            <div class="ops-card">
+                <div class="card-content">
+                    <h3>Livery Database</h3>
+                    <p>Access the official GeoFS Lufthansa livery IDs for the 747-8i, A350, and our retro fleet.</p>
+                </div>
+                <a href="livery-db.html" class="btn-outline-blue">View Liveries</a>
+            </div>
+
+            <div class="ops-card">
+                <div class="card-content">
+                    <h3>SOP & Manuals</h3>
+                    <p>Detailed Standard Operating Procedures for taxi, takeoff, and GeoFS-specific navigation.</p>
+                </div>
+                <a href="sop-manuals.html" class="btn-outline-blue">Open Manuals</a>
+            </div>
+
+            <div class="ops-card">
+                <div class="card-content">
+                    <h3>Pilot Support</h3>
+                    <p>Have questions regarding routes or operations? Connect with the team in the General channel.</p>
+                </div>
+                <a href="https://discord.com/channels/1404322265214095470/1404322265822396418" target="_blank" class="btn-outline-blue">Discord Help</a>
+            </div>
+
+            <div class="ops-card">
+                <div class="card-content">
+                    <h3>Frankfurt (EDDF)</h3>
+                    <iframe src="https://checkwx.com/weather/EDDF/metar" width="100%" height="200" frameborder="0" style="border-radius: 8px;"></iframe>
+                </div>
+                <a href="https://checkwx.com/weather/EDDF/metar" target="_blank" class="btn-outline-blue">Full Weather Report</a>
+            </div>
+
+            <div class="ops-card">
+                <div class="card-content">
+                    <h3>Munich (EDDM)</h3>
+                    <iframe src="https://checkwx.com/weather/EDDM/metar" width="100%" height="200" frameborder="0" style="border-radius: 8px;"></iframe>
+                </div>
+                <a href="https://checkwx.com/weather/EDDM/metar" target="_blank" class="btn-outline-blue">Full Weather Report</a>
+            </div>
+        </div>
+    </main>
 
     <script>
         let lastScrollY = window.scrollY;
         const navbar = document.getElementById("navbar");
-
         window.addEventListener("scroll", () => {
             if (window.scrollY > lastScrollY && window.scrollY > 150) {
                 navbar.classList.add("nav-hidden");
@@ -75,16 +156,12 @@
             lastScrollY = window.scrollY;
         });
 
-        // Desktop Mega Menu Logic
         function toggleMenu(menuId) {
             const menu = document.getElementById(menuId);
             const overlay = document.getElementById("menu-overlay");
             const isOpen = menu.classList.contains("active");
             closeAllMenus();
-            if (!isOpen) { 
-                menu.classList.add("active"); 
-                overlay.classList.add("active"); 
-            }
+            if (!isOpen) { menu.classList.add("active"); overlay.classList.add("active"); }
         }
 
         function closeAllMenus() {
@@ -92,12 +169,14 @@
             document.getElementById("menu-overlay").classList.remove("active");
         }
 
-        // MOBILE MENU LOGIC (The missing piece)
+        // --- MOBILE NAV LOGIC ---
         function toggleMobileMenu() {
             const m = document.getElementById("mobile-menu");
-            m.classList.toggle("open");
-            if(!m.classList.contains("open")) backToMainMobile();
-            document.body.style.overflow = m.classList.contains("open") ? "hidden" : "auto";
+            if (m) {
+                m.classList.toggle("open");
+                if(!m.classList.contains("open")) backToMainMobile();
+                document.body.style.overflow = m.classList.contains("open") ? "hidden" : "auto";
+            }
         }
 
         function showSubMobile(subId) {
