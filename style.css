@@ -479,3 +479,52 @@ body { background: var(--lh-grey); overflow-x: hidden; color: #333; }
     color: #444;
     line-height: 1.6;
 }
+
+
+.rank-disclaimer {
+    background: rgba(255, 191, 0, 0.1);
+    border-left: 5px solid var(--lh-yellow);
+    padding: 15px;
+    margin-bottom: 30px;
+    color: var(--lh-blue);
+    font-size: 0.95rem;
+}
+
+.section-heading {
+    color: var(--lh-blue);
+    margin: 40px 0 10px;
+    font-size: 1.8rem;
+}
+
+.livery-embed {
+    width: 100%;
+    display: block;
+    transition: filter 0.3s ease;
+}
+
+.livery-card a {
+    text-decoration: none;
+    display: block;
+}
+
+.livery-card:hover .livery-embed {
+    filter: brightness(1.1);
+}
+
+.livery-label {
+    padding: 15px;
+    background: #fff;
+    border-top: 1px solid #eee;
+}
+
+.livery-label h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--lh-blue);
+}
+
+.livery-label span {
+    font-size: 0.8rem;
+    color: #888;
+    text-transform: uppercase;
+}
