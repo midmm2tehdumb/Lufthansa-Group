@@ -528,3 +528,56 @@ body { background: var(--lh-grey); overflow-x: hidden; color: #333; }
     color: #888;
     text-transform: uppercase;
 }
+
+/* --- LIVERY DB SPECIFIC --- */
+.livery-grid-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* This forces 2 side-by-side */
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.livery-card-link {
+    display: block;
+    text-decoration: none;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.livery-card-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.livery-card-link img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-bottom: 1px solid #eee;
+}
+
+.livery-details {
+    padding: 20px;
+}
+
+.livery-details h3 {
+    color: var(--lh-blue);
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.livery-details p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+/* Responsive: Stack them on small mobile screens */
+@media (max-width: 600px) {
+    .livery-grid-side {
+        grid-template-columns: 1fr;
+    }
+}
