@@ -93,102 +93,92 @@
     </nav>
 
     <header class="hero" id="hero-section">
-    <video autoplay muted loop id="heroVideo">
-        <source src="lufthansa.mp4" type="video/mp4">
-    </video>
+        <video autoplay muted loop id="heroVideo">
+            <source src="lufthansa.mp4" type="video/mp4">
+        </video>
 
-    <div class="hero-image" id="heroImg" style="background-image: url('748.jpg');"></div>
+        <div class="hero-image" id="heroImg" style="background-image: url('748.jpg');"></div>
 
-    <div class="hero-overlay">
-        <div class="content-wrapper">
-            <p class="say-yes">SAY YES TO THE WORLD</p>
-            <h1>Real routes, real ops,<br>real pilots, in GeoFS Lufthansa</h1>
-            
-            <div class="cta-box">
-                <a href="#" class="btn-gold">Join our Discord</a>
-                <a href="#" class="btn-outline">Open Gallery</a>
+        <div class="hero-overlay">
+            <div class="content-wrapper">
+                <p class="say-yes">SAY YES TO THE WORLD</p>
+                <h1>Real routes, real ops,<br>real pilots, in GeoFS Lufthansa</h1>
+                
+                <div class="cta-box">
+                    <a href="#" class="btn-gold">Join our Discord</a>
+                    <a href="#" class="btn-outline">Open Gallery</a>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="video-trigger" id="vidTrigger">
-        <span class="play-icon">▶</span>
-        <span class="trigger-text">HOVER FOR VIDEO</span>
-        
-        <button id="muteBtn" class="mute-toggle">UNMUTE</button>
-    </div>
-</header>
+        <div class="video-trigger" id="vidTrigger">
+            <span class="play-icon">▶</span>
+            <span class="trigger-text">HOVER FOR VIDEO</span>
+            <button id="muteBtn" class="mute-toggle">UNMUTE</button>
+        </div>
+    </header>
 
-<script>
-    const trigger = document.getElementById('vidTrigger');
-    const heroImg = document.getElementById('heroImg');
-    const muteBtn = document.getElementById('muteBtn');
-    const video = document.getElementById('heroVideo');
+    <script>
+        // --- HERO VIDEO & HOVER LOGIC ---
+        const trigger = document.getElementById('vidTrigger');
+        const heroImg = document.getElementById('heroImg');
+        const muteBtn = document.getElementById('muteBtn');
+        const video = document.getElementById('heroVideo');
 
-    // Handle Hover In
-    trigger.addEventListener('mouseenter', () => {
-        heroImg.style.opacity = '0'; // Fade out image
-        muteBtn.classList.add('visible'); // Show mute button
-    });
+        trigger.addEventListener('mouseenter', () => {
+            heroImg.style.opacity = '0'; 
+            muteBtn.classList.add('visible');
+        });
 
-    // Handle Hover Out
-    trigger.addEventListener('mouseleave', () => {
-        heroImg.style.opacity = '1'; // Fade back to image
-        muteBtn.classList.remove('visible'); // Hide mute button
-        video.muted = true; // Safety: mute audio when exiting
-        muteBtn.innerText = "UNMUTE";
-    });
-
-    // Toggle Mute Logic
-    muteBtn.addEventListener('click', (e) => {
-        e.stopPropagation(); // Prevents trigger hover logic from flickering
-        if (video.muted) {
-            video.muted = false;
-            muteBtn.innerText = "MUTE";
-        } else {
-            video.muted = true;
+        trigger.addEventListener('mouseleave', () => {
+            heroImg.style.opacity = '1'; 
+            muteBtn.classList.remove('visible'); 
+            video.muted = true; 
             muteBtn.innerText = "UNMUTE";
-        }
-    });
+        });
 
-        // SMART HIDE NAV
+        muteBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); 
+            if (video.muted) {
+                video.muted = false;
+                muteBtn.innerText = "MUTE";
+            } else {
+                video.muted = true;
+                muteBtn.innerText = "UNMUTE";
+            }
+        });
+
+        // --- NAVIGATION LOGIC ---
         let lastScrollY = window.scrollY;
         const navbar = document.getElementById("navbar");
+
         window.addEventListener("scroll", () => {
             if (window.scrollY > lastScrollY && window.scrollY > 150) {
                 navbar.classList.add("nav-hidden");
                 closeAllMenus(); 
-            } else { navbar.classList.remove("nav-hidden"); }
+            } else { 
+                navbar.classList.remove("nav-hidden"); 
+            }
             lastScrollY = window.scrollY;
         });
 
-        // VIDEO UNMUTE LOGIC
-        function toggleMute() {
-            const video = document.getElementById("heroVideo");
-            const btn = document.getElementById("muteBtn");
-            if (video.muted) {
-                video.muted = false;
-                btn.innerText = "Mute Audio";
-            } else {
-                video.muted = true;
-                btn.innerText = "Unmute Audio";
-            }
-        }
-
-        // DESKTOP LOGIC
         function toggleMenu(menuId) {
             const menu = document.getElementById(menuId);
             const overlay = document.getElementById("menu-overlay");
             const isOpen = menu.classList.contains("active");
             closeAllMenus();
-            if (!isOpen) { menu.classList.add("active"); overlay.classList.add("active"); }
+            if (!isOpen) { 
+                menu.classList.add("active"); 
+                overlay.classList.add("active"); 
+            }
         }
+
         function closeAllMenus() {
             document.querySelectorAll('.mega-panel').forEach(p => p.classList.remove('active'));
             document.getElementById("menu-overlay").classList.remove("active");
         }
 
-        // MOBILE MULTI-LEVEL LOGIC
+        // --- MOBILE MENU LOGIC ---
         function toggleMobileMenu() {
             const m = document.getElementById("mobile-menu");
             m.classList.toggle("open");
