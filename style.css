@@ -720,3 +720,28 @@ body { background: var(--lh-grey); overflow-x: hidden; color: #333; }
     font-weight: 700;
     color: var(--lh-blue);
 }
+
+.filter-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto 50px auto;
+}
+
+.filter-btn {
+    background: #fff;
+    border: 1px solid var(--lh-blue);
+    padding: 8px 18px;
+    cursor: pointer;
+    border-radius: 2px; /* Sharper edges for the Korean Air look */
+    font-weight: 500;
+    color: var(--lh-blue);
+    transition: all 0.2s ease;
+}
+
+.filter-btn.active {
+    background: var(--lh-blue);
+    color: white;
+}
