@@ -809,3 +809,111 @@ body { background: var(--lh-grey); overflow-x: hidden; color: #333; }
 /* Scrollbar styling for a cleaner look */
 .sop-sidebar::-webkit-scrollbar { width: 5px; }
 .sop-sidebar::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
+
+:root {
+    --lh-blue: #001b44;
+    --lh-yellow: #ffbc00;
+}
+
+.sop-hero {
+    height: 40vh;
+    background: linear-gradient(rgba(0,27,68,0.7), rgba(0,27,68,0.7)), url('748.jpg') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.say-yes { font-size: 0.9rem; letter-spacing: 4px; color: var(--lh-yellow); margin-bottom: 10px; }
+
+.sop-container {
+    display: flex;
+    max-width: 1400px;
+    margin: -60px auto 100px auto;
+    background: #fff;
+    min-height: 80vh;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    z-index: 10;
+}
+
+/* SIDEBAR */
+.sop-sidebar {
+    width: 320px;
+    background: #f8f9fa;
+    border-right: 1px solid #ddd;
+    padding: 20px 0;
+    overflow-y: auto;
+}
+
+.sidebar-group {
+    padding: 20px 25px 10px 25px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: #888;
+    letter-spacing: 1px;
+}
+
+.sop-tab {
+    width: 100%;
+    padding: 15px 25px;
+    border: none;
+    background: transparent;
+    text-align: left;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-left: 5px solid transparent;
+    color: var(--lh-blue);
+}
+
+.sop-tab:hover { background: #eee; }
+
+.sop-tab.active {
+    background: #fff;
+    border-left: 5px solid var(--lh-yellow);
+    font-weight: bold;
+    color: var(--lh-blue);
+}
+
+/* CONTENT */
+.sop-content {
+    flex: 1;
+    padding: 60px;
+    overflow-y: auto;
+}
+
+.sop-article { display: none; }
+.sop-article.active { display: block; animation: fadeIn 0.4s ease forwards; }
+
+.sop-card {
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 25px;
+    margin-top: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+
+.sop-card h3 {
+    margin-top: 0;
+    color: var(--lh-blue);
+    font-size: 1.2rem;
+    border-bottom: 2px solid var(--lh-yellow);
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 900px) {
+    .sop-container { flex-direction: column; margin: 0; border-radius: 0; }
+    .sop-sidebar { width: 100%; height: auto; border-right: none; border-bottom: 1px solid #ddd; }
+}
