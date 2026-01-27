@@ -745,3 +745,39 @@ body { background: var(--lh-grey); overflow-x: hidden; color: #333; }
     background: var(--lh-blue);
     color: white;
 }
+
+/* --- FLEET PAGE ROUNDED IMAGE FIX --- */
+.fleet-img-box {
+    flex: 0 0 450px;
+    background: white;
+    /* This creates the deep "Flight Ops" curve */
+    border-radius: 30px !important; 
+    padding: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    border: 1px solid #eee;
+    /* CRITICAL: This prevents the image from square-ing out the corners */
+    overflow: hidden; 
+    margin-right: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fleet-img-box img {
+    width: 100%;
+    height: 100%;
+    /* Clips the actual aircraft photo to the box curve */
+    border-radius: 22px !important; 
+    object-fit: cover;
+    display: block;
+}
+
+/* Responsive adjustment for mobile */
+@media (max-width: 900px) {
+    .fleet-img-box {
+        flex: 0 0 auto;
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+}
