@@ -665,3 +665,58 @@ body { background: var(--lh-grey); overflow-x: hidden; color: #333; }
     .fleet-img-box { flex: 0 0 auto; padding-right: 0; margin-bottom: 20px; }
     .fleet-specs { justify-content: center; }
 }
+
+/* --- FLEET FILTERING --- */
+.filter-container {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: 700;
+    color: var(--lh-blue);
+    transition: all 0.3s ease;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background: var(--lh-blue);
+    color: white;
+    border-color: var(--lh-blue);
+}
+
+.fleet-row.hidden {
+    display: none;
+}
+
+/* --- STANDARDIZED SPEC BAR --- */
+.fleet-specs {
+    display: flex;
+    gap: 30px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.spec-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.spec-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #888;
+    letter-spacing: 1px;
+}
+
+.spec-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--lh-blue);
+}
