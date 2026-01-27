@@ -1,3 +1,13 @@
+/* Push the Hero and all main content down so the 80px nav doesn't cover it */
+header.hero, main {
+    margin-top: var(--nav-height); 
+}
+
+/* If you want the video to still be full screen but stay below the nav */
+.hero {
+    height: calc(100vh - var(--nav-height)) !important;
+}
+
 /* --- LUFTHANSA MASTER STYLESHEET --- */
 :root {
     --lh-blue: #001f4b;
