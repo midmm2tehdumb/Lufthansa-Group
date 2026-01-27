@@ -229,9 +229,18 @@ body { background: var(--lh-grey); overflow-x: hidden; color: #333; }
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to right, rgba(0,31,75,0.6), transparent);
+    /* This z-index must be higher than hero-image (2) */
+    z-index: 5; 
+    background: linear-gradient(to right, rgba(0,31,75,0.5), transparent);
     display: flex;
     align-items: center;
+    /* This allows you to click the trigger pill through the overlay */
+    pointer-events: none; 
+}
+
+/* Re-enable clicking for buttons inside the overlay */
+.hero-overlay .content-wrapper {
+    pointer-events: auto;
 }
 .say-yes { color: var(--white); letter-spacing: 5px; margin-bottom: 10px; font-weight: 300; }
 .hero-overlay h1 { color: var(--white); font-size: 3.5rem; line-height: 1.1; margin-bottom: 30px; }
