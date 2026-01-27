@@ -1,63 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lufthansa Fleet - A220</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airbus A220 | Lufthansa GeoFS</title>
+    <link rel="icon" type="image/png" href="../logo.png">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-
-<nav>
-  <div class="logo">Lufthansa Airlines</div>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="fleet.html">Fleet</a></li>
-    <li><a href="destinations.html">Destinations</a></li>
-    <li><a href="booking.html">Booking</a></li>
-    <li><a href="info.html">Information</a></li>
-    <li><a href="rp.html">RP</a></li>
-  </ul>
-</nav>
-
-<main>
-  <section class="aircraft-details">
-    <h2>Lufthansa Regional - Airbus A220</h2>
-    
-    <div class="plane-header">
-        <img src="a220.png" alt="Airbus A220">
-        <div class="plane-info">
-            <h3>Key Stats</h3>
-            <p><strong>Top Speed:</strong> 871 km/h</p>
-            <p><strong>Range:</strong> 3,400 km</p>
-            <p><strong>Role:</strong> Short haul, efficient and quiet city-hopper, replacing the CRJ700.</p>
-            <p><strong>Engine Type:</strong> Geared Turbofan (PW1500G)</p>
-<p><strong>In Service:</strong> 40 Aircraft</p>
-<p><strong>Ordered:</strong> 20 Aircraft (Potential)</p>
-        </div>
-    </div>
-
-    <div class="seat-config">
-        <h3>Seating Configuration (Regional Standard)</h3>
-        <div class="config-content active" id="config-crj-1">
-            <p>Configured for efficient, short-haul regional transport, offering a standard two-class setup. **Total Seats: 148**</p>
-            <ul>
-                <li><strong>Business Class</strong> - 15 Seats (2-2 configuration)</li>
-                <li><strong>Economy Class</strong> - 133 Seats (2-3 configuration)</li>
-                <li><strong>Pitch / Width (B)</strong> - 3" / 19"</li>
+    <nav class="main-nav" id="navbar">
+        <div class="nav-wrapper">
+            <div class="nav-left"><a href="../index.html" class="logo-link"><img src="../logo.png" alt="Logo" class="nav-logo"><span>Lufthansa GeoFS</span></a></div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../fleet.html">Fleet</a></li>
+                <li><a href="../destinations.html">Destinations</a></li>
+                <li><a href="../booking.html">Booking</a></li>
+                <li><a href="../information.html">Information</a></li>
+                <li><a href="../rp.html">RP</a></li>
             </ul>
         </div>
-    </div>
-  </section>
-</main>
+    </nav>
 
-<section class="disclaimer">
-  <p>
-    <strong>Disclaimer:</strong> Lufthansa Airlines is a virtual GeoFS airline and does not represent the real-life Lufthansa Group. 
-    This website and content are intended for entertainment and educational purposes within the virtual flight simulator community.
-  </p>
-</section>
+    <main class="aircraft-detail-container" style="padding-top: 120px;">
+        <section class="aircraft-hero">
+            <div class="back-nav"><a href="../fleet.html">← Back to Fleet Overview</a></div>
+            <div class="hero-flex">
+                <div class="hero-image"><img src="a220.png" alt="Airbus A220"></div>
+                <div class="hero-text">
+                    <span class="status-tag tag-ordering">Expansion</span>
+                    <h1>Airbus A220-300</h1>
+                    <p class="subtitle">The next generation of short-haul travel, combining widebody comfort with regional efficiency.</p>
+                    <div class="fleet-stats">
+                        <p><strong>In Service:</strong> 40 Aircraft</p>
+                        <p><strong>On Order:</strong> 20 Potential Orders</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <section class="spec-grid-container">
+            <div class="spec-card"><span class="spec-label">Range</span><span class="spec-value">6,300 km</span></div>
+            <div class="spec-card"><span class="spec-label">Cruise Speed</span><span class="spec-value">Mach 0.82</span></div>
+            <div class="spec-card"><span class="spec-label">Ceiling</span><span class="spec-value">41,000 ft</span></div>
+            <div class="spec-card"><span class="spec-label">Manufacturer</span><span class="spec-value">Airbus</span></div>
+        </section>
+
+        <hr class="section-divider">
+
+        <section class="cabin-section">
+            <div class="cabin-info">
+                <h2>On-Board Product</h2>
+                <div class="config-box">
+                    <h3>Continental Allegris Layout</h3>
+                    <p>Modern cabin with large windows and a 2-3 seating arrangement for enhanced space. <strong>Total Seats: 145</strong></p>
+                    <ul class="cabin-list">
+                        <li><strong>Business Class</strong> — Flexible Seating (2-3 configuration, adjacent seat blocked)</li>
+                        <li><strong>Economy Class</strong> — 145 Seats (2-3 configuration)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
