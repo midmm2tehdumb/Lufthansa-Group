@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lufthansa GeoFS</title>
     <link rel="icon" type="image/png" href="logo.png">
-    
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
@@ -27,8 +26,10 @@
                 <li class="pillar-link" onclick="toggleMenu('crew-menu')">Crew & Community</li>
             </ul>
 
-            <div class="nav-right">
-                <input type="text" id="site-search" placeholder="Search operations...">
+            <div class="hamburger" onclick="toggleMobileMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
             </div>
         </div>
 
@@ -88,6 +89,18 @@
                 </div>
             </div>
         </div>
+
+        <div id="mobile-menu" class="mobile-nav-panel">
+            <span class="close-mobile" onclick="toggleMobileMenu()">&times;</span>
+            <div class="mobile-links">
+                <a href="ops.html" onclick="toggleMobileMenu()">Flight Operations</a>
+                <a href="network.html" onclick="toggleMobileMenu()">Live Network</a>
+                <a href="news.html" onclick="toggleMobileMenu()">Media & News</a>
+                <a href="crew.html" onclick="toggleMobileMenu()">Crew & Community</a>
+                <hr>
+                <a href="https://discord.gg/kXRPrWTKTF" class="mobile-cta">Join Discord</a>
+            </div>
+        </div>
     </nav>
 
     <header class="hero">
@@ -106,45 +119,43 @@
         </div>
     </header>
 
-    <main class="main-content">
-        </main>
-
     <script>
-        // 1. SMART HIDE NAV SCRIPT
+        // SMART HIDE NAV
         let lastScrollY = window.scrollY;
         const navbar = document.getElementById("navbar");
 
         window.addEventListener("scroll", () => {
-            // Animates off-screen when scrolling down, reappears when scrolling up
             if (window.scrollY > lastScrollY && window.scrollY > 150) {
                 navbar.classList.add("nav-hidden");
+                closeAllMenus(); 
             } else {
                 navbar.classList.remove("nav-hidden");
             }
             lastScrollY = window.scrollY;
         });
 
-        // 2. MEGA MENU TOGGLE
+        // DESKTOP MEGA MENU
         function toggleMenu(menuId) {
             const menu = document.getElementById(menuId);
             const overlay = document.getElementById("menu-overlay");
             const isOpen = menu.classList.contains("active");
-            
-            closeAllMenus(); // Close other open menus first
-            
+            closeAllMenus();
             if (!isOpen) {
                 menu.classList.add("active");
                 overlay.classList.add("active");
-                document.body.style.overflow = "hidden"; // Prevent background scroll
-            } else {
-                document.body.style.overflow = "auto";
             }
         }
 
         function closeAllMenus() {
             document.querySelectorAll('.mega-panel').forEach(p => p.classList.remove('active'));
             document.getElementById("menu-overlay").classList.remove("active");
-            document.body.style.overflow = "auto";
+        }
+
+        // MOBILE HAMBURGER
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById("mobile-menu");
+            mobileMenu.classList.toggle("open");
+            document.body.style.overflow = mobileMenu.classList.contains("open") ? "hidden" : "auto";
         }
     </script>
 </body>
