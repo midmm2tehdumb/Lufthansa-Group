@@ -93,7 +93,7 @@
     </nav>
 
     <header class="hero" id="hero-section">
-        <video autoplay muted loop id="heroVideo">
+        <video muted loop id="heroVideo">
             <source src="lufthansa.mp4" type="video/mp4">
         </video>
 
@@ -105,8 +105,8 @@
                 <h1>Real routes, real ops,<br>real pilots, in GeoFS Lufthansa</h1>
                 
                 <div class="cta-box">
-                    <a href="#" class="btn-gold">Join our Discord</a>
-                    <a href="#" class="btn-outline">Open Gallery</a>
+                    <a href="https://discord.gg/kXRPrWTKTF" class="btn-gold">Join our Discord</a>
+                    <a href="gallery.html" class="btn-outline">Open Gallery</a>
                 </div>
             </div>
         </div>
@@ -119,7 +119,7 @@
     </header>
 
     <script>
-    // --- HERO VIDEO & HOVER TOGGLE LOGIC (1-Second Delay) ---
+    // --- HERO VIDEO & HOVER TOGGLE LOGIC ---
     const trigger = document.getElementById('vidTrigger');
     const heroImg = document.getElementById('heroImg');
     const muteBtn = document.getElementById('muteBtn');
@@ -129,26 +129,28 @@
     let isVideoActive = false;
 
     trigger.addEventListener('mouseenter', () => {
-        // Start a 1-second timer when mouse enters the pill
         hoverTimer = setTimeout(() => {
             if (!isVideoActive) {
-                // Switch to Video
+                // FIX 2: Manually start the video when hover is confirmed
+                video.play(); 
                 heroImg.style.opacity = '0';
                 muteBtn.classList.add('visible');
                 isVideoActive = true;
             } else {
-                // Switch back to Image
                 heroImg.style.opacity = '1';
                 muteBtn.classList.remove('visible');
                 video.muted = true;
                 muteBtn.innerText = "UNMUTE";
+                
+                // FIX 3: Pause the video after fade out to save CPU
+                setTimeout(() => { if(!isVideoActive) video.pause(); }, 1200);
+                
                 isVideoActive = false;
             }
-        }, 1000); // 1000ms = 1 second
+        }, 1000); 
     });
 
     trigger.addEventListener('mouseleave', () => {
-        // If they move the mouse away BEFORE 1 second, cancel the toggle
         clearTimeout(hoverTimer);
     });
 
