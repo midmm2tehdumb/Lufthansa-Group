@@ -3,207 +3,240 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fleet | Lufthansa Group Virtual</title>
+    <title>Fleet | Lufthansa GeoFS</title>
+    <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <nav class="main-nav">
-        <div class="nav-container">
+    <nav class="main-nav" id="navbar">
+        <div class="nav-wrapper">
             <div class="nav-left">
-                <a href="index.html" class="home-link">HOME</a>
+                <a href="index.html" class="logo-link">
+                    <img src="logo.png" alt="Logo" class="nav-logo">
+                    <span>Lufthansa GeoFS</span>
+                </a>
             </div>
             
             <ul class="nav-links">
-                <li><a href="fleet.html">Fleet</a></li>
-                <li><a href="destinations.html">Destinations</a></li>
-                <li><a href="booking.html">Booking</a></li>
-                <li><a href="info.html">Information</a></li>
-                <li><a href="rp.html">RP</a></li>
+                <li class="pillar-link" onclick="toggleMenu('ops-menu')">Flight Operations</li>
+                <li class="pillar-link" onclick="toggleMenu('network-menu')">Live Network</li>
+                <li class="pillar-link" onclick="toggleMenu('media-news')">Media & News</li>
+                <li class="pillar-link" onclick="toggleMenu('crew-menu')">Crew & Community</li>
             </ul>
 
-            <div class="nav-right">
-                <input type="text" list="site-map" id="site-search" placeholder="Search the airline...">
-                <datalist id="site-map">
-                    <option value="Home">
-                    <option value="Fleet Overview">
-                    <option value="Destinations">
-                    <option value="Booking">
-                    <option value="Information">
-                    <option value="Roleplay">
-                    <option value="News">
-                    <option value="History">
-                    <option value="Foreign">
-                    <option value="Profiles">
-                    <option value="Misc">
-                    <option value="CRJ700">
-                    <option value="A220">
-                    <option value="A319">
-                    <option value="A320">
-                    <option value="A321">
-                    <option value="A330-200">
-                    <option value="A340-300">
-                    <option value="A350-900">
-                    <option value="A350-1000">
-                    <option value="A380">
-                    <option value="747-8">
-                    <option value="777-9">
-                    <option value="777F">
-                    <option value="787-9">
-                </datalist>
+            <div class="hamburger" onclick="toggleMobileMenu()">
+                <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            </div>
+        </div>
+
+        <div class="mega-overlay" id="menu-overlay" onclick="closeAllMenus()"></div>
+        
+        <div id="ops-menu" class="mega-panel">
+            <div class="panel-content">
+                <div class="menu-col"><h3>Ops Center</h3><a href="ops.html">Flight Dispatch</a><a href="livery-db.html">Livery Database</a></div>
+                <div class="menu-col"><h3>Fleet</h3><a href="fleet.html">Main Fleet</a><a href="sop-manuals.html">SOP & Manuals</a></div>
+            </div>
+        </div>
+        <div id="network-menu" class="mega-panel">
+            <div class="panel-content">
+                <div class="menu-col"><h3>Network Hub</h3><a href="network.html">Route Map</a><a href="radar.html">Live Radar</a></div>
+                <div class="menu-col"><h3>Hubs</h3><a href="hub-info.html#fra">Frankfurt (FRA)</a><a href="hub-info.html#muc">Munich (MUC)</a></div>
+            </div>
+        </div>
+        <div id="media-news" class="mega-panel">
+            <div class="panel-content">
+                <div class="menu-col"><h3>The Gazette</h3><a href="news.html">Latest News</a><a href="gallery.html">Fleet Gallery</a></div>
+            </div>
+        </div>
+        <div id="crew-menu" class="mega-panel">
+            <div class="panel-content">
+                <div class="menu-col"><h3>The Elite</h3><a href="hall-of-fame.html">Hall of Fame</a><a href="service-medals.html">Service Medals</a></div>
+                <div class="menu-col"><h3>Highlights</h3><a href="highlights.html">Our Perks</a></div>
             </div>
         </div>
     </nav>
 
-    <main class="fleet-main">
-        <header class="page-header">
+    <main class="fleet-section" style="padding-top: 100px;">
+        <header class="page-title" style="text-align: center;">
             <h1>Our Fleet</h1>
-            <p>Explore the diverse aircraft that connect our virtual world.</p>
+            <div class="title-underline"></div>
+            <p>Experience the world from a new perspective with our state-of-the-art aircraft.</p>
         </header>
 
-        <section class="fleet-grid">
-    <a class="fleet-card" href="crj700.html">
-        <div class="card-image-container">
-            <span class="tag retiring">Retiring</span>
-            <img src="crj700.png" alt="CRJ700">
-        </div>
-        <div class="fleet-info"><h3>CRJ700</h3></div>
-    </a>
-    <a class="fleet-card" href="a319.html">
-        <div class="card-image-container">
-            <span class="tag retiring">Retiring</span>
-            <img src="a319.webp" alt="A319">
-        </div>
-        <div class="fleet-info"><h3>A319</h3></div>
-    </a>
-    <a class="fleet-card" href="a340300.html">
-        <div class="card-image-container">
-            <span class="tag retiring">Retiring</span>
-            <img src="a340300.webp" alt="A340-300">
-        </div>
-        <div class="fleet-info"><h3>A340</h3></div>
-    </a>
+        <div class="fleet-category-header"><h2>Modernization & Growth</h2></div>
 
-    <a class="fleet-card" href="a220.html">
-        <div class="card-image-container">
-            <span class="tag service-order">In Service/Ordering</span>
-            <img src="a220.png" alt="A220">
+        <div class="fleet-row">
+            <div class="fleet-img-box"><img src="a350-1000.png" alt="A350-1000"></div>
+            <div class="fleet-info-box">
+                <span class="status-tag tag-ordering">In Service / Ordering</span>
+                <h3>Airbus A350-1000</h3>
+                <div class="fleet-specs"><span><strong>Range:</strong> 16,100 km</span><span><strong>Engines:</strong> RR Trent XWB</span></div>
+            </div>
         </div>
-        <div class="fleet-info"><h3>A220</h3></div>
-    </a>
-    <a class="fleet-card" href="a320.html">
-        <div class="card-image-container">
-            <span class="tag service-order">In Service/Ordering</span>
-            <img src="a320.webp" alt="A320">
-        </div>
-        <div class="fleet-info"><h3>A320</h3></div>
-    </a>
-    <a class="fleet-card" href="a321.html">
-        <div class="card-image-container">
-            <span class="tag service-order">In Service/Ordering</span>
-            <img src="a321.webp" alt="A321">
-        </div>
-        <div class="fleet-info"><h3>A321</h3></div>
-    </a>
-    <a class="fleet-card" href="a350900.html">
-        <div class="card-image-container">
-            <span class="tag service-order">In Service/Ordering</span>
-            <img src="a350900.webp" alt="A350-900">
-        </div>
-        <div class="fleet-info"><h3>A350-900</h3></div>
-    </a>
-    <a class="fleet-card" href="a3501000.html">
-        <div class="card-image-container">
-            <span class="tag service-order">In Service/Ordering</span>
-            <img src="a3501000.webp" alt="A350-1000">
-        </div>
-        <div class="fleet-info"><h3>A350-1000</h3></div>
-    </a>
-    <a class="fleet-card" href="7779.html">
-        <div class="card-image-container">
-            <span class="tag service-order">In Service/Ordering</span>
-            <img src="7779.webp" alt="777-9">
-        </div>
-        <div class="fleet-info"><h3>777-9</h3></div>
-    </a>
-    <a class="fleet-card" href="787.html">
-        <div class="card-image-container">
-            <span class="tag service-order">In Service/Ordering</span>
-            <img src="787.webp" alt="787-9">
-        </div>
-        <div class="fleet-info"><h3>787</h3></div>
-    </a>
 
-    <a class="fleet-card" href="a330200.html">
-        <div class="card-image-container">
-            <span class="tag in-service">In Service</span>
-            <img src="a330200.webp" alt="A330">
+        <div class="fleet-row">
+            <div class="fleet-img-box"><img src="777-9.png" alt="777-9"></div>
+            <div class="fleet-info-box">
+                <span class="status-tag tag-ordering">In Service / Ordering</span>
+                <h3>Boeing 777-9</h3>
+                <div class="fleet-specs"><span><strong>Range:</strong> 13,500 km</span><span><strong>Wingspan:</strong> 71.8m</span></div>
+            </div>
         </div>
-        <div class="fleet-info"><h3>A330</h3></div>
-    </a>
-    <a class="fleet-card" href="a380.html">
-        <div class="card-image-container">
-            <span class="tag in-service">In Service</span>
-            <img src="a380.webp" alt="A380">
+
+        <div class="fleet-row">
+            <div class="fleet-img-box"><img src="a350-900.png" alt="A350-900"></div>
+            <div class="fleet-info-box">
+                <span class="status-tag tag-ordering">In Service / Ordering</span>
+                <h3>Airbus A350-900</h3>
+                <div class="fleet-specs"><span><strong>Range:</strong> 15,000 km</span><span><strong>Service:</strong> Long Haul</span></div>
+            </div>
         </div>
-        <div class="fleet-info"><h3>A380</h3></div>
-    </a>
-    <a class="fleet-card" href="7478.html">
-        <div class="card-image-container">
-            <span class="tag in-service">In Service</span>
-            <img src="7478.webp" alt="747">
+
+        <div class="fleet-row">
+            <div class="fleet-img-box"><img src="787.png" alt="787"></div>
+            <div class="fleet-info-box">
+                <span class="status-tag tag-ordering">In Service / Ordering</span>
+                <h3>Boeing 787 Dreamliner</h3>
+                <div class="fleet-specs"><span><strong>Efficiency:</strong> +25%</span><span><strong>Type:</strong> Mid-Size Widebody</span></div>
+            </div>
         </div>
-        <div class="fleet-info"><h3>747</h3></div>
-    </a>
-    <a class="fleet-card" href="777f.html">
-        <div class="card-image-container">
-            <span class="tag in-service">In Service</span>
-            <img src="777300.webp" alt="777F">
+
+        <div class="fleet-row">
+            <div class="fleet-img-box"><img src="a320.png" alt="A320"></div>
+            <div class="fleet-info-box">
+                <span class="status-tag tag-ordering">In Service / Ordering</span>
+                <h3>Airbus A320neo</h3>
+                <div class="fleet-specs"><span><strong>Range:</strong> 6,300 km</span><span><strong>Type:</strong> Narrowbody</span></div>
+            </div>
         </div>
-        <div class="fleet-info"><h3>777F</h3></div>
-    </a>
-</section>
+
+        <div class="fleet-row">
+            <div class="fleet-img-box"><img src="a321.png" alt="A321"></div>
+            <div class="fleet-info-box">
+                <span class="status-tag tag-ordering">In Service / Ordering</span>
+                <h3>Airbus A321neo</h3>
+                <div class="fleet-specs"><span><strong>Capacity:</strong> 215 Seats</span><span><strong>Type:</strong> Narrowbody</span></div>
+            </div>
+        </div>
+
+        <div class="fleet-row">
+            <div class="fleet-img-box"><img src="a220.png" alt="A220"></div>
+            <div class="fleet-info-box">
+                <span class="status-tag tag-ordering">In Service / Ordering</span>
+                <h3>Airbus A220</h3>
+                <div class="fleet-specs"><span><strong>Type:</strong> Regional</span><span><strong>Range:</strong> 6,390 km</span></div>
+            </div>
+        </div>
+
+        <div class="fleet-category-header"><h2>Mainline Operations</h2></div>
+
+        <div class="fleet-row">
+            <div class="fleet-img-box"><img src="747.png" alt="747"></div>
+            <div class="fleet-info-box">
+                <span class="status-tag tag-service">In Service</span>
+                <h3>Boeing 747-8i</h3>
+                <div class="fleet-specs"><span><strong>Range:</strong> 14,310 km</span><span><strong>Status:</strong> Flagship</span></div>
+            </div>
+        </div>
+
+        <div class="fleet-row">
+            <div class="fleet-img-box"><img src="a380.png" alt="A380"></div>
+            <div class="fleet-info-box">
+                <span class="status-tag tag-service">In Service</span>
+                <h3>Airbus A380-800</h3>
+                <div class="fleet-specs"><span><strong>Range:</strong> 15,200 km</span><span><strong>Deck:</strong> Double</span></div>
+            </div>
+        </div>
+
+        <div class="fleet-row">
+            <div class="fleet-img-box"><img src="a330.png" alt="A330"></div>
+            <div class="fleet-info-box">
+                <span class="status-tag tag-service">In Service</span>
+                <h3>Airbus A330-300</h3>
+                <div class="fleet-specs"><span><strong>Range:</strong> 11,750 km</span><span><strong>Type:</strong> Widebody</span></div>
+            </div>
+        </div>
+
+        <div class="fleet-row">
+            <div class="fleet-img-box"><img src="777f.png" alt="777F"></div>
+            <div class="fleet-info-box">
+                <span class="status-tag tag-service">In Service</span>
+                <h3>Boeing 777F</h3>
+                <div class="fleet-specs"><span><strong>Role:</strong> Cargo</span><span><strong>Payload:</strong> 103 tonnes</span></div>
+            </div>
+        </div>
+
+        <div class="fleet-category-header"><h2>Legacy Fleet</h2></div>
+
+        <div class="fleet-row">
+            <div class="fleet-img-box"><img src="a340.png" alt="A340"></div>
+            <div class="fleet-info-box">
+                <span class="status-tag tag-retiring">Retiring</span>
+                <h3>Airbus A340-300/600</h3>
+                <div class="fleet-specs"><span><strong>Status:</strong> Phasing Out</span><span><strong>Engines:</strong> 4 Quad</span></div>
+            </div>
+        </div>
+
+        <div class="fleet-row">
+            <div class="fleet-img-box"><img src="a319.png" alt="A319"></div>
+            <div class="fleet-info-box">
+                <span class="status-tag tag-retiring">Retiring</span>
+                <h3>Airbus A319</h3>
+                <div class="fleet-specs"><span><strong>Status:</strong> Retiring</span><span><strong>Range:</strong> 6,900 km</span></div>
+            </div>
+        </div>
+
+        <div class="fleet-row">
+            <div class="fleet-img-box"><img src="crj700.png" alt="CRJ700"></div>
+            <div class="fleet-info-box">
+                <span class="status-tag tag-retiring">Retiring</span>
+                <h3>Bombardier CRJ700</h3>
+                <div class="fleet-specs"><span><strong>Status:</strong> Final Phase</span><span><strong>Role:</strong> Regional</span></div>
+            </div>
+        </div>
+
     </main>
 
-    <footer class="site-footer">
-        <p><strong>Disclaimer:</strong> Lufthansa Airlines is a <strong>fully operational virtual airline</strong> for GeoFS.</p>
-    </footer>
-
     <script>
-        document.getElementById('site-search').addEventListener('input', function(e) {
-            const val = e.target.value;
-            const pageMap = {
-                // Main Navigation Mapping
-                "Home": "index.html",
-                "Fleet Overview": "fleet.html",
-                "Destinations": "destinations.html",
-                "Booking": "booking.html",
-                "Information": "info.html",
-                "Roleplay": "rp.html",
-                "News": "news.html",
-                "History": "history.html",
-                "Foreign": "foreign.html",
-                "Profiles": "profiles.html",
-                "Misc": "misc.html",
-                // Aircraft Mapping
-                "CRJ700": "crj700.html",
-                "A220": "a220.html",
-                "A319": "a319.html",
-                "A320": "a320.html",
-                "A321": "a321.html",
-                "A330-200": "a330200.html",
-                "A340-300": "a340300.html",
-                "A350-900": "a350900.html",
-                "A350-1000": "a3501000.html",
-                "A380": "a380.html",
-                "747-8": "7478.html",
-                "777-9": "7779.html",
-                "777F": "777f.html",
-                "787-9": "787.html"
-            };
-            if (pageMap[val]) window.location.href = pageMap[val];
+        let lastScrollY = window.scrollY;
+        const navbar = document.getElementById("navbar");
+
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > lastScrollY && window.scrollY > 150) {
+                navbar.classList.add("nav-hidden");
+                closeAllMenus(); 
+            } else { 
+                navbar.classList.remove("nav-hidden"); 
+            }
+            lastScrollY = window.scrollY;
         });
+
+        function toggleMenu(menuId) {
+            const menu = document.getElementById(menuId);
+            const overlay = document.getElementById("menu-overlay");
+            const isOpen = menu.classList.contains("active");
+            closeAllMenus();
+            if (!isOpen) { 
+                menu.classList.add("active"); 
+                overlay.classList.add("active"); 
+            }
+        }
+
+        function closeAllMenus() {
+            document.querySelectorAll('.mega-panel').forEach(p => p.classList.remove('active'));
+            const overlay = document.getElementById("menu-overlay");
+            if(overlay) overlay.classList.remove("active");
+        }
+
+        function toggleMobileMenu() {
+            const m = document.getElementById("mobile-menu");
+            if (m) {
+                m.classList.toggle("open");
+                document.body.style.overflow = m.classList.contains("open") ? "hidden" : "auto";
+            }
+        }
     </script>
 </body>
 </html>
