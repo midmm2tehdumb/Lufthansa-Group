@@ -92,26 +92,65 @@
         </div>
     </nav>
 
-    <header class="hero">
-        <video autoplay muted loop id="heroVideo">
-            <source src="lufthansa.mp4" type="video/mp4">
-        </video>
-        <div class="hero-overlay">
-            <div class="content-wrapper">
-                <p class="say-yes">SAY YES TO THE WORLD</p>
-                <h1>Real routes, real ops, real pilots<br>in GeoFs.</h1>
-                <div class="cta-box">
-                    <a href="https://discord.gg/kXRPrWTKTF" class="btn-gold">Join our Discord</a>
-                    <a href="gallery.html" class="btn-outline">Open Gallery</a>
-                </div>
+    <header class="hero" id="hero-section">
+    <video autoplay muted loop id="heroVideo">
+        <source src="lufthansa.mp4" type="video/mp4">
+    </video>
+
+    <div class="hero-image" id="heroImg" style="background-image: url('748.jpg');"></div>
+
+    <div class="hero-overlay">
+        <div class="content-wrapper">
+            <p class="say-yes">SAY YES TO THE WORLD</p>
+            <h1>Real routes, real ops,<br>real pilots, in GeoFS Lufthansa</h1>
+            
+            <div class="cta-box">
+                <a href="#" class="btn-gold">Join our Discord</a>
+                <a href="#" class="btn-outline">Open Gallery</a>
             </div>
         </div>
-        <div class="video-controls">
-            <button id="muteBtn" onclick="toggleMute()">Unmute Audio</button>
-        </div>
-    </header>
+    </div>
 
-    <script>
+    <div class="video-trigger" id="vidTrigger">
+        <span class="play-icon">▶</span>
+        <span class="trigger-text">HOVER FOR VIDEO</span>
+        
+        <button id="muteBtn" class="mute-toggle">UNMUTE</button>
+    </div>
+</header>
+
+<script>
+    const trigger = document.getElementById('vidTrigger');
+    const heroImg = document.getElementById('heroImg');
+    const muteBtn = document.getElementById('muteBtn');
+    const video = document.getElementById('heroVideo');
+
+    // Handle Hover In
+    trigger.addEventListener('mouseenter', () => {
+        heroImg.style.opacity = '0'; // Fade out image
+        muteBtn.classList.add('visible'); // Show mute button
+    });
+
+    // Handle Hover Out
+    trigger.addEventListener('mouseleave', () => {
+        heroImg.style.opacity = '1'; // Fade back to image
+        muteBtn.classList.remove('visible'); // Hide mute button
+        video.muted = true; // Safety: mute audio when exiting
+        muteBtn.innerText = "UNMUTE";
+    });
+
+    // Toggle Mute Logic
+    muteBtn.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevents trigger hover logic from flickering
+        if (video.muted) {
+            video.muted = false;
+            muteBtn.innerText = "MUTE";
+        } else {
+            video.muted = true;
+            muteBtn.innerText = "UNMUTE";
+        }
+    });
+
         // SMART HIDE NAV
         let lastScrollY = window.scrollY;
         const navbar = document.getElementById("navbar");
