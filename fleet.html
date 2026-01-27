@@ -24,27 +24,30 @@
                 <li class="pillar-link" onclick="toggleMenu('media-news')">Media & News</li>
                 <li class="pillar-link" onclick="toggleMenu('crew-menu')">Crew & Community</li>
             </ul>
-            <div class="hamburger" onclick="toggleMobileMenu()">
-                <div class="bar"></div><div class="bar"></div><div class="bar"></div>
-            </div>
         </div>
         <div class="mega-overlay" id="menu-overlay" onclick="closeAllMenus()"></div>
-        <div id="ops-menu" class="mega-panel"><div class="panel-content"><div class="menu-col"><h3>Ops Center</h3><a href="ops.html">Flight Dispatch</a><a href="livery-db.html">Livery Database</a></div><div class="menu-col"><h3>Fleet</h3><a href="fleet.html">Main Fleet</a><a href="sop-manuals.html">SOP & Manuals</a></div></div></div>
-        <div id="network-menu" class="mega-panel"><div class="panel-content"><div class="menu-col"><h3>Network Hub</h3><a href="network.html">Route Map</a><a href="radar.html">Live Radar</a></div></div></div>
+        <div id="ops-menu" class="mega-panel">
+            <div class="panel-content">
+                <div class="menu-col"><h3>Ops Center</h3><a href="ops.html">Flight Dispatch</a><a href="livery-db.html">Livery Database</a></div>
+                <div class="menu-col"><h3>Fleet</h3><a href="fleet.html">Main Fleet</a><a href="sop-manuals.html">SOP & Manuals</a></div>
+            </div>
+        </div>
     </nav>
 
     <main class="fleet-section" style="padding-top: 120px;">
         <header class="page-title" style="text-align: center;">
             <h1>Our Fleet</h1>
             <div class="title-underline"></div>
-            <p>From regional jumpers to global flagships.</p>
+            <p>A unified fleet sorted by size. Select a category to filter the view.</p>
         </header>
 
         <div class="filter-container">
-            <button class="filter-btn active" onclick="filterFleet('all')">All Aircraft</button>
-            <button class="filter-btn" onclick="filterFleet('regional')">Regional</button>
-            <button class="filter-btn" onclick="filterFleet('narrowbody')">Narrowbody</button>
-            <button class="filter-btn" onclick="filterFleet('widebody')">Widebody</button>
+            <button class="filter-btn active" onclick="filterFleet('all', this)">All Aircraft</button>
+            <button class="filter-btn" onclick="filterFleet('regional', this)">Regional</button>
+            <button class="filter-btn" onclick="filterFleet('narrowbody', this)">Narrowbody</button>
+            <button class="filter-btn" onclick="filterFleet('widebody', this)">Widebody</button>
+            <button class="filter-btn" onclick="filterFleet('airbus', this)">Airbus</button>
+            <button class="filter-btn" onclick="filterFleet('boeing', this)">Boeing</button>
         </div>
 
         <div id="fleet-list">
@@ -57,11 +60,11 @@
                         <div class="spec-item"><span class="spec-label">Type</span><span class="spec-value">Regional</span></div>
                         <div class="spec-item"><span class="spec-label">Range</span><span class="spec-value">2,500 km</span></div>
                     </div>
-                    <a href="crj700.html" class="btn-outline-blue" style="margin-top:20px; display:inline-block;">View Aircraft</a>
+                    <a href="Aircraft/crj700.html" class="btn-outline-blue" style="margin-top:20px; display:inline-block;">View Aircraft</a>
                 </div>
             </div>
 
-            <div class="fleet-row regional narrowbody">
+            <div class="fleet-row regional narrowbody airbus">
                 <div class="fleet-img-box"><img src="a220.png" alt="A220"></div>
                 <div class="fleet-info-box">
                     <span class="status-tag tag-ordering">Ordering</span>
@@ -70,11 +73,11 @@
                         <div class="spec-item"><span class="spec-label">Type</span><span class="spec-value">Regional</span></div>
                         <div class="spec-item"><span class="spec-label">Range</span><span class="spec-value">6,300 km</span></div>
                     </div>
-                    <a href="a220.html" class="btn-outline-blue" style="margin-top:20px; display:inline-block;">View Aircraft</a>
+                    <a href="Aircraft/a220.html" class="btn-outline-blue" style="margin-top:20px; display:inline-block;">View Aircraft</a>
                 </div>
             </div>
 
-            <div class="fleet-row regional narrowbody">
+            <div class="fleet-row regional narrowbody airbus">
                 <div class="fleet-img-box"><img src="a319.webp" alt="A319"></div>
                 <div class="fleet-info-box">
                     <span class="status-tag tag-retiring">Retiring</span>
@@ -83,11 +86,11 @@
                         <div class="spec-item"><span class="spec-label">Type</span><span class="spec-value">Narrowbody</span></div>
                         <div class="spec-item"><span class="spec-label">Range</span><span class="spec-value">6,900 km</span></div>
                     </div>
-                    <a href="a319.html" class="btn-outline-blue" style="margin-top:20px; display:inline-block;">View Aircraft</a>
+                    <a href="Aircraft/a319.html" class="btn-outline-blue" style="margin-top:20px; display:inline-block;">View Aircraft</a>
                 </div>
             </div>
 
-            <div class="fleet-row regional narrowbody">
+            <div class="fleet-row regional narrowbody airbus">
                 <div class="fleet-img-box"><img src="a320.webp" alt="A320"></div>
                 <div class="fleet-info-box">
                     <span class="status-tag tag-ordering">In Service</span>
@@ -96,11 +99,11 @@
                         <div class="spec-item"><span class="spec-label">Type</span><span class="spec-value">Narrowbody</span></div>
                         <div class="spec-item"><span class="spec-label">Range</span><span class="spec-value">6,100 km</span></div>
                     </div>
-                    <a href="a320.html" class="btn-outline-blue" style="margin-top:20px; display:inline-block;">View Aircraft</a>
+                    <a href="Aircraft/a320.html" class="btn-outline-blue" style="margin-top:20px; display:inline-block;">View Aircraft</a>
                 </div>
             </div>
 
-            <div class="fleet-row narrowbody">
+            <div class="fleet-row narrowbody airbus">
                 <div class="fleet-img-box"><img src="a321.webp" alt="A321"></div>
                 <div class="fleet-info-box">
                     <span class="status-tag tag-ordering">In Service</span>
@@ -109,11 +112,11 @@
                         <div class="spec-item"><span class="spec-label">Type</span><span class="spec-value">Narrowbody</span></div>
                         <div class="spec-item"><span class="spec-label">Range</span><span class="spec-value">5,900 km</span></div>
                     </div>
-                    <a href="a321.html" class="btn-outline-blue" style="margin-top:20px; display:inline-block;">View Aircraft</a>
+                    <a href="Aircraft/a321.html" class="btn-outline-blue" style="margin-top:20px; display:inline-block;">View Aircraft</a>
                 </div>
             </div>
 
-            <div class="fleet-row widebody">
+            <div class="fleet-row widebody boeing">
                 <div class="fleet-img-box"><img src="787.webp" alt="787"></div>
                 <div class="fleet-info-box">
                     <span class="status-tag tag-ordering">In Service</span>
@@ -122,11 +125,11 @@
                         <div class="spec-item"><span class="spec-label">Type</span><span class="spec-value">Widebody</span></div>
                         <div class="spec-item"><span class="spec-label">Range</span><span class="spec-value">14,100 km</span></div>
                     </div>
-                    <a href="787.html" class="btn-outline-blue" style="margin-top:20px; display:inline-block;">View Aircraft</a>
+                    <a href="Aircraft/787.html" class="btn-outline-blue" style="margin-top:20px; display:inline-block;">View Aircraft</a>
                 </div>
             </div>
 
-            <div class="fleet-row widebody">
+            <div class="fleet-row widebody airbus">
                 <div class="fleet-img-box"><img src="a330200.webp" alt="A330"></div>
                 <div class="fleet-info-box">
                     <span class="status-tag tag-service">In Service</span>
@@ -135,11 +138,11 @@
                         <div class="spec-item"><span class="spec-label">Type</span><span class="spec-value">Widebody</span></div>
                         <div class="spec-item"><span class="spec-label">Range</span><span class="spec-value">13,400 km</span></div>
                     </div>
-                    <a href="a330200.html" class="btn-outline-blue" style="margin-top:20px; display:inline-block;">View Aircraft</a>
+                    <a href="Aircraft/a330200.html" class="btn-outline-blue" style="margin-top:20px; display:inline-block;">View Aircraft</a>
                 </div>
             </div>
 
-            <div class="fleet-row widebody">
+            <div class="fleet-row widebody airbus">
                 <div class="fleet-img-box"><img src="a340300.webp" alt="A340"></div>
                 <div class="fleet-info-box">
                     <span class="status-tag tag-retiring">Retiring</span>
@@ -148,11 +151,11 @@
                         <div class="spec-item"><span class="spec-label">Type</span><span class="spec-value">Widebody</span></div>
                         <div class="spec-item"><span class="spec-label">Range</span><span class="spec-value">13,500 km</span></div>
                     </div>
-                    <a href="a340300.html" class="btn-outline-blue" style="margin-top:20px; display:inline-block;">View Aircraft</a>
+                    <a href="Aircraft/a340300.html" class="btn-outline-blue" style="margin-top:20px; display:inline-block;">View Aircraft</a>
                 </div>
             </div>
 
-            <div class="fleet-row widebody">
+            <div class="fleet-row widebody airbus">
                 <div class="fleet-img-box"><img src="a350900.webp" alt="A350900"></div>
                 <div class="fleet-info-box">
                     <span class="status-tag tag-ordering">In Service</span>
@@ -161,11 +164,11 @@
                         <div class="spec-item"><span class="spec-label">Type</span><span class="spec-value">Widebody</span></div>
                         <div class="spec-item"><span class="spec-label">Range</span><span class="spec-value">15,000 km</span></div>
                     </div>
-                    <a href="a350900.html" class="btn-outline-blue" style="margin-top:20px; display:inline-block;">View Aircraft</a>
+                    <a href="Aircraft/a350900.html" class="btn-outline-blue" style="margin-top:20px; display:inline-block;">View Aircraft</a>
                 </div>
             </div>
 
-            <div class="fleet-row widebody">
+            <div class="fleet-row widebody airbus">
                 <div class="fleet-img-box"><img src="a3501000.webp" alt="A3501000"></div>
                 <div class="fleet-info-box">
                     <span class="status-tag tag-ordering">Ordering</span>
@@ -174,11 +177,11 @@
                         <div class="spec-item"><span class="spec-label">Type</span><span class="spec-value">Widebody</span></div>
                         <div class="spec-item"><span class="spec-label">Range</span><span class="spec-value">16,100 km</span></div>
                     </div>
-                    <a href="a3501000.html" class="btn-outline-blue" style="margin-top:20px; display:inline-block;">View Aircraft</a>
+                    <a href="Aircraft/a3501000.html" class="btn-outline-blue" style="margin-top:20px; display:inline-block;">View Aircraft</a>
                 </div>
             </div>
 
-            <div class="fleet-row widebody">
+            <div class="fleet-row widebody boeing">
                 <div class="fleet-img-box"><img src="777300.webp" alt="777F"></div>
                 <div class="fleet-info-box">
                     <span class="status-tag tag-service">In Service</span>
@@ -187,11 +190,11 @@
                         <div class="spec-item"><span class="spec-label">Type</span><span class="spec-value">Widebody</span></div>
                         <div class="spec-item"><span class="spec-label">Range</span><span class="spec-value">9,200 km</span></div>
                     </div>
-                    <a href="777f.html" class="btn-outline-blue" style="margin-top:20px; display:inline-block;">View Aircraft</a>
+                    <a href="Aircraft/777f.html" class="btn-outline-blue" style="margin-top:20px; display:inline-block;">View Aircraft</a>
                 </div>
             </div>
 
-            <div class="fleet-row widebody">
+            <div class="fleet-row widebody boeing">
                 <div class="fleet-img-box"><img src="7779.webp" alt="7779"></div>
                 <div class="fleet-info-box">
                     <span class="status-tag tag-ordering">Ordering</span>
@@ -200,11 +203,11 @@
                         <div class="spec-item"><span class="spec-label">Type</span><span class="spec-value">Widebody</span></div>
                         <div class="spec-item"><span class="spec-label">Range</span><span class="spec-value">13,500 km</span></div>
                     </div>
-                    <a href="7779.html" class="btn-outline-blue" style="margin-top:20px; display:inline-block;">View Aircraft</a>
+                    <a href="Aircraft/7779.html" class="btn-outline-blue" style="margin-top:20px; display:inline-block;">View Aircraft</a>
                 </div>
             </div>
 
-            <div class="fleet-row widebody">
+            <div class="fleet-row widebody boeing">
                 <div class="fleet-img-box"><img src="7478.webp" alt="7478"></div>
                 <div class="fleet-info-box">
                     <span class="status-tag tag-service">In Service</span>
@@ -213,11 +216,11 @@
                         <div class="spec-item"><span class="spec-label">Type</span><span class="spec-value">Widebody</span></div>
                         <div class="spec-item"><span class="spec-label">Range</span><span class="spec-value">14,300 km</span></div>
                     </div>
-                    <a href="7478.html" class="btn-outline-blue" style="margin-top:20px; display:inline-block;">View Aircraft</a>
+                    <a href="Aircraft/7478.html" class="btn-outline-blue" style="margin-top:20px; display:inline-block;">View Aircraft</a>
                 </div>
             </div>
 
-            <div class="fleet-row widebody">
+            <div class="fleet-row widebody airbus">
                 <div class="fleet-img-box"><img src="a380.webp" alt="A380"></div>
                 <div class="fleet-info-box">
                     <span class="status-tag tag-service">In Service</span>
@@ -226,30 +229,30 @@
                         <div class="spec-item"><span class="spec-label">Type</span><span class="spec-value">Widebody</span></div>
                         <div class="spec-item"><span class="spec-label">Range</span><span class="spec-value">15,200 km</span></div>
                     </div>
-                    <a href="a380.html" class="btn-outline-blue" style="margin-top:20px; display:inline-block;">View Aircraft</a>
+                    <a href="Aircraft/a380.html" class="btn-outline-blue" style="margin-top:20px; display:inline-block;">View Aircraft</a>
                 </div>
             </div>
         </div>
     </main>
 
     <script>
-        function filterFleet(category) {
+        function filterFleet(category, btn) {
             const rows = document.querySelectorAll('.fleet-row');
             const btns = document.querySelectorAll('.filter-btn');
             
-            btns.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            btns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
 
             rows.forEach(row => {
                 if (category === 'all' || row.classList.contains(category)) {
-                    row.classList.remove('hidden');
+                    row.style.display = 'flex';
                 } else {
-                    row.classList.add('hidden');
+                    row.style.display = 'none';
                 }
             });
         }
 
-        // --- Standard Nav JS ---
+        // --- Standard Nav Logic ---
         let lastScrollY = window.scrollY;
         const navbar = document.getElementById("navbar");
         window.addEventListener("scroll", () => {
