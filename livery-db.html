@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livery Database | Lufthansa GeoFS</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="main-nav" id="navbar">
+        <div class="nav-wrapper">
+            <div class="nav-left">
+                <a href="index.html" class="logo-link">
+                    <img src="logo.png" alt="Logo" class="nav-logo">
+                    <span>Lufthansa GeoFS</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li class="pillar-link" onclick="toggleMenu('ops-menu')">Flight Operations</li>
+                <li class="pillar-link" onclick="toggleMenu('network-menu')">Live Network</li>
+                <li class="pillar-link" onclick="toggleMenu('media-news')">Media & News</li>
+                <li class="pillar-link" onclick="toggleMenu('crew-menu')">Crew & Community</li>
+            </ul>
+            <div class="hamburger" onclick="toggleMobileMenu()">
+                <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            </div>
+        </div>
+        <div class="mega-overlay" id="menu-overlay" onclick="closeAllMenus()"></div>
+        <div id="ops-menu" class="mega-panel">
+            <div class="panel-content">
+                <div class="menu-col"><h3>Ops Center</h3><a href="ops.html">Flight Dispatch</a><a href="livery-db.html">Livery Database</a></div>
+                <div class="menu-col"><h3>Fleet</h3><a href="fleet.html">Main Fleet</a><a href="sop-manuals.html">SOP & Manuals</a></div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="livery-container">
+        <header class="page-title">
+            <h1>Livery Database</h1>
+            <div class="title-underline"></div>
+            <p>Official Lufthansa Group liveries. Click an aircraft image to access the raw configuration files.</p>
+        </header>
+
+        <section class="livery-section">
+            <h2 class="section-heading">Lufthansa Executive</h2>
+            <div class="rank-disclaimer">
+                <strong>RESTRICTED ACCESS:</strong> These executive jets are reserved for high-ranking members only. 
+                Unauthorized use is strictly monitored.
+            </div>
+
+            <div class="livery-grid">
+                <div class="livery-card">
+                    <a href="https://raw.githubusercontent.com/midmm2tehdumb/Lufthansa-Group/main/ACJ350.txt" target="_blank">
+                        <img src="ACJ350.png" alt="Lufthansa ACJ350" class="livery-embed">
+                        <div class="livery-label">
+                            <h3>Airbus ACJ350</h3>
+                            <span>Executive Fleet</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="livery-card">
+                    <a href="https://raw.githubusercontent.com/midmm2tehdumb/Lufthansa-Group/main/ACJ320NEO.txt" target="_blank">
+                        <img src="ACJ320NEO.png" alt="Lufthansa ACJ320NEO" class="livery-embed">
+                        <div class="livery-label">
+                            <h3>Airbus ACJ320NEO</h3>
+                            <span>Corporate Jet</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Standard Nav Logic
+        let lastScrollY = window.scrollY;
+        const navbar = document.getElementById("navbar");
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > lastScrollY && window.scrollY > 150) {
+                navbar.classList.add("nav-hidden");
+                closeAllMenus(); 
+            } else { navbar.classList.remove("nav-hidden"); }
+            lastScrollY = window.scrollY;
+        });
+
+        function toggleMenu(menuId) {
+            const menu = document.getElementById(menuId);
+            const overlay = document.getElementById("menu-overlay");
+            const isOpen = menu.classList.contains("active");
+            closeAllMenus();
+            if (!isOpen) { menu.classList.add("active"); overlay.classList.add("active"); }
+        }
+
+        function closeAllMenus() {
+            document.querySelectorAll('.mega-panel').forEach(p => p.classList.remove('active'));
+            document.getElementById("menu-overlay").classList.remove("active");
+        }
+    </script>
+</body>
+</html>
