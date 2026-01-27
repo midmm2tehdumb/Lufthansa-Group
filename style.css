@@ -869,46 +869,99 @@ body {
 }
 
 
-/* --- AIRCRAFT PAGE LAYOUT FIX --- */
+/* --- AIRCRAFT DETAIL PAGE FIXES --- */
 
-/* 1. Forces the content to start below your 80px nav */
+/* Ensures content respects the 1200px boundary and doesn't hit edges */
 .aircraft-detail-container {
-    max-width: 1440px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding-top: 120px; /* Adjust this if the nav still touches the text */
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
-/* 2. Fixes the overlapping image/text issue */
+/* Force side-by-side alignment for Image and Text */
 .hero-flex {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    gap: 50px;
+    justify-content: space-between;
+    gap: 40px;
     margin-bottom: 50px;
+    width: 100%;
 }
 
-/* 3. Keeps the image on the left and capped at a sane size */
+/* Constrain the image container so it can't cover the screen */
 .hero-image {
-    flex: 0 0 500px; /* Fixes width to 500px so it can't float over text */
+    flex: 0 0 50%; /* Image takes exactly half width */
+    max-width: 600px;
 }
 
 .hero-image img {
     width: 100%;
     height: auto;
     display: block;
+    object-fit: contain;
 }
 
-/* 4. Keeps the text on the right */
+/* Constrain the text side */
 .hero-text {
     flex: 1;
 }
 
-/* 5. Fixes the Spec Grid to stay below the hero */
+/* SPEC GRID: 4 columns across */
 .spec-grid-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    clear: both;
+    margin: 40px 0;
+}
+
+/* STYLE THE CARDS TO MATCH YOUR OPS/FLEET STYLE */
+.spec-card {
+    background: #fff;
+    padding: 20px;
+    border-left: 4px solid var(--lh-blue);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.spec-label {
+    display: block;
+    font-size: 0.75rem;
+    color: #888;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.spec-value {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--lh-blue);
+}
+
+/* CABINET/CONFIG SECTION */
+.config-box {
+    background: #fff;
+    padding: 30px;
+    border-radius: 4px;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.section-divider {
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin: 40px 0;
+}
+
+/* RESPONSIVE: Stack on mobile so image doesn't get too tiny */
+@media (max-width: 800px) {
+    .hero-flex {
+        flex-direction: column;
+    }
+    .hero-image {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .spec-grid-container {
+        grid-template-columns: 1fr 1fr;
+    }
 }
