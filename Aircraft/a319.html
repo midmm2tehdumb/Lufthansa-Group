@@ -1,100 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lufthansa Fleet - A319</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airbus A319 | Lufthansa GeoFS</title>
+    <link rel="icon" type="image/png" href="../logo.png">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-
-<nav>
-  <div class="logo">Lufthansa Airlines</div>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="fleet.html">Fleet</a></li>
-    <li><a href="destinations.html">Destinations</a></li>
-    <li><a href="booking.html">Booking</a></li>
-    <li><a href="info.html">Information</a></li>
-    <li><a href="rp.html">RP</a></li>
-  </ul>
-</nav>
-
-<main>
-  <section class="aircraft-details">
-    <h2>Lufthansa - Airbus A319 (Short/Medium Haul)</h2>
-    
-    <div class="plane-header">
-        <img src="a319.webp" alt="Airbus A319">
-        <div class="plane-info">
-            <h3>Key Stats</h3>
-            <p><strong>Top Speed:</strong> 871 km/h</p>
-            <p><strong>Range:</strong> 6,900 km</p>
-            <p><strong>Role:</strong> Short to medium-haul aircraft, flexible for domestic and European routes.</p>
-            <p><strong>Engine Type:</strong> Turbofan (CFM56 or IAE V2500)</p>
-<p><strong>In Service:</strong> 35 Aircraft</p>
-<p><strong>Ordered:</strong> 0 Aircraft</p>
-        </div>
-    </div>
-
-    <div class="seat-config">
-        <h3>Seating Configuration (Flexible European)</h3>
-        
-        <div class="config-selector">
-            <p>Select Configuration:</p>
-            <button class="active" onclick="showConfig('a319', 'high_density')">Config 1: High Density</button>
-            <button onclick="showConfig('a319', 'low_density')">Config 2: Low Density</button>
-        </div>
-
-        <div class="config-content active" id="config-a319-high_density">
-            <p>Optimized for high-volume routes with limited Business Class demand. Total Seats: 144</p> 
-
-            <ul>
-                <li><strong>Business Class</strong> - 12 Seats (3-3, middle seat blocked)</li>
-                <li><strong>Economy Class</strong> - 132 Seats (3-3 configuration)</li>
-                <li><strong>Pitch / Width (B)</strong> - Variable / 18"</li>
-                <li><strong>Pitch / Width (E)</strong> - 30" / 18"</li>
+    <nav class="main-nav" id="navbar">
+        <div class="nav-wrapper">
+            <div class="nav-left"><a href="../index.html" class="logo-link"><img src="../logo.png" alt="Logo" class="nav-logo"><span>Lufthansa GeoFS</span></a></div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../fleet.html">Fleet</a></li>
+                <li><a href="../destinations.html">Destinations</a></li>
+                <li><a href="../booking.html">Booking</a></li>
+                <li><a href="../information.html">Information</a></li>
+                <li><a href="../rp.html">RP</a></li>
             </ul>
         </div>
+    </nav>
 
-        <div class="config-content" id="config-a319-low_density">
-            <p>Used on longer European routes where a more substantial Business Class is required. **Total Seats: 138**</p>
-            <ul>
-                <li><strong>Business Class</strong> - 24 Seats (3-3, middle seat blocked)</li>
-                <li><strong>Economy Class</strong> - 114 Seats (3-3 configuration)</li>
-                <li><strong>Pitch / Width (B)</strong> - Variable / 18"</li>
-                <li><strong>Pitch / Width (E)</strong> - 30" / 18"</li>
-            </ul>
-        </div>
-    </div>
-  </section>
-</main>
+    <main class="aircraft-detail-container" style="padding-top: 120px;">
+        <section class="aircraft-hero">
+            <div class="back-nav"><a href="../fleet.html">← Back to Fleet Overview</a></div>
+            <div class="hero-flex">
+                <div class="hero-image"><img src="a319.webp" alt="Airbus A319"></div>
+                <div class="hero-text">
+                    <span class="status-tag tag-retiring">Retiring</span>
+                    <h1>Airbus A319-100</h1>
+                    <p class="subtitle">The smallest member of the A320 family, perfect for high-frequency European connections.</p>
+                    <div class="fleet-stats">
+                        <p><strong>In Service:</strong> 35 Aircraft</p>
+                        <p><strong>On Order:</strong> 0</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<section class="disclaimer">
-  <p>
-    <strong>Disclaimer:</strong> Lufthansa Airlines is a virtual GeoFS airline and does not represent the real-life Lufthansa Group. 
-    This website and content are intended for entertainment and educational purposes within the virtual flight simulator community.
-  </p>
-</section>
+        <section class="spec-grid-container">
+            <div class="spec-card"><span class="spec-label">Range</span><span class="spec-value">3,350 km</span></div>
+            <div class="spec-card"><span class="spec-label">Cruise Speed</span><span class="spec-value">840 km/h</span></div>
+            <div class="spec-card"><span class="spec-label">Ceiling</span><span class="spec-value">39,800 ft</span></div>
+            <div class="spec-card"><span class="spec-label">Manufacturer</span><span class="spec-value">Airbus</span></div>
+        </section>
 
-<script>
-    function showConfig(plane, configId) {
-        // Hide all configurations for this plane
-        document.querySelectorAll('.config-content').forEach(el => {
-            el.classList.remove('active');
-        });
-        // Remove active class from all buttons
-        document.querySelectorAll('.config-selector button').forEach(el => {
-            el.classList.remove('active');
-        });
+        <hr class="section-divider">
 
-        // Show the selected configuration
-        document.getElementById(`config-${plane}-${configId}`).classList.add('active');
-        
-        // Set the clicked button as active
-        event.currentTarget.classList.add('active');
-    }
-</script>
+        <section class="cabin-section">
+            <div class="cabin-info">
+                <h2>On-Board Product</h2>
+                <div class="config-box">
+                    <h3>Standard Short-Haul Layout</h3>
+                    <p>Lufthansa’s classic narrowbody configuration with leather seating. <strong>Total Seats: 138</strong></p>
+                    <ul class="cabin-list">
+                        <li><strong>Business Class</strong> — Flexible Rows (3-3 configuration, middle seat blocked)</li>
+                        <li><strong>Economy Class</strong> — 138 Seats (3-3 configuration)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
