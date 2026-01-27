@@ -781,3 +781,31 @@ body { background: var(--lh-grey); overflow-x: hidden; color: #333; }
         margin-bottom: 20px;
     }
 }
+
+/* VIEW ORIGINAL BUTTON STYLING */
+.sop-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.btn-original {
+    background: var(--lh-blue);
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    border: 1px solid var(--lh-yellow);
+    transition: 0.3s;
+}
+
+.btn-original:hover {
+    background: var(--lh-yellow);
+    color: var(--lh-blue);
+}
+
+/* Scrollbar styling for a cleaner look */
+.sop-sidebar::-webkit-scrollbar { width: 5px; }
+.sop-sidebar::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
