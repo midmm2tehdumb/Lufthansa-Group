@@ -1138,3 +1138,77 @@ body { background: var(--lh-grey); overflow-x: hidden; color: #333; }
         font-size: 2rem;
     }
 }
+
+/* --- Dispatch Tool Styling --- */
+.dispatch-tool {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    margin: 20px auto 50px;
+    max-width: 1100px;
+    box-shadow: 0 15px 35px rgba(0, 35, 95, 0.12);
+    border-top: 4px solid #00235f;
+}
+
+.tool-inputs {
+    display: flex;
+    gap: 20px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+}
+
+.field { flex: 1; min-width: 200px; display: flex; flex-direction: column; gap: 8px; }
+
+.field label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #00235f;
+    text-transform: uppercase;
+}
+
+.ops-select {
+    padding: 12px;
+    border: 1px solid #d1d9e6;
+    border-radius: 6px;
+    background: #f8f9fb;
+}
+
+.btn-calculate {
+    background: #d4b063;
+    color: #00235f;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-calculate:hover { background: #00235f; color: white; }
+
+/* Result Grid Layout */
+.dispatch-results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    animation: slideDown 0.4s ease-out;
+}
+
+.res-box {
+    padding: 15px;
+    background: #f1f4f8;
+    border-radius: 8px;
+    border-left: 3px solid #d4b063;
+}
+
+.res-box span { display: block; }
+.res-label { font-size: 0.7rem; color: #666; text-transform: uppercase; margin-bottom: 5px; }
+.res-value { font-size: 1.1rem; font-weight: 700; color: #00235f; }
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
