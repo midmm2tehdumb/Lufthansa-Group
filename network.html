@@ -781,7 +781,7 @@ const airportCoords = {
         } else if (outOfService.includes(code)) {
             color = "#795548"; // Suspended / Out of Service
         } else if (gray.includes(code)) {
-            color = "#808080"; // Gray category
+            color = "#d4dadc"; // Hidden category
         }
 
         const data = airportData[code] || {icao: "N/A", city: code};
