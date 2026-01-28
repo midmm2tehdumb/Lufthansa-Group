@@ -150,214 +150,213 @@
         </div>
     </main>
 
-    <script>
 <script>
     // --- 1. AIRPORT DATA (Names & ICAO) ---
     const airportData = {
         "FRA": {icao: "EDDF", city: "Frankfurt - Lufthansa Primary"},
-  "MUC": {icao: "EDDM", city: "Munich - Lufthansa Secondary"},
-  "ABV": {icao: "DNAA", city: "Abuja"},
-  "AUH": {icao: "OMAA", city: "Abu Dhabi"},
-  "ALC": {icao: "LEAL", city: "Alicante"},
-  "ALG": {icao: "DAAG", city: "Algiers"},
-  "ALA": {icao: "UAAA", city: "Almaty"},
-  "AMM": {icao: "OJAI", city: "Amman"}, 
-  "AMS": {icao: "EHAM", city: "Amsterdam - KLM Hub"},
-  "AOI": {icao: "LIPY", city: "Ancona"},
-  "ATH": {icao: "LGAV", city: "Athens"},
-  "ATL": {icao: "KATL", city: "Atlanta"},
-  "OVD": {icao: "LEAS", city: "Asturias"},
-  "GYD": {icao: "UBBB", city: "Baku"},
-  "BKK": {icao: "VTBS", city: "Bangkok"},
-  "BLR": {icao: "VOBL", city: "Bangalore"},
-  "BCN": {icao: "LEBL", city: "Barcelona"},
-  "BRI": {icao: "LIBD", city: "Bari"},
-  "BSL": {icao: "LFSB", city: "Basel"},
-  "BIA": {icao: "LFKB", city: "Bastia"},
-  "PEK": {icao: "ZBAA", city: "Beijing"},
-  "BEY": {icao: "OLBA", city: "Beirut"}, 
-  "BEG": {icao: "LYBE", city: "Belgrade"},
-  "BGO": {icao: "ENBR", city: "Bergen"},
-  "BER": {icao: "EDDB", city: "Berlin"},
-  "BIQ": {icao: "LFBZ", city: "Biarritz"},
-  "BIO": {icao: "LEBB", city: "Bilbao"},
-  "BLL": {icao: "EKBI", city: "Billund"},
-  "BHX": {icao: "EGBB", city: "Birmingham"},
-  "BOG": {icao: "SKBO", city: "Bogota"},
-  "BLQ": {icao: "LIPE", city: "Bologna"},
-  "BOD": {icao: "LFBD", city: "Bordeaux"},
-  "BOS": {icao: "KBOS", city: "Boston"},
-  "BRE": {icao: "EDDW", city: "Bremen"},
-  "BDS": {icao: "LIBR", city: "Brindisi"},
-  "BRU": {icao: "EBBR", city: "Brussels - Brussels Airlines hub    "},
-  "OTP": {icao: "LROP", city: "Bucharest"},
-  "BUD": {icao: "LHBP", city: "Budapest"},
-  "EZE": {icao: "SAEZ", city: "Buenos Aires"},
-  "BOJ": {icao: "LBBG", city: "Burgas"},
-  "CAG": {icao: "LIEE", city: "Cagliari"},
-  "CAI": {icao: "HECA", city: "Cairo"},
-  "YYC": {icao: "CYYC", city: "Calgary"},
-  "CPT": {icao: "FACT", city: "Cape Town"},
-  "CTA": {icao: "LICC", city: "Catania"},
-  "CLT": {icao: "KCLT", city: "Charlotte"},
-  "MAA": {icao: "VOMM", city: "Chennai"},
-  "ORD": {icao: "KORD", city: "Chicago"},
-  "CLJ": {icao: "LRCL", city: "Cluj"},
-  "CGN": {icao: "EDDK", city: "Cologne"},
-  "CPH": {icao: "EKCH", city: "Copenhagen"},
-  "ORK": {icao: "EICK", city: "Cork"},
-  "CFU": {icao: "LGKR", city: "Corfu"},
-  "DFW": {icao: "KDFW", city: "Dallas"},
-  "DMM": {icao: "OEDF", city: "Dammam"},
-  "DEB": {icao: "LHDC", city: "Debrecen"},
-  "DEL": {icao: "VIDP", city: "Delhi"},
-  "DEN": {icao: "KDEN", city: "Denver"},
-  "DTW": {icao: "KDTW", city: "Detroit"},
-  "DRS": {icao: "EDDC", city: "Dresden"},
-  "DUB": {icao: "EIDW", city: "Dublin"},
-  "DXB": {icao: "OMDB", city: "Dubai"},
-  "DBV": {icao: "LDDU", city: "Dubrovnik"},
- "DME": {icao: "UUDD", city: "Moscow"},
-  "DUS": {icao: "EDDL", city: "Dusseldorf"},
-  "EDI": {icao: "EGPH", city: "Edinburgh"},
-  "ERF": {icao: "EDDE", city: "Erfurt"},
-  "EBL": {icao: "ORER", city: "Erbil"},
-  "FAO": {icao: "LPFR", city: "Faro"},
-  "FLR": {icao: "LIRQ", city: "Florence"},
-  "GDN": {icao: "EPGD", city: "Gdansk"},
-  "GVA": {icao: "LSGG", city: "Geneva - Swiss Hub"},
-  "GLA": {icao: "EGPF", city: "Glasgow"},
-  "GOT": {icao: "ESGG", city: "Gothenburg"},
-  "GRZ": {icao: "LOWG", city: "Graz"},
-  "HAM": {icao: "EDDH", city: "Hamburg"},
-  "HAJ": {icao: "EDDV", city: "Hanover"},
-  "HEL": {icao: "EFHK", city: "Helsinki"},
-  "HER": {icao: "LGIR", city: "Heraklion"},
-  "HDF": {icao: "EDAH", city: "Heringsdorf"},
-  "HKG": {icao: "VHHH", city: "Hong Kong"},
-  "IAH": {icao: "KIAH", city: "Houston"},
-  "HYD": {icao: "VOHY", city: "Hyderabad"},
-  "IVL": {icao: "EFIV", city: "Ivalo"},
-  "IBZ": {icao: "LEIB", city: "Ibiza"},
-  "IST": {icao: "LTBA", city: "Istanbul"},
-  "ADB": {icao: "LTBJ", city: "Izmir"},
-  "JED": {icao: "OEJN", city: "Jeddah"},
-  "JNB": {icao: "FAOR", city: "Johannesburg"},
-  "KLX": {icao: "LGKL", city: "Kalamata"},
-  "KBP": {icao: "UKBB", city: "Kiev"},
-  "FKB": {icao: "EDSB", city: "Karlsruhe"},
-  "KTW": {icao: "EPKT", city: "Katowice"},
-  "EFL": {icao: "LGKF", city: "Kefalonia"},
-  "KTT": {icao: "EFKT", city: "Kittilä"},
-  "KGS": {icao: "LGKO", city: "Kos"},
-  "KRK": {icao: "EPKK", city: "Krakow"},
-  "KAO": {icao: "EFRO", city: "Kuusamo"},
-  "KWI": {icao: "OKKK", city: "Kuwait City"},
-  "LOS": {icao: "DNMM", city: "Lagos"},
-  "SUF": {icao: "LICA", city: "Lamezia"},
-  "LCA": {icao: "LCLK", city: "Larnaca"},
-  "LEJ": {icao: "EDDP", city: "Leipzig"},
-  "LIS": {icao: "LPPT", city: "Lisbon"},
-  "LNZ": {icao: "LOWL", city: "Linz"},
-  "LHR": {icao: "EGLL", city: "London"},
-  "STN": {icao: "EGSS", city: "London"},
-  "LAX": {icao: "KLAX", city: "Los Angeles"},
-  "LAD": {icao: "FNLU", city: "Luanda"},
-  "LUX": {icao: "ELLX", city: "Luxembourg"},
-  "LYS": {icao: "LFLL", city: "Lyon"},
-  "MAD": {icao: "LEMD", city: "Madrid"},
-  "SSG": {icao: "FQMA", city: "Malabo"},
-  "AGP": {icao: "LEMG", city: "Malaga"},
-  "MLA": {icao: "LMML", city: "Malta"},
-  "MAN": {icao: "EGCC", city: "Manchester"},
-  "MRS": {icao: "LFML", city: "Marseille"},
-  "MEX": {icao: "MMMX", city: "Mexico City"},
-  "MIA": {icao: "KMIA", city: "Miami"},
-  "LIN": {icao: "LIML", city: "Milan"},
-  "MXP": {icao: "LIMC", city: "Milan"},
-  "MSP": {icao: "KMSP", city: "Minneapolis"},
-  "YUL": {icao: "CYUL", city: "Montreal"},
-  "BOM": {icao: "VABB", city: "Mumbai"},
-  "FMO": {icao: "EDDG", city: "Munster"},
-  "JMK": {icao: "LGMK", city: "Mykonos"},
-  "NBO": {icao: "HKJK", city: "Nairobi"},
-  "NTE": {icao: "LFRS", city: "Nantes"},
-  "NAP": {icao: "LIRN", city: "Naples"},
-  "NCL": {icao: "EGNT", city: "Newcastle"},
-  "JFK": {icao: "KJFK", city: "New York"},
-  "EWR": {icao: "KEWR", city: "Newark"},
-  "NCE": {icao: "LFMN", city: "Nice"},
-  "NUE": {icao: "EDDN", city: "Nuremberg"},
-  "OLB": {icao: "LIEO", city: "Olbia"},
-  "OSL": {icao: "ENGM", city: "Oslo"},
-  "PMO": {icao: "LICJ", city: "Palermo"},
-  "PMI": {icao: "LEPA", city: "Palma de Mallorca"},
-  "PTY": {icao: "MPTO", city: "Panama City"},
-  "PFO": {icao: "LCPH", city: "Paphos"},
-  "CDG": {icao: "LFPG", city: "Paris"},
-  "PHL": {icao: "KPHL", city: "Philadelphia"},
-  "PHC": {icao: "DNPO", city: "Port Harcourt"},
-  "OPO": {icao: "LPPR", city: "Porto"},
-  "POZ": {icao: "EPPO", city: "Poznan"},
-  "PRG": {icao: "LKPR", city: "Prague"},
-  "PUY": {icao: "LDPL", city: "Pula"},
-  "RDU": {icao: "KRDU", city: "Raleigh"},
-  "KEF": {icao: "BIKF", city: "Reykjavik"},
-  "RHO": {icao: "LGRP", city: "Rhodes"},
-  "RIX": {icao: "EVRA", city: "Riga"},
-  "RJK": {icao: "LDRI", city: "Rijeka"},
-  "GIG": {icao: "SBGL", city: "Rio de Janeiro"},
-  "RUH": {icao: "OERK", city: "Riyadh"},
-  "FCO": {icao: "LIRF", city: "Rome"},
-  "RVN": {icao: "EFRO", city: "Rovaniemi"},
-  "SZG": {icao: "LOWS", city: "Salzburg"},
-  "SFO": {icao: "KSFO", city: "San Francisco"},
-  "SJO": {icao: "MROC", city: "San Jose (CR)"},
-  "SJC": {icao: "KSJC", city: "San Jose (US)"},
-  "JTR": {icao: "LGSR", city: "Santorini"},
-  "SCQ": {icao: "LEST", city: "Santiago de Compostela"},
-  "SJJ": {icao: "LQSA", city: "Sarajevo"},
-  "GRU": {icao: "SBGR", city: "Sao Paulo"},
-  "SEA": {icao: "KSEA", city: "Seattle"},
-  "ICN": {icao: "RKSI", city: "Seoul"},
-  "SVQ": {icao: "LEZL", city: "Seville"},
-  "PVG": {icao: "ZSPD", city: "Shanghai"},
-  "SIN": {icao: "WSSS", city: "Singapore"},
-  "SOF": {icao: "LBSF", city: "Sofia"},
-  "SPU": {icao: "LDSP", city: "Split"},
-  "SVG": {icao: "ENZV", city: "Stavanger"},
-  "STL": {icao: "KSTL", city: "St. Louis"},
-  "ARN": {icao: "ESSA", city: "Stockholm"},
-  "SXB": {icao: "LFST", city: "Strasbourg"},
-  "STR": {icao: "EDDS", city: "Stuttgart"},
-  "TLL": {icao: "EETN", city: "Tallinn"},
-  "IKA": {icao: "OIIE", city: "Tehran"},
-  "TLV": {icao: "LLBG", city: "Tel Aviv"}, 
-  "SKG": {icao: "LGTS", city: "Thessaloniki"},
-  "TIA": {icao: "LATI", city: "Tirana"},
-  "TIV": {icao: "LYTV", city: "Tivat"},
-  "HND": {icao: "RJTT", city: "Tokyo"},
-  "YYZ": {icao: "CYYZ", city: "Toronto"},
-  "TOS": {icao: "ENTC", city: "Tromsø"},
-  "TRD": {icao: "ENVA", city: "Trondheim"},
-  "TUN": {icao: "DTTA", city: "Tunis"},
-  "VLC": {icao: "LEVC", city: "Valencia"},
-  "YVR": {icao: "CYVR", city: "Vancouver"},
-  "VAR": {icao: "LBWN", city: "Varna"},
-  "VCE": {icao: "LIPZ", city: "Venice"},
-  "VIE": {icao: "LOWW", city: "Vienna - Austrian Hub"},
-  "VNO": {icao: "EYVI", city: "Vilnius"},
-  "WAW": {icao: "EPWA", city: "Warsaw"},
-  "IAD": {icao: "KIAD", city: "Washington"},
-  "GWT": {icao: "EDXW", city: "Westerland"},
-  "WRO": {icao: "EPWR", city: "Wroclaw"},
-  "WBG": {icao: "EDFW", city: "Wurzburg"},
-  "ZAD": {icao: "LDZD", city: "Zadar"},
-  "ZAG": {icao: "LDZA", city: "Zagreb"},
-  "ZTH": {icao: "LGZA", city: "Zakynthos"},
-  "ZRH": {icao: "LSZH", city: "Zurich - Swiss Hub"},
-  "PER": {icao: "YPPH", city: "Perth - Longest DLH Flight (17HR)"},
-
+        "MUC": {icao: "EDDM", city: "Munich - Lufthansa Secondary"},
+        "ABV": {icao: "DNAA", city: "Abuja"},
+        "AUH": {icao: "OMAA", city: "Abu Dhabi"},
+        "ALC": {icao: "LEAL", city: "Alicante"},
+        "ALG": {icao: "DAAG", city: "Algiers"},
+        "ALA": {icao: "UAAA", city: "Almaty"},
+        "AMM": {icao: "OJAI", city: "Amman"}, 
+        "AMS": {icao: "EHAM", city: "Amsterdam - KLM Hub"},
+        "AOI": {icao: "LIPY", city: "Ancona"},
+        "ATH": {icao: "LGAV", city: "Athens"},
+        "ATL": {icao: "KATL", city: "Atlanta"},
+        "OVD": {icao: "LEAS", city: "Asturias"},
+        "GYD": {icao: "UBBB", city: "Baku"},
+        "BKK": {icao: "VTBS", city: "Bangkok"},
+        "BLR": {icao: "VOBL", city: "Bangalore"},
+        "BCN": {icao: "LEBL", city: "Barcelona"},
+        "BRI": {icao: "LIBD", city: "Bari"},
+        "BSL": {icao: "LFSB", city: "Basel"},
+        "BIA": {icao: "LFKB", city: "Bastia"},
+        "PEK": {icao: "ZBAA", city: "Beijing"},
+        "BEY": {icao: "OLBA", city: "Beirut"}, 
+        "BEG": {icao: "LYBE", city: "Belgrade"},
+        "BGO": {icao: "ENBR", city: "Bergen"},
+        "BER": {icao: "EDDB", city: "Berlin"},
+        "BIQ": {icao: "LFBZ", city: "Biarritz"},
+        "BIO": {icao: "LEBB", city: "Bilbao"},
+        "BLL": {icao: "EKBI", city: "Billund"},
+        "BHX": {icao: "EGBB", city: "Birmingham"},
+        "BOG": {icao: "SKBO", city: "Bogota"},
+        "BLQ": {icao: "LIPE", city: "Bologna"},
+        "BOD": {icao: "LFBD", city: "Bordeaux"},
+        "BOS": {icao: "KBOS", city: "Boston"},
+        "BRE": {icao: "EDDW", city: "Bremen"},
+        "BDS": {icao: "LIBR", city: "Brindisi"},
+        "BRU": {icao: "EBBR", city: "Brussels - Brussels Airlines hub"},
+        "OTP": {icao: "LROP", city: "Bucharest"},
+        "BUD": {icao: "LHBP", city: "Budapest"},
+        "EZE": {icao: "SAEZ", city: "Buenos Aires"},
+        "BOJ": {icao: "LBBG", city: "Burgas"},
+        "CAG": {icao: "LIEE", city: "Cagliari"},
+        "CAI": {icao: "HECA", city: "Cairo"},
+        "YYC": {icao: "CYYC", city: "Calgary"},
+        "CPT": {icao: "FACT", city: "Cape Town"},
+        "CTA": {icao: "LICC", city: "Catania"},
+        "CLT": {icao: "KCLT", city: "Charlotte"},
+        "MAA": {icao: "VOMM", city: "Chennai"},
+        "ORD": {icao: "KORD", city: "Chicago"},
+        "CLJ": {icao: "LRCL", city: "Cluj"},
+        "CGN": {icao: "EDDK", city: "Cologne"},
+        "CPH": {icao: "EKCH", city: "Copenhagen"},
+        "ORK": {icao: "EICK", city: "Cork"},
+        "CFU": {icao: "LGKR", city: "Corfu"},
+        "DFW": {icao: "KDFW", city: "Dallas"},
+        "DMM": {icao: "OEDF", city: "Dammam"},
+        "DEB": {icao: "LHDC", city: "Debrecen"},
+        "DEL": {icao: "VIDP", city: "Delhi"},
+        "DEN": {icao: "KDEN", city: "Denver"},
+        "DTW": {icao: "KDTW", city: "Detroit"},
+        "DRS": {icao: "EDDC", city: "Dresden"},
+        "DUB": {icao: "EIDW", city: "Dublin"},
+        "DXB": {icao: "OMDB", city: "Dubai"},
+        "DBV": {icao: "LDDU", city: "Dubrovnik"},
+        "DME": {icao: "UUDD", city: "Moscow"},
+        "DUS": {icao: "EDDL", city: "Dusseldorf"},
+        "EDI": {icao: "EGPH", city: "Edinburgh"},
+        "ERF": {icao: "EDDE", city: "Erfurt"},
+        "EBL": {icao: "ORER", city: "Erbil"},
+        "FAO": {icao: "LPFR", city: "Faro"},
+        "FLR": {icao: "LIRQ", city: "Florence"},
+        "GDN": {icao: "EPGD", city: "Gdansk"},
+        "GVA": {icao: "LSGG", city: "Geneva - Swiss Hub"},
+        "GLA": {icao: "EGPF", city: "Glasgow"},
+        "GOT": {icao: "ESGG", city: "Gothenburg"},
+        "GRZ": {icao: "LOWG", city: "Graz"},
+        "HAM": {icao: "EDDH", city: "Hamburg"},
+        "HAJ": {icao: "EDDV", city: "Hanover"},
+        "HEL": {icao: "EFHK", city: "Helsinki"},
+        "HER": {icao: "LGIR", city: "Heraklion"},
+        "HDF": {icao: "EDAH", city: "Heringsdorf"},
+        "HKG": {icao: "VHHH", city: "Hong Kong"},
+        "IAH": {icao: "KIAH", city: "Houston"},
+        "HYD": {icao: "VOHY", city: "Hyderabad"},
+        "IVL": {icao: "EFIV", city: "Ivalo"},
+        "IBZ": {icao: "LEIB", city: "Ibiza"},
+        "IST": {icao: "LTBA", city: "Istanbul"},
+        "ADB": {icao: "LTBJ", city: "Izmir"},
+        "JED": {icao: "OEJN", city: "Jeddah"},
+        "JNB": {icao: "FAOR", city: "Johannesburg"},
+        "KLX": {icao: "LGKL", city: "Kalamata"},
+        "KBP": {icao: "UKBB", city: "Kiev"},
+        "FKB": {icao: "EDSB", city: "Karlsruhe"},
+        "KTW": {icao: "EPKT", city: "Katowice"},
+        "EFL": {icao: "LGKF", city: "Kefalonia"},
+        "KTT": {icao: "EFKT", city: "Kittilä"},
+        "KGS": {icao: "LGKO", city: "Kos"},
+        "KRK": {icao: "EPKK", city: "Krakow"},
+        "KAO": {icao: "EFRO", city: "Kuusamo"},
+        "KWI": {icao: "OKKK", city: "Kuwait City"},
+        "LOS": {icao: "DNMM", city: "Lagos"},
+        "SUF": {icao: "LICA", city: "Lamezia"},
+        "LCA": {icao: "LCLK", city: "Larnaca"},
+        "LEJ": {icao: "EDDP", city: "Leipzig"},
+        "LIS": {icao: "LPPT", city: "Lisbon"},
+        "LNZ": {icao: "LOWL", city: "Linz"},
+        "LHR": {icao: "EGLL", city: "London"},
+        "STN": {icao: "EGSS", city: "London"},
+        "LAX": {icao: "KLAX", city: "Los Angeles"},
+        "LAD": {icao: "FNLU", city: "Luanda"},
+        "LUX": {icao: "ELLX", city: "Luxembourg"},
+        "LYS": {icao: "LFLL", city: "Lyon"},
+        "MAD": {icao: "LEMD", city: "Madrid"},
+        "SSG": {icao: "FQMA", city: "Malabo"},
+        "AGP": {icao: "LEMG", city: "Malaga"},
+        "MLA": {icao: "LMML", city: "Malta"},
+        "MAN": {icao: "EGCC", city: "Manchester"},
+        "MRS": {icao: "LFML", city: "Marseille"},
+        "MEX": {icao: "MMMX", city: "Mexico City"},
+        "MIA": {icao: "KMIA", city: "Miami"},
+        "LIN": {icao: "LIML", city: "Milan"},
+        "MXP": {icao: "LIMC", city: "Milan"},
+        "MSP": {icao: "KMSP", city: "Minneapolis"},
+        "YUL": {icao: "CYUL", city: "Montreal"},
+        "BOM": {icao: "VABB", city: "Mumbai"},
+        "FMO": {icao: "EDDG", city: "Munster"},
+        "JMK": {icao: "LGMK", city: "Mykonos"},
+        "NBO": {icao: "HKJK", city: "Nairobi"},
+        "NTE": {icao: "LFRS", city: "Nantes"},
+        "NAP": {icao: "LIRN", city: "Naples"},
+        "NCL": {icao: "EGNT", city: "Newcastle"},
+        "JFK": {icao: "KJFK", city: "New York"},
+        "EWR": {icao: "KEWR", city: "Newark"},
+        "NCE": {icao: "LFMN", city: "Nice"},
+        "NUE": {icao: "EDDN", city: "Nuremberg"},
+        "OLB": {icao: "LIEO", city: "Olbia"},
+        "KIX": {icao: "34.4347, 135.2441", city: "Osaka"},
+        "OSL": {icao: "ENGM", city: "Oslo"},
+        "PMO": {icao: "LICJ", city: "Palermo"},
+        "PMI": {icao: "LEPA", city: "Palma de Mallorca"},
+        "PTY": {icao: "MPTO", city: "Panama City"},
+        "PFO": {icao: "LCPH", city: "Paphos"},
+        "CDG": {icao: "LFPG", city: "Paris"},
+        "PHL": {icao: "KPHL", city: "Philadelphia"},
+        "PHC": {icao: "DNPO", city: "Port Harcourt"},
+        "OPO": {icao: "LPPR", city: "Porto"},
+        "POZ": {icao: "EPPO", city: "Poznan"},
+        "PRG": {icao: "LKPR", city: "Prague"},
+        "PUY": {icao: "LDPL", city: "Pula"},
+        "RDU": {icao: "KRDU", city: "Raleigh"},
+        "KEF": {icao: "BIKF", city: "Reykjavik"},
+        "RHO": {icao: "LGRP", city: "Rhodes"},
+        "RIX": {icao: "EVRA", city: "Riga"},
+        "RJK": {icao: "LDRI", city: "Rijeka"},
+        "GIG": {icao: "SBGL", city: "Rio de Janeiro"},
+        "RUH": {icao: "OERK", city: "Riyadh"},
+        "FCO": {icao: "LIRF", city: "Rome"},
+        "RVN": {icao: "EFRO", city: "Rovaniemi"},
+        "SZG": {icao: "LOWS", city: "Salzburg"},
+        "SFO": {icao: "KSFO", city: "San Francisco"},
+        "SJO": {icao: "MROC", city: "San Jose (CR)"},
+        "SJC": {icao: "KSJC", city: "San Jose (US)"},
+        "JTR": {icao: "LGSR", city: "Santorini"},
+        "SCQ": {icao: "LEST", city: "Santiago de Compostela"},
+        "SJJ": {icao: "LQSA", city: "Sarajevo"},
+        "GRU": {icao: "SBGR", city: "Sao Paulo"},
+        "SEA": {icao: "KSEA", city: "Seattle"},
+        "ICN": {icao: "RKSI", city: "Seoul"},
+        "SVQ": {icao: "LEZL", city: "Seville"},
+        "PVG": {icao: "ZSPD", city: "Shanghai"},
+        "SIN": {icao: "WSSS", city: "Singapore"},
+        "SOF": {icao: "LBSF", city: "Sofia"},
+        "SPU": {icao: "LDSP", city: "Split"},
+        "SVG": {icao: "ENZV", city: "Stavanger"},
+        "STL": {icao: "KSTL", city: "St. Louis"},
+        "ARN": {icao: "ESSA", city: "Stockholm"},
+        "SXB": {icao: "LFST", city: "Strasbourg"},
+        "STR": {icao: "EDDS", city: "Stuttgart"},
+        "TLL": {icao: "EETN", city: "Tallinn"},
+        "IKA": {icao: "OIIE", city: "Tehran"},
+        "TLV": {icao: "LLBG", city: "Tel Aviv"}, 
+        "SKG": {icao: "LGTS", city: "Thessaloniki"},
+        "TIA": {icao: "LATI", city: "Tirana"},
+        "TIV": {icao: "LYTV", city: "Tivat"},
+        "HND": {icao: "RJTT", city: "Tokyo"},
+        "YYZ": {icao: "CYYZ", city: "Toronto"},
+        "TOS": {icao: "ENTC", city: "Tromsø"},
+        "TRD": {icao: "ENVA", city: "Trondheim"},
+        "TUN": {icao: "DTTA", city: "Tunis"},
+        "VLC": {icao: "LEVC", city: "Valencia"},
+        "YVR": {icao: "CYVR", city: "Vancouver"},
+        "VAR": {icao: "LBWN", city: "Varna"},
+        "VCE": {icao: "LIPZ", city: "Venice"},
+        "VIE": {icao: "LOWW", city: "Vienna - Austrian Hub"},
+        "VNO": {icao: "EYVI", city: "Vilnius"},
+        "WAW": {icao: "EPWA", city: "Warsaw"},
+        "IAD": {icao: "KIAD", city: "Washington"},
+        "GWT": {icao: "EDXW", city: "Westerland"},
+        "WRO": {icao: "EPWR", city: "Wroclaw"},
+        "WBG": {icao: "EDFW", city: "Wurzburg"},
+        "ZAD": {icao: "LDZD", city: "Zadar"},
+        "ZAG": {icao: "LDZA", city: "Zagreb"},
+        "ZTH": {icao: "LGZA", city: "Zakynthos"},
+        "ZRH": {icao: "LSZH", city: "Zurich - Swiss Hub"},
+        "PER": {icao: "YPPH", city: "Perth - Longest DLH Flight (17HR)"}
     };
 
     // --- 2. AIRPORT COORDINATES (Lat, Lon, UTC Offset) ---
@@ -424,18 +423,15 @@
         depSelect.innerHTML = '<option value="">-- Select Departure --</option>';
         arrSelect.innerHTML = '<option value="">-- Select Arrival --</option>';
 
-        // Sort keys and build options
         Object.keys(airportData).sort().forEach(iata => {
-            const name = airportData[iata][0];
-            const icao = airportData[iata][1];
-            const text = `${iata} - ${name} (${icao})`;
+            const entry = airportData[iata];
+            const text = `${iata} - ${entry.city} (${entry.icao})`;
             
             depSelect.add(new Option(text, iata));
             arrSelect.add(new Option(text, iata));
         });
     }
 
-    // Physics Engine: Haversine Distance
     function getDistance(c1, c2) {
         const R = 6371; 
         const dLat = (c2[0] - c1[0]) * Math.PI / 180;
@@ -444,21 +440,15 @@
         return R * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
     }
 
-    // Physics Engine: Wind & Profile logic
     function estimateTime(distance, depIata, arrIata) {
         const depC = airportCoords[depIata];
         const arrC = airportCoords[arrIata];
-        
         let routingFactor = distance > 4500 ? 1.08 : 1.15;
         let windFactor = 1.0;
-        const lonDiff = depC[1] - arrC[1]; // Westbound check
-        
-        if (distance > 4000) {
-            windFactor = lonDiff > 0 ? 1.08 : 0.94;
-        }
-
+        const lonDiff = depC[1] - arrC[1]; 
+        if (distance > 4000) { windFactor = lonDiff > 0 ? 1.08 : 0.94; }
         const cruiseSpeed = distance > 4500 ? 870 : 820;
-        const climbDescentTime = 0.75; // 45 mins total
+        const climbDescentTime = 0.75; 
         return ((distance * routingFactor) / cruiseSpeed + climbDescentTime) * windFactor;
     }
 
@@ -474,7 +464,6 @@
         return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', timeZone: 'UTC' });
     }
 
-    // --- 4. THE DISPATCH RUNNER ---
     function calculateFlight() {
         const dep = document.getElementById('departure').value;
         const arr = document.getElementById('arrival').value;
@@ -493,7 +482,7 @@
         resDiv.innerHTML = `
             <div class="result-card">
                 <span class="res-label">Route Information</span>
-                <span class="res-data">${airportData[dep][0]} (${airportData[dep][1]}) → ${airportData[arr][0]} (${airportData[arr][1]})</span>
+                <span class="res-data">${airportData[dep].city} (${airportData[dep].icao}) → ${airportData[arr].city} (${airportData[arr].icao})</span>
                 <span class="res-sub">Distance: ${dist.toFixed(0)} KM</span>
             </div>
             <div class="result-card">
@@ -537,51 +526,34 @@
 
     function closeAllMenus() {
         document.querySelectorAll('.mega-panel').forEach(p => p.classList.remove('active'));
-        document.getElementById("menu-overlay").classList.remove("active");
+        const overlay = document.getElementById("menu-overlay");
+        if(overlay) overlay.classList.remove("active");
     }
 
-        
-        let lastScrollY = window.scrollY;
-        const navbar = document.getElementById("navbar");
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > lastScrollY && window.scrollY > 150) {
-                navbar.classList.add("nav-hidden");
-                closeAllMenus(); 
-            } else { navbar.classList.remove("nav-hidden"); }
-            lastScrollY = window.scrollY;
-        });
+    function toggleMobileMenu() {
+        const m = document.getElementById("mobile-menu");
+        if(!m) return;
+        m.classList.toggle("open");
+        if(!m.classList.contains("open")) backToMainMobile();
+        document.body.style.overflow = m.classList.contains("open") ? "hidden" : "auto";
+    }
 
-        function toggleMenu(menuId) {
-            const menu = document.getElementById(menuId);
-            const overlay = document.getElementById("menu-overlay");
-            const isOpen = menu.classList.contains("active");
-            closeAllMenus();
-            if (!isOpen) { menu.classList.add("active"); overlay.classList.add("active"); }
-        }
+    function showSubMobile(subId) {
+        const main = document.getElementById("mobile-main-links");
+        const sub = document.getElementById(subId);
+        const back = document.getElementById("mobile-back");
+        if(main) main.style.display = "none";
+        if(sub) sub.style.display = "block";
+        if(back) back.style.display = "inline";
+    }
 
-        function closeAllMenus() {
-            document.querySelectorAll('.mega-panel').forEach(p => p.classList.remove('active'));
-            document.getElementById("menu-overlay").classList.remove("active");
-        }
-
-        function toggleMobileMenu() {
-            const m = document.getElementById("mobile-menu");
-            m.classList.toggle("open");
-            if(!m.classList.contains("open")) backToMainMobile();
-            document.body.style.overflow = m.classList.contains("open") ? "hidden" : "auto";
-        }
-
-        function showSubMobile(subId) {
-            document.getElementById("mobile-main-links").style.display = "none";
-            document.getElementById(subId).style.display = "block";
-            document.getElementById("mobile-back").style.display = "inline";
-        }
-
-        function backToMainMobile() {
-            document.getElementById("mobile-main-links").style.display = "block";
-            document.querySelectorAll(".mobile-sub-menu").forEach(s => s.style.display = "none");
-            document.getElementById("mobile-back").style.display = "none";
-        }
-    </script>
+    function backToMainMobile() {
+        const main = document.getElementById("mobile-main-links");
+        const back = document.getElementById("mobile-back");
+        if(main) main.style.display = "block";
+        document.querySelectorAll(".mobile-sub-menu").forEach(s => s.style.display = "none");
+        if(back) back.style.display = "none";
+    }
+</script>
 </body>
 </html>
