@@ -1,19 +1,202 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Redirecting...</title>
-    <script>
-        // This is the only logic needed. 
-        // It detects a "naked" URL and forces it to the FRA anchor.
-        if (!window.location.hash || window.location.hash === "#") {
-            window.location.replace("hub-info.html#fra");
-        } else {
-            // If they already have a hash (#fra or #muc), 
-            // you can put your hub content loading logic here.
-            console.log("Loading hub: " + window.location.hash);
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hub Information | Lufthansa GeoFS</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Hub-Specific Page Layout */
+        .hub-container { max-width: 1200px; margin: 140px auto 40px; padding: 0 20px; }
+        .hub-header { 
+            background: #001f3f; color: white; padding: 40px; 
+            border-radius: 12px; border-bottom: 5px solid #ffcc00; 
+            text-align: center; margin-bottom: 20px;
         }
-    </script>
+
+        /* Hub Switcher Buttons */
+        .hub-selector { text-align: center; margin-bottom: 40px; }
+        .selector-btn { 
+            background: white; color: #001f3f; border: 2px solid #001f3f; 
+            padding: 10px 25px; font-weight: bold; cursor: pointer; 
+            border-radius: 30px; margin: 0 10px; transition: 0.3s;
+        }
+        .selector-btn:hover, .selector-btn.active { background: #001f3f; color: white; }
+
+        /* Content Sections */
+        .hub-section { display: none; animation: fadeIn 0.4s ease; }
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+        .info-card { 
+            background: white; padding: 25px; border-radius: 12px; 
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08); border-left: 5px solid #001f3f; 
+            color: #333; 
+        }
+
+        /* Modal Overlay */
+        .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); }
+        .modal-content { background: white; margin: 5% auto; padding: 30px; width: 90%; max-width: 1000px; border-radius: 12px; position: relative; text-align: center; color: #333; }
+        .close-btn { position: absolute; right: 20px; top: 15px; font-size: 35px; cursor: pointer; color: #001f3f; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
 </head>
 <body>
-    </body>
+
+    <nav class="main-nav" id="navbar">
+        <div class="nav-wrapper">
+            <div class="nav-left">
+                <a href="index.html" class="logo-link">
+                    <img src="logo.png" alt="Logo" class="nav-logo">
+                    <span>Lufthansa GeoFS</span>
+                </a>
+            </div>
+            
+            <ul class="nav-links">
+                <li class="pillar-link" onclick="toggleMenu('ops-menu')">Flight Operations</li>
+                <li class="pillar-link" onclick="toggleMenu('network-menu')">Live Network</li>
+                <li class="pillar-link" onclick="toggleMenu('media-menu')">Media & News</li>
+                <li class="pillar-link" onclick="toggleMenu('crew-menu')">Crew & Community</li>
+            </ul>
+
+            <div class="hamburger" onclick="toggleMobileMenu()">
+                <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            </div>
+        </div>
+
+        <div class="mega-overlay" id="menu-overlay" onclick="closeAllMenus()"></div>
+        
+        <div id="ops-menu" class="mega-panel">
+            <div class="panel-content">
+                <div class="menu-col"><h3>Ops Center</h3><a href="ops.html">Flight Dispatch</a><a href="livery-db.html">Livery Database</a></div>
+                <div class="menu-col"><h3>Fleet</h3><a href="fleet.html">Main Fleet</a><a href="sop-manuals.html">SOP & Manuals</a></div>
+            </div>
+        </div>
+
+        <div id="network-menu" class="mega-panel">
+            <div class="panel-content">
+                <div class="menu-col"><h3>Network Hub</h3><a href="network.html">Route Map & List</a><a href="radar.html">Live Radar</a></div>
+                <div class="menu-col"><h3>Hubs</h3><a href="hub-info.html#fra">Frankfurt (FRA)</a><a href="hub-info.html#muc">Munich (MUC)</a></div>
+            </div>
+        </div>
+
+        <div id="media-menu" class="mega-panel">
+            <div class="panel-content">
+                <div class="menu-col"><h3>The Gazette</h3><a href="news.html">Latest News</a><a href="gallery.html">Fleet Gallery</a></div>
+            </div>
+        </div>
+
+        <div id="crew-menu" class="mega-panel">
+            <div class="panel-content">
+                <div class="menu-col"><h3>The Elite</h3><a href="hall-of-fame.html">Hall of Fame</a><a href="service-medals.html">Service Medals</a></div>
+                <div class="menu-col"><h3>Highlights</h3><a href="highlights.html">Our Perks</a></div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hub-container">
+        <header class="hub-header">
+            <h1>HUB OPERATIONS CENTER</h1>
+            <p>Real-time data for Lufthansa Group Primary Bases</p>
+        </header>
+
+        <div class="hub-selector">
+            <button class="selector-btn active" id="btn-fra" onclick="window.location.hash='#fra'">FRANKFURT (EDDF)</button>
+            <button class="selector-btn" id="btn-muc" onclick="window.location.hash='#muc'">MUNICH (EDDM)</button>
+        </div>
+
+        <div id="fra" class="hub-section">
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Live METAR</h3>
+                    <iframe src="https://checkwx.com/weather/EDDF/metar" width="100%" height="200" frameborder="0"></iframe>
+                </div>
+                <div class="info-card">
+                    <h3>Capability</h3>
+                    <p>Primary Hub: Cat 4F Facility.</p>
+                    <p>Handles A388, B748, A359. Runway 18 for DEP only.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Pilot Resources</h3>
+                    <button class="selector-btn active" style="width:100%; margin-bottom:10px;" onclick="openModal('EDDF Charts', '')">Open Charts</button>
+                    <button class="selector-btn" style="width:100%;" onclick="openModal('EDDF Vectors', '<h3>Arrival Flow</h3><p>Standard flow via PSA. Maintain 210kts to 12nm final.</p>')">View Vectors</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="muc" class="hub-section">
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Live METAR</h3>
+                    <iframe src="https://checkwx.com/weather/EDDM/metar" width="100%" height="200" frameborder="0"></iframe>
+                </div>
+                <div class="info-card">
+                    <h3>Capability</h3>
+                    <p>Secondary Hub: Cat 4E Facility.</p>
+                    <p>Main A350 Base. Terminals 1 & 2 (LH Exclusive).</p>
+                </div>
+                <div class="info-card">
+                    <h3>Pilot Resources</h3>
+                    <button class="selector-btn active" style="width:100%; margin-bottom:10px;" onclick="openModal('EDDM Charts', '')">Open Charts</button>
+                    <button class="selector-btn" style="width:100%;" onclick="openModal('EDDM Vectors', '<h3>Arrival Flow</h3><p>Vectors via BETOS. Localizer intercept 3000-5000ft.</p>')">View Vectors</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="hubModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title"></h2>
+            <div id="modal-body" style="margin-top:20px;"></div>
+        </div>
+    </div>
+
+    <script>
+        // --- HUB NAVIGATION LOGIC ---
+        function handleHubRouting() {
+            const hash = window.location.hash || "#fra";
+            document.querySelectorAll('.hub-section').forEach(s => s.style.display = 'none');
+            document.querySelectorAll('.selector-btn').forEach(b => b.classList.remove('active'));
+
+            const target = document.querySelector(hash);
+            if (target) {
+                target.style.display = 'block';
+                const btnId = hash === '#fra' ? 'btn-fra' : 'btn-muc';
+                document.getElementById(btnId).classList.add('active');
+            }
+        }
+
+        function openModal(title, content) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-body').innerHTML = content;
+            document.getElementById('hubModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('hubModal').style.display = 'none';
+        }
+
+        // --- RESTORED INDEX.HTML LOGIC ---
+        function toggleMenu(menuId) {
+            const menu = document.getElementById(menuId);
+            const overlay = document.getElementById("menu-overlay");
+            const isOpen = menu.classList.contains("active");
+            closeAllMenus();
+            if (!isOpen) { 
+                menu.classList.add("active"); 
+                overlay.classList.add("active"); 
+            }
+        }
+
+        function closeAllMenus() {
+            document.querySelectorAll('.mega-panel').forEach(p => p.classList.remove('active'));
+            document.getElementById("menu-overlay").classList.remove("active");
+        }
+
+        window.addEventListener('hashchange', handleHubRouting);
+        window.addEventListener('load', handleHubRouting);
+    </script>
+</body>
 </html>
