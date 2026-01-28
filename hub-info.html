@@ -16,6 +16,7 @@
             text-align: center; margin-bottom: 20px;
         }
 
+        /* Hub Switcher Buttons */
         .hub-selector { text-align: center; margin-bottom: 40px; }
         .selector-btn { 
             background: white; color: #001f3f; border: 2px solid #001f3f; 
@@ -58,11 +59,22 @@
         }
         .action-btn:hover { background: #ffcc00; border-color: #ffcc00; }
 
-        /* Modal Customization */
-        .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); }
-        .modal-content { background: white; margin: 2% auto; padding: 30px; width: 95%; max-width: 1200px; border-radius: 12px; position: relative; text-align: center; }
-        .close-btn { position: absolute; right: 20px; top: 15px; font-size: 35px; cursor: pointer; color: #001f3f; z-index: 10; }
-        .modal-footer { margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee; }
+        /* ZOOMABLE MODAL SYSTEM */
+        .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); }
+        .modal-content { 
+            background: #f1f1f1; margin: 1% auto; width: 95%; max-width: 1300px; 
+            height: 95vh; border-radius: 12px; display: flex; flex-direction: column; overflow: hidden;
+        }
+        .modal-header { background: #001f3f; color: white; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; }
+        
+        .zoom-controls { background: #eee; padding: 10px; display: flex; align-items: center; justify-content: center; gap: 15px; border-bottom: 1px solid #ddd; }
+        .zoom-controls input { width: 300px; cursor: pointer; }
+
+        .modal-body { flex-grow: 1; overflow: auto; background: #525659; display: flex; justify-content: center; padding: 20px; }
+        #pdf-wrapper { width: 100%; transition: width 0.1s ease; }
+        
+        .close-btn { color: white; font-size: 35px; cursor: pointer; line-height: 1; }
+        .modal-footer { background: white; padding: 15px; text-align: center; border-top: 1px solid #eee; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
@@ -115,7 +127,7 @@
     <div class="hub-container">
         <header class="hub-header">
             <h1>HUB OPERATIONS CENTER</h1>
-            <p>Hub Info: Technical data and briefing materials for Lufthansa main bases</p>
+            <p>Technical data and briefing materials for Lufthansa Group Primary Bases</p>
         </header>
 
         <div class="hub-selector">
@@ -139,14 +151,14 @@
                         <div class="stat-item"><span class="stat-val">4</span><span class="stat-desc">Runways</span></div>
                     </div>
                     <div class="hub-description">
-                        <p>Lufthansa's main global hub. Note: Runway 18 is strictly for departures only. Parallel runways 07/25 serve the bulk of heavy arrivals.</p>
+                        <p>Frankfurt is our primary international gateway. Note: Runway 18 is for departures only. Parallel runways 07/25 handle the majority of heavy arrival traffic.</p>
                     </div>
                 </div>
 
                 <div class="briefing-card" style="padding:15px; background:none; box-shadow:none;">
                     <div class="card-label">Operational Resources</div>
                     <button class="action-btn" onclick="openChartModal('EDDF', 'https://opennav.com/pdf/EDDF/ED_AD_2_EDDF_2-5_en_2019-08-15.pdf')">📋 Airport Charts</button>
-                    <button class="action-btn" onclick="openModal('EDDF Vectors', '<h3>Arrival Flow</h3><p>Maintain 210kts until 12nm final.</p>')">✈️ Arrival Vectors</button>
+                    <button class="action-btn" onclick="openModal('EDDF Vectors', '<h3>Arrival Flow</h3><p>Standard flow via PSA. Expect vectors to 07L/25R.</p>')">✈️ Arrival Vectors</button>
                 </div>
             </div>
         </div>
@@ -162,19 +174,19 @@
                     <div class="card-label">EDDM Specifications</div>
                     <div class="stats-grid">
                         <div class="stat-item"><span class="stat-val">4,000m</span><span class="stat-desc">Max Runway Length</span></div>
-                        <div class="stat-item"><span class="stat-val">B747-8 / A380</span><span class="stat-desc">Biggest Plane</span></div>
+                        <div class="stat-item"><span class="stat-val">A350-900 / A346</span><span class="stat-desc">Biggest Plane</span></div>
                         <div class="stat-item"><span class="stat-val">453m / 1,487ft</span><span class="stat-desc">Elevation</span></div>
                         <div class="stat-item"><span class="stat-val">2</span><span class="stat-desc">Runways</span></div>
                     </div>
                     <div class="hub-description">
-                        <p>Munich features Terminal 2, exclusive to Lufthansa and Star Alliance partners. Efficient parallel runway operations (08/26).</p>
+                        <p>Munich features Terminal 2, exclusive to Lufthansa and Star Alliance. Efficient parallel runway system allows for high-volume operations.</p>
                     </div>
                 </div>
 
                 <div class="briefing-card" style="padding:15px; background:none; box-shadow:none;">
                     <div class="card-label">Operational Resources</div>
                     <button class="action-btn" onclick="openChartModal('EDDM', 'https://opennav.com/pdf/EDDM/ED_AD_2_EDDM_2-5_en_2013-12-12.pdf')">📋 Airport Charts</button>
-                    <button class="action-btn" onclick="openModal('EDDM Vectors', '<h3>Arrival Flow</h3><p>Parallel ILS established at 3000-5000ft.</p>')">✈️ Arrival Vectors</button>
+                    <button class="action-btn" onclick="openModal('EDDM Vectors', '<h3>Arrival Flow</h3><p>Standard flow via BETOS. Established ILS 08L/R or 26L/R.</p>')">✈️ Arrival Vectors</button>
                 </div>
             </div>
         </div>
@@ -182,9 +194,24 @@
 
     <div id="hubModal" class="modal">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h2 id="modal-title"></h2>
-            <div id="modal-body" style="margin-top:20px; height: 75vh;"></div>
+            <div class="modal-header">
+                <h2 id="modal-title" style="margin:0;"></h2>
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+            </div>
+
+            <div id="zoom-controls" class="zoom-controls" style="display:none;">
+                <span>Zoom Out</span>
+                <input type="range" id="zoomSlider" min="100" max="300" value="100" oninput="updateZoom(this.value)">
+                <span>Zoom In</span>
+                <span id="zoomLabel" style="font-weight:bold; width: 50px;">100%</span>
+            </div>
+
+            <div class="modal-body" id="modal-scroll-area">
+                <div id="pdf-wrapper">
+                    <div id="modal-body"></div>
+                </div>
+            </div>
+
             <div id="modal-footer" class="modal-footer" style="display:none;"></div>
         </div>
     </div>
@@ -204,26 +231,43 @@
         function openModal(title, content) {
             document.getElementById('modal-title').innerText = title;
             document.getElementById('modal-body').innerHTML = content;
+            document.getElementById('zoom-controls').style.display = 'none';
             document.getElementById('modal-footer').style.display = 'none';
+            document.getElementById('pdf-wrapper').style.width = '100%';
             document.getElementById('hubModal').style.display = 'block';
         }
 
         function openChartModal(icao, originalLink) {
-            const title = icao + " Airport Charts";
-            const pdfEmbed = `<embed src="${icao}.pdf#toolbar=0&navpanes=0" type="application/pdf" width="100%" height="100%" />`;
+            document.getElementById('modal-title').innerText = icao + " Airport Charts";
             
-            document.getElementById('modal-title').innerText = title;
+            // Embed PDF
+            const pdfEmbed = `<embed src="${icao}.pdf#toolbar=0&navpanes=0" type="application/pdf" width="100%" height="2000px" />`;
             document.getElementById('modal-body').innerHTML = pdfEmbed;
             
-            // Add Link to Original Button
+            // Show Controls
+            document.getElementById('zoom-controls').style.display = 'flex';
+            document.getElementById('zoomSlider').value = 100;
+            document.getElementById('zoomLabel').innerText = "100%";
+            document.getElementById('pdf-wrapper').style.width = '100%';
+
+            // Set Footer
             const footer = document.getElementById('modal-footer');
             footer.innerHTML = `<a href="${originalLink}" target="_blank" class="selector-btn active" style="text-decoration:none;">Link to Original PDF</a>`;
             footer.style.display = 'block';
             
             document.getElementById('hubModal').style.display = 'block';
+            document.body.style.overflow = 'hidden'; 
         }
 
-        function closeModal() { document.getElementById('hubModal').style.display = 'none'; }
+        function updateZoom(val) {
+            document.getElementById('pdf-wrapper').style.width = val + '%';
+            document.getElementById('zoomLabel').innerText = val + '%';
+        }
+
+        function closeModal() { 
+            document.getElementById('hubModal').style.display = 'none'; 
+            document.body.style.overflow = 'auto';
+        }
 
         function toggleMenu(menuId) {
             const isOpen = document.getElementById(menuId).classList.contains("active");
