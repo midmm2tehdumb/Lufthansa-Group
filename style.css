@@ -1059,3 +1059,82 @@ body { background: var(--lh-grey); overflow-x: hidden; color: #333; }
         touch-action: pan-x pan-y; /* Allows page scroll while touching map */
     }
 }
+
+/* --- RADAR PAGE SPECIFIC --- */
+
+/* The main container that holds the header and the radar */
+.radar-container {
+    padding: 140px 20px 80px;
+    background-color: #f4f7f9;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Header section styling */
+.radar-header {
+    text-align: center;
+    margin-bottom: 50px;
+    max-width: 900px;
+}
+
+.radar-header h1 {
+    font-size: 3rem;
+    color: #00235f; /* Lufthansa Blue */
+    margin: 10px 0;
+    font-weight: 700;
+}
+
+.radar-header p {
+    color: #4a4a4a;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* The "Box" that holds the radar iframe */
+.radar-frame-wrapper {
+    width: 100%;
+    max-width: 1400px;
+    height: 800px; /* Large view for desktop */
+    background: #000;
+    border-radius: 20px;
+    overflow: hidden; /* Clips the corners of the iframe */
+    box-shadow: 0 30px 60px -12px rgba(0, 35, 95, 0.3);
+    border: 1px solid rgba(0, 35, 95, 0.1);
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.radar-frame-wrapper:hover {
+    transform: translateY(-5px);
+}
+
+/* Ensure the iframe fills the entire wrapper */
+#radar-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* --- RESPONSIVE RADAR --- */
+@media (max-width: 1024px) {
+    .radar-frame-wrapper {
+        height: 600px;
+    }
+}
+
+@media (max-width: 768px) {
+    .radar-container {
+        padding-top: 100px;
+    }
+    
+    .radar-frame-wrapper {
+        height: 500px; /* Shorter on mobile to allow scrolling past it */
+        border-radius: 12px;
+    }
+
+    .radar-header h1 {
+        font-size: 2rem;
+    }
+}
