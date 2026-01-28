@@ -61,28 +61,28 @@
             <p>Ready for departure? Access your tools and hub conditions below.</p>
         </header>
 
-
         <section class="dispatch-tool">
-    <div class="tool-container">
-        <div class="tool-inputs">
-            <div class="field">
-                <label>Departure</label>
-                <select id="departure" class="ops-select"></select>
-            </div>
-            <div class="field">
-                <label>Arrival</label>
-                <select id="arrival" class="ops-select"></select>
-            </div>
-            <button onclick="calculateFlight()" class="btn-calculate">Generate Flight Plan</button>
-        </div>
+            <div class="tool-container">
+                <div class="tool-inputs">
+                    <div class="field">
+                        <label>Departure</label>
+                        <input list="airport-list" id="departure" class="ops-select" placeholder="Search City, IATA or ICAO...">
+                    </div>
+                    <div class="field">
+                        <label>Arrival</label>
+                        <input list="airport-list" id="arrival" class="ops-select" placeholder="Search City, IATA or ICAO...">
+                    </div>
+                    <button onclick="calculateFlight()" class="btn-calculate">Generate Flight Plan</button>
+                </div>
 
-        <div id="dispatch-results" class="dispatch-results-grid" style="display: none;">
+                <datalist id="airport-list"></datalist>
+
+                <div id="dispatch-results" class="dispatch-results-grid" style="display: none;">
+                </div>
             </div>
-    </div>
-</section>
-        
+        </section>
+
         <div class="ops-grid">
-            
             <div class="ops-card">
                 <div class="card-content">
                     <h3>Frankfurt (EDDF)</h3>
@@ -146,12 +146,11 @@
                 </div>
                 <a href="https://discord.com/channels/1404322265214095470/1404322265822396418" target="_blank" class="btn-outline-blue">Discord Help</a>
             </div>
-
         </div>
     </main>
 
 <script>
-    // --- 1. AIRPORT DATA (Names & ICAO) ---
+    // --- 1. AIRPORT DATA ---
     const airportData = {
         "FRA": {icao: "EDDF", city: "Frankfurt - Lufthansa Primary"},
         "MUC": {icao: "EDDM", city: "Munich - Lufthansa Secondary"},
@@ -359,7 +358,7 @@
         "PER": {icao: "YPPH", city: "Perth - Longest DLH Flight (17HR)"}
     };
 
-    // --- 2. AIRPORT COORDINATES (Lat, Lon, UTC Offset) ---
+    // --- 2. AIRPORT COORDINATES ---
     const airportCoords = {
         "FRA": [50.0379, 8.5622, 1], "MUC": [48.3538, 11.7861, 1], "ABV": [9.0060, 7.2636, 1], "AUH": [24.4321, 54.6516, 4],
         "ALC": [38.2822, -0.5581, 1], "ALG": [36.6911, 3.2158, 1], "ALA": [43.3521, 77.0403, 6], "AMM": [31.7226, 35.9935, 2],
@@ -415,20 +414,19 @@
         "PER": [-31.9385, 115.9672, 8]
     };
 
-    // --- 3. CORE LOGIC & DROPDOWNS ---
+    // --- 3. CORE LOGIC ---
     function populateAirports() {
-        const depSelect = document.getElementById('departure');
-        const arrSelect = document.getElementById('arrival');
-        
-        depSelect.innerHTML = '<option value="">-- Select Departure --</option>';
-        arrSelect.innerHTML = '<option value="">-- Select Arrival --</option>';
+        const list = document.getElementById('airport-list');
+        list.innerHTML = ''; 
 
+        // Fill datalist with searchable info
         Object.keys(airportData).sort().forEach(iata => {
             const entry = airportData[iata];
-            const text = `${iata} - ${entry.city} (${entry.icao})`;
-            
-            depSelect.add(new Option(text, iata));
-            arrSelect.add(new Option(text, iata));
+            const option = document.createElement('option');
+            // 'value' is what fills the box, the content inside <option> is searchable
+            option.value = iata; 
+            option.innerHTML = `${entry.city} (${entry.icao})`;
+            list.appendChild(option);
         });
     }
 
@@ -465,11 +463,14 @@
     }
 
     function calculateFlight() {
-        const dep = document.getElementById('departure').value;
-        const arr = document.getElementById('arrival').value;
+        const dep = document.getElementById('departure').value.toUpperCase();
+        const arr = document.getElementById('arrival').value.toUpperCase();
         const resDiv = document.getElementById('dispatch-results');
 
-        if(!dep || !arr || dep === arr) { alert("Invalid Selection"); return; }
+        if(!dep || !arr || dep === arr || !airportData[dep] || !airportData[arr]) { 
+            alert("Invalid Selection. Please choose a valid airport from the list."); 
+            return; 
+        }
 
         const dist = getDistance(airportCoords[dep], airportCoords[arr]);
         const flightHours = estimateTime(dist, dep, arr);
@@ -519,6 +520,7 @@
     function toggleMenu(menuId) {
         const menu = document.getElementById(menuId);
         const overlay = document.getElementById("menu-overlay");
+        if(!menu) return;
         const isOpen = menu.classList.contains("active");
         closeAllMenus();
         if (!isOpen) { menu.classList.add("active"); overlay.classList.add("active"); }
