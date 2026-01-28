@@ -694,51 +694,93 @@ const airportCoords = {
     "PLW": [-0.9186, 119.9094]
 };
 
-        const hubs = ["FRA", "MUC"];
-        const subsidiaryHubs = ["ZRH", "VIE"];
-        const circle = ["SIN", "PER"];
-        const outOfService = [];
+    const hubs = ["FRA", "MUC"];
+    const subsidiaryHubs = ["ZRH", "VIE", "BRU", "GVA", "AMS", "TPE", "KUL", "BOM"];
+    const codeshare = ["CAN", "CKG", "HGH", "CGK", "SGN", "HKT", "DAD", "SAI", "KTI", "AGR", "JAI", "VNS", "GOI"];
+    const circle = ["LIM", "UIO", "GYE", "PBM", "DAR", "ACC", "KGL", "EBB", "NRT", "KIX", "MNL", "DPS", "DOH", "BKI", "CRK", "CTS", "GMP", "KHH", "KWL", "MFM", "NGB", "PEN", "PUS", "RMQ", "TSA", "TSN", "UKB", "AKL", "DMK", "CNX", "HDY", "UPG", "MDC", "PDG", "KNO", "PLM", "SOC", "YIA", "CEB", "LAO", "KLO", "ILO", "TAC", "BLR", "MAA", "COK", "TRV", "AMD", "CCU", "SYD", "MEL", "PER", "OOL", "CBR", "DRW", "PPS", "UTH", "CEI", "BPN", "PLW"];
+    const outOfService = ["TLV", "DAM", "BEY", "AMM", "EBL", "IKA", "KBP", "DME", "AUA", "CUR", "BON", "SXM", "KWI", "ATL", "DFW", "PHL", "JFK", "RDU", "IAD", "CLT", "EWR", "PHC", "IAH", "BOS", "DTW", "YYZ", "YUL", "MIA", "LAX", "SJC", "SFO"]; 
+    const gray = ["NORTH", "MALAYSIAN", "POINT", "MARIANA"];
 
-        const map = L.map('map', { scrollWheelZoom: true }).setView([20, 10], 2);
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png').addTo(map);
+    // --- MAP INITIALIZATION ---
+    const map = L.map('map', { scrollWheelZoom: true }).setView([20, 10], 2);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png').addTo(map);
 
-        Object.keys(airportCoords).forEach(code => {
-            let color = "#6b9ebd";
-            if (hubs.includes(code)) color = "#d4b063";
-            else if (subsidiaryHubs.includes(code)) color = "#d88c6a";
-            else if (circle.includes(code)) color = "#A4AC86";
+    // --- COMPLETE COLOR & MARKER LOGIC ---
+    Object.keys(airportCoords).forEach(code => {
+        let color = "#6b9ebd"; // Default: Destination Blue
+        
+        // Priority check for colors
+        if (hubs.includes(code)) {
+            color = "#d4b063"; // Lufthansa Gold Hub
+        } else if (subsidiaryHubs.includes(code)) {
+            color = "#d88c6a"; // Subsidiary Hub
+        } else if (codeshare.includes(code)) {
+            color = "#b86b6b"; // Codeshare Partners
+        } else if (circle.includes(code)) {
+            color = "#A4AC86"; // HON Circle / Special
+        } else if (outOfService.includes(code)) {
+            color = "#795548"; // Suspended / Out of Service
+        } else if (gray.includes(code)) {
+            color = "#808080"; // Gray category
+        }
 
-            L.circleMarker(airportCoords[code], { radius: 6, color: color, fillColor: color, fillOpacity: 1 }).addTo(map)
-             .bindPopup(`<b>${code}</b><br>${airportData[code].city}`);
+        const data = airportData[code] || {icao: "N/A", city: code};
+
+        // Draw the dot on the map (Single clean call)
+        L.circleMarker(airportCoords[code], {
+            radius: 6,
+            color: color,
+            fillColor: color,
+            fillOpacity: 1,
+            weight: 1
+        }).addTo(map).bindPopup(`<b>${code} / ${data.icao}</b><br>${data.city}`);
+    });
+
+    // --- DIRECTORY LIST ---
+    function populateList() {
+        const list = document.getElementById('airportList');
+        if (!list) return;
+        list.innerHTML = ''; // Clear to prevent duplicates
+        
+        Object.keys(airportData).sort().forEach(code => {
+            const card = document.createElement('div');
+            card.className = 'airport-card';
+            card.innerHTML = `<span style="font-size:11px; font-weight:bold; color:#888;">${code}</span><h4 style="margin:5px 0; color:#00235f;">${airportData[code].city}</h4>`;
+            list.appendChild(card);
         });
+    }
 
-        function populateList() {
-            const list = document.getElementById('airportList');
-            Object.keys(airportData).sort().forEach(code => {
-                const card = document.createElement('div');
-                card.className = 'airport-card';
-                card.innerHTML = `<span style="font-size:11px; font-weight:bold; color:#888;">${code}</span><h4 style="margin:5px 0; color:#00235f;">${airportData[code].city}</h4>`;
-                list.appendChild(card);
-            });
-        }
+    // --- SEARCH FILTER ---
+    function filterAirports() {
+        let val = document.getElementById('airportSearch').value.toUpperCase();
+        document.querySelectorAll('.airport-card').forEach(c => {
+            c.style.display = c.innerText.toUpperCase().includes(val) ? "" : "none";
+        });
+    }
 
-        function filterAirports() {
-            let val = document.getElementById('airportSearch').value.toUpperCase();
-            document.querySelectorAll('.airport-card').forEach(c => c.style.display = c.innerText.toUpperCase().includes(val) ? "" : "none");
-        }
-
-        function toggleMenu(id) {
-            closeAllMenus();
-            document.getElementById(id).classList.add("active");
+    // --- NAVIGATION CONTROLS ---
+    function toggleMenu(id) {
+        closeAllMenus();
+        const menu = document.getElementById(id);
+        if (menu) {
+            menu.classList.add("active");
             document.getElementById("menu-overlay").classList.add("active");
         }
+    }
 
-        function closeAllMenus() {
-            document.querySelectorAll('.mega-panel').forEach(p => p.classList.remove('active'));
-            document.getElementById("menu-overlay").classList.remove("active");
-        }
+    function closeAllMenus() {
+        document.querySelectorAll('.mega-panel').forEach(p => p.classList.remove('active'));
+        const overlay = document.getElementById("menu-overlay");
+        if (overlay) overlay.classList.remove("active");
+    }
 
-        window.onload = () => { populateList(); setTimeout(() => { map.invalidateSize(); }, 200); };
-    </script>
+    // --- INITIALIZE ON LOAD ---
+    window.onload = () => { 
+        populateList(); 
+        setTimeout(() => { map.invalidateSize(); }, 200); 
+    };
+ </script>
+
 </body>
+
 </html>
