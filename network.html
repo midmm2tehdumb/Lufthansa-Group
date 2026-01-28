@@ -3,11 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Route Map & Network | Lufthansa GeoFS</title>
-    <link rel="icon" type="image/png" href="logo.png">
+    <title>Global Network | Lufthansa GeoFS</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        /* Essential inline overrides to ensure the "broken" look is fixed */
+        .network-hero { padding: 140px 20px 100px; background: #00235f; text-align: center; color: white; position: relative; z-index: 2; }
+        .header-divider { width: 60px; height: 3px; background: #d4b063; margin: 25px auto; }
+        .hero-subtitle { max-width: 700px; margin: 0 auto; line-height: 1.6; font-weight: 300; font-size: 1.1rem; opacity: 0.9; }
+        .route-map-section { position: relative; max-width: 1400px; margin: -50px auto 60px; padding: 0 20px; z-index: 10; }
+        #map { height: 600px; width: 100%; border-radius: 16px; background: #eef2f6; box-shadow: 0 25px 50px -12px rgba(0, 35, 95, 0.25); border: 1px solid rgba(255,255,255,0.3); }
+        .map-legend { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 20px; position: absolute; top: 20px; right: 40px; border-radius: 12px; color: #00235f; z-index: 1000; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-top: 4px solid #d4b063; min-width: 200px; }
+        .legend-item { display: flex; align-items: center; margin-bottom: 8px; font-size: 13px; font-weight: 600; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; margin-right: 12px; }
+        .directory-section { padding: 80px 20px; background: #f4f7f9; }
+        .airport-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
+        .airport-card { background: white; padding: 20px; border-radius: 12px; border-left: 5px solid #00235f; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        #airportSearch { padding: 12px 25px; border: 1px solid #ddd; border-radius: 50px; width: 300px; transition: 0.3s; }
+    </style>
 </head>
 <body>
 
@@ -19,119 +33,52 @@
                     <span>Lufthansa GeoFS</span>
                 </a>
             </div>
-            
             <ul class="nav-links">
                 <li class="pillar-link" onclick="toggleMenu('ops-menu')">Flight Operations</li>
                 <li class="pillar-link" onclick="toggleMenu('network-menu')">Live Network</li>
                 <li class="pillar-link" onclick="toggleMenu('media-menu')">Media & News</li>
                 <li class="pillar-link" onclick="toggleMenu('crew-menu')">Crew & Community</li>
             </ul>
-
-            <div class="hamburger" onclick="toggleMobileMenu()">
-                <div class="bar"></div><div class="bar"></div><div class="bar"></div>
-            </div>
         </div>
-
         <div class="mega-overlay" id="menu-overlay" onclick="closeAllMenus()"></div>
-        
-        <div id="ops-menu" class="mega-panel">
-            <div class="panel-content">
-                <div class="menu-col"><h3>Ops Center</h3><a href="ops.html">Flight Dispatch</a><a href="livery-db.html">Livery Database</a></div>
-                <div class="menu-col"><h3>Fleet</h3><a href="fleet.html">Main Fleet</a><a href="sop-manuals.html">SOP & Manuals</a></div>
-            </div>
-        </div>
-
-        <div id="network-menu" class="mega-panel">
-            <div class="panel-content">
-                <div class="menu-col"><h3>Network Hub</h3><a href="network.html">Route Map & List</a><a href="radar.html">Live Radar</a></div>
-                <div class="menu-col"><h3>Hubs</h3><a href="hub-info.html">Frankfurt (FRA)</a><a href="hub-info.html">Munich (MUC)</a></div>
-            </div>
-        </div>
-
-        <div id="media-menu" class="mega-panel">
-            <div class="panel-content">
-                <div class="menu-col"><h3>The Gazette</h3><a href="news.html">Latest News</a><a href="gallery.html">Fleet Gallery</a></div>
-            </div>
-        </div>
-
-        <div id="crew-menu" class="mega-panel">
-            <div class="panel-content">
-                <div class="menu-col"><h3>The Elite</h3><a href="hall-of-fame.html">Hall of Fame</a><a href="service-medals.html">Service Medals</a></div>
-                <div class="menu-col"><h3>Highlights</h3><a href="highlights.html">Our Perks</a></div>
-            </div>
-        </div>
-
-        <div id="mobile-menu" class="mobile-nav-panel">
-            <div class="mobile-header">
-                <span id="mobile-back" onclick="backToMainMobile()" style="display:none;">← Back</span>
-                <span class="close-mobile" onclick="toggleMobileMenu()">&times;</span>
-            </div>
-            <div id="mobile-main-links" class="mobile-links">
-                <div class="mobile-pillar" onclick="showSubMobile('mob-ops')">Flight Operations <span>›</span></div>
-                <div class="mobile-pillar" onclick="showSubMobile('mob-net')">Live Network <span>›</span></div>
-                <div class="mobile-pillar" onclick="showSubMobile('mob-med')">Media & News <span>›</span></div>
-                <div class="mobile-pillar" onclick="showSubMobile('mob-crew')">Crew & Community <span>›</span></div>
-            </div>
-            <div id="mob-ops" class="mobile-sub-menu" style="display:none;">
-                <a href="ops.html">Flight Dispatch</a><a href="livery-db.html">Livery Database</a><a href="fleet.html">Main Fleet</a><a href="sop-manuals.html">SOP & Manuals</a>
-            </div>
-            <div id="mob-net" class="mobile-sub-menu" style="display:none;">
-                <a href="network.html">Route Map & List</a><a href="radar.html">Live Radar</a><a href="hub-info.html">FRA Hub</a><a href="hub-info.html">MUC Hub</a>
-            </div>
-            <div id="mob-med" class="mobile-sub-menu" style="display:none;">
-                <a href="news.html">Latest News</a><a href="gallery.html">Fleet Gallery</a>
-            </div>
-            <div id="mob-crew" class="mobile-sub-menu" style="display:none;">
-                <a href="hall-of-fame.html">Hall of Fame</a><a href="service-medals.html">Service Medals</a><a href="highlights.html">Our Perks</a>
-            </div>
-        </div>
+        <div id="ops-menu" class="mega-panel"><div class="panel-content"><div class="menu-col"><h3>Ops</h3><a href="ops.html">Dispatch</a><a href="livery-db.html">Liveries</a></div></div></div>
+        <div id="network-menu" class="active-pillar mega-panel"><div class="panel-content"><div class="menu-col"><h3>Network</h3><a href="network.html">Route Map</a><a href="radar.html">Radar</a></div></div></div>
+        <div id="media-menu" class="mega-panel"><div class="panel-content"><div class="menu-col"><h3>Gazette</h3><a href="news.html">News</a></div></div></div>
+        <div id="crew-menu" class="mega-panel"><div class="panel-content"><div class="menu-col"><h3>Elite</h3><a href="hall-of-fame.html">Hall of Fame</a></div></div></div>
     </nav>
 
     <header class="network-hero">
         <div class="hero-content-wrap">
-            <p class="pre-title">DESTINATIONS</p>
+            <p style="letter-spacing: 3px; font-size: 12px; font-weight: 700;">CONNECTING THE WORLD</p>
             <h1>Global Route Network</h1>
             <div class="header-divider"></div>
-            <p class="hero-subtitle">Explore our virtual skies. From our primary German hubs to every corner of the globe, Lufthansa GeoFS maintains a standard of excellence in every flight.</p>
+            <p class="hero-subtitle">Explore our hubs and destinations across the globe. Use two fingers to zoom on the map or search the directory below.</p>
         </div>
     </header>
 
     <div class="route-map-section">
         <div id="map"></div>
-        <div id="legend">
+        <div class="map-legend">
             <h4>Network Legend</h4>
-            <div class="legend-item"><span class="legend-dot" style="background: #d4b063;"></span> Lufthansa Hub</div>
-            <div class="legend-item"><span class="legend-dot" style="background: #d88c6a;"></span> Subsidiary Hub</div>
-            <div class="legend-item"><span class="legend-dot" style="background: #6b9ebd;"></span> Destination</div>
-            <div class="legend-item"><span class="legend-dot" style="background: #A4AC86;"></span> HON Circle</div>
-            <div class="legend-item"><span class="legend-dot" style="background: #795548;"></span> Suspended</div>
+            <div class="legend-item"><span class="dot" style="background:#d4b063"></span> Main Hub</div>
+            <div class="legend-item"><span class="dot" style="background:#d88c6a"></span> Subsidiary Hub</div>
+            <div class="legend-item"><span class="dot" style="background:#6b9ebd"></span> Destination</div>
+            <div class="legend-item"><span class="dot" style="background:#A4AC86"></span> HON Circle</div>
+            <div class="legend-item"><span class="dot" style="background:#795548"></span> Suspended</div>
         </div>
     </div>
 
     <section class="directory-section">
-        <div class="directory-container">
-            <div class="directory-header">
-                <div>
-                    <h2>Airport Directory</h2>
-                    <p>Search through our approved flight destinations.</p>
-                </div>
-                <input type="text" id="airportSearch" placeholder="Search city or code..." onkeyup="filterAirports()">
-            </div>
-            
-            <div class="airport-grid" id="airportList">
-                </div>
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+            <h2 style="color:#00235f; margin:0;">Airport Directory</h2>
+            <input type="text" id="airportSearch" onkeyup="filterAirports()" placeholder="Search City or ICAO...">
         </div>
+        <div class="airport-grid" id="airportList"></div>
     </section>
-
-    <footer>
-        <p>&copy; 2026 Lufthansa GeoFS. For simulation use only.</p>
-    </footer>
 
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
-        // --- DATA ---
-
-        const airportData = {
+         const airportData = {
   "NORTH": {icao: "POLE", city: "Santa's Workshop"},
   "MALAYSIAN": {icao: "370", city: "The spot where MH370 mysteriously disappeared."},
  "POINT": {icao: "NEMO", city: "2,688km away from closest land."},
@@ -449,7 +396,8 @@
 "CCU": {icao: "VECC", city: "Kolkata - Served by Akasa Air"},
 "COK": {icao: "VOCI", city: "Kochi - Served by Akasa Air"},
 "BLR": {icao: "VOBL", city: "Bangalore - Served by Akasa Air"},    
-};
+
+        };
 
 const airportCoords = {
       "NORTH": [89.9888, 0.000],
@@ -747,73 +695,50 @@ const airportCoords = {
 };
 
         const hubs = ["FRA", "MUC"];
-        const subs = ["ZRH", "VIE"];
+        const subsidiaryHubs = ["ZRH", "VIE"];
+        const circle = ["SIN", "PER"];
+        const outOfService = [];
 
-        // --- MAP LOGIC ---
-        // Change scrollWheelZoom to true
-const map = L.map('map', { 
-    scrollWheelZoom: true,
-    smoothWheelZoom: true, // Optional: makes trackpad zooming feel "buttery"
-    wheelDebounceTime: 150
-}).setView([20, 0], 2);
+        const map = L.map('map', { scrollWheelZoom: true }).setView([20, 10], 2);
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png').addTo(map);
 
         Object.keys(airportCoords).forEach(code => {
             let color = "#6b9ebd";
             if (hubs.includes(code)) color = "#d4b063";
-            if (subs.includes(code)) color = "#d88c6a";
+            else if (subsidiaryHubs.includes(code)) color = "#d88c6a";
+            else if (circle.includes(code)) color = "#A4AC86";
 
-            L.circleMarker(airportCoords[code], {
-                radius: 6, color: color, fillColor: color, fillOpacity: 1
-            }).addTo(map).bindPopup(`<b>${code}</b><br>${airportData[code].city}`);
+            L.circleMarker(airportCoords[code], { radius: 6, color: color, fillColor: color, fillOpacity: 1 }).addTo(map)
+             .bindPopup(`<b>${code}</b><br>${airportData[code].city}`);
         });
 
-        // --- DIRECTORY LOGIC ---
         function populateList() {
             const list = document.getElementById('airportList');
             Object.keys(airportData).sort().forEach(code => {
                 const card = document.createElement('div');
                 card.className = 'airport-card';
-                card.innerHTML = `<span>${code} / ${airportData[code].icao}</span><h4>${airportData[code].city}</h4>`;
+                card.innerHTML = `<span style="font-size:11px; font-weight:bold; color:#888;">${code}</span><h4 style="margin:5px 0; color:#00235f;">${airportData[code].city}</h4>`;
                 list.appendChild(card);
             });
         }
 
         function filterAirports() {
             let val = document.getElementById('airportSearch').value.toUpperCase();
-            document.querySelectorAll('.airport-card').forEach(card => {
-                card.style.display = card.innerText.toUpperCase().includes(val) ? "" : "none";
-            });
+            document.querySelectorAll('.airport-card').forEach(c => c.style.display = c.innerText.toUpperCase().includes(val) ? "" : "none");
         }
 
-        // --- NAV LOGIC ---
         function toggleMenu(id) {
-            const menu = document.getElementById(id);
-            const isOpen = menu.classList.contains("active");
             closeAllMenus();
-            if (!isOpen) {
-                menu.classList.add("active");
-                document.getElementById("menu-overlay").classList.add("active");
-            }
+            document.getElementById(id).classList.add("active");
+            document.getElementById("menu-overlay").classList.add("active");
         }
+
         function closeAllMenus() {
             document.querySelectorAll('.mega-panel').forEach(p => p.classList.remove('active'));
             document.getElementById("menu-overlay").classList.remove("active");
         }
-        function toggleMobileMenu() {
-            document.getElementById("mobile-menu").classList.toggle("open");
-        }
-        function showSubMobile(id) {
-            document.getElementById("mobile-main-links").style.display = "none";
-            document.getElementById(id).style.display = "block";
-            document.getElementById("mobile-back").style.display = "inline";
-        }
-        function backToMainMobile() {
-            document.getElementById("mobile-main-links").style.display = "block";
-            document.querySelectorAll(".mobile-sub-menu").forEach(s => s.style.display = "none");
-            document.getElementById("mobile-back").style.display = "none";
-        }
 
-        window.onload = populateList;
+        window.onload = () => { populateList(); setTimeout(() => { map.invalidateSize(); }, 200); };
     </script>
 </body>
 </html>
