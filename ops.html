@@ -61,6 +61,26 @@
             <p>Ready for departure? Access your tools and hub conditions below.</p>
         </header>
 
+
+        <section class="dispatch-tool">
+    <div class="tool-container">
+        <div class="tool-inputs">
+            <div class="field">
+                <label>Departure</label>
+                <select id="departure" class="ops-select"></select>
+            </div>
+            <div class="field">
+                <label>Arrival</label>
+                <select id="arrival" class="ops-select"></select>
+            </div>
+            <button onclick="calculateFlight()" class="btn-calculate">Generate Flight Plan</button>
+        </div>
+
+        <div id="dispatch-results" class="dispatch-results-grid" style="display: none;">
+            </div>
+    </div>
+</section>
+        
         <div class="ops-grid">
             
             <div class="ops-card">
@@ -131,6 +151,68 @@
     </main>
 
     <script>
+
+        // Function to handle the button click and time logic
+function runDispatch() {
+    const dep = document.getElementById('departure').value;
+    const arr = document.getElementById('arrival').value;
+    const resDiv = document.getElementById('dispatch-results');
+
+    if(!dep || !arr || dep === arr) { alert("Select two different airports."); return; }
+
+    const depData = airportCoords[dep];
+    const arrData = airportCoords[arr];
+    
+    // 1. RUN PHYSICS ENGINE
+    const distance = getDistance([depData[0], depData[1]], [arrData[0], arrData[1]]);
+    const plane = suggestPlane(distance);
+    const flightHours = estimateTime(distance, [depData[0], depData[1]], [arrData[0], arrData[1]], plane);
+
+    // 2. TIME CALCULATIONS
+    const nowUTC = new Date();
+    const arrivalUTC = new Date(nowUTC.getTime() + (flightHours * 3600000));
+    
+    // Local Browser Times
+    const userDep = nowUTC.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const userArr = arrivalUTC.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+    // Airport Local Times (using your correction logic)
+    const depLocal = formatLocalTimeWithOffset(nowUTC, depData[2]);
+    const arrLocal = formatLocalTimeWithOffset(arrivalUTC, arrData[2]);
+
+    // 3. INJECT RESULTS
+    resDiv.style.display = "grid";
+    resDiv.innerHTML = `
+        <div class="result-card">
+            <span class="res-label">Aircraft & Performance</span>
+            <span class="res-data">${plane}</span>
+            <span class="res-sub">ETE: ${Math.floor(flightHours)}h ${Math.round((flightHours % 1) * 60)}m</span>
+        </div>
+        <div class="result-card">
+            <span class="res-label">Your Local Time</span>
+            <span class="res-data">🛫 ${userDep}</span>
+            <span class="res-data">🛬 ${userArr}</span>
+        </div>
+        <div class="result-card">
+            <span class="res-label">Hub Local Times</span>
+            <span class="res-data">🛫 ${dep}: ${depLocal}</span>
+            <span class="res-data">🛬 ${arr}: ${arrLocal}</span>
+        </div>
+        <div class="result-card">
+            <span class="res-label">Mission Data</span>
+            <span class="res-data">${distance.toFixed(0)} KM</span>
+            <span class="res-sub">UTC Landing: ${arrivalUTC.getUTCHours()}:${arrivalUTC.getUTCMinutes()}z</span>
+        </div>
+    `;
+}
+
+// Ensure your formatLocalTimeWithOffset function is included:
+function formatLocalTimeWithOffset(utcDate, offsetHours) {
+    const newDate = new Date(utcDate.getTime());
+    newDate.setUTCHours(newDate.getUTCHours() + offsetHours);
+    return newDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', timeZone: 'UTC' });
+}
+        
         let lastScrollY = window.scrollY;
         const navbar = document.getElementById("navbar");
         window.addEventListener("scroll", () => {
