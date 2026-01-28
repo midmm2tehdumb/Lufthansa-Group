@@ -9,14 +9,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         /* Hub-Specific Page Layout */
-        .hub-container { max-width: 1200px; margin: 140px auto 40px; padding: 0 20px; }
+        .hub-container { max-width: 1400px; margin: 140px auto 40px; padding: 0 20px; }
         .hub-header { 
             background: #001f3f; color: white; padding: 40px; 
             border-radius: 12px; border-bottom: 5px solid #ffcc00; 
             text-align: center; margin-bottom: 20px;
         }
 
-        /* Hub Switcher Buttons */
         .hub-selector { text-align: center; margin-bottom: 40px; }
         .selector-btn { 
             background: white; color: #001f3f; border: 2px solid #001f3f; 
@@ -25,19 +24,45 @@
         }
         .selector-btn:hover, .selector-btn.active { background: #001f3f; color: white; }
 
-        /* Content Sections */
+        /* THE BRIEFING LAYOUT (3-Column Style) */
         .hub-section { display: none; animation: fadeIn 0.4s ease; }
-        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
-        .info-card { 
-            background: white; padding: 25px; border-radius: 12px; 
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08); border-left: 5px solid #001f3f; 
-            color: #333; 
+        .briefing-layout { 
+            display: grid; 
+            grid-template-columns: 350px 1fr 280px; 
+            gap: 20px; 
+            align-items: start; 
         }
 
-        /* Modal Overlay */
+        .card-label { 
+            background: #001f3f; color: #ffcc00; padding: 10px 15px; 
+            font-size: 0.8rem; font-weight: bold; text-transform: uppercase; 
+            border-radius: 8px 8px 0 0; letter-spacing: 1px;
+        }
+
+        .briefing-card { background: white; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .metar-frame { width: 100%; height: 450px; border: none; background: #f9f9f9; }
+
+        /* Stats Grid */
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; padding: 20px; gap: 20px; }
+        .stat-item { border-bottom: 1px solid #eee; padding-bottom: 10px; display: flex; flex-direction: column; }
+        .stat-val { font-size: 1.4rem; font-weight: 700; color: #001f3f; }
+        .stat-desc { font-size: 0.75rem; color: #777; text-transform: uppercase; }
+        .hub-description { padding: 0 20px 20px; line-height: 1.6; color: #444; }
+
+        /* Action Buttons */
+        .action-btn { 
+            width: 100%; background: #f4f4f4; border: 1px solid #ddd; 
+            color: #001f3f; padding: 15px; margin-bottom: 10px; 
+            border-radius: 6px; text-align: left; font-weight: bold; 
+            cursor: pointer; display: flex; align-items: center; transition: 0.2s;
+        }
+        .action-btn:hover { background: #ffcc00; border-color: #ffcc00; }
+
+        /* Modal Customization */
         .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); }
-        .modal-content { background: white; margin: 5% auto; padding: 30px; width: 90%; max-width: 1000px; border-radius: 12px; position: relative; text-align: center; color: #333; }
-        .close-btn { position: absolute; right: 20px; top: 15px; font-size: 35px; cursor: pointer; color: #001f3f; }
+        .modal-content { background: white; margin: 2% auto; padding: 30px; width: 95%; max-width: 1200px; border-radius: 12px; position: relative; text-align: center; }
+        .close-btn { position: absolute; right: 20px; top: 15px; font-size: 35px; cursor: pointer; color: #001f3f; z-index: 10; }
+        .modal-footer { margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
@@ -47,22 +72,14 @@
     <nav class="main-nav" id="navbar">
         <div class="nav-wrapper">
             <div class="nav-left">
-                <a href="index.html" class="logo-link">
-                    <img src="logo.png" alt="Logo" class="nav-logo">
-                    <span>Lufthansa GeoFS</span>
-                </a>
+                <a href="index.html" class="logo-link"><img src="logo.png" alt="Logo" class="nav-logo"><span>Lufthansa GeoFS</span></a>
             </div>
-            
             <ul class="nav-links">
                 <li class="pillar-link" onclick="toggleMenu('ops-menu')">Flight Operations</li>
                 <li class="pillar-link" onclick="toggleMenu('network-menu')">Live Network</li>
                 <li class="pillar-link" onclick="toggleMenu('media-menu')">Media & News</li>
                 <li class="pillar-link" onclick="toggleMenu('crew-menu')">Crew & Community</li>
             </ul>
-
-            <div class="hamburger" onclick="toggleMobileMenu()">
-                <div class="bar"></div><div class="bar"></div><div class="bar"></div>
-            </div>
         </div>
 
         <div class="mega-overlay" id="menu-overlay" onclick="closeAllMenus()"></div>
@@ -98,48 +115,66 @@
     <div class="hub-container">
         <header class="hub-header">
             <h1>HUB OPERATIONS CENTER</h1>
-            <p>Real-time data for Lufthansa Group Primary Bases</p>
+            <p>Hub Info: Technical data and briefing materials for Lufthansa main bases</p>
         </header>
 
         <div class="hub-selector">
-            <button class="selector-btn active" id="btn-fra" onclick="window.location.hash='#fra'">FRANKFURT (EDDF)</button>
+            <button class="selector-btn" id="btn-fra" onclick="window.location.hash='#fra'">FRANKFURT (EDDF)</button>
             <button class="selector-btn" id="btn-muc" onclick="window.location.hash='#muc'">MUNICH (EDDM)</button>
         </div>
 
         <div id="fra" class="hub-section">
-            <div class="info-grid">
-                <div class="info-card">
-                    <h3>Live METAR</h3>
-                    <iframe src="https://checkwx.com/weather/EDDF/metar" width="100%" height="200" frameborder="0"></iframe>
+            <div class="briefing-layout">
+                <div class="briefing-card">
+                    <div class="card-label">Live METAR</div>
+                    <iframe src="https://checkwx.com/weather/EDDF/metar" class="metar-frame" frameborder="0"></iframe>
                 </div>
-                <div class="info-card">
-                    <h3>Capability</h3>
-                    <p>Primary Hub: Cat 4F Facility.</p>
-                    <p>Handles A388, B748, A359. Runway 18 for DEP only.</p>
+
+                <div class="briefing-card">
+                    <div class="card-label">EDDF Specifications</div>
+                    <div class="stats-grid">
+                        <div class="stat-item"><span class="stat-val">4,000m</span><span class="stat-desc">Max Runway Length</span></div>
+                        <div class="stat-item"><span class="stat-val">B747-8 / A380</span><span class="stat-desc">Biggest Plane</span></div>
+                        <div class="stat-item"><span class="stat-val">111m / 364ft</span><span class="stat-desc">Elevation</span></div>
+                        <div class="stat-item"><span class="stat-val">4</span><span class="stat-desc">Runways</span></div>
+                    </div>
+                    <div class="hub-description">
+                        <p>Lufthansa's main global hub. Note: Runway 18 is strictly for departures only. Parallel runways 07/25 serve the bulk of heavy arrivals.</p>
+                    </div>
                 </div>
-                <div class="info-card">
-                    <h3>Pilot Resources</h3>
-                    <button class="selector-btn active" style="width:100%; margin-bottom:10px;" onclick="openModal('EDDF Charts', '')">Open Charts</button>
-                    <button class="selector-btn" style="width:100%;" onclick="openModal('EDDF Vectors', '<h3>Arrival Flow</h3><p>Standard flow via PSA. Maintain 210kts to 12nm final.</p>')">View Vectors</button>
+
+                <div class="briefing-card" style="padding:15px; background:none; box-shadow:none;">
+                    <div class="card-label">Operational Resources</div>
+                    <button class="action-btn" onclick="openChartModal('EDDF', 'https://opennav.com/pdf/EDDF/ED_AD_2_EDDF_2-5_en_2019-08-15.pdf')">📋 Airport Charts</button>
+                    <button class="action-btn" onclick="openModal('EDDF Vectors', '<h3>Arrival Flow</h3><p>Maintain 210kts until 12nm final.</p>')">✈️ Arrival Vectors</button>
                 </div>
             </div>
         </div>
 
         <div id="muc" class="hub-section">
-            <div class="info-grid">
-                <div class="info-card">
-                    <h3>Live METAR</h3>
-                    <iframe src="https://checkwx.com/weather/EDDM/metar" width="100%" height="200" frameborder="0"></iframe>
+            <div class="briefing-layout">
+                <div class="briefing-card">
+                    <div class="card-label">Live METAR</div>
+                    <iframe src="https://checkwx.com/weather/EDDM/metar" class="metar-frame" frameborder="0"></iframe>
                 </div>
-                <div class="info-card">
-                    <h3>Capability</h3>
-                    <p>Secondary Hub: Cat 4E Facility.</p>
-                    <p>Main A350 Base. Terminals 1 & 2 (LH Exclusive).</p>
+
+                <div class="briefing-card">
+                    <div class="card-label">EDDM Specifications</div>
+                    <div class="stats-grid">
+                        <div class="stat-item"><span class="stat-val">4,000m</span><span class="stat-desc">Max Runway Length</span></div>
+                        <div class="stat-item"><span class="stat-val">A350-900 / A346</span><span class="stat-desc">Biggest Plane</span></div>
+                        <div class="stat-item"><span class="stat-val">453m / 1,487ft</span><span class="stat-desc">Elevation</span></div>
+                        <div class="stat-item"><span class="stat-val">2</span><span class="stat-desc">Runways</span></div>
+                    </div>
+                    <div class="hub-description">
+                        <p>Munich features Terminal 2, exclusive to Lufthansa and Star Alliance partners. Efficient parallel runway operations (08/26).</p>
+                    </div>
                 </div>
-                <div class="info-card">
-                    <h3>Pilot Resources</h3>
-                    <button class="selector-btn active" style="width:100%; margin-bottom:10px;" onclick="openModal('EDDM Charts', '')">Open Charts</button>
-                    <button class="selector-btn" style="width:100%;" onclick="openModal('EDDM Vectors', '<h3>Arrival Flow</h3><p>Vectors via BETOS. Localizer intercept 3000-5000ft.</p>')">View Vectors</button>
+
+                <div class="briefing-card" style="padding:15px; background:none; box-shadow:none;">
+                    <div class="card-label">Operational Resources</div>
+                    <button class="action-btn" onclick="openChartModal('EDDM', 'https://opennav.com/pdf/EDDM/ED_AD_2_EDDM_2-5_en_2013-12-12.pdf')">📋 Airport Charts</button>
+                    <button class="action-btn" onclick="openModal('EDDM Vectors', '<h3>Arrival Flow</h3><p>Parallel ILS established at 3000-5000ft.</p>')">✈️ Arrival Vectors</button>
                 </div>
             </div>
         </div>
@@ -149,44 +184,53 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
             <h2 id="modal-title"></h2>
-            <div id="modal-body" style="margin-top:20px;"></div>
+            <div id="modal-body" style="margin-top:20px; height: 75vh;"></div>
+            <div id="modal-footer" class="modal-footer" style="display:none;"></div>
         </div>
     </div>
 
     <script>
-        // --- HUB NAVIGATION LOGIC ---
         function handleHubRouting() {
             const hash = window.location.hash || "#fra";
             document.querySelectorAll('.hub-section').forEach(s => s.style.display = 'none');
             document.querySelectorAll('.selector-btn').forEach(b => b.classList.remove('active'));
-
             const target = document.querySelector(hash);
             if (target) {
                 target.style.display = 'block';
-                const btnId = hash === '#fra' ? 'btn-fra' : 'btn-muc';
-                document.getElementById(btnId).classList.add('active');
+                document.getElementById('btn-' + hash.substring(1)).classList.add('active');
             }
         }
 
         function openModal(title, content) {
             document.getElementById('modal-title').innerText = title;
             document.getElementById('modal-body').innerHTML = content;
+            document.getElementById('modal-footer').style.display = 'none';
             document.getElementById('hubModal').style.display = 'block';
         }
 
-        function closeModal() {
-            document.getElementById('hubModal').style.display = 'none';
+        function openChartModal(icao, originalLink) {
+            const title = icao + " Airport Charts";
+            const pdfEmbed = `<embed src="${icao}.pdf#toolbar=0&navpanes=0" type="application/pdf" width="100%" height="100%" />`;
+            
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-body').innerHTML = pdfEmbed;
+            
+            // Add Link to Original Button
+            const footer = document.getElementById('modal-footer');
+            footer.innerHTML = `<a href="${originalLink}" target="_blank" class="selector-btn active" style="text-decoration:none;">Link to Original PDF</a>`;
+            footer.style.display = 'block';
+            
+            document.getElementById('hubModal').style.display = 'block';
         }
 
-        // --- RESTORED INDEX.HTML LOGIC ---
+        function closeModal() { document.getElementById('hubModal').style.display = 'none'; }
+
         function toggleMenu(menuId) {
-            const menu = document.getElementById(menuId);
-            const overlay = document.getElementById("menu-overlay");
-            const isOpen = menu.classList.contains("active");
+            const isOpen = document.getElementById(menuId).classList.contains("active");
             closeAllMenus();
-            if (!isOpen) { 
-                menu.classList.add("active"); 
-                overlay.classList.add("active"); 
+            if (!isOpen) {
+                document.getElementById(menuId).classList.add("active");
+                document.getElementById("menu-overlay").classList.add("active");
             }
         }
 
