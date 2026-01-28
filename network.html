@@ -3,76 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Route Map | Lufthansa GeoFS</title>
-    
-    <link rel="icon" type="image/png" href="logo.png"> 
+    <title>Route Map & Network | Lufthansa GeoFS</title>
+    <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" /> 
-    
-    <style>
-        /* Specific Styles for Map Layout */
-        body { background: #fdfdfd; }
-        
-        .network-hero {
-            padding: 80px 20px 40px;
-            text-align: center;
-            background: #00235f;
-            color: white;
-        }
-
-        .network-hero h1 { font-size: 3rem; margin-bottom: 10px; }
-        .network-hero p { opacity: 0.8; font-weight: 300; }
-
-        .map-container-wrapper {
-            position: relative;
-            max-width: 1400px;
-            margin: -40px auto 40px;
-            padding: 0 20px;
-            z-index: 5;
-        }
-
-        #map { 
-            height: 75vh; 
-            width: 100%; 
-            border-radius: 20px; 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-            z-index: 1;
-        }
-
-        #legend { 
-            background: rgba(255,255,255,0.98); 
-            padding: 20px; 
-            position: absolute; 
-            bottom: 30px; 
-            left: 50px; 
-            border-radius: 12px; 
-            font-size: 13px; 
-            z-index: 1000; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            line-height: 2;
-            border: 1px solid #eee;
-        }
-        .legend-dot { display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:10px; }
-
-        .radar-section {
-            padding: 80px 20px;
-            background: #fff;
-            text-align: center;
-        }
-        .radar-title { color: #00235f; margin-bottom: 40px; font-size: 2.5rem; font-weight: 700; }
-        .radar-iframe-wrap {
-            max-width: 1200px;
-            margin: 0 auto;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-            border: 1px solid #ddd;
-        }
-
-        footer { background: #00235f; color: white; padding: 60px 20px; text-align: center; }
-        footer p { max-width: 800px; margin: 0 auto; opacity: 0.7; font-size: 0.9rem; }
-    </style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 <body>
 
@@ -84,12 +19,14 @@
                     <span>Lufthansa GeoFS</span>
                 </a>
             </div>
+            
             <ul class="nav-links">
                 <li class="pillar-link" onclick="toggleMenu('ops-menu')">Flight Operations</li>
                 <li class="pillar-link" onclick="toggleMenu('network-menu')">Live Network</li>
                 <li class="pillar-link" onclick="toggleMenu('media-menu')">Media & News</li>
                 <li class="pillar-link" onclick="toggleMenu('crew-menu')">Crew & Community</li>
             </ul>
+
             <div class="hamburger" onclick="toggleMobileMenu()">
                 <div class="bar"></div><div class="bar"></div><div class="bar"></div>
             </div>
@@ -151,47 +88,50 @@
     </nav>
 
     <header class="network-hero">
-        <h1>Global Network</h1>
-        <p>Connecting the world through our primary hubs and partners.</p>
+        <div class="hero-content-wrap">
+            <p class="pre-title">DESTINATIONS</p>
+            <h1>Global Route Network</h1>
+            <div class="header-divider"></div>
+            <p class="hero-subtitle">Explore our virtual skies. From our primary German hubs to every corner of the globe, Lufthansa GeoFS maintains a standard of excellence in every flight.</p>
+        </div>
     </header>
 
-    <div class="map-container-wrapper">
+    <div class="route-map-section">
         <div id="map"></div>
-
         <div id="legend">
-          <div><span class="legend-dot" style="background: #d4b063;"></span>Lufthansa Hub</div>
-          <div><span class="legend-dot" style="background: #d88c6a;"></span>Subsidiary Hub</div>
-          <div><span class="legend-dot" style="background: #6b9ebd;"></span>Destination</div>
-          <div><span class="legend-dot" style="background: #b86b6b;"></span>Codeshare Partner</div>
-          <div><span class="legend-dot" style="background: #A4AC86;"></span>HON Circle Destination</div>
-          <div><span class="legend-dot" style="background: #795548;"></span>Service Suspended</div>
+            <h4>Network Legend</h4>
+            <div class="legend-item"><span class="legend-dot" style="background: #d4b063;"></span> Lufthansa Hub</div>
+            <div class="legend-item"><span class="legend-dot" style="background: #d88c6a;"></span> Subsidiary Hub</div>
+            <div class="legend-item"><span class="legend-dot" style="background: #6b9ebd;"></span> Destination</div>
+            <div class="legend-item"><span class="legend-dot" style="background: #A4AC86;"></span> HON Circle</div>
+            <div class="legend-item"><span class="legend-dot" style="background: #795548;"></span> Suspended</div>
         </div>
     </div>
 
-    <section class="radar-section">
-        <h2 class="radar-title">Live Flight Radar</h2>
-        <div class="radar-iframe-wrap">
-            <iframe src="https://radarthing.com?callsign=DLH" width="100%" height="700px" style="border:none;" allowfullscreen loading="lazy"></iframe>
+    <section class="directory-section">
+        <div class="directory-container">
+            <div class="directory-header">
+                <div>
+                    <h2>Airport Directory</h2>
+                    <p>Search through our approved flight destinations.</p>
+                </div>
+                <input type="text" id="airportSearch" placeholder="Search city or code..." onkeyup="filterAirports()">
+            </div>
+            
+            <div class="airport-grid" id="airportList">
+                </div>
         </div>
     </section>
 
     <footer>
-        <p><strong>Disclaimer:</strong> Lufthansa GeoFS is a virtual airline for simulation purposes only. We are not affiliated with the real Lufthansa Group or any airline mentioned.</p>
+        <p>&copy; 2026 Lufthansa GeoFS. For simulation use only.</p>
     </footer>
 
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
-        // --- MAP INITIALIZATION ---
-        const map = L.map('map', {
-            scrollWheelZoom: false
-        }).setView([25, 10], 2);
+        // --- DATA ---
 
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-            attribution: '© OpenStreetMap © CARTO'
-        }).addTo(map);
-
-        // DATA BLOCKS (Airport Logic Preserved)
-const airportData = {
+        const airportData = {
   "NORTH": {icao: "POLE", city: "Santa's Workshop"},
   "MALAYSIAN": {icao: "370", city: "The spot where MH370 mysteriously disappeared."},
  "POINT": {icao: "NEMO", city: "2,688km away from closest land."},
@@ -510,7 +450,7 @@ const airportData = {
 "COK": {icao: "VOCI", city: "Kochi - Served by Akasa Air"},
 "BLR": {icao: "VOBL", city: "Bangalore - Served by Akasa Air"},    
 };
-        
+
 const airportCoords = {
       "NORTH": [89.9888, 0.000],
       "POINT": [-48.875, -123.392],
@@ -807,40 +747,52 @@ const airportCoords = {
 };
 
         const hubs = ["FRA", "MUC"];
-        const subsidiaryHubs = ["ZRH", "VIE", "BRU", "GVA", "AMS", "TPE", "KUL", "BOM"];
-        const codeshare = ["CAN", "CKG", "HGH", "CGK", "SGN", "HKT", "DAD", "SAI", "KTI", "AGR", "JAI", "VNS", "GOI"];
-        const circle = ["LIM", "UIO", "GYE", "PBM", "DAR", "ACC", "KGL", "EBB", "NRT", "KIX", "MNL", "DPS", "DOH", "BKI", "CRK", "CTS", "GMP", "KHH", "KWL", "MFM", "NGB", "PEN", "PUS", "RMQ", "TSA", "TSN", "UKB", "AKL", "DMK", "CNX", "HDY", "DPS", "UPG", "MDC", "PDG", "KNO", "PLM", "SOC", "YIA", "CEB", "LAO", "KLO", "ILO", "TAC", "BLR", "MAA", "BOM", "DEL", "COK", "TRV", "AMD", "CCU", "JAI", "GOI", "SYD", "MEL", "PER", "OOL", "CBR", "DRW", "PPS", "UTH", "CEI", "BPN", "PLW"];
-        const outOfService = ["TLV", "DAM", "BEY", "AMM", "EBL", "IKA", "KBP", "DME", "AUA", "CUR", "BON", "SXM", "KWI", "ATL", "DFW", "PHL", "JFK", "RDU", "IAD", "CLT", "EWR", "PHC", "IAH", "BOS", "DTW", "YYZ", "YUL", "MIA", "LAX", "SJC", "SFO"]; 
+        const subs = ["ZRH", "VIE"];
 
-        // MARKER DRAWING LOGIC
+        // --- MAP LOGIC ---
+        // Change scrollWheelZoom to true
+const map = L.map('map', { 
+    scrollWheelZoom: true,
+    smoothWheelZoom: true, // Optional: makes trackpad zooming feel "buttery"
+    wheelDebounceTime: 150
+}).setView([20, 0], 2);
+
         Object.keys(airportCoords).forEach(code => {
-            let color = "#6b9ebd"; // Default
-            if (outOfService.includes(code)) color = "#795548";
-            else if (hubs.includes(code)) color = "#d4b063";
-            else if (subsidiaryHubs.includes(code)) color = "#d88c6a";
-            else if (codeshare.includes(code)) color = "#b86b6b";
-            else if (circle.includes(code)) color = "#A4AC86";
-
-            const data = airportData[code] || {icao: "N/A", city: code};
+            let color = "#6b9ebd";
+            if (hubs.includes(code)) color = "#d4b063";
+            if (subs.includes(code)) color = "#d88c6a";
 
             L.circleMarker(airportCoords[code], {
-                radius: 6,
-                color: color,
-                fillColor: color,
-                fillOpacity: 1,
-                weight: 1
-            }).addTo(map).bindPopup(`<b>${code} / ${data.icao}</b><br>${data.city}`);
+                radius: 6, color: color, fillColor: color, fillOpacity: 1
+            }).addTo(map).bindPopup(`<b>${code}</b><br>${airportData[code].city}`);
         });
 
+        // --- DIRECTORY LOGIC ---
+        function populateList() {
+            const list = document.getElementById('airportList');
+            Object.keys(airportData).sort().forEach(code => {
+                const card = document.createElement('div');
+                card.className = 'airport-card';
+                card.innerHTML = `<span>${code} / ${airportData[code].icao}</span><h4>${airportData[code].city}</h4>`;
+                list.appendChild(card);
+            });
+        }
+
+        function filterAirports() {
+            let val = document.getElementById('airportSearch').value.toUpperCase();
+            document.querySelectorAll('.airport-card').forEach(card => {
+                card.style.display = card.innerText.toUpperCase().includes(val) ? "" : "none";
+            });
+        }
+
         // --- NAV LOGIC ---
-        function toggleMenu(menuId) {
-            const menu = document.getElementById(menuId);
-            const overlay = document.getElementById("menu-overlay");
+        function toggleMenu(id) {
+            const menu = document.getElementById(id);
             const isOpen = menu.classList.contains("active");
             closeAllMenus();
-            if (!isOpen) { 
-                menu.classList.add("active"); 
-                overlay.classList.add("active"); 
+            if (!isOpen) {
+                menu.classList.add("active");
+                document.getElementById("menu-overlay").classList.add("active");
             }
         }
         function closeAllMenus() {
@@ -848,13 +800,11 @@ const airportCoords = {
             document.getElementById("menu-overlay").classList.remove("active");
         }
         function toggleMobileMenu() {
-            const m = document.getElementById("mobile-menu");
-            m.classList.toggle("open");
-            document.body.style.overflow = m.classList.contains("open") ? "hidden" : "auto";
+            document.getElementById("mobile-menu").classList.toggle("open");
         }
-        function showSubMobile(subId) {
+        function showSubMobile(id) {
             document.getElementById("mobile-main-links").style.display = "none";
-            document.getElementById(subId).style.display = "block";
+            document.getElementById(id).style.display = "block";
             document.getElementById("mobile-back").style.display = "inline";
         }
         function backToMainMobile() {
@@ -862,6 +812,8 @@ const airportCoords = {
             document.querySelectorAll(".mobile-sub-menu").forEach(s => s.style.display = "none");
             document.getElementById("mobile-back").style.display = "none";
         }
+
+        window.onload = populateList;
     </script>
 </body>
 </html>
