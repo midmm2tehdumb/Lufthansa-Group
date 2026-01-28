@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Redirecting...</title>
+    <script>
+        // This is the only logic needed. 
+        // It detects a "naked" URL and forces it to the FRA anchor.
+        if (!window.location.hash || window.location.hash === "#") {
+            window.location.replace("hub-info.html#fra");
+        } else {
+            // If they already have a hash (#fra or #muc), 
+            // you can put your hub content loading logic here.
+            console.log("Loading hub: " + window.location.hash);
+        }
+    </script>
+</head>
+<body>
+    </body>
+</html>
