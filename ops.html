@@ -489,9 +489,14 @@
     }
 
     function suggestPlane(dist) {
-        if(dist < 1200) return "A320neo / A321 / CRJ-900";
-        if(dist < 5000) return "A321LR / A330-300";
-        return "A350-900 / 747-8i / 777-9";
+        if(dist < 1200) return "A319 / A320 / A321 / CRJ-700 / Note: Aircraft vary based on infastructure and demand.";
+        if(dist < 5000) return "A321LR / A330 / A340 / A350 / Note: Aircraft vary based on infastructure and demand."
+        if(dist < 6500) return "A330 / A340 / A350 / 777-9 / 747 / A380 / 787 / Note: Aircraft vary based on infastructure and demand."
+        if(dist < 8000) return " A350 / 777-9 / 747 / A380 / 787 / Note: Aircraft vary based on infastructure and demand."
+        if(dist < 10000) return "A350 / 777-9 / 747 / A380 / 787 / Note: Aircraft vary based on infastructure and demand."
+        if(dist < 14000) return "A350 / A380 / 787 / Note: Aircraft vary based on infastructure and demand."
+        if(dist < 17000) return "A350-1000XWB (Ultra Premium configuration)"
+        return "No aircraft available for this distance.";
     }
 
     function formatLocalTimeWithOffset(utcDate, offsetHours) {
