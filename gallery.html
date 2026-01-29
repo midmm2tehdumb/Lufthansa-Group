@@ -10,27 +10,15 @@
     <style>
         body { background: #000; color: white; margin: 0; overflow-x: hidden; font-family: 'Roboto', sans-serif; }
 
-        /* --- GALLERY LOGIC (Hashtag Switching) --- */
+        /* --- GALLERY LOGIC --- */
         .gallery-section { display: none; min-height: 100vh; }
         
-        /* Default to selection if no hash or #selection */
-        #selection:target ~ #selection, 
-        #selection { display: flex; }
-
+        #selection:target ~ #selection, #selection { display: flex; }
         #narrow:target, #wide:target { display: block; }
-
-        /* Hide selection screen when a specific gallery is active */
-        #narrow:target ~ #selection, 
-        #wide:target ~ #selection { display: none; }
+        #narrow:target ~ #selection, #wide:target ~ #selection { display: none; }
 
         /* --- SELECTION SCREEN (FORZA STYLE) --- */
-        .selection-container {
-            display: flex;
-            height: 100vh;
-            width: 100vw;
-            gap: 5px;
-            background: #000;
-        }
+        .selection-container { display: flex; height: 100vh; width: 100vw; gap: 5px; background: #000; }
 
         .fleet-card {
             position: relative;
@@ -52,122 +40,38 @@
             z-index: 1;
         }
 
-        /* Narrowbody Slant */
+        /* Initial Images: a220 for narrow, a380 for wide */
         .narrow-card .fleet-bg-img {
-            background-image: url('aircraft/narrow1.webp');
+            background-image: url('Aircraft/a220.webp');
             clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
         }
 
-        /* Widebody Slant */
         .wide-card .fleet-bg-img {
-            background-image: url('aircraft/wide1.webp');
+            background-image: url('Aircraft/a380.webp');
             clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
             margin-left: -10%;
         }
 
         .fleet-card:hover .fleet-bg-img { transform: scale(1.1); }
+        .gradient-fade { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 20%, rgba(0, 31, 63, 0.8) 100%); z-index: 2; }
 
-        /* Fade-out Gradient Overlay */
-        .gradient-fade {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, transparent 20%, rgba(0, 31, 63, 0.8) 100%);
-            z-index: 2;
-        }
+        .label-wrap { position: absolute; bottom: 12%; left: 50%; transform: translateX(-50%); z-index: 3; text-align: center; width: 100%; }
+        .label-wrap h1 { font-size: clamp(3rem, 8vw, 5rem); font-style: italic; font-weight: 900; text-transform: uppercase; margin: 0; letter-spacing: -2px; color: #fff; }
+        .label-wrap p { color: #ffcc00; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin: 0; }
 
-        .label-wrap {
-            position: absolute;
-            bottom: 12%;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 3;
-            text-align: center;
-            width: 100%;
-        }
-
-        .label-wrap h1 {
-            font-size: clamp(3rem, 8vw, 5rem);
-            font-style: italic;
-            font-weight: 900;
-            text-transform: uppercase;
-            margin: 0;
-            letter-spacing: -2px;
-            color: #fff;
-        }
-
-        .label-wrap p {
-            color: #ffcc00;
-            font-weight: 700;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin: 0;
-        }
-
-        /* --- IMAGE GRID LAYOUT --- */
-        .grid-container {
-            max-width: 1400px;
-            margin: auto;
-            padding: 140px 20px 60px;
-        }
-
-        .grid-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 40px;
-            border-bottom: 1px solid #333;
-            padding-bottom: 20px;
-        }
-
+        /* --- GRID LAYOUT --- */
+        .grid-container { max-width: 1400px; margin: auto; padding: 140px 20px 60px; }
+        .grid-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; border-bottom: 1px solid #333; padding-bottom: 20px; }
         .grid-header h2 { font-size: 2.5rem; margin: 0; text-transform: uppercase; font-style: italic; }
+        .back-btn { background: #ffcc00; color: #001f3f; padding: 10px 25px; text-decoration: none; font-weight: 900; text-transform: uppercase; border-radius: 2px; }
 
-        .back-btn {
-            background: #ffcc00;
-            color: #001f3f;
-            padding: 10px 25px;
-            text-decoration: none;
-            font-weight: 900;
-            text-transform: uppercase;
-            border-radius: 2px;
-            transition: 0.3s;
-        }
-
-        .back-btn:hover { background: #fff; }
-
-        .image-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 20px;
-        }
-
-        .grid-photo {
-            height: 250px;
-            background: #111;
-            border-radius: 4px;
-            overflow: hidden;
-            cursor: pointer;
-            border: 1px solid #222;
-        }
-
-        .grid-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.5s;
-        }
-
+        .image-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; }
+        .grid-photo { height: 250px; background: #111; border-radius: 4px; overflow: hidden; cursor: pointer; border: 1px solid #222; }
+        .grid-photo img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
         .grid-photo:hover img { transform: scale(1.05); filter: brightness(1.2); }
 
         /* Lightbox */
-        #lb {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.95);
-            z-index: 10001;
-            justify-content: center;
-            align-items: center;
-        }
+        #lb { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 10001; justify-content: center; align-items: center; }
         #lb img { max-width: 90%; max-height: 85%; border: 3px solid #ffcc00; }
     </style>
 </head>
@@ -175,57 +79,25 @@
 
     <nav class="main-nav" id="navbar">
         <div class="nav-wrapper">
-            <div class="nav-left">
-                <a href="index.html" class="logo-link">
-                    <img src="logo.png" alt="Logo" class="nav-logo">
-                    <span>Lufthansa GeoFS</span>
-                </a>
-            </div>
+            <div class="nav-left"><a href="index.html" class="logo-link"><img src="logo.png" alt="Logo" class="nav-logo"><span>Lufthansa GeoFS</span></a></div>
             <ul class="nav-links">
                 <li class="pillar-link" onclick="toggleMenu('ops-menu')">Flight Operations</li>
                 <li class="pillar-link" onclick="toggleMenu('network-menu')">Live Network</li>
                 <li class="pillar-link" onclick="toggleMenu('media-menu')">Media & News</li>
                 <li class="pillar-link" onclick="toggleMenu('crew-menu')">Crew & Community</li>
             </ul>
-            <div class="hamburger" onclick="toggleMobileMenu()">
-                <div class="bar"></div><div class="bar"></div><div class="bar"></div>
-            </div>
+            <div class="hamburger" onclick="toggleMobileMenu()"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
         </div>
 
         <div class="mega-overlay" id="menu-overlay" onclick="closeAllMenus()"></div>
         
-        <div id="ops-menu" class="mega-panel">
-            <div class="panel-content">
-                <div class="menu-col"><h3>Ops Center</h3><a href="ops.html">Flight Dispatch</a><a href="livery-db.html">Livery Database</a></div>
-                <div class="menu-col"><h3>Fleet</h3><a href="fleet.html">Main Fleet</a><a href="sop-manuals.html">SOP & Manuals</a></div>
-            </div>
-        </div>
-
-        <div id="network-menu" class="mega-panel">
-            <div class="panel-content">
-                <div class="menu-col"><h3>Network Hub</h3><a href="network.html">Route Map & List</a><a href="radar.html">Live Radar</a></div>
-                <div class="menu-col"><h3>Hubs</h3><a href="hub-info.html#fra">Frankfurt (FRA)</a><a href="hub-info.html#muc">Munich (MUC)</a></div>
-            </div>
-        </div>
-
-        <div id="media-menu" class="mega-panel">
-            <div class="panel-content">
-                <div class="menu-col"><h3>The Gazette</h3><a href="news.html">Latest News</a><a href="gallery.html">Fleet Gallery</a></div>
-            </div>
-        </div>
-
-        <div id="crew-menu" class="mega-panel">
-            <div class="panel-content">
-                <div class="menu-col"><h3>The Elite</h3><a href="hall-of-fame.html">Hall of Fame</a><a href="service-medals.html">Service Medals</a></div>
-                <div class="menu-col"><h3>Highlights</h3><a href="highlights.html">Our Perks</a></div>
-            </div>
-        </div>
+        <div id="ops-menu" class="mega-panel"><div class="panel-content"><div class="menu-col"><h3>Ops Center</h3><a href="ops.html">Flight Dispatch</a><a href="livery-db.html">Livery Database</a></div><div class="menu-col"><h3>Fleet</h3><a href="fleet.html">Main Fleet</a><a href="sop-manuals.html">SOP & Manuals</a></div></div></div>
+        <div id="network-menu" class="mega-panel"><div class="panel-content"><div class="menu-col"><h3>Network Hub</h3><a href="network.html">Route Map & List</a><a href="radar.html">Live Radar</a></div><div class="menu-col"><h3>Hubs</h3><a href="hub-info.html#fra">Frankfurt (FRA)</a><a href="hub-info.html#muc">Munich (MUC)</a></div></div></div>
+        <div id="media-menu" class="mega-panel"><div class="panel-content"><div class="menu-col"><h3>The Gazette</h3><a href="news.html">Latest News</a><a href="gallery.html">Fleet Gallery</a></div></div></div>
+        <div id="crew-menu" class="mega-panel"><div class="panel-content"><div class="menu-col"><h3>The Elite</h3><a href="hall-of-fame.html">Hall of Fame</a><a href="service-medals.html">Service Medals</a></div><div class="menu-col"><h3>Highlights</h3><a href="highlights.html">Our Perks</a></div></div></div>
 
         <div id="mobile-menu" class="mobile-nav-panel">
-            <div class="mobile-header">
-                <span id="mobile-back" onclick="backToMainMobile()" style="display:none;">← Back</span>
-                <span class="close-mobile" onclick="toggleMobileMenu()">&times;</span>
-            </div>
+            <div class="mobile-header"><span id="mobile-back" onclick="backToMainMobile()" style="display:none;">← Back</span><span class="close-mobile" onclick="toggleMobileMenu()">&times;</span></div>
             <div id="mobile-main-links" class="mobile-links">
                 <div class="mobile-pillar" onclick="showSubMobile('mob-ops')">Flight Operations <span>›</span></div>
                 <div class="mobile-pillar" onclick="showSubMobile('mob-net')">Live Network <span>›</span></div>
@@ -261,57 +133,45 @@
 
     <section id="narrow" class="gallery-section">
         <div class="grid-container">
-            <div class="grid-header">
-                <h2>Narrowbody Fleet</h2>
-                <a href="#selection" class="back-btn">Back</a>
-            </div>
+            <div class="grid-header"><h2>Narrowbody Fleet</h2><a href="#selection" class="back-btn">Back</a></div>
             <div class="image-grid">
-                <div class="grid-photo" onclick="openLB('aircraft/narrow1.webp')"><img src="aircraft/narrow1.webp"></div>
-                <div class="grid-photo" onclick="openLB('aircraft/narrow2.webp')"><img src="aircraft/narrow2.webp"></div>
-                <div class="grid-photo" onclick="openLB('aircraft/narrow3.webp')"><img src="aircraft/narrow3.webp"></div>
-                <div class="grid-photo" onclick="openLB('aircraft/narrow4.webp')"><img src="aircraft/narrow4.webp"></div>
+                <div class="grid-photo" onclick="openLB('Aircraft/narrow1.webp')"><img src="Aircraft/narrow1.webp"></div>
+                <div class="grid-photo" onclick="openLB('Aircraft/narrow2.webp')"><img src="Aircraft/narrow2.webp"></div>
+                <div class="grid-photo" onclick="openLB('Aircraft/narrow3.webp')"><img src="Aircraft/narrow3.webp"></div>
+                <div class="grid-photo" onclick="openLB('Aircraft/narrow4.webp')"><img src="Aircraft/narrow4.webp"></div>
             </div>
         </div>
     </section>
 
     <section id="wide" class="gallery-section">
         <div class="grid-container">
-            <div class="grid-header">
-                <h2>Widebody Fleet</h2>
-                <a href="#selection" class="back-btn">Back</a>
-            </div>
+            <div class="grid-header"><h2>Widebody Fleet</h2><a href="#selection" class="back-btn">Back</a></div>
             <div class="image-grid">
-                <div class="grid-photo" onclick="openLB('aircraft/wide1.webp')"><img src="aircraft/wide1.webp"></div>
-                <div class="grid-photo" onclick="openLB('aircraft/wide2.webp')"><img src="aircraft/wide2.webp"></div>
-                <div class="grid-photo" onclick="openLB('aircraft/wide3.webp')"><img src="aircraft/wide3.webp"></div>
-                <div class="grid-photo" onclick="openLB('aircraft/wide4.webp')"><img src="aircraft/wide4.webp"></div>
-                <div class="grid-photo" onclick="openLB('aircraft/wide5.webp')"><img src="aircraft/wide5.webp"></div>
+                <div class="grid-photo" onclick="openLB('Aircraft/wide1.webp')"><img src="Aircraft/wide1.webp"></div>
+                <div class="grid-photo" onclick="openLB('Aircraft/wide2.webp')"><img src="Aircraft/wide2.webp"></div>
+                <div class="grid-photo" onclick="openLB('Aircraft/wide3.webp')"><img src="Aircraft/wide3.webp"></div>
+                <div class="grid-photo" onclick="openLB('Aircraft/wide4.webp')"><img src="Aircraft/wide4.webp"></div>
+                <div class="grid-photo" onclick="openLB('Aircraft/wide5.webp')"><img src="Aircraft/wide5.webp"></div>
             </div>
         </div>
     </section>
 
-    <div id="lb" onclick="this.style.display='none'">
-        <img id="lb-img" src="">
-    </div>
+    <div id="lb" onclick="this.style.display='none'"><img id="lb-img" src=""></div>
 
     <script>
-        // BACKGROUND CYCLER
+        // BACKGROUND CYCLER (Respects Aircraft/ folder)
         let n = 1; let w = 1;
         setInterval(() => {
             n = (n % 4) + 1; w = (w % 5) + 1;
             const nbg = document.getElementById('n-bg');
             const wbg = document.getElementById('w-bg');
-            if(nbg) nbg.style.backgroundImage = `url('aircraft/narrow${n}.webp')`;
-            if(wbg) wbg.style.backgroundImage = `url('aircraft/wide${w}.webp')`;
+            if(nbg) nbg.style.backgroundImage = `url('Aircraft/narrow${n}.webp')`;
+            if(wbg) wbg.style.backgroundImage = `url('Aircraft/wide${w}.webp')`;
         }, 4000);
 
-        // LIGHTBOX
-        function openLB(s) {
-            document.getElementById('lb-img').src = s;
-            document.getElementById('lb').style.display = 'flex';
-        }
+        function openLB(s) { document.getElementById('lb-img').src = s; document.getElementById('lb').style.display = 'flex'; }
 
-        // NAVIGATION (Standard for your 4-pillar site)
+        // NAVIGATION LOGIC
         function toggleMenu(id) {
             const menu = document.getElementById(id);
             const overlay = document.getElementById("menu-overlay");
