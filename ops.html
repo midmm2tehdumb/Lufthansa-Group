@@ -532,29 +532,24 @@
         if(overlay) overlay.classList.remove("active");
     }
 
+ // --- YOUR EXISTING MOBILE LOGIC (Untouched) ---
     function toggleMobileMenu() {
         const m = document.getElementById("mobile-menu");
-        if(!m) return;
         m.classList.toggle("open");
         if(!m.classList.contains("open")) backToMainMobile();
         document.body.style.overflow = m.classList.contains("open") ? "hidden" : "auto";
     }
 
     function showSubMobile(subId) {
-        const main = document.getElementById("mobile-main-links");
-        const sub = document.getElementById(subId);
-        const back = document.getElementById("mobile-back");
-        if(main) main.style.display = "none";
-        if(sub) sub.style.display = "block";
-        if(back) back.style.display = "inline";
+        document.getElementById("mobile-main-links").style.display = "none";
+        document.getElementById(subId).style.display = "block";
+        document.getElementById("mobile-back").style.display = "inline";
     }
 
     function backToMainMobile() {
-        const main = document.getElementById("mobile-main-links");
-        const back = document.getElementById("mobile-back");
-        if(main) main.style.display = "block";
+        document.getElementById("mobile-main-links").style.display = "block";
         document.querySelectorAll(".mobile-sub-menu").forEach(s => s.style.display = "none");
-        if(back) back.style.display = "none";
+        document.getElementById("mobile-back").style.display = "none";
     }
 </script>
 </body>
