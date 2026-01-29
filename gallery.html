@@ -21,7 +21,6 @@
         .fleet-card { position: relative; flex: 1; cursor: pointer; overflow: hidden; transition: flex 0.6s cubic-bezier(0.2, 1, 0.3, 1); text-decoration: none; }
         .fleet-card:hover { flex: 1.5; }
 
-        /* FADE LAYERS */
         .bg-layer {
             position: absolute;
             inset: 0;
@@ -35,7 +34,6 @@
         .narrow-card .bg-layer { clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%); }
         .wide-card .bg-layer { clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%); margin-left: -10%; }
 
-        /* INITIAL BACKGROUNDS */
         #n-bg-1 { background-image: url('Aircraft/a220.webp'); opacity: 1; }
         #n-bg-2 { background-image: url('narrow1.webp'); opacity: 0; }
         #w-bg-1 { background-image: url('Aircraft/a380.webp'); opacity: 1; }
@@ -55,10 +53,13 @@
 
         /* SUBMISSION MODAL */
         #helpModal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 20000; justify-content: center; align-items: center; }
-        .modal-box { background: #001f3f; padding: 40px; border: 2px solid #ffcc00; max-width: 600px; width: 90%; text-align: center; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
-        .discord-btn { display: inline-block; background: #5865F2; color: white; padding: 12px 24px; text-decoration: none; font-weight: bold; margin: 20px 0; border-radius: 4px; }
-        .instr-img { width: 100%; border: 1px solid #444; margin: 15px 0; }
-        .close-txt { cursor: pointer; color: #ffcc00; font-size: 0.9rem; letter-spacing: 2px; text-decoration: underline; }
+        .modal-box { background: #001f3f; padding: 30px; border: 2px solid #ffcc00; max-width: 550px; width: 90%; text-align: center; box-shadow: 0 0 30px rgba(0,0,0,0.5); max-height: 90vh; overflow-y: auto; }
+        .discord-btn { display: inline-block; background: #5865F2; color: white; padding: 12px 24px; text-decoration: none; font-weight: bold; margin: 15px 0; border-radius: 4px; }
+        .instr-img { width: 100%; border: 1px solid #444; margin: 10px 0; }
+        
+        .format-reference { background: rgba(0,0,0,0.3); padding: 15px; border-left: 3px solid #ffcc00; text-align: left; margin: 15px 0; font-family: monospace; font-size: 0.9rem; line-height: 1.4; color: #fff; }
+        
+        .close-txt { cursor: pointer; color: #ffcc00; font-size: 0.8rem; letter-spacing: 2px; text-decoration: underline; margin-top: 10px; display: block; }
 
         /* --- GRID LAYOUT --- */
         .grid-container { max-width: 1400px; margin: auto; padding: 140px 20px 60px; }
@@ -92,6 +93,7 @@
         <div id="network-menu" class="mega-panel"><div class="panel-content"><div class="menu-col"><h3>Network Hub</h3><a href="network.html">Route Map & List</a><a href="radar.html">Live Radar</a></div><div class="menu-col"><h3>Hubs</h3><a href="hub-info.html#fra">Frankfurt (FRA)</a><a href="hub-info.html#muc">Munich (MUC)</a></div></div></div>
         <div id="media-menu" class="mega-panel"><div class="panel-content"><div class="menu-col"><h3>The Gazette</h3><a href="news.html">Latest News</a><a href="gallery.html">Fleet Gallery</a></div></div></div>
         <div id="crew-menu" class="mega-panel"><div class="panel-content"><div class="menu-col"><h3>The Elite</h3><a href="hall-of-fame.html">Hall of Fame</a><a href="service-medals.html">Service Medals</a></div><div class="menu-col"><h3>Highlights</h3><a href="highlights.html">Our Perks</a></div></div></div>
+        
         <div id="mobile-menu" class="mobile-nav-panel">
             <div class="mobile-header"><span id="mobile-back" onclick="backToMainMobile()" style="display:none;">← Back</span><span class="close-mobile" onclick="toggleMobileMenu()">&times;</span></div>
             <div id="mobile-main-links" class="mobile-links">
@@ -100,10 +102,10 @@
                 <div class="mobile-pillar" onclick="showSubMobile('mob-med')">Media & News <span>›</span></div>
                 <div class="mobile-pillar" onclick="showSubMobile('mob-crew')">Crew & Community <span>›</span></div>
             </div>
-            <div id="mob-ops" class="mobile-sub-menu" style="display:none;"><a href="ops.html">Flight Dispatch</a><a href="livery-db.html">Livery Database</a><a href="fleet.html">Main Fleet</a></div>
-            <div id="mob-net" class="mobile-sub-menu" style="display:none;"><a href="network.html">Route Map</a><a href="radar.html">Live Radar</a></div>
+            <div id="mob-ops" class="mobile-sub-menu" style="display:none;"><a href="ops.html">Flight Dispatch</a><a href="livery-db.html">Livery Database</a><a href="fleet.html">Main Fleet</a><a href="sop-manuals.html">SOP & Manuals</a></div>
+            <div id="mob-net" class="mobile-sub-menu" style="display:none;"><a href="network.html">Route Map</a><a href="radar.html">Live Radar</a><a href="hub-info.html">Hub Info</a></div>
             <div id="mob-med" class="mobile-sub-menu" style="display:none;"><a href="news.html">Latest News</a><a href="gallery.html">Gallery</a></div>
-            <div id="mob-crew" class="mobile-sub-menu" style="display:none;"><a href="hall-of-fame.html">Hall of Fame</a></div>
+            <div id="mob-crew" class="mobile-sub-menu" style="display:none;"><a href="hall-of-fame.html">Hall of Fame</a><a href="service-medals.html">Service Medals</a><a href="highlights.html">Our Perks</a></div>
         </div>
     </nav>
 
@@ -128,10 +130,18 @@
     <div id="helpModal">
         <div class="modal-box">
             <h2>Add Your Images</h2>
-            <p>To have your spotting photos featured, please visit our Discord's <b>#gallery-submission</b> channel.</p>
+            <p>To have your photos featured, visit <b>#gallery-submission</b> on Discord.</p>
             <a href="https://discord.com/channels/1404322265214095470/1446631188486820102" class="discord-btn" target="_blank">Open Submission Channel</a>
-            <p style="font-size: 0.85rem; opacity: 0.8;">Please follow this submission format:</p>
+            
             <img src="instructions.png" alt="Format" class="instr-img">
+            
+            <div class="format-reference">
+                <b>Forum Title:</b> Aircraft<br>
+                (Ping @midmm2)<br>
+                <b>Is this photo from GeoFS?</b> Yes/No<br>
+                (Upload image.)
+            </div>
+
             <div class="close-txt" onclick="toggleHelp(false)">[ BACK TO GALLERY ]</div>
         </div>
     </div>
@@ -164,7 +174,6 @@
     <div id="lb" onclick="this.style.display='none'"><img id="lb-img" src=""></div>
 
     <script>
-        // CROSS-FADE LOGIC
         let nIdx = 1; let wIdx = 1;
         let nToggle = true; let wToggle = true;
 
@@ -195,13 +204,9 @@
         }, 5000);
 
         function openLB(s) { document.getElementById('lb-img').src = s; document.getElementById('lb').style.display = 'flex'; }
+        function toggleHelp(show) { document.getElementById('helpModal').style.display = show ? 'flex' : 'none'; }
         
-        // MODAL TOGGLE
-        function toggleHelp(show) {
-            document.getElementById('helpModal').style.display = show ? 'flex' : 'none';
-        }
-
-        // NAV FUNCTIONS
+        // NAV FUNCTIONS - FULLY RESTORED
         function toggleMenu(id) {
             const menu = document.getElementById(id);
             const overlay = document.getElementById("menu-overlay");
