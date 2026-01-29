@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Gazette | Lufthansa GeoFS News</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- News Page Layout --- */
+        .news-container { max-width: 1200px; margin: 120px auto 40px; padding: 0 20px; }
+        
+        /* Hero Featured News */
+        .news-hero {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            background: linear-gradient(rgba(0,31,63,0.7), rgba(0,31,63,0.9)), url('fleet-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 50px;
+            color: white;
+            margin-bottom: 40px;
+            border-bottom: 5px solid #ffcc00;
+        }
+        .hero-tag { background: #ffcc00; color: #001f3f; padding: 5px 15px; font-weight: bold; border-radius: 4px; width: fit-content; margin-bottom: 15px; }
+        .news-hero h1 { font-size: 3rem; margin: 0 0 15px; }
+        .news-hero p { font-size: 1.2rem; max-width: 600px; opacity: 0.9; }
+
+        /* News Grid */
+        .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; }
+        
+        .news-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .news-card:hover { transform: translateY(-5px); }
+        .news-img { width: 100%; height: 200px; background: #eee; object-fit: cover; }
+        
+        .news-content { padding: 20px; flex-grow: 1; }
+        .news-date { color: #777; font-size: 0.8rem; text-transform: uppercase; font-weight: bold; }
+        .news-title { font-size: 1.4rem; color: #001f3f; margin: 10px 0; }
+        .news-excerpt { color: #555; line-height: 1.5; font-size: 0.95rem; }
+
+        .read-more { 
+            display: inline-block; margin-top: 15px; color: #001f3f; 
+            font-weight: bold; text-decoration: none; border-bottom: 2px solid #ffcc00; 
+        }
+
+        /* Hamburger & Nav Consistency */
+        .hamburger { display: none; font-size: 30px; cursor: pointer; color: #001f3f; }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: block; }
+            .news-hero { padding: 30px; height: auto; min-height: 350px; }
+            .news-hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="main-nav" id="navbar">
+        <div class="nav-wrapper">
+            <div class="nav-left">
+                <span class="hamburger" onclick="toggleMobileMenu()">&#9776;</span>
+                <a href="index.html" class="logo-link"><img src="logo.png" alt="Logo" class="nav-logo"><span>Lufthansa GeoFS</span></a>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li class="pillar-link" onclick="toggleMenu('ops-menu')">Flight Operations</li>
+                <li class="pillar-link" onclick="toggleMenu('network-menu')">Live Network</li>
+                <li class="pillar-link" onclick="toggleMenu('media-menu')">Media & News</li>
+                <li class="pillar-link" onclick="toggleMenu('crew-menu')">Crew & Community</li>
+            </ul>
+        </div>
+
+        <div class="mega-overlay" id="menu-overlay" onclick="closeAllMenus()"></div>
+        
+        <div id="ops-menu" class="mega-panel"><div class="panel-content"><div class="menu-col"><h3>Ops</h3><a href="ops.html">Dispatch</a><a href="livery-db.html">Liveries</a><a href="sop-manuals.html">SOP Manuals</a></div></div></div>
+        <div id="network-menu" class="mega-panel"><div class="panel-content"><div class="menu-col"><h3>Network</h3><a href="radar.html">Live Radar</a><a href="hub-info.html">Hub Info</a></div></div></div>
+        <div id="media-menu" class="mega-panel"><div class="panel-content"><div class="menu-col"><h3>Media</h3><a href="news.html">The Gazette</a><a href="gallery.html">Gallery</a></div></div></div>
+        <div id="crew-menu" class="mega-panel"><div class="panel-content"><div class="menu-col"><h3>Crew</h3><a href="hall-of-fame.html">Hall of Fame</a><a href="service-medals.html">Service Medals</a></div></div></div>
+    </nav>
+
+    <div class="news-container">
+        <section class="news-hero">
+            <span class="hero-tag">Breaking News</span>
+            <h1>2026 Fleet Expansion</h1>
+            <p>Lufthansa GeoFS officially welcomes the A350-1000 to the long-haul fleet. Check the Livery Database for the updated technical files.</p>
+            <a href="#" class="read-more" style="color: white; width: fit-content;">Read Full Story</a>
+        </section>
+
+        <main class="news-grid">
+            <article class="news-card">
+                <img src="news1.jpg" alt="News" class="news-img">
+                <div class="news-content">
+                    <span class="news-date">January 28, 2026</span>
+                    <h2 class="news-title">New SOP Manuals Released</h2>
+                    <p class="news-excerpt">Updated Standard Operating Procedures for the Boeing 747-8i are now live in the crew center.</p>
+                    <a href="sop-manuals.html" class="read-more">View Manuals</a>
+                </div>
+            </article>
+
+            <article class="news-card">
+                <img src="news2.jpg" alt="News" class="news-img">
+                <div class="news-content">
+                    <span class="news-date">January 15, 2026</span>
+                    <h2 class="news-title">Munich Hub Upgrade</h2>
+                    <p class="news-excerpt">Terminal 2 operations have been streamlined with new gate assignments for regional flights.</p>
+                    <a href="hub-info.html#muc" class="read-more">Hub Details</a>
+                </div>
+            </article>
+
+            <article class="news-card">
+                <img src="news3.jpg" alt="News" class="news-img">
+                <div class="news-content">
+                    <span class="news-date">January 03, 2026</span>
+                    <h2 class="news-title">The Gazette Branding</h2>
+                    <p class="news-excerpt">Welcome to the new 'Gazette'. Our media pillar has been officially renamed for the 2026 remake.</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </article>
+        </main>
+    </div>
+
+    <script>
+        // --- NAVIGATION LOGIC ---
+        function toggleMenu(id) {
+            const panel = document.getElementById(id);
+            const wasActive = panel.classList.contains('active');
+            closeAllMenus();
+            if (!wasActive) {
+                panel.classList.add('active');
+                document.getElementById('menu-overlay').classList.add('active');
+            }
+        }
+        function closeAllMenus() {
+            document.querySelectorAll('.mega-panel').forEach(p => p.classList.remove('active'));
+            document.getElementById('menu-overlay').classList.remove('active');
+        }
+        function toggleMobileMenu() {
+            const links = document.getElementById('nav-links');
+            links.style.display = (links.style.display === 'block') ? 'none' : 'block';
+        }
+        
+        // Auto-close menus on scroll
+        window.onscroll = function() { closeAllMenus(); };
+    </script>
+</body>
+</html>
