@@ -10,54 +10,56 @@
     <style>
         body { background: #000; color: white; margin: 0; overflow-x: hidden; font-family: 'Roboto', sans-serif; }
 
-        /* --- NAVIGATION OVERRIDE FOR DARK THEME --- */
-        #navbar { background: rgba(0, 31, 63, 0.95); border-bottom: 2px solid #ffcc00; }
-
         /* --- GALLERY LOGIC --- */
         .gallery-section { display: none; min-height: 100vh; }
         #selection:target ~ #selection, #selection { display: flex; }
         #narrow:target, #wide:target { display: block; }
         #narrow:target ~ #selection, #wide:target ~ #selection { display: none; }
 
-        /* --- SELECTION SCREEN (FORZA STYLE) --- */
+        /* --- SELECTION SCREEN --- */
         .selection-container { display: flex; height: 100vh; width: 100vw; gap: 5px; background: #000; }
         .fleet-card { position: relative; flex: 1; cursor: pointer; overflow: hidden; transition: flex 0.6s cubic-bezier(0.2, 1, 0.3, 1); text-decoration: none; }
         .fleet-card:hover { flex: 1.5; }
 
-        .fleet-bg-img { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 0.8s ease; z-index: 1; }
-
-        /* Initial Images from Root */
-        .narrow-card .fleet-bg-img {
-            background-image: url('Aircraft/a220.webp');
-            clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+        /* FADE LAYERS */
+        .bg-layer {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            transition: opacity 1.5s ease-in-out, transform 0.8s ease;
+            z-index: 1;
         }
-        .wide-card .fleet-bg-img {
-            background-image: url('Aircraft/a380.webp');
-            clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
-            margin-left: -10%;
-        }
+        .bg-back { z-index: 0; } /* The image behind the current one */
 
-        .fleet-card:hover .fleet-bg-img { transform: scale(1.1); }
-        .gradient-fade { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 20%, rgba(0, 31, 63, 0.8) 100%); z-index: 2; }
+        .narrow-card .bg-layer { clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%); }
+        .wide-card .bg-layer { clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%); margin-left: -10%; }
+
+        /* INITIAL BACKGROUNDS */
+        #n-bg-1 { background-image: url('Aircraft/a220.webp'); opacity: 1; }
+        #n-bg-2 { background-image: url('narrow1.webp'); opacity: 0; }
+        #w-bg-1 { background-image: url('Aircraft/a380.webp'); opacity: 1; }
+        #w-bg-2 { background-image: url('wide1.webp'); opacity: 0; }
+
+        .fleet-card:hover .bg-layer { transform: scale(1.05); }
+        .gradient-fade { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 20%, rgba(0, 31, 63, 0.9) 100%); z-index: 2; }
 
         .label-wrap { position: absolute; bottom: 12%; left: 50%; transform: translateX(-50%); z-index: 3; text-align: center; width: 100%; }
-        .label-wrap h1 { font-size: clamp(3rem, 8vw, 5rem); font-style: italic; font-weight: 900; text-transform: uppercase; margin: 0; letter-spacing: -2px; color: #fff; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+        .label-wrap h1 { font-size: clamp(3rem, 8vw, 5rem); font-style: italic; font-weight: 900; text-transform: uppercase; margin: 0; color: #fff; }
         .label-wrap p { color: #ffcc00; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin: 0; }
 
         /* --- GRID LAYOUT --- */
         .grid-container { max-width: 1400px; margin: auto; padding: 140px 20px 60px; }
         .grid-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; border-bottom: 2px solid #ffcc00; padding-bottom: 20px; }
-        .grid-header h2 { font-size: 2.5rem; margin: 0; text-transform: uppercase; font-style: italic; color: white; }
-        .back-btn { background: #ffcc00; color: #001f3f; padding: 10px 25px; text-decoration: none; font-weight: 900; text-transform: uppercase; border-radius: 2px; }
+        .back-btn { background: #ffcc00; color: #001f3f; padding: 10px 25px; text-decoration: none; font-weight: 900; text-transform: uppercase; }
 
         .image-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; }
         .grid-photo { height: 250px; background: #111; border-radius: 4px; overflow: hidden; cursor: pointer; border: 1px solid #222; }
         .grid-photo img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
         .grid-photo:hover img { transform: scale(1.05); filter: brightness(1.2); }
 
-        /* Lightbox */
         #lb { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 10001; justify-content: center; align-items: center; }
-        #lb img { max-width: 90%; max-height: 85%; border: 3px solid #ffcc00; box-shadow: 0 0 30px rgba(255, 204, 0, 0.3); }
+        #lb img { max-width: 90%; max-height: 85%; border: 3px solid #ffcc00; }
     </style>
 </head>
 <body>
@@ -78,7 +80,6 @@
         <div id="network-menu" class="mega-panel"><div class="panel-content"><div class="menu-col"><h3>Network Hub</h3><a href="network.html">Route Map & List</a><a href="radar.html">Live Radar</a></div><div class="menu-col"><h3>Hubs</h3><a href="hub-info.html#fra">Frankfurt (FRA)</a><a href="hub-info.html#muc">Munich (MUC)</a></div></div></div>
         <div id="media-menu" class="mega-panel"><div class="panel-content"><div class="menu-col"><h3>The Gazette</h3><a href="news.html">Latest News</a><a href="gallery.html">Fleet Gallery</a></div></div></div>
         <div id="crew-menu" class="mega-panel"><div class="panel-content"><div class="menu-col"><h3>The Elite</h3><a href="hall-of-fame.html">Hall of Fame</a><a href="service-medals.html">Service Medals</a></div><div class="menu-col"><h3>Highlights</h3><a href="highlights.html">Our Perks</a></div></div></div>
-
         <div id="mobile-menu" class="mobile-nav-panel">
             <div class="mobile-header"><span id="mobile-back" onclick="backToMainMobile()" style="display:none;">← Back</span><span class="close-mobile" onclick="toggleMobileMenu()">&times;</span></div>
             <div id="mobile-main-links" class="mobile-links">
@@ -87,29 +88,25 @@
                 <div class="mobile-pillar" onclick="showSubMobile('mob-med')">Media & News <span>›</span></div>
                 <div class="mobile-pillar" onclick="showSubMobile('mob-crew')">Crew & Community <span>›</span></div>
             </div>
-            <div id="mob-ops" class="mobile-sub-menu" style="display:none;"><a href="ops.html">Flight Dispatch</a><a href="livery-db.html">Livery Database</a><a href="fleet.html">Main Fleet</a><a href="sop-manuals.html">SOP & Manuals</a></div>
-            <div id="mob-net" class="mobile-sub-menu" style="display:none;"><a href="network.html">Route Map & List</a><a href="radar.html">Live Radar</a><a href="hub-info.html">Hub Info</a></div>
-            <div id="mob-med" class="mobile-sub-menu" style="display:none;"><a href="news.html">Latest News</a><a href="gallery.html">Fleet Gallery</a></div>
-            <div id="mob-crew" class="mobile-sub-menu" style="display:none;"><a href="hall-of-fame.html">Hall of Fame</a><a href="highlights.html">Our Perks</a></div>
+            <div id="mob-ops" class="mobile-sub-menu" style="display:none;"><a href="ops.html">Flight Dispatch</a><a href="livery-db.html">Livery Database</a><a href="fleet.html">Main Fleet</a></div>
+            <div id="mob-net" class="mobile-sub-menu" style="display:none;"><a href="network.html">Route Map</a><a href="radar.html">Live Radar</a></div>
+            <div id="mob-med" class="mobile-sub-menu" style="display:none;"><a href="news.html">Latest News</a><a href="gallery.html">Gallery</a></div>
+            <div id="mob-crew" class="mobile-sub-menu" style="display:none;"><a href="hall-of-fame.html">Hall of Fame</a></div>
         </div>
     </nav>
 
     <section id="selection" class="gallery-section selection-container">
         <a href="#narrow" class="fleet-card narrow-card">
-            <div class="fleet-bg-img" id="n-bg"></div>
+            <div id="n-bg-1" class="bg-layer"></div>
+            <div id="n-bg-2" class="bg-layer bg-back"></div>
             <div class="gradient-fade"></div>
-            <div class="label-wrap">
-                <h1>Narrowbody</h1>
-                <p>Regional Operations</p>
-            </div>
+            <div class="label-wrap"><h1>Narrowbody</h1><p>Regional Operations</p></div>
         </a>
         <a href="#wide" class="fleet-card wide-card">
-            <div class="fleet-bg-img" id="w-bg"></div>
+            <div id="w-bg-1" class="bg-layer"></div>
+            <div id="w-bg-2" class="bg-layer bg-back"></div>
             <div class="gradient-fade"></div>
-            <div class="label-wrap">
-                <h1>Widebody</h1>
-                <p>Intercontinental Fleet</p>
-            </div>
+            <div class="label-wrap"><h1>Widebody</h1><p>Intercontinental Fleet</p></div>
         </a>
     </section>
 
@@ -141,19 +138,41 @@
     <div id="lb" onclick="this.style.display='none'"><img id="lb-img" src=""></div>
 
     <script>
-        // BACKGROUND CYCLER (Root Folder)
-        let n = 1; let w = 1;
+        // CROSS-FADE LOGIC
+        let nIdx = 1; let wIdx = 1;
+        let nToggle = true; let wToggle = true;
+
         setInterval(() => {
-            n = (n % 4) + 1; w = (w % 5) + 1;
-            const nbg = document.getElementById('n-bg');
-            const wbg = document.getElementById('w-bg');
-            if(nbg) nbg.style.backgroundImage = `url('narrow${n}.webp')`;
-            if(wbg) wbg.style.backgroundImage = `url('wide${w}.webp')`;
-        }, 4000);
+            // Narrowbody Logic
+            nIdx = (nIdx % 4) + 1;
+            const n1 = document.getElementById('n-bg-1');
+            const n2 = document.getElementById('n-bg-2');
+            if (nToggle) {
+                n2.style.backgroundImage = `url('narrow${nIdx}.webp')`;
+                n1.style.opacity = 0; n2.style.opacity = 1;
+            } else {
+                n1.style.backgroundImage = `url('narrow${nIdx}.webp')`;
+                n2.style.opacity = 0; n1.style.opacity = 1;
+            }
+            nToggle = !nToggle;
+
+            // Widebody Logic
+            wIdx = (wIdx % 5) + 1;
+            const w1 = document.getElementById('w-bg-1');
+            const w2 = document.getElementById('w-bg-2');
+            if (wToggle) {
+                w2.style.backgroundImage = `url('wide${wIdx}.webp')`;
+                w1.style.opacity = 0; w2.style.opacity = 1;
+            } else {
+                w1.style.backgroundImage = `url('wide${wIdx}.webp')`;
+                w2.style.opacity = 0; w1.style.opacity = 1;
+            }
+            wToggle = !wToggle;
+        }, 5000);
 
         function openLB(s) { document.getElementById('lb-img').src = s; document.getElementById('lb').style.display = 'flex'; }
-
-        // NAVIGATION LOGIC
+        
+        // NAV FUNCTIONS
         function toggleMenu(id) {
             const menu = document.getElementById(id);
             const overlay = document.getElementById("menu-overlay");
