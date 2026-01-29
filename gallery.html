@@ -17,7 +17,7 @@
         #narrow:target ~ #selection, #wide:target ~ #selection { display: none; }
 
         /* --- SELECTION SCREEN --- */
-        .selection-container { display: flex; height: 100vh; width: 100vw; gap: 5px; background: #000; }
+        .selection-container { display: flex; height: 100vh; width: 100vw; gap: 5px; background: #000; position: relative; }
         .fleet-card { position: relative; flex: 1; cursor: pointer; overflow: hidden; transition: flex 0.6s cubic-bezier(0.2, 1, 0.3, 1); text-decoration: none; }
         .fleet-card:hover { flex: 1.5; }
 
@@ -30,7 +30,7 @@
             transition: opacity 1.5s ease-in-out, transform 0.8s ease;
             z-index: 1;
         }
-        .bg-back { z-index: 0; } /* The image behind the current one */
+        .bg-back { z-index: 0; } 
 
         .narrow-card .bg-layer { clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%); }
         .wide-card .bg-layer { clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%); margin-left: -10%; }
@@ -47,6 +47,18 @@
         .label-wrap { position: absolute; bottom: 12%; left: 50%; transform: translateX(-50%); z-index: 3; text-align: center; width: 100%; }
         .label-wrap h1 { font-size: clamp(3rem, 8vw, 5rem); font-style: italic; font-weight: 900; text-transform: uppercase; margin: 0; color: #fff; }
         .label-wrap p { color: #ffcc00; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin: 0; }
+
+        /* SUBMISSION BUTTON */
+        .submit-btn-wrap { position: absolute; bottom: 30px; width: 100%; text-align: center; z-index: 10; }
+        .help-btn { background: rgba(255, 204, 0, 0.1); color: #ffcc00; border: 2px solid #ffcc00; padding: 12px 24px; font-weight: 900; text-transform: uppercase; cursor: pointer; transition: 0.3s; backdrop-filter: blur(5px); }
+        .help-btn:hover { background: #ffcc00; color: #001f3f; }
+
+        /* SUBMISSION MODAL */
+        #helpModal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 20000; justify-content: center; align-items: center; }
+        .modal-box { background: #001f3f; padding: 40px; border: 2px solid #ffcc00; max-width: 600px; width: 90%; text-align: center; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
+        .discord-btn { display: inline-block; background: #5865F2; color: white; padding: 12px 24px; text-decoration: none; font-weight: bold; margin: 20px 0; border-radius: 4px; }
+        .instr-img { width: 100%; border: 1px solid #444; margin: 15px 0; }
+        .close-txt { cursor: pointer; color: #ffcc00; font-size: 0.9rem; letter-spacing: 2px; text-decoration: underline; }
 
         /* --- GRID LAYOUT --- */
         .grid-container { max-width: 1400px; margin: auto; padding: 140px 20px 60px; }
@@ -108,7 +120,21 @@
             <div class="gradient-fade"></div>
             <div class="label-wrap"><h1>Widebody</h1><p>Intercontinental Fleet</p></div>
         </a>
+        <div class="submit-btn-wrap">
+            <button class="help-btn" onclick="toggleHelp(true)">How do I add my image?</button>
+        </div>
     </section>
+
+    <div id="helpModal">
+        <div class="modal-box">
+            <h2>Add Your Images</h2>
+            <p>To have your spotting photos featured, please visit our Discord's <b>#gallery-submission</b> channel.</p>
+            <a href="https://discord.com/channels/1404322265214095470/1446631188486820102" class="discord-btn" target="_blank">Open Submission Channel</a>
+            <p style="font-size: 0.85rem; opacity: 0.8;">Please follow this submission format:</p>
+            <img src="instructions.png" alt="Format" class="instr-img">
+            <div class="close-txt" onclick="toggleHelp(false)">[ BACK TO GALLERY ]</div>
+        </div>
+    </div>
 
     <section id="narrow" class="gallery-section">
         <div class="grid-container">
@@ -143,7 +169,6 @@
         let nToggle = true; let wToggle = true;
 
         setInterval(() => {
-            // Narrowbody Logic
             nIdx = (nIdx % 4) + 1;
             const n1 = document.getElementById('n-bg-1');
             const n2 = document.getElementById('n-bg-2');
@@ -156,7 +181,6 @@
             }
             nToggle = !nToggle;
 
-            // Widebody Logic
             wIdx = (wIdx % 5) + 1;
             const w1 = document.getElementById('w-bg-1');
             const w2 = document.getElementById('w-bg-2');
@@ -172,6 +196,11 @@
 
         function openLB(s) { document.getElementById('lb-img').src = s; document.getElementById('lb').style.display = 'flex'; }
         
+        // MODAL TOGGLE
+        function toggleHelp(show) {
+            document.getElementById('helpModal').style.display = show ? 'flex' : 'none';
+        }
+
         // NAV FUNCTIONS
         function toggleMenu(id) {
             const menu = document.getElementById(id);
