@@ -484,6 +484,8 @@
 "TSR": {icao: "LRTR", city: "Timișoara"},
 "KLU": {icao: "LOWK", city: "Klagenfurt"},
 "INN": {icao: "LOWI", city: "Innsbruck"},
+"KUL": { icao: "WMKK", city: "Kuala Lumpur},
+"MNL": {icao: "RPLL", city: "Manila"},
 
 "LEJ": {city: "Leipzig/Halle - Served by Lufthansa Cargo"},
 "LUX": {city: "Luxembourg - Served by Lufthansa Cargo"},
@@ -537,8 +539,6 @@
     
     "KIX": { icao: "RJBB", city: "Osaka Kansai - Served by KLM" },
     
-    "KUL": { icao: "WMKK", city: "Kuala Lumpur - Served by KLM" },
-    
     "MNL": { icao: "RPLL", city: "Manila - Served by KLM" },
     
     "DPS": { icao: "WADD", city: "Denpasar Bali - Served by KLM" },
@@ -552,7 +552,6 @@
 "GMP": {icao: "RKSS", city: "Seoul - Served by EVA"},
 "KHH": {icao: "RCKH", city: "Kaohsiung - Served by EVA"},
 "KWL": {icao: "ZGKL", city: "Guilin - Served by EVA"},
-"MNL": {icao: "RPLL", city: "Manila - Served by EVA"},
 "MFM": {icao: "VMMC", city: "Macau - Served by EVA"},
 "NGB": {icao: "ZSNB", city: "Ningbo - Served by EVA"},
 "PEN": {icao: "WMKP", city: "Penang - Served by EVA"},
@@ -1043,9 +1042,9 @@ const airportCoords = {
 };
 
     const hubs = ["FRA", "MUC"];
-const subsidiaryHubs = ["ZRH", "VIE", "BRU", "GVA", "AMS", "TPE", "KUL", "BOM"];
+const subsidiaryHubs = ["ZRH", "VIE", "BRU", "GVA", "AMS", "TPE", "BOM"];
 const codeshare = ["CGK", "SGN", "HKT", "DAD", "SAI", "KTI", "AGR", "JAI", "VNS", "GOI"];
-const circle = ["LIM", "UIO", "GYE", "PBM", "DAR", "ACC", "KGL", "EBB", "NRT", "KIX", "MNL", "DPS", "DOH", "BKI", "CRK", "CTS", "GMP", "KHH", "KWL", "MNL", "MFM", "NGB", "PEN", "PUS", "RMQ", "TSA", "TSN", "UKB", "AKL", "DMK", "CNX", "HDY", "DPS", "UPG", "MDC", "PDG", "KNO", "PLM", "SOC", "YIA", "CEB", "LAO", "KLO", "ILO", "TAC", "BLR", "MAA", "COK", "TRV", "AMD", "CCU", "JAI", "GOI", "SYD", "MEL", "PER", "OOL", "CBR", "DRW", "PPS", "UTH", "CEI", "BPN", "PLW", "COK"];
+const circle = ["LIM", "UIO", "GYE", "PBM", "DAR", "ACC", "KGL", "EBB", "NRT", "KIX", "DPS", "DOH", "BKI", "CRK", "CTS", "GMP", "KHH", "KWL", "MNL", "MFM", "NGB", "PEN", "PUS", "RMQ", "TSA", "TSN", "UKB", "AKL", "DMK", "CNX", "HDY", "DPS", "UPG", "MDC", "PDG", "KNO", "PLM", "SOC", "YIA", "CEB", "LAO", "KLO", "ILO", "TAC", "BLR", "MAA", "COK", "TRV", "AMD", "CCU", "JAI", "GOI", "SYD", "MEL", "PER", "OOL", "CBR", "DRW", "PPS", "UTH", "CEI", "BPN", "PLW", "COK"];
 const outOfService = ["TLV", "DAM", "BEY", "AMM", "EBL", "IKA", "KBP", "DME", "AUA", "CUR", "BON", "SXM", "KWI", "DMM", "BAH", "AUH", "DWC", "DXB", "JED", "RUH", "LCA", "PFO"]; 
 const gray = ["NORTH", "MALAYSIAN", "POINT", "MARIANA"];
 
